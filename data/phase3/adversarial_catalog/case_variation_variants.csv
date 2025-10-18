@@ -1,0 +1,148 @@
+variant_id,original_payload,variant_payload,variation_type,Label
+CASE_00000,' OR 1=1--,' Or 1=1--,alternating_case,1
+CASE_00001,' OR 1=1--,' Or 1=1--,alternating_case,1
+CASE_00002,' OR 1=1--,' Or 1=1--,random_case,1
+CASE_00003,' OR 1=1--,' or 1=1--,random_case,1
+CASE_00004,' OR 1=1--,' or 1=1--,random_case,1
+CASE_00005,' OR 1=1--,'Or1=1--,camel_case,1
+CASE_00006,' OR 1=1--,' OR 1=1--,mixed_case,1
+CASE_00007,' UNION SELECT NULL--,' UnIoN sElEcT nUlL--,alternating_case,1
+CASE_00008,' UNION SELECT NULL--,' UnIoN sElEcT nUlL--,alternating_case,1
+CASE_00009,' UNION SELECT NULL--,' uniON SelEcT NuLL--,random_case,1
+CASE_00010,' UNION SELECT NULL--,' uNioN SeLeCt nUll--,random_case,1
+CASE_00011,' UNION SELECT NULL--,' UNiON SELEct nuLl--,random_case,1
+CASE_00012,' UNION SELECT NULL--,'UnionSelectNull--,camel_case,1
+CASE_00013,' UNION SELECT NULL--,' UNiON SElECt NuLL--,mixed_case,1
+CASE_00014,admin'--,AdMiN'--,alternating_case,1
+CASE_00015,admin'--,AdMiN'--,alternating_case,1
+CASE_00016,admin'--,aDMin'--,random_case,1
+CASE_00017,admin'--,admIN'--,random_case,1
+CASE_00018,admin'--,ADmIn'--,random_case,1
+CASE_00019,admin'--,Admin'--,camel_case,1
+CASE_00020,admin'--,AdMIn'--,mixed_case,1
+CASE_00021,SELECT * FROM users,SeLeCt * FrOm UsErS,alternating_case,1
+CASE_00022,SELECT * FROM users,SeLeCt * FrOm UsErS,alternating_case,1
+CASE_00023,SELECT * FROM users,SelECT * fROm UserS,random_case,1
+CASE_00024,SELECT * FROM users,seLEcT * fROm uSERS,random_case,1
+CASE_00025,SELECT * FROM users,SEleCT * frOM useRs,random_case,1
+CASE_00026,SELECT * FROM users,Select*FromUsers,camel_case,1
+CASE_00027,SELECT * FROM users,SeLEcT * FrOM USeRS,mixed_case,1
+CASE_00028,'; DROP TABLE users--,'; DrOp TaBlE uSeRs--,alternating_case,1
+CASE_00029,'; DROP TABLE users--,'; DrOp TaBlE uSeRs--,alternating_case,1
+CASE_00030,'; DROP TABLE users--,'; drOP tABlE usERs--,random_case,1
+CASE_00031,'; DROP TABLE users--,'; DRop taBLe usErs--,random_case,1
+CASE_00032,'; DROP TABLE users--,'; drop table UsErS--,random_case,1
+CASE_00033,'; DROP TABLE users--,';DropTableUsers--,camel_case,1
+CASE_00034,'; DROP TABLE users--,'; DrOP TAbLE USeRS--,mixed_case,1
+CASE_00035,UNION SELECT password FROM admins,UnIoN sElEcT pAsSwOrD fRoM aDmInS,alternating_case,1
+CASE_00036,UNION SELECT password FROM admins,UnIoN sElEcT pAsSwOrD fRoM aDmInS,alternating_case,1
+CASE_00037,UNION SELECT password FROM admins,unION sEleCt PASSwORd from aDMinS,random_case,1
+CASE_00038,UNION SELECT password FROM admins,union SeleCt pAsswORd fROm admInS,random_case,1
+CASE_00039,UNION SELECT password FROM admins,uNiOn sELECt paSswORD FrOM AdmINS,random_case,1
+CASE_00040,UNION SELECT password FROM admins,UnionSelectPasswordFromAdmins,camel_case,1
+CASE_00041,UNION SELECT password FROM admins,UnIOn SeLEcT pASsWOrD fROm AdMInS,mixed_case,1
+CASE_00042,WHERE id=1 AND admin=1,WhErE iD=1 aNd AdMiN=1,alternating_case,1
+CASE_00043,WHERE id=1 AND admin=1,WhErE iD=1 aNd AdMiN=1,alternating_case,1
+CASE_00044,WHERE id=1 AND admin=1,where iD=1 AnD adMIN=1,random_case,1
+CASE_00045,WHERE id=1 AND admin=1,WhErE Id=1 aNd AdMin=1,random_case,1
+CASE_00046,WHERE id=1 AND admin=1,WHerE iD=1 anD aDMin=1,random_case,1
+CASE_00047,WHERE id=1 AND admin=1,WhereId=1AndAdmin=1,camel_case,1
+CASE_00048,WHERE id=1 AND admin=1,WhERe Id=1 ANd AdMIn=1,mixed_case,1
+CASE_00049,ORDER BY 1--,OrDeR bY 1--,alternating_case,1
+CASE_00050,ORDER BY 1--,OrDeR bY 1--,alternating_case,1
+CASE_00051,ORDER BY 1--,ordER bY 1--,random_case,1
+CASE_00052,ORDER BY 1--,OrdEr by 1--,random_case,1
+CASE_00053,ORDER BY 1--,ORDeR BY 1--,random_case,1
+CASE_00054,ORDER BY 1--,OrderBy1--,camel_case,1
+CASE_00055,ORDER BY 1--,OrDEr By 1--,mixed_case,1
+CASE_00056,INSERT INTO users VALUES,InSeRt InTo UsErS vAlUeS,alternating_case,1
+CASE_00057,INSERT INTO users VALUES,InSeRt InTo UsErS vAlUeS,alternating_case,1
+CASE_00058,INSERT INTO users VALUES,INserT iNTO uSERs vAluEs,random_case,1
+CASE_00059,INSERT INTO users VALUES,iNsERT iNTo USERS vALUEs,random_case,1
+CASE_00060,INSERT INTO users VALUES,InsERt IntO uSERs VAlUES,random_case,1
+CASE_00061,INSERT INTO users VALUES,InsertIntoUsersValues,camel_case,1
+CASE_00062,INSERT INTO users VALUES,InSErT iNTo UsERs VaLUeS,mixed_case,1
+CASE_10000,UPDATE users SET admin=1 WHERE id=1,UpDaTe UsErS sEt AdMiN=1 wHeRe Id=1,alternating_case,1
+CASE_10001,UPDATE users SET admin=1 WHERE id=1,UpDaTe UsErS sEt AdMiN=1 wHeRe Id=1,alternating_case,1
+CASE_10002,UPDATE users SET admin=1 WHERE id=1,UPDatE uSeRS SET admin=1 wHeRE ID=1,random_case,1
+CASE_10003,UPDATE users SET admin=1 WHERE id=1,UPdatE USERS sET adMIN=1 WHere Id=1,random_case,1
+CASE_10004,UPDATE users SET admin=1 WHERE id=1,updATe USERs sEt ADMIN=1 wHerE iD=1,random_case,1
+CASE_10005,UPDATE users SET admin=1 WHERE id=1,UpdateUsersSetAdmin=1WhereId=1,camel_case,1
+CASE_10006,UPDATE users SET admin=1 WHERE id=1,UpDAtE uSErS sET ADmIN=1 wHErE iD=1,mixed_case,1
+CASE_10007,UPDATE users SET password='hacked'--,UpDaTe UsErS sEt PaSsWoRd='HaCkEd'--,alternating_case,1
+CASE_10008,UPDATE users SET password='hacked'--,UpDaTe UsErS sEt PaSsWoRd='HaCkEd'--,alternating_case,1
+CASE_10009,UPDATE users SET password='hacked'--,upDATE uSerS sET pASswORD='HACked'--,random_case,1
+CASE_10010,UPDATE users SET password='hacked'--,upDaTE uSERs seT PaSswORd='haCked'--,random_case,1
+CASE_10011,UPDATE users SET password='hacked'--,uPDate uSERS sEt pasSwoRD='hacKEd'--,random_case,1
+CASE_10012,UPDATE users SET password='hacked'--,UpdateUsersSetPassword='hacked'--,camel_case,1
+CASE_10013,UPDATE users SET password='hacked'--,UpDAtE uSErS sET PAsSWoRD='HaCKeD'--,mixed_case,1
+CASE_10014,'; UPDATE users SET role='admin'--,'; UpDaTe UsErS sEt RoLe='AdMiN'--,alternating_case,1
+CASE_10015,'; UPDATE users SET role='admin'--,'; UpDaTe UsErS sEt RoLe='AdMiN'--,alternating_case,1
+CASE_10016,'; UPDATE users SET role='admin'--,'; UPdATE uSeRS SET rOLE='aDmIn'--,random_case,1
+CASE_10017,'; UPDATE users SET role='admin'--,'; UPdAtE UsERS sEt RoLE='aDMIn'--,random_case,1
+CASE_10018,'; UPDATE users SET role='admin'--,'; upDatE uSERS set RolE='ADmiN'--,random_case,1
+CASE_10019,'; UPDATE users SET role='admin'--,';UpdateUsersSetRole='admin'--,camel_case,1
+CASE_10020,'; UPDATE users SET role='admin'--,'; UpDAtE uSErS sET ROlE='ADmIN'--,mixed_case,1
+CASE_10021,DELETE FROM users WHERE 1=1--,DeLeTe FrOm UsErS wHeRe 1=1--,alternating_case,1
+CASE_10022,DELETE FROM users WHERE 1=1--,DeLeTe FrOm UsErS wHeRe 1=1--,alternating_case,1
+CASE_10023,DELETE FROM users WHERE 1=1--,dEleTe FRoM uSers whERe 1=1--,random_case,1
+CASE_10024,DELETE FROM users WHERE 1=1--,DelETe FROm uSers wHere 1=1--,random_case,1
+CASE_10025,DELETE FROM users WHERE 1=1--,DElETe fRoM UsERs WhERE 1=1--,random_case,1
+CASE_10026,DELETE FROM users WHERE 1=1--,DeleteFromUsersWhere1=1--,camel_case,1
+CASE_10027,DELETE FROM users WHERE 1=1--,DeLEtE fROm UsERs WhERe 1=1--,mixed_case,1
+CASE_10028,'; DELETE FROM logs--,'; DeLeTe FrOm LoGs--,alternating_case,1
+CASE_10029,'; DELETE FROM logs--,'; DeLeTe FrOm LoGs--,alternating_case,1
+CASE_10030,'; DELETE FROM logs--,'; delEtE FroM lOgS--,random_case,1
+CASE_10031,'; DELETE FROM logs--,'; deleTE FRoM lOgS--,random_case,1
+CASE_10032,'; DELETE FROM logs--,'; dElETE frOM LoGS--,random_case,1
+CASE_10033,'; DELETE FROM logs--,';DeleteFromLogs--,camel_case,1
+CASE_10034,'; DELETE FROM logs--,'; DeLEtE fROm LoGS--,mixed_case,1
+CASE_10035,DELETE FROM admin WHERE username='test',DeLeTe FrOm AdMiN wHeRe UsErNaMe='TeSt',alternating_case,1
+CASE_10036,DELETE FROM admin WHERE username='test',DeLeTe FrOm AdMiN wHeRe UsErNaMe='TeSt',alternating_case,1
+CASE_10037,DELETE FROM admin WHERE username='test',dELeTe From AdMIN whEre useRNAME='teSt',random_case,1
+CASE_10038,DELETE FROM admin WHERE username='test',DElETe fRoM ADMin WhErE usERNAme='TeST',random_case,1
+CASE_10039,DELETE FROM admin WHERE username='test',DElEte fRom ADmin where usErNAmE='tEST',random_case,1
+CASE_10040,DELETE FROM admin WHERE username='test',DeleteFromAdminWhereUsername='test',camel_case,1
+CASE_10041,DELETE FROM admin WHERE username='test',DeLEtE fROm AdMIn WhERe UsERnAMe='tESt',mixed_case,1
+CASE_10000,UPDATE users SET admin=1 WHERE id=1,UpDaTe UsErS sEt AdMiN=1 wHeRe Id=1,alternating_case,1
+CASE_10001,UPDATE users SET admin=1 WHERE id=1,UpDaTe UsErS sEt AdMiN=1 wHeRe Id=1,alternating_case,1
+CASE_10002,UPDATE users SET admin=1 WHERE id=1,UpdAtE usErs seT Admin=1 where Id=1,random_case,1
+CASE_10003,UPDATE users SET admin=1 WHERE id=1,UpdATe userS SEt aDMiN=1 WhERE iD=1,random_case,1
+CASE_10004,UPDATE users SET admin=1 WHERE id=1,UpdaTe UsErS sEt AdMIn=1 wHeRe Id=1,random_case,1
+CASE_10005,UPDATE users SET admin=1 WHERE id=1,UpdateUsersSetAdmin=1WhereId=1,camel_case,1
+CASE_10006,UPDATE users SET admin=1 WHERE id=1,UpDAtE uSErS sET ADmIN=1 wHErE iD=1,mixed_case,1
+CASE_10007,UPDATE users SET password='hacked'--,UpDaTe UsErS sEt PaSsWoRd='HaCkEd'--,alternating_case,1
+CASE_10008,UPDATE users SET password='hacked'--,UpDaTe UsErS sEt PaSsWoRd='HaCkEd'--,alternating_case,1
+CASE_10009,UPDATE users SET password='hacked'--,UPdaTE UseRS Set PasswOrD='HACKEd'--,random_case,1
+CASE_10010,UPDATE users SET password='hacked'--,UPdatE uSERS sEt pAsSWord='hackED'--,random_case,1
+CASE_10011,UPDATE users SET password='hacked'--,UpdatE USeRS set PAsSwOrd='haCked'--,random_case,1
+CASE_10012,UPDATE users SET password='hacked'--,UpdateUsersSetPassword='hacked'--,camel_case,1
+CASE_10013,UPDATE users SET password='hacked'--,UpDAtE uSErS sET PAsSWoRD='HaCKeD'--,mixed_case,1
+CASE_10014,'; UPDATE users SET role='admin'--,'; UpDaTe UsErS sEt RoLe='AdMiN'--,alternating_case,1
+CASE_10015,'; UPDATE users SET role='admin'--,'; UpDaTe UsErS sEt RoLe='AdMiN'--,alternating_case,1
+CASE_10016,'; UPDATE users SET role='admin'--,'; UPdAtE uSERS set roLe='admin'--,random_case,1
+CASE_10017,'; UPDATE users SET role='admin'--,'; UPDAtE uSers set rOLe='aDMIn'--,random_case,1
+CASE_10018,'; UPDATE users SET role='admin'--,'; UPDaTe useRS Set rOLe='ADmin'--,random_case,1
+CASE_10019,'; UPDATE users SET role='admin'--,';UpdateUsersSetRole='admin'--,camel_case,1
+CASE_10020,'; UPDATE users SET role='admin'--,'; UpDAtE uSErS sET ROlE='ADmIN'--,mixed_case,1
+CASE_10021,DELETE FROM users WHERE 1=1--,DeLeTe FrOm UsErS wHeRe 1=1--,alternating_case,1
+CASE_10022,DELETE FROM users WHERE 1=1--,DeLeTe FrOm UsErS wHeRe 1=1--,alternating_case,1
+CASE_10023,DELETE FROM users WHERE 1=1--,DElete FROM uSERs WhERe 1=1--,random_case,1
+CASE_10024,DELETE FROM users WHERE 1=1--,DeLetE FRom USERs wheRE 1=1--,random_case,1
+CASE_10025,DELETE FROM users WHERE 1=1--,dElEte frOm userS WHERE 1=1--,random_case,1
+CASE_10026,DELETE FROM users WHERE 1=1--,DeleteFromUsersWhere1=1--,camel_case,1
+CASE_10027,DELETE FROM users WHERE 1=1--,DeLEtE fROm UsERs WhERe 1=1--,mixed_case,1
+CASE_10028,'; DELETE FROM logs--,'; DeLeTe FrOm LoGs--,alternating_case,1
+CASE_10029,'; DELETE FROM logs--,'; DeLeTe FrOm LoGs--,alternating_case,1
+CASE_10030,'; DELETE FROM logs--,'; delEtE From LOGs--,random_case,1
+CASE_10031,'; DELETE FROM logs--,'; dELete FROM Logs--,random_case,1
+CASE_10032,'; DELETE FROM logs--,'; DeleTE froM LOgs--,random_case,1
+CASE_10033,'; DELETE FROM logs--,';DeleteFromLogs--,camel_case,1
+CASE_10034,'; DELETE FROM logs--,'; DeLEtE fROm LoGS--,mixed_case,1
+CASE_10035,DELETE FROM admin WHERE username='test',DeLeTe FrOm AdMiN wHeRe UsErNaMe='TeSt',alternating_case,1
+CASE_10036,DELETE FROM admin WHERE username='test',DeLeTe FrOm AdMiN wHeRe UsErNaMe='TeSt',alternating_case,1
+CASE_10037,DELETE FROM admin WHERE username='test',DeLeTe FRoM admIn WHere usERnAmE='TesT',random_case,1
+CASE_10038,DELETE FROM admin WHERE username='test',deLEte FrOM ADMIn WHerE uSERname='TEST',random_case,1
+CASE_10039,DELETE FROM admin WHERE username='test',delete from aDmIn whERe usErName='teST',random_case,1
+CASE_10040,DELETE FROM admin WHERE username='test',DeleteFromAdminWhereUsername='test',camel_case,1
+CASE_10041,DELETE FROM admin WHERE username='test',DeLEtE fROm AdMIn WhERe UsERnAMe='tESt',mixed_case,1

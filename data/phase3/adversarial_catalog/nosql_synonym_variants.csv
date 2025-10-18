@@ -1,0 +1,13 @@
+variant_id,original_operator,synonym_payload,synonym_type,Label
+NOSQL_00000,$ne,"{""username"": {""$ne"": null}}",not_equal,1
+NOSQL_00001,$ne,"{""username"": {""$not"": {""$eq"": null}}}",not_equal,1
+NOSQL_00002,$ne,"{""username"": {""$exists"": true}}",not_equal,1
+NOSQL_00003,$gt,"{""price"": {""$gt"": 0}}",greater_than,1
+NOSQL_00004,$gt,"{""price"": {""$gte"": 1}}",greater_than,1
+NOSQL_00005,$gt,"{""price"": {""$not"": {""$lte"": 0}}}",greater_than,1
+NOSQL_00006,$or,"{""$or"": [{""role"": ""admin""}, {""role"": ""superuser""}]}",logical_or,1
+NOSQL_00007,$or,"{""role"": {""$in"": [""admin"", ""superuser""]}}",logical_or,1
+NOSQL_00008,$or,"{""$nor"": [{""role"": ""guest""}]}",logical_or,1
+NOSQL_00009,$regex,"{""username"": {""$regex"": ""^admin""}}",pattern_match,1
+NOSQL_00010,$regex,"{""$where"": ""this.username.match(/^admin/)""}",pattern_match,1
+NOSQL_00011,$regex,"{""username"": {""$regex"": ""admin"", ""$options"": ""i""}}",pattern_match,1

