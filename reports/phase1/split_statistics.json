@@ -1,0 +1,76 @@
+{
+    "metadata": {
+        "created_date": "2025-10-17 20:03:33",
+        "phase": "Phase 1 - Day 8",
+        "random_state": 42,
+        "stratified": true,
+        "splitting_method": "Stratified Random Split"
+    },
+    "split_sizes": {
+        "train": {
+            "samples": 149026,
+            "percentage": 69.9997651424411,
+            "target_percentage": 70.0,
+            "deviation": -0.00023485755889396387
+        },
+        "validation": {
+            "samples": 31934,
+            "percentage": 14.999882571220555,
+            "target_percentage": 15.0,
+            "deviation": -0.00011742877944520558
+        },
+        "test": {
+            "samples": 31935,
+            "percentage": 15.000352286338337,
+            "target_percentage": 15.0,
+            "deviation": 0.0003522863383373931
+        }
+    },
+    "class_distribution": {
+        "original": {
+            "normal": 87171,
+            "malicious": 125724,
+            "ratio": 1.4422686443886155
+        },
+        "train": {
+            "normal": 61019,
+            "malicious": 88007,
+            "ratio": 1.4422884675265082,
+            "ratio_deviation_pct": 0.0013744414377898566
+        },
+        "validation": {
+            "normal": 13076,
+            "malicious": 18858,
+            "ratio": 1.4421841541755889,
+            "ratio_deviation_pct": 0.005858146702094102
+        },
+        "test": {
+            "normal": 13076,
+            "malicious": 18859,
+            "ratio": 1.442260630162129,
+            "ratio_deviation_pct": 0.00055566808011961
+        }
+    },
+    "quality_checks": {
+        "overlap_train_val": 0,
+        "overlap_train_test": 0,
+        "overlap_val_test": 0,
+        "leakage_free": true,
+        "duplicates_removed": true,
+        "stratification_preserved": true
+    },
+    "strategy_justification": {
+        "method": "Stratified Random Split",
+        "rationale": [
+            "No session_id/user_id metadata present",
+            "Each query is unique (verified Day 6)",
+            "Data shuffled to remove sequential bias (Day 3)",
+            "Stratified sampling preserves class balance"
+        ],
+        "alternatives_rejected": [
+            "Grouped split (no group metadata)",
+            "Temporal split (no timestamps)",
+            "Simple random split (doesn't preserve balance)"
+        ]
+    }
+}

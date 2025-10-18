@@ -1,0 +1,65 @@
+{
+    "report_metadata": {
+        "title": "Contamination & Leakage Analysis Report",
+        "date": "2025-10-17 19:15:06",
+        "phase": "Phase 1 - Day 6",
+        "dataset_size": 212895
+    },
+    "checks_performed": {
+        "1_exact_duplicates": {
+            "status": "PASS",
+            "found": 0,
+            "action": "None required"
+        },
+        "2_contradictory_duplicates": {
+            "status": "PASS",
+            "found": 0,
+            "action": "None required - already removed in Day 5"
+        },
+        "3_metadata_leakage": {
+            "status": "PASS",
+            "metadata_columns_found": 2,
+            "risk_level": "LOW - No standard metadata columns"
+        },
+        "4_sequential_leakage": {
+            "status": "PASS",
+            "label_transition_rate": "48.19%",
+            "max_run_length": 24,
+            "risk_level": "LOW - Data shuffled in Day 3"
+        },
+        "5_near_duplicates": {
+            "status": "NOTED",
+            "found": 112666,
+            "action": "Keep separate per Day 5 policy"
+        },
+        "6_similarity_based": {
+            "status": "NOTED",
+            "similar_pairs_in_sample": 2,
+            "action": "Acceptable - may be legitimate attack patterns"
+        },
+        "7_hash_collisions": {
+            "status": "PASS",
+            "found": 0
+        }
+    },
+    "overall_assessment": {
+        "leakage_risk": "LOW",
+        "ready_for_splitting": true,
+        "critical_issues": 0,
+        "warnings": 0,
+        "notes": 112668
+    },
+    "actions_taken": [
+        "Shuffled dataset in Day 3 (fixed sequential bias)",
+        "Removed contradictory duplicates in Day 5 (7 queries)",
+        "Verified no exact duplicates exist",
+        "Confirmed no metadata leakage columns",
+        "Documented near-duplicates (to be preserved per policy)"
+    ],
+    "recommendations": [
+        "Proceed with stratified train/val/test split",
+        "Use random_state=42 for reproducibility",
+        "Verify no overlap between splits after creation",
+        "Monitor for overfitting during training on split-specific patterns"
+    ]
+}

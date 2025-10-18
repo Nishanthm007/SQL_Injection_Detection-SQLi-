@@ -1,0 +1,193 @@
+{
+    "document_metadata": {
+        "title": "SQL Injection Detection - Data Cleaning & Normalization Policy",
+        "version": "1.0",
+        "created_date": "2025-10-17 19:00:07",
+        "phase": "Phase 1 - Day 5",
+        "author": "Data Science Team",
+        "status": "APPROVED"
+    },
+    "policies": {
+        "1_case_handling": {
+            "decision": "PRESERVE ORIGINAL CASE",
+            "rationale": [
+                "SQL injection attacks use case variations for evasion (SELECT vs select)",
+                "Case can be a distinguishing feature between attacks and normal queries",
+                "Some attacks specifically use mixed case to bypass filters",
+                "CNN model can learn case patterns as features"
+            ],
+            "implementation": {
+                "storage": "Keep original case in raw data",
+                "preprocessing": "Create lowercase version as additional feature if needed",
+                "model_input": "Use original case for character-level CNN",
+                "rule_engine": "Use case-insensitive regex matching"
+            },
+            "exceptions": [
+                "For token-level analysis, create lowercase version",
+                "For keyword detection in rules, use case-insensitive matching"
+            ]
+        },
+        "2_whitespace_handling": {
+            "decision": "NORMALIZE WHITESPACE WITH CAUTION",
+            "rationale": [
+                "Excessive whitespace can be evasion technique",
+                "Leading/trailing spaces have no semantic meaning",
+                "Multiple spaces between tokens should be preserved as feature",
+                "Some attacks use whitespace manipulation"
+            ],
+            "implementation": {
+                "leading_trailing": "Strip from both ends",
+                "multiple_spaces": "Preserve as feature (don't collapse to single space)",
+                "special_whitespace": "Preserve tabs, newlines (can indicate obfuscation)",
+                "storage": "Store both original and normalized versions"
+            },
+            "preprocessing_steps": [
+                "1. Create 'query_original' field with exact input",
+                "2. Create 'query_trimmed' with stripped leading/trailing spaces",
+                "3. Keep internal whitespace patterns intact",
+                "4. Flag queries with unusual whitespace patterns"
+            ]
+        },
+        "3_encoding_handling": {
+            "decision": "PRESERVE ENCODED FORMS AS FEATURES",
+            "rationale": [
+                "URL encoding (%27, %20) is common evasion technique",
+                "HEX encoding (0x) indicates obfuscation attempts",
+                "Decoding might lose valuable attack signatures",
+                "Both encoded and decoded forms provide useful features"
+            ],
+            "implementation": {
+                "storage": "Keep original encoded form",
+                "feature_engineering": "Create decoded versions as additional features",
+                "unicode": "Preserve UTF-8 encoding (latin-1 was used for reading)",
+                "validation": "Flag queries with unusual encoding patterns"
+            },
+            "preprocessing_steps": [
+                "1. Store original with encodings intact",
+                "2. Create 'query_url_decoded' feature",
+                "3. Create 'has_url_encoding' boolean feature",
+                "4. Create 'has_hex_encoding' boolean feature",
+                "5. Count encoding instances as numeric feature"
+            ]
+        },
+        "4_missing_values": {
+            "decision": "STRICT REMOVAL OF MISSING CRITICAL FIELDS",
+            "rules": {
+                "missing_query": {
+                    "action": "DROP - Cannot analyze without query text",
+                    "reason": "Query is the primary feature, cannot be imputed"
+                },
+                "missing_label": {
+                    "action": "DROP - Cannot train without ground truth",
+                    "reason": "Label is required for supervised learning"
+                },
+                "empty_query": {
+                    "action": "DROP - No semantic content",
+                    "reason": "Empty strings provide no information"
+                },
+                "extremely_short_query": {
+                    "action": "FLAG - Review queries with length < 3 characters",
+                    "reason": "May be data quality issues or edge cases"
+                }
+            },
+            "implementation": {
+                "phase": "Already applied in Day 1 cleaning",
+                "current_status": "Dataset has 0 missing values",
+                "future_data": "Apply same strict policy to new data"
+            },
+            "logging": "Log all removed rows with reasons to removal_log.csv"
+        },
+        "5_duplicate_handling": {
+            "decision": "NUANCED APPROACH BASED ON DUPLICATE TYPE",
+            "types": {
+                "exact_duplicates_same_label": {
+                    "action": "KEEP FIRST OCCURRENCE ONLY",
+                    "reason": "Redundant data, increases training bias",
+                    "implementation": "df.drop_duplicates(subset=['Query', 'Label'], keep='first')"
+                },
+                "contradictory_duplicates": {
+                    "action": "REMOVE ALL OCCURRENCES",
+                    "reason": "Conflicting labels indicate data quality issue or labeling error",
+                    "rationale": [
+                        "Cannot train model on contradictory examples",
+                        "Better to remove than introduce noise",
+                        "May indicate context-dependent attacks (out of scope)"
+                    ],
+                    "implementation": "Identify and remove all instances of queries appearing in both classes"
+                },
+                "near_duplicates": {
+                    "action": "KEEP AS SEPARATE - PRESERVE VARIATIONS",
+                    "reason": "Case/whitespace variations may be intentional evasion",
+                    "examples": [
+                        "'SELECT' vs 'select'",
+                        "'OR 1=1' vs 'OR  1=1'"
+                    ]
+                }
+            },
+            "priority_order": [
+                "1. Remove contradictory duplicates (conflicting labels)",
+                "2. Remove exact duplicates within same label (keep='first')",
+                "3. Preserve near-duplicates (feature variations)"
+            ],
+            "implementation": {
+                "phase": "Partially applied in Day 1, refinement needed",
+                "current_status": "7 contradictory duplicates identified",
+                "next_action": "Remove contradictory duplicates before train/val/test split"
+            }
+        },
+        "6_additional_policies": {
+            "query_length_limits": {
+                "decision": "NO HARD LIMITS",
+                "rationale": "Long queries may be legitimate complex attacks",
+                "action": "Flag queries > 5000 chars for review, but keep",
+                "current_max": 5370
+            },
+            "special_character_handling": {
+                "decision": "PRESERVE ALL",
+                "rationale": "SQL injection relies heavily on special characters",
+                "examples": [
+                    "'; DROP TABLE",
+                    "' OR '1'='1",
+                    "/* comment */"
+                ]
+            },
+            "numeric_representation": {
+                "decision": "KEEP ORIGINAL FORMAT",
+                "rationale": "Different formats (decimal, hex, scientific) indicate different attacks",
+                "examples": [
+                    "1",
+                    "0x31",
+                    "1e0",
+                    "1.0"
+                ]
+            },
+            "comment_handling": {
+                "decision": "PRESERVE IN ORIGINAL QUERY",
+                "rationale": "Comments (-- , /* */, #) are key attack indicators",
+                "feature_extraction": "Extract and count as separate features"
+            }
+        }
+    },
+    "implementation_summary": {
+        "already_applied": [
+            "Encoding detection (latin-1)",
+            "Missing value removal (Query and Label)",
+            "Basic duplicate removal (exact within class)",
+            "Empty column removal (Unnamed: 2)"
+        ],
+        "to_be_applied": [
+            "Contradictory duplicate removal",
+            "Feature extraction (encoded versions)",
+            "Whitespace pattern flagging",
+            "Query length validation"
+        ]
+    },
+    "quality_metrics": {
+        "original_dataset_size": 244111,
+        "after_cleaning": 212909,
+        "contradictory_duplicates_found": 7,
+        "url_encoded_queries": 3378,
+        "hex_encoded_queries": 23266,
+        "queries_with_multiple_spaces": 71991
+    }
+}

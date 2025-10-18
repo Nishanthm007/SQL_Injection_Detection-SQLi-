@@ -1,0 +1,11 @@
+{
+    "class_weights": {
+        "0": 1.2211165661061276,
+        "1": 0.8466845885262982
+    },
+    "imbalance_ratio": 1.4422,
+    "class_distribution": {
+        "normal": 87178,
+        "malicious": 125731
+    }
+}

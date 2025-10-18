@@ -1,0 +1,109 @@
+{
+    "report_metadata": {
+        "generated_date": "2025-10-16 21:30:08",
+        "phase": "Phase 1 - Data Preparation and Cleaning",
+        "status": "COMPLETED"
+    },
+    "original_dataset": {
+        "total_rows": 244111,
+        "total_columns": 3,
+        "encoding_used": "latin-1",
+        "encoding_issue": "UTF-8 failed, latin-1 required",
+        "memory_usage_mb": 106.93
+    },
+    "data_quality_issues": {
+        "contaminated_labels": {
+            "count": 19,
+            "description": "SQL queries found in Label column instead of 0/1",
+            "action": "Removed"
+        },
+        "missing_values": {
+            "count": 24,
+            "description": "Missing Query or Label values",
+            "action": "Removed"
+        },
+        "duplicates": {
+            "count": 31159,
+            "percentage": 12.76,
+            "description": "Duplicate Query-Label pairs",
+            "action": "Removed (kept first occurrence)"
+        },
+        "empty_column": {
+            "name": "Unnamed: 2",
+            "non_null_count": 2,
+            "description": "99.999% empty column",
+            "action": "Removed"
+        }
+    },
+    "cleaning_summary": {
+        "original_rows": 244111,
+        "rows_removed": 31202,
+        "final_rows": 212909,
+        "reduction_percentage": 12.78
+    },
+    "final_dataset": {
+        "total_samples": 212909,
+        "unique_queries": 212902,
+        "columns": [
+            "Query",
+            "Label"
+        ],
+        "class_distribution": {
+            "normal": {
+                "count": 87178,
+                "percentage": 40.95
+            },
+            "malicious": {
+                "count": 125731,
+                "percentage": 59.05
+            }
+        },
+        "class_imbalance": {
+            "ratio": 1.4422,
+            "classification": "Slightly Imbalanced",
+            "action_required": "Use class weights during training",
+            "class_weights": {
+                "normal": 1.2211,
+                "malicious": 0.8467
+            }
+        }
+    },
+    "query_statistics": {
+        "overall": {
+            "mean_length": 375.22,
+            "median_length": 317.0,
+            "min_length": 1,
+            "max_length": 5370,
+            "std_deviation": 299.23
+        },
+        "by_class": {
+            "normal": {
+                "mean_length": 322.43,
+                "median_length": 241.0,
+                "std_deviation": 300.14
+            },
+            "malicious": {
+                "mean_length": 411.82,
+                "median_length": 361.0,
+                "std_deviation": 293.07
+            }
+        }
+    },
+    "recommendations": {
+        "splitting_strategy": "Stratified train/val/test split (70/15/15)",
+        "class_handling": "Apply computed class weights during CNN training",
+        "evaluation_metrics": [
+            "Balanced Accuracy",
+            "F1-Score (weighted)",
+            "ROC-AUC",
+            "Per-class Precision/Recall",
+            "Confusion Matrix"
+        ],
+        "next_steps": [
+            "Perform stratified split maintaining 1.44:1 ratio",
+            "Conduct exploratory data analysis",
+            "Validate data quality across all splits",
+            "Proceed to Phase 2: Rule-based detection"
+        ]
+    }
+}

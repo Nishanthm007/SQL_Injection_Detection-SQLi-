@@ -1,0 +1,367 @@
+{
+    "document_metadata": {
+        "title": "SQL Injection Attack Taxonomy",
+        "version": "1.0",
+        "created_date": "2025-10-17 23:49:52",
+        "phase": "Phase 2 - Day 11",
+        "author": "Rule Engine Development Team"
+    },
+    "attack_categories": {
+        "1_tautology": {
+            "category_id": "TAU",
+            "name": "Tautology-Based Injection",
+            "description": "Exploits always-true conditions to bypass authentication or retrieve all records",
+            "technical_details": "Injects conditions like 'OR 1=1', 'OR 'a'='a' that always evaluate to TRUE",
+            "severity": "HIGH",
+            "typical_targets": [
+                "Login forms",
+                "Search filters",
+                "WHERE clauses"
+            ],
+            "detection_strategy": "Pattern matching for tautology expressions",
+            "examples": [
+                "' OR '1'='1",
+                "' OR 1=1--",
+                "admin' OR '1'='1'--",
+                "' OR 'x'='x",
+                "1' OR '1'='1' #",
+                "' OR 'a'='a'--",
+                "') OR ('1'='1",
+                "1' OR 1=1 LIMIT 1--"
+            ],
+            "keywords": [
+                "OR",
+                "AND",
+                "=",
+                "1=1",
+                "true",
+                "false"
+            ],
+            "false_positive_risks": [
+                "Legitimate queries with OR conditions",
+                "Mathematical expressions in data"
+            ]
+        },
+        "2_union": {
+            "category_id": "UNI",
+            "name": "UNION-Based Injection",
+            "description": "Uses UNION operator to combine malicious query with legitimate one",
+            "technical_details": "Appends UNION SELECT to retrieve data from other tables",
+            "severity": "CRITICAL",
+            "typical_targets": [
+                "Data retrieval endpoints",
+                "SELECT statements",
+                "API queries"
+            ],
+            "detection_strategy": "Detect UNION keyword with SELECT/FROM patterns",
+            "examples": [
+                "' UNION SELECT NULL, NULL--",
+                "' UNION ALL SELECT username, password FROM users--",
+                "1' UNION SELECT table_name FROM information_schema.tables--",
+                "' UNION SELECT 1,2,3,4,5--",
+                "') UNION SELECT NULL,NULL,NULL#",
+                "' UNION SELECT @@version--",
+                "' UNION SELECT NULL, CONCAT(username, ':', password) FROM users--"
+            ],
+            "keywords": [
+                "UNION",
+                "UNION ALL",
+                "SELECT",
+                "FROM",
+                "NULL"
+            ],
+            "false_positive_risks": [
+                "Legitimate complex queries using UNION",
+                "Stored procedures with UNION"
+            ]
+        },
+        "3_comment": {
+            "category_id": "CMT",
+            "name": "Comment-Based Injection",
+            "description": "Uses SQL comments to truncate queries and bypass validation",
+            "technical_details": "Injects -- or /* */ or # to comment out remaining query parts",
+            "severity": "HIGH",
+            "typical_targets": [
+                "Login forms",
+                "Input validation",
+                "Query string parameters"
+            ],
+            "detection_strategy": "Detect SQL comment sequences",
+            "examples": [
+                "admin'--",
+                "' OR 1=1--",
+                "'; DROP TABLE users--",
+                "admin'/*",
+                "' OR '1'='1'/*",
+                "admin'#",
+                "' OR 1=1#",
+                "'; EXEC xp_cmdshell('dir')--"
+            ],
+            "keywords": [
+                "--",
+                "/*",
+                "*/",
+                "#"
+            ],
+            "false_positive_risks": [
+                "URLs with -- in parameters",
+                "Email addresses or data containing #",
+                "Mathematical operations (e.g., 5--3)"
+            ]
+        },
+        "4_stacked": {
+            "category_id": "STK",
+            "name": "Stacked Queries Injection",
+            "description": "Executes multiple SQL statements in a single query using semicolons",
+            "technical_details": "Uses ; to separate and execute additional malicious commands",
+            "severity": "CRITICAL",
+            "typical_targets": [
+                "API endpoints",
+                "Batch processing",
+                "Administrative interfaces"
+            ],
+            "detection_strategy": "Detect semicolons followed by SQL keywords",
+            "examples": [
+                "'; DROP TABLE users--",
+                "'; UPDATE users SET password='hacked'--",
+                "'; INSERT INTO logs VALUES ('breach')--",
+                "'; EXEC sp_executesql N'malicious_code'--",
+                "1'; DELETE FROM products WHERE 1=1--",
+                "'; CREATE TABLE backdoor (id INT)--",
+                "'; GRANT ALL PRIVILEGES ON *.* TO 'attacker'@'%'--"
+            ],
+            "keywords": [
+                ";",
+                "DROP",
+                "DELETE",
+                "UPDATE",
+                "INSERT",
+                "EXEC",
+                "CREATE"
+            ],
+            "false_positive_risks": [
+                "Stored procedures with multiple statements",
+                "Legitimate batch operations"
+            ]
+        },
+        "5_time_blind": {
+            "category_id": "TMB",
+            "name": "Time-Based Blind Injection",
+            "description": "Infers information based on response time delays",
+            "technical_details": "Uses SLEEP(), WAITFOR, BENCHMARK() to cause delays",
+            "severity": "CRITICAL",
+            "typical_targets": [
+                "Boolean-based queries",
+                "Error-suppressed applications"
+            ],
+            "detection_strategy": "Detect time-delay functions",
+            "examples": [
+                "' AND SLEEP(5)--",
+                "'; WAITFOR DELAY '00:00:05'--",
+                "' AND IF(1=1, SLEEP(5), 0)--",
+                "' AND BENCHMARK(5000000,MD5('A'))--",
+                "' OR IF(SUBSTRING(password,1,1)='a', SLEEP(5), 0)--",
+                "'; SELECT pg_sleep(5)--",
+                "' AND (SELECT * FROM (SELECT(SLEEP(5)))xyz)--"
+            ],
+            "keywords": [
+                "SLEEP",
+                "WAITFOR",
+                "DELAY",
+                "BENCHMARK",
+                "pg_sleep"
+            ],
+            "false_positive_risks": [
+                "Legitimate performance testing queries",
+                "Database maintenance scripts"
+            ]
+        },
+        "6_advanced": {
+            "category_id": "ADV",
+            "name": "Advanced & Evasion Techniques",
+            "description": "Complex attacks using encoding, obfuscation, or stored procedures",
+            "technical_details": "Hex encoding, CHAR(), CONCAT(), stored proc abuse, XML/JSON injection",
+            "severity": "CRITICAL",
+            "typical_targets": [
+                "API endpoints",
+                "Complex applications",
+                "Enterprise systems"
+            ],
+            "detection_strategy": "Detect encoding patterns, function chaining, privilege escalation",
+            "examples": [
+                "0x61646d696e",
+                "CHAR(97)+CHAR(100)+CHAR(109)+CHAR(105)+CHAR(110)",
+                "'; EXEC xp_cmdshell('net user')--",
+                "'; EXEC sp_addrolemember 'db_owner', 'attacker'--",
+                "%27%20OR%201=1--",
+                "LOAD_FILE('/etc/passwd')",
+                "INTO OUTFILE '/var/www/shell.php'",
+                "EXTRACTVALUE(1, CONCAT(0x5c, (SELECT @@version)))"
+            ],
+            "keywords": [
+                "0x",
+                "CHAR",
+                "CONCAT",
+                "EXEC",
+                "xp_",
+                "sp_",
+                "LOAD_FILE",
+                "OUTFILE",
+                "EXTRACTVALUE",
+                "%27",
+                "%20"
+            ],
+            "false_positive_risks": [
+                "Legitimate hex values in data",
+                "URL-encoded legitimate requests",
+                "System administration queries"
+            ]
+        }
+    },
+    "operational_requirements": {
+        "performance": {
+            "max_latency_per_query_ms": 10,
+            "target_throughput_queries_per_sec": 1000,
+            "memory_limit_mb": 512,
+            "cpu_cores_allocated": 4,
+            "rationale": "Real-time web application requirement - sub-10ms response time"
+        },
+        "accuracy": {
+            "target_precision_overall": 0.95,
+            "target_recall_overall": 0.92,
+            "target_f1_overall": 0.93,
+            "target_precision_high_confidence_rules": 0.98,
+            "max_false_positive_rate": 0.02,
+            "max_false_negative_rate": 0.08,
+            "rationale": "Balance between security (low FNR) and usability (low FPR)"
+        },
+        "operational": {
+            "rule_update_frequency": "Weekly",
+            "monitoring_metrics": [
+                "False positive rate per category",
+                "False negative rate per category",
+                "Query processing latency (p50, p95, p99)",
+                "Throughput (queries/sec)",
+                "Rule hit rate distribution"
+            ],
+            "alerting_thresholds": {
+                "latency_p99_ms": 50,
+                "false_positive_rate": 0.05,
+                "throughput_drop_percent": 20
+            },
+            "deployment_strategy": "Blue-green with 5% canary",
+            "rollback_criteria": "FPR > 5% or latency > 50ms"
+        },
+        "rule_engine_specific": {
+            "max_rules_active": 100,
+            "rule_evaluation_order": "Priority-based (severity-weighted)",
+            "pattern_matching_engine": "Regex with compiled patterns",
+            "caching_strategy": "LRU cache for repeated queries",
+            "logging_level": "INFO for production, DEBUG for suspicious"
+        }
+    },
+    "detection_behavior": {
+        "1_tautology": {
+            "should_detect": [
+                "' OR '1'='1",
+                "admin' OR 1=1--",
+                "' OR 'a'='a"
+            ],
+            "should_not_detect": [
+                "SELECT * FROM products WHERE category='electronics' OR category='books'",
+                "UPDATE settings SET value=1 WHERE id=1",
+                "Legitimate text: 'The year 1=1999 was significant'"
+            ],
+            "edge_cases": [
+                "String comparison in data: 'password reset token: a=a'",
+                "Mathematical expression: quantity=1+1",
+                "Boolean flag: is_active OR is_pending"
+            ]
+        },
+        "2_union": {
+            "should_detect": [
+                "' UNION SELECT NULL--",
+                "1' UNION ALL SELECT username, password FROM users--"
+            ],
+            "should_not_detect": [
+                "Documentation: 'SQL UNION operator combines results'",
+                "Column name: union_date",
+                "Company name: 'Union Bank'"
+            ],
+            "edge_cases": [
+                "Text containing 'union': 'The union of sets A and B'",
+                "Legitimate multi-query with UNION in stored procedure"
+            ]
+        },
+        "3_comment": {
+            "should_detect": [
+                "admin'--",
+                "'; DROP TABLE users--"
+            ],
+            "should_not_detect": [
+                "URL: http://example.com/page--old",
+                "Email: user--test@example.com",
+                "Markdown: Lists use -- for bullets"
+            ],
+            "edge_cases": [
+                "Double dash in data: 'Model X--2024'",
+                "CSS comments in web content",
+                "Mathematical: 5--3 (subtraction)"
+            ]
+        },
+        "4_stacked": {
+            "should_detect": [
+                "'; DROP TABLE users--",
+                "1'; DELETE FROM products--"
+            ],
+            "should_not_detect": [
+                "Semicolon in text: 'End of sentence; start of next'",
+                "JSON data: {\"key\": \"value\"; \"key2\": \"value2\"}",
+                "CSS: body { margin: 0; padding: 0; }"
+            ],
+            "edge_cases": [
+                "Multiple semicolons in legitimate data",
+                "Programming code samples in comments"
+            ]
+        },
+        "5_time_blind": {
+            "should_detect": [
+                "' AND SLEEP(5)--",
+                "'; WAITFOR DELAY '00:00:05'--"
+            ],
+            "should_not_detect": [
+                "Documentation: 'Use SLEEP function for delays'",
+                "Error message: 'Connection timeout - wait for retry'",
+                "Text: 'I will benchmark the performance'"
+            ],
+            "edge_cases": [
+                "Function name in comments",
+                "Variable name: sleep_duration"
+            ]
+        },
+        "6_advanced": {
+            "should_detect": [
+                "0x61646d696e",
+                "CHAR(97)+CHAR(100)+CHAR(109)"
+            ],
+            "should_not_detect": [
+                "Legitimate hex color: #FF00AB or 0xFF00AB",
+                "MAC address: 0x1A:2B:3C:4D",
+                "Documentation: 'CHAR function converts ASCII'"
+            ],
+            "edge_cases": [
+                "Hex values in legitimate data",
+                "URL-encoded legitimate requests"
+            ]
+        }
+    },
+    "summary": {
+        "total_categories": 6,
+        "total_examples": 45,
+        "total_keywords": 38,
+        "severity_distribution": {
+            "HIGH": 2,
+            "CRITICAL": 4
+        }
+    }
+}

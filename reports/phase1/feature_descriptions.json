@@ -1,0 +1,56 @@
+{
+    "basic_features": {
+        "char_len": "Total character length of query",
+        "token_count": "Number of whitespace-separated tokens",
+        "special_char_count": "Count of non-alphanumeric characters",
+        "digit_count": "Number of digit characters",
+        "uppercase_count": "Number of uppercase letters",
+        "lowercase_count": "Number of lowercase letters",
+        "whitespace_count": "Number of whitespace characters"
+    },
+    "sql_keyword_features": {
+        "sql_keyword_count": "Total occurrences of 30 SQL keywords"
+    },
+    "boolean_pattern_features": {
+        "has_union": "Binary indicator for pattern: \\bunion\\b",
+        "has_select": "Binary indicator for pattern: \\bselect\\b",
+        "has_or_1eq1": "Binary indicator for pattern: \\bor\\s+[\\'\"]?1[\\'\"]?\\s*=\\s*[\\'\"]?1[\\'\"]?\\b",
+        "has_semicolon": "Binary indicator for pattern: ;",
+        "has_comment_dash": "Binary indicator for pattern: --",
+        "has_comment_hash": "Binary indicator for pattern: #",
+        "has_comment_slash": "Binary indicator for pattern: /\\*",
+        "has_single_quote": "Binary indicator for pattern: '",
+        "has_double_quote": "Binary indicator for pattern: \"",
+        "has_exec": "Binary indicator for pattern: \\b(exec|execute)\\b",
+        "has_drop": "Binary indicator for pattern: \\bdrop\\b",
+        "has_insert": "Binary indicator for pattern: \\binsert\\b",
+        "has_update": "Binary indicator for pattern: \\bupdate\\b",
+        "has_delete": "Binary indicator for pattern: \\bdelete\\b",
+        "has_sleep": "Binary indicator for pattern: \\bsleep\\s*\\(",
+        "has_waitfor": "Binary indicator for pattern: \\bwaitfor\\b",
+        "has_benchmark": "Binary indicator for pattern: \\bbenchmark\\s*\\(",
+        "has_hex": "Binary indicator for pattern: 0x[0-9a-fA-F]+",
+        "has_url_encoding": "Binary indicator for pattern: %[0-9a-fA-F]{2}",
+        "has_parentheses": "Binary indicator for pattern: \\(",
+        "has_equals": "Binary indicator for pattern: =",
+        "has_asterisk": "Binary indicator for pattern: \\*",
+        "has_information_schema": "Binary indicator for pattern: \\binformation_schema\\b"
+    },
+    "ratio_features": {
+        "uppercase_ratio": "Proportion of uppercase letters to total length",
+        "lowercase_ratio": "Proportion of lowercase letters to total length",
+        "digit_ratio": "Proportion of digits to total length",
+        "special_char_ratio": "Proportion of special characters to total length",
+        "whitespace_ratio": "Proportion of whitespace to total length"
+    },
+    "advanced_features": {
+        "entropy": "Shannon entropy - measures randomness/obfuscation (0-8 scale)",
+        "attack_pattern_score": "Weighted sum of attack pattern indicators",
+        "suspicious_char_score": "Count of suspicious character patterns"
+    },
+    "metadata": {
+        "total_features": 39,
+        "created_date": "2025-10-17 19:34:02",
+        "phase": "Phase 1 - Day 7"
+    }
+}

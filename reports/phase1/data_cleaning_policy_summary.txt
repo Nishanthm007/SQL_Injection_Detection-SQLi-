@@ -1,0 +1,49 @@
+================================================================================
+SQL INJECTION DETECTION - DATA CLEANING & NORMALIZATION POLICY
+================================================================================
+
+VERSION: 1.0
+DATE: 2025-10-17
+PHASE: Phase 1 - Day 5
+
+================================================================================
+SUMMARY OF POLICIES
+================================================================================
+
+1. CASE HANDLING
+   Decision: PRESERVE ORIGINAL CASE
+   Reason: Case variations are attack evasion techniques
+
+2. WHITESPACE HANDLING
+   Decision: NORMALIZE WITH CAUTION
+   Action: Strip leading/trailing, preserve internal patterns
+
+3. ENCODING HANDLING
+   Decision: PRESERVE ENCODED FORMS
+   Action: Keep originals, create decoded features
+
+4. MISSING VALUES
+   Decision: STRICT REMOVAL
+   Action: Drop any row with missing Query or Label
+
+5. DUPLICATE HANDLING
+   Decision: NUANCED APPROACH
+   - Exact duplicates: Keep first
+   - Contradictory duplicates: Remove all
+   - Near duplicates: Keep separate
+
+================================================================================
+IMPLEMENTATION STATUS
+================================================================================
+
+COMPLETED:
+  - Encoding detection (latin-1)
+  - Missing value removal (Query and Label)
+  - Basic duplicate removal (exact within class)
+  - Empty column removal (Unnamed: 2)
+
+PENDING:
+  - Contradictory duplicate removal
+  - Feature extraction (encoded versions)
+  - Whitespace pattern flagging
+  - Query length validation

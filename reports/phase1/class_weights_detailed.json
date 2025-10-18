@@ -1,0 +1,15 @@
+{
+    "class_weights": {
+        "0": 1.221144233763254,
+        "1": 0.8466712875112207
+    },
+    "imbalance_ratio": 1.4422884675265082,
+    "class_distribution": {
+        "normal": 61019,
+        "malicious": 88007
+    },
+    "severity": "SLIGHTLY IMBALANCED",
+    "formula": "weight_c = n_samples / (n_classes * n_samples_c)",
+    "usage": "model.fit(..., class_weight={0: 1.2211, 1: 0.8467})",
+    "created_date": "2025-10-17 21:37:08"
+}

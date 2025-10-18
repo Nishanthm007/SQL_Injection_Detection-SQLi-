@@ -1,0 +1,268 @@
+{
+    "report_metadata": {
+        "title": "SQL Injection Detection - Phase 1 Completion Report",
+        "subtitle": "Data Preparation and Cleaning - Learning Over Memorization",
+        "version": "1.0",
+        "completed_date": "2025-10-17 20:12:04",
+        "duration": "Days 1-10",
+        "status": "COMPLETED"
+    },
+    "executive_summary": {
+        "objective": "Prepare high-quality, leakage-free dataset for SQL injection detection",
+        "approach": "Systematic cleaning, EDA, feature engineering, and stratified splitting",
+        "outcome": "Successfully prepared 212,895 samples with zero data leakage",
+        "key_achievement": "Perfect stratified split with comprehensive documentation"
+    },
+    "data_journey": {
+        "day_1_2": {
+            "task": "Data loading and initial cleaning",
+            "key_actions": [
+                "Loaded 244,111 rows with latin-1 encoding",
+                "Removed contaminated labels (19 rows)",
+                "Removed missing values (24 rows)",
+                "Removed duplicates (31,159 rows)",
+                "Removed empty column (Unnamed: 2)"
+            ],
+            "output": "212,909 clean rows"
+        },
+        "day_2": {
+            "task": "Univariate EDA",
+            "key_findings": [
+                "Malicious queries longer (412 vs 322 chars)",
+                "Normal queries have more tokens (57 vs 39)",
+                "Class imbalance: 59% malicious, 41% normal"
+            ]
+        },
+        "day_3": {
+            "task": "Bivariate EDA and critical shuffling",
+            "key_findings": [
+                "Detected severe sequential leakage (chunks 100% malicious)",
+                "Applied shuffling - reduced std from 34.8% to 0.3%",
+                "Special chars 4.6x higher in malicious queries"
+            ]
+        },
+        "day_4": {
+            "task": "Token and pattern analysis",
+            "key_findings": [
+                "52,596 queries with SQL comments (--)",
+                "24,332 queries with HEX encoding",
+                "Top attack 2-gram: 'union all' (1,423 occurrences)",
+                "Character '-' appears 362,569 more in malicious"
+            ]
+        },
+        "day_5": {
+            "task": "Data cleaning policy documentation",
+            "decisions": [
+                "PRESERVE original case (attack evasion feature)",
+                "NORMALIZE whitespace cautiously",
+                "PRESERVE encoded forms (URL, HEX)",
+                "STRICT removal of missing values",
+                "REMOVE contradictory duplicates (7 found)"
+            ]
+        },
+        "day_6": {
+            "task": "Contamination and leakage checks",
+            "validations": [
+                "No exact duplicates confirmed",
+                "No contradictory labels confirmed",
+                "No metadata leakage (no session/user/time columns)",
+                "112,666 near-duplicates identified - kept as variations",
+                "Sequential leakage fixed (verified)"
+            ]
+        },
+        "day_7": {
+            "task": "Feature engineering",
+            "features_created": [
+                "7 basic length/count features",
+                "1 SQL keyword count",
+                "23 boolean pattern features",
+                "5 ratio features",
+                "3 advanced features (entropy, scores)"
+            ],
+            "output": "Master dataset with 48 features"
+        },
+        "day_8": {
+            "task": "Train/val/test splitting",
+            "results": [
+                "Stratified split: 70/15/15",
+                "Perfect class ratio preservation (0.001% deviation)",
+                "Zero overlap between splits",
+                "No data leakage confirmed"
+            ],
+            "output": "train.csv, validation.csv, test.csv"
+        },
+        "day_9_10": {
+            "task": "Final validation and documentation",
+            "deliverables": [
+                "6 datasets (cleaned, shuffled, with features, splits)",
+                "8 documentation files (policies, reports, logs)",
+                "5 visualization sets (Plotly interactive)",
+                "1 master Phase 1 report"
+            ]
+        }
+    },
+    "validation_checklist": {
+        "data_cleaning": {
+            "original_dataset": "244,111 rows loaded with latin-1 encoding",
+            "contamination_removed": "19 contradictory + 24 missing + 31,159 duplicates",
+            "final_clean_dataset": "212,895 rows (12.78% reduction)"
+        },
+        "data_quality": {
+            "missing_values": "0 (all removed)",
+            "contradictory_labels": "0 (all removed)",
+            "exact_duplicates": "0 (all removed)",
+            "encoding_issues": "Resolved (latin-1)"
+        },
+        "exploratory_analysis": {
+            "univariate_eda": "Completed - label, length, token analysis",
+            "bivariate_eda": "Completed - correlations, keyword analysis",
+            "pattern_analysis": "Completed - 52K comments, 24K hex encoding detected"
+        },
+        "contamination_checks": {
+            "sequential_leakage": "Fixed via shuffling (Day 3)",
+            "metadata_leakage": "None detected (no session/user/time columns)",
+            "near_duplicates": "112,666 identified - kept per policy (attack variations)"
+        },
+        "feature_engineering": {
+            "features_created": "48 engineered features",
+            "feature_categories": "Basic (7), Keywords (1), Boolean (23), Ratios (5), Advanced (3)",
+            "feature_documentation": "Complete with descriptions"
+        },
+        "data_splitting": {
+            "train_set": "149,026 samples (70.00%)",
+            "validation_set": "31,934 samples (15.00%)",
+            "test_set": "31,935 samples (15.00%)",
+            "stratification": "Perfect (0.001% deviation)",
+            "overlap": "0 queries shared between splits"
+        }
+    },
+    "deliverables": {
+        "datasets": [
+            {
+                "file": "cleaned_dataset.csv",
+                "description": "Initial cleaned dataset (212,909 rows)",
+                "size": "~78 MB"
+            },
+            {
+                "file": "cleaned_shuffled_no_contradictions.csv",
+                "description": "Shuffled dataset without contradictions",
+                "size": "~78 MB"
+            },
+            {
+                "file": "master_dataset_with_features.csv",
+                "description": "Complete dataset with 48 engineered features",
+                "size": "~124 MB"
+            },
+            {
+                "file": "train.csv",
+                "description": "Training set (70%, 149,026 samples)",
+                "size": "~54 MB"
+            },
+            {
+                "file": "validation.csv",
+                "description": "Validation set (15%, 31,934 samples)",
+                "size": "~12 MB"
+            },
+            {
+                "file": "test.csv",
+                "description": "Test set (15%, 31,935 samples)",
+                "size": "~12 MB"
+            }
+        ],
+        "documentation": [
+            {
+                "file": "data_quality_report.json",
+                "description": "Initial data quality assessment and cleaning log"
+            },
+            {
+                "file": "data_cleaning_policy.json",
+                "description": "Comprehensive normalization and cleaning policies"
+            },
+            {
+                "file": "data_cleaning_policy_summary.txt",
+                "description": "Human-readable policy summary"
+            },
+            {
+                "file": "contamination_leakage_report.json",
+                "description": "Detailed leakage detection and mitigation report"
+            },
+            {
+                "file": "feature_descriptions.json",
+                "description": "Documentation of all 48 engineered features"
+            },
+            {
+                "file": "split_statistics.json",
+                "description": "Train/val/test split metadata and quality checks"
+            },
+            {
+                "file": "class_weights.json",
+                "description": "Computed class weights for balanced training"
+            },
+            {
+                "file": "removal_log.csv",
+                "description": "Log of all removed rows with reasons"
+            }
+        ],
+        "analysis_outputs": [
+            "Univariate EDA visualizations (Plotly)",
+            "Bivariate EDA visualizations (Plotly)",
+            "Token/Pattern analysis visualizations (Plotly)",
+            "Data cleaning visualizations (Plotly)",
+            "Split verification visualizations (Plotly)"
+        ]
+    },
+    "statistics": {
+        "Original Data": {
+            "Total rows": "244,111",
+            "Encoding": "latin-1 (UTF-8 failed)",
+            "Columns": "3 (Query, Label, Unnamed: 2)"
+        },
+        "Data Cleaning": {
+            "Contaminated labels removed": "19",
+            "Missing values removed": "24",
+            "Duplicates removed": "31,159",
+            "Total rows removed": "31,216 (12.78%)"
+        },
+        "Final Clean Dataset": {
+            "Total samples": "212,895",
+            "Normal queries": "87,171 (40.95%)",
+            "Malicious queries": "125,724 (59.05%)",
+            "Class imbalance ratio": "1.4423:1"
+        },
+        "Feature Engineering": {
+            "Total features": "48",
+            "Basic features": "7",
+            "Boolean patterns": "23",
+            "Ratio features": "5",
+            "Advanced features": "3"
+        },
+        "Train/Val/Test Split": {
+            "Train": "149,026 samples (70.00%)",
+            "Validation": "31,934 samples (15.00%)",
+            "Test": "31,935 samples (15.00%)",
+            "Overlap": "0 queries"
+        }
+    },
+    "achievements": [
+        "Dataset cleaned from 244,111 to 212,895 samples (12.78% reduction)",
+        "All data quality issues resolved (encoding, duplicates, contradictions)",
+        "Critical sequential leakage detected and fixed via shuffling",
+        "112,666 near-duplicates identified - kept as legitimate attack variations",
+        "48 engineered features created for hybrid detection approach",
+        "SQL injection patterns documented (52K comments, 24K hex encodings)",
+        "Perfect stratified split with <0.001% deviation from target ratios",
+        "Zero data leakage confirmed between train/val/test sets",
+        "Comprehensive documentation for reproducibility",
+        "Class weights computed (Normal: 1.2211, Malicious: 0.8467)"
+    ],
+    "next_phase": {
+        "phase_2": "Rule-based SQL injection detection engine",
+        "ready_to_proceed": true,
+        "prerequisites_met": [
+            "Clean, leakage-free datasets",
+            "Comprehensive feature engineering",
+            "Attack pattern documentation",
+            "Train/val/test splits created"
+        ]
+    }
+}

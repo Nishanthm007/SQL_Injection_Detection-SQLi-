@@ -1,0 +1,180 @@
+{
+    "report_metadata": {
+        "title": "Class Imbalance Analysis & Weight Calculation Report",
+        "date": "2025-10-17 21:37:08",
+        "phase": "Phase 1 - Day 9",
+        "dataset": "Training set (149,026 samples)"
+    },
+    "class_distribution": {
+        "normal": {
+            "count": 61019,
+            "percentage": 40.94520419255701,
+            "proportion": 0.40945204192557005
+        },
+        "malicious": {
+            "count": 88007,
+            "percentage": 59.05479580744299,
+            "proportion": 0.59054795807443
+        },
+        "total": 149026
+    },
+    "imbalance_metrics": {
+        "malicious_to_normal_ratio": 1.4422884675265082,
+        "normal_to_malicious_ratio": 0.6933425750224413,
+        "minority_percentage_of_majority": 69.33425750224413,
+        "severity_classification": "SLIGHTLY IMBALANCED"
+    },
+    "class_weight_calculations": {
+        "method_selected": "Sklearn Balanced (Inverse Frequency)",
+        "formula": "weight_c = n_samples / (n_classes * n_samples_c)",
+        "weights": {
+            "0": 1.221144233763254,
+            "1": 0.8466712875112207
+        },
+        "calculation_details": {
+            "normal": {
+                "numerator": 149026,
+                "denominator": 122038,
+                "weight": 1.221144233763254
+            },
+            "malicious": {
+                "numerator": 149026,
+                "denominator": 176014,
+                "weight": 0.8466712875112207
+            }
+        },
+        "alternative_methods": {
+            "simple_inverse": {
+                "normal": 2.442288467526508,
+                "malicious": 1.6933425750224413
+            },
+            "normalized": {
+                "normal": 1.1810959161488601,
+                "malicious": 0.8189040838511401
+            }
+        }
+    },
+    "alternative_strategies_evaluated": {
+        "1. Random Oversampling": {
+            "description": "Duplicate minority class samples randomly",
+            "pros": [
+                "Simple to implement",
+                "Increases minority class representation"
+            ],
+            "cons": [
+                "Risk of overfitting to duplicated samples",
+                "No new information added",
+                "Training time increases"
+            ],
+            "decision": "REJECTED",
+            "rationale": "Our imbalance (1.44:1) is mild; oversampling unnecessary and risks overfitting"
+        },
+        "2. Random Undersampling": {
+            "description": "Remove majority class samples randomly",
+            "pros": [
+                "Reduces training time",
+                "Balances classes"
+            ],
+            "cons": [
+                "Loses potentially valuable data",
+                "Reduces effective training set size",
+                "May hurt model performance"
+            ],
+            "decision": "REJECTED",
+            "rationale": "We have sufficient data (149K samples); don't want to discard 40K+ malicious queries"
+        },
+        "3. SMOTE (Synthetic Minority)": {
+            "description": "Generate synthetic samples for minority class",
+            "pros": [
+                "Creates new, varied samples",
+                "Doesn't duplicate existing data",
+                "Effective for tabular data"
+            ],
+            "cons": [
+                "May create unrealistic samples",
+                "Computationally expensive",
+                "Not ideal for text/sequence data",
+                "Risk of generating invalid SQL queries"
+            ],
+            "decision": "REJECTED",
+            "rationale": "Text data (SQL queries) not suitable for SMOTE; synthetic queries may be invalid"
+        },
+        "4. Data Augmentation": {
+            "description": "Create variations of existing queries",
+            "pros": [
+                "Domain-specific augmentation possible",
+                "Can teach robustness"
+            ],
+            "cons": [
+                "Risk of creating invalid queries",
+                "May introduce label noise",
+                "Time-consuming to implement correctly"
+            ],
+            "decision": "CONSIDERED FOR LATER",
+            "rationale": "Could apply case variations, whitespace changes in future phases if needed"
+        },
+        "5. Class Weights (Selected)": {
+            "description": "Weight loss function by inverse class frequency",
+            "pros": [
+                "No data modification required",
+                "Standard practice for imbalance",
+                "Works well for mild imbalance",
+                "Easy to implement in neural networks"
+            ],
+            "cons": [
+                "Doesn't increase training data",
+                "May need tuning"
+            ],
+            "decision": "SELECTED",
+            "rationale": "Best fit for our scenario: mild imbalance (1.44:1), text data, large dataset"
+        },
+        "6. Focal Loss": {
+            "description": "Modified loss focusing on hard-to-classify examples",
+            "pros": [
+                "Addresses class imbalance and hard examples",
+                "Can be combined with class weights"
+            ],
+            "cons": [
+                "More complex to implement",
+                "Requires hyperparameter tuning",
+                "May not be necessary for mild imbalance"
+            ],
+            "decision": "RESERVED AS BACKUP",
+            "rationale": "Can experiment with focal loss if class weights insufficient during Phase 4"
+        }
+    },
+    "final_strategy": {
+        "primary_strategy": "Class Weights (Balanced)",
+        "selected_weights": {
+            "0": 1.221144233763254,
+            "1": 0.8466712875112207
+        },
+        "formula": "weight_c = n_samples / (n_classes * n_samples_c)",
+        "imbalance_ratio": "1.4423:1 (Malicious:Normal)",
+        "severity": "SLIGHTLY IMBALANCED",
+        "alternatives_considered": 6,
+        "alternatives_rejected": 4,
+        "backup_strategies": [
+            "Focal Loss",
+            "Data Augmentation"
+        ],
+        "implementation": {
+            "framework": "TensorFlow/Keras",
+            "parameter": "class_weight",
+            "usage": "model.fit(..., class_weight={0: 1.2211, 1: 0.8467})"
+        },
+        "expected_impact": [
+            "Minority class (Normal) gets 1.22x weight",
+            "Majority class (Malicious) gets 0.85x weight",
+            "Balanced contribution to loss function",
+            "Prevents model bias toward majority class"
+        ]
+    },
+    "recommendations": [
+        "Use computed class weights in CNN training",
+        "Monitor per-class metrics (precision, recall, F1)",
+        "Use balanced accuracy as primary metric",
+        "If performance unsatisfactory, try Focal Loss",
+        "Avoid oversampling/undersampling for this mild imbalance"
+    ]
+}
