@@ -1,0 +1,38 @@
+Query,Label,variant_id,original_id,type_field,operator,context
+"{""username"": {""$ne"": null}}",1,NOSQL_000000,0,NoSQL_JSON,$ne,direct_json
+"{""password"": {""$ne"": """"}}",1,NOSQL_000001,1,NoSQL_JSON,$ne,direct_json
+"{""username"": {""$ne"": """"}, ""password"": {""$ne"": """"}}",1,NOSQL_000002,2,NoSQL_JSON,$ne,direct_json
+"{""role"": {""$ne"": ""user""}}",1,NOSQL_000003,3,NoSQL_JSON,$ne,direct_json
+"{""age"": {""$gt"": 0}}",1,NOSQL_000004,4,NoSQL_JSON,$gt,direct_json
+"{""price"": {""$gt"": """"}}",1,NOSQL_000005,5,NoSQL_JSON,$gt,direct_json
+"{""id"": {""$gt"": """"}}",1,NOSQL_000006,6,NoSQL_JSON,$gt,direct_json
+"{""score"": {""$gt"": -1}}",1,NOSQL_000007,7,NoSQL_JSON,$gt,direct_json
+"{""age"": {""$lt"": 1000}}",1,NOSQL_000008,8,NoSQL_JSON,$lt,direct_json
+"{""price"": {""$lt"": 99999}}",1,NOSQL_000009,9,NoSQL_JSON,$lt,direct_json
+"{""priority"": {""$lt"": 10}}",1,NOSQL_000010,10,NoSQL_JSON,$lt,direct_json
+"{""username"": {""$regex"": "".*""}}",1,NOSQL_000011,11,NoSQL_JSON,$regex,direct_json
+"{""email"": {""$regex"": ""^admin""}}",1,NOSQL_000012,12,NoSQL_JSON,$regex,direct_json
+"{""password"": {""$regex"": "".""}}",1,NOSQL_000013,13,NoSQL_JSON,$regex,direct_json
+"{""search"": {""$regex"": "".*"", ""$options"": ""i""}}",1,NOSQL_000014,14,NoSQL_JSON,$regex,direct_json
+"{""$where"": ""this.username == \""admin\""""}",1,NOSQL_000015,15,NoSQL_JSON,$where,direct_json
+"{""$where"": ""return true""}",1,NOSQL_000016,16,NoSQL_JSON,$where,direct_json
+"{""$where"": ""function() { return true; }""}",1,NOSQL_000017,17,NoSQL_JSON,$where,direct_json
+"{""$where"": ""obj.credits - obj.debits < 0""}",1,NOSQL_000018,18,NoSQL_JSON,$where,direct_json
+"{""role"": {""$in"": [""admin"", ""superuser""]}}",1,NOSQL_000019,19,NoSQL_JSON,$in,direct_json
+"{""username"": {""$in"": [""admin"", ""root"", ""administrator""]}}",1,NOSQL_000020,20,NoSQL_JSON,$in,direct_json
+"{""status"": {""$in"": [1, 2, 3, ""active""]}}",1,NOSQL_000021,21,NoSQL_JSON,$in,direct_json
+"{""status"": {""$nin"": [""banned"", ""suspended""]}}",1,NOSQL_000022,22,NoSQL_JSON,$nin,direct_json
+"{""role"": {""$nin"": [""guest""]}}",1,NOSQL_000023,23,NoSQL_JSON,$nin,direct_json
+"{""$or"": [{""username"": ""admin""}, {""role"": ""admin""}]}",1,NOSQL_000024,24,NoSQL_JSON,$or,direct_json
+"{""$or"": [{""price"": {""$lt"": 0}}, {""stock"": {""$gt"": 1000}}]}",1,NOSQL_000025,25,NoSQL_JSON,$or,direct_json
+"{""$and"": [{""price"": {""$gt"": 0}}, {""stock"": {""$ne"": 0}}]}",1,NOSQL_000026,26,NoSQL_JSON,$and,direct_json
+"{""$and"": [{""role"": ""admin""}, {""active"": true}]}",1,NOSQL_000027,27,NoSQL_JSON,$and,direct_json
+"{""username"": {""$regex"": ""^a.*""}}",1,NOSQL_000028,28,NoSQL_regex,$regex,find_query
+"{""email"": {""$regex"": "".*@admin\\.com$""}}",1,NOSQL_000029,29,NoSQL_regex,$regex,find_query
+"{""search"": {""$regex"": ""(a|b|c)*"", ""$options"": ""i""}}",1,NOSQL_000030,30,NoSQL_regex,$regex,find_query
+"{""field"": {""$regex"": "".*"", ""$options"": ""s""}}",1,NOSQL_000031,31,NoSQL_regex,$regex,find_query
+username[$ne]=admin&password[$ne]=pass,1,NOSQL_000032,32,NoSQL_param,mixed,url_parameter
+age[$gt]=0,1,NOSQL_000033,33,NoSQL_param,mixed,url_parameter
+price[$lt]=1000,1,NOSQL_000034,34,NoSQL_param,mixed,url_parameter
+role[$in][]=admin&role[$in][]=root,1,NOSQL_000035,35,NoSQL_param,mixed,url_parameter
+username[$regex]=.*&password[$ne]=x,1,NOSQL_000036,36,NoSQL_param,mixed,url_parameter

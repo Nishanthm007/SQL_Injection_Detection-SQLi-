@@ -1,0 +1,40 @@
+{
+  "generation_date": "2025-10-18 19:13:52",
+  "nosql_catalog": {
+    "total_variants": 37,
+    "operators": {
+      "$regex": 8,
+      "mixed": 5,
+      "$ne": 4,
+      "$gt": 4,
+      "$where": 4,
+      "$lt": 3,
+      "$in": 3,
+      "$nin": 2,
+      "$or": 2,
+      "$and": 2
+    },
+    "type_distribution": {
+      "NoSQL_JSON": 28,
+      "NoSQL_param": 5,
+      "NoSQL_regex": 4
+    }
+  },
+  "context_specific_catalog": {
+    "total_variants": 115,
+    "context_types": {
+      "REST_JSON_body": 20,
+      "URL_query_param": 20,
+      "Cookie": 20,
+      "HTTP_header_UserAgent": 15,
+      "HTTP_header_Referer": 15,
+      "Multipart_form": 15,
+      "HTTP_header_XForwardedFor": 10
+    },
+    "base_payloads": 5
+  },
+  "files": {
+    "nosql_catalog": "nosql_injection_variants.csv",
+    "context_catalog": "context_specific_variants.csv"
+  }
+}

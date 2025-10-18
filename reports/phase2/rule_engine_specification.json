@@ -1,0 +1,437 @@
+{
+  "document_metadata": {
+    "title": "SQL Injection Detection Rule Engine Specification",
+    "version": "1.0",
+    "date": "2025-10-18",
+    "phase": "Phase 2 - Day 14",
+    "status": "APPROVED"
+  },
+  "rule_file_format": {
+    "format_version": "1.0",
+    "format_type": "JSON",
+    "description": "Rule definition format for SQL injection detection",
+    "required_fields": [
+      {
+        "field": "rule_id",
+        "type": "string",
+        "pattern": "^[A-Z]{3}-\\d{3}$",
+        "description": "Unique rule identifier (e.g., TAU-001)",
+        "example": "TAU-001",
+        "validation": "Must be unique across all rules"
+      },
+      {
+        "field": "name",
+        "type": "string",
+        "max_length": 100,
+        "description": "Human-readable rule name",
+        "example": "Classic OR 1=1 Tautology",
+        "validation": "Must be descriptive and unique"
+      },
+      {
+        "field": "regex",
+        "type": "string",
+        "description": "Regular expression pattern for detection",
+        "example": "(?i)\\\\bOR\\\\s+['\\\"]?\\\\d+\\\\s*=\\\\s*\\\\d+['\\\"]?",
+        "validation": "Must be valid Python regex, compile-tested"
+      },
+      {
+        "field": "category",
+        "type": "string",
+        "enum": [
+          "Tautology-Based Injection",
+          "UNION-Based Injection",
+          "Comment-Based Injection",
+          "Stacked Queries Injection",
+          "Time-Based Blind Injection",
+          "Advanced & Evasion Techniques"
+        ],
+        "description": "Attack category classification",
+        "example": "Tautology-Based Injection"
+      },
+      {
+        "field": "severity",
+        "type": "string",
+        "enum": [
+          "LOW",
+          "MEDIUM",
+          "HIGH",
+          "CRITICAL"
+        ],
+        "description": "Threat severity level",
+        "example": "HIGH",
+        "validation": "Used for prioritization and alerting"
+      },
+      {
+        "field": "confidence",
+        "type": "float",
+        "range": [
+          0.0,
+          1.0
+        ],
+        "description": "Detection confidence score",
+        "example": 0.95,
+        "validation": "Higher = more confident detection"
+      },
+      {
+        "field": "priority",
+        "type": "integer",
+        "range": [
+          1,
+          20
+        ],
+        "description": "Evaluation priority (1=lowest, 20=highest)",
+        "example": 15,
+        "validation": "Determines rule execution order"
+      },
+      {
+        "field": "enabled",
+        "type": "boolean",
+        "description": "Rule activation status",
+        "example": true,
+        "validation": "Only enabled rules are evaluated"
+      }
+    ],
+    "optional_fields": [
+      {
+        "field": "author",
+        "type": "string",
+        "description": "Rule creator identifier",
+        "example": "security-team",
+        "default": "system"
+      },
+      {
+        "field": "last_modified",
+        "type": "string",
+        "format": "ISO8601",
+        "description": "Last modification timestamp",
+        "example": "2025-10-18T15:00:00Z",
+        "auto_generated": true
+      },
+      {
+        "field": "created_date",
+        "type": "string",
+        "format": "ISO8601",
+        "description": "Rule creation timestamp",
+        "example": "2025-10-15T10:00:00Z"
+      },
+      {
+        "field": "version",
+        "type": "string",
+        "pattern": "^\\d+\\.\\d+\\.\\d+$",
+        "description": "Rule version (semantic versioning)",
+        "example": "1.0.0"
+      },
+      {
+        "field": "notes",
+        "type": "string",
+        "description": "Additional notes or rationale",
+        "example": "Case-insensitive, handles quotes around values"
+      },
+      {
+        "field": "example_matches",
+        "type": "array",
+        "description": "Example queries that should match",
+        "example": [
+          "' OR 1=1--",
+          "admin' OR 1=1#"
+        ]
+      },
+      {
+        "field": "false_positive_cases",
+        "type": "array",
+        "description": "Known false positive scenarios",
+        "example": [
+          "Mathematical expressions",
+          "Documentation text"
+        ]
+      },
+      {
+        "field": "tags",
+        "type": "array",
+        "description": "Searchable tags for categorization",
+        "example": [
+          "authentication-bypass",
+          "tautology",
+          "high-risk"
+        ]
+      },
+      {
+        "field": "references",
+        "type": "array",
+        "description": "External references (OWASP, CVE, etc)",
+        "example": [
+          "OWASP-A03:2021",
+          "CWE-89"
+        ]
+      }
+    ]
+  },
+  "decision_logic": {
+    "version": "1.0",
+    "supported_strategies": [
+      {
+        "strategy_name": "first_match",
+        "description": "Stop on first matching rule",
+        "use_case": "Fast fail for high-confidence rules",
+        "pros": [
+          "Fastest performance",
+          "Low latency"
+        ],
+        "cons": [
+          "May miss additional attack vectors",
+          "No comprehensive analysis"
+        ],
+        "implementation": "Iterate rules by priority, return on first match",
+        "config_params": {
+          "priority_sort": "descending",
+          "early_exit": true
+        }
+      },
+      {
+        "strategy_name": "weighted_sum",
+        "description": "Calculate weighted score from all matching rules",
+        "use_case": "Comprehensive threat assessment",
+        "pros": [
+          "Nuanced scoring",
+          "Handles ambiguous cases",
+          "Configurable threshold"
+        ],
+        "cons": [
+          "Slower than first-match",
+          "Requires threshold tuning"
+        ],
+        "implementation": "Evaluate all rules, sum (confidence * priority_weight), compare to threshold",
+        "config_params": {
+          "detection_threshold": 10.0,
+          "confidence_weight": 1.0,
+          "priority_weight": 0.5,
+          "severity_multiplier": {
+            "LOW": 1.0,
+            "MEDIUM": 1.5,
+            "HIGH": 2.0,
+            "CRITICAL": 3.0
+          }
+        },
+        "formula": "score = SUM(rule.confidence * rule.priority * severity_multiplier)"
+      },
+      {
+        "strategy_name": "threshold_voting",
+        "description": "Detect if N rules match",
+        "use_case": "Require multiple indicators before flagging",
+        "pros": [
+          "Reduces false positives",
+          "Democratic decision"
+        ],
+        "cons": [
+          "May miss single high-confidence attacks"
+        ],
+        "implementation": "Count matching rules, trigger if count >= threshold",
+        "config_params": {
+          "vote_threshold": 2,
+          "min_confidence": 0.75,
+          "weight_by_confidence": true
+        }
+      },
+      {
+        "strategy_name": "veto_rules",
+        "description": "Block or override based on special rules",
+        "use_case": "Whitelist legitimate patterns or blacklist critical attacks",
+        "pros": [
+          "Flexible exception handling",
+          "Can whitelist known-good patterns"
+        ],
+        "cons": [
+          "Adds complexity",
+          "Requires careful management"
+        ],
+        "implementation": "Check veto rules first (whitelist/blacklist), then apply main logic",
+        "config_params": {
+          "whitelist_rules": [],
+          "blacklist_rules": [],
+          "veto_priority": "absolute"
+        }
+      },
+      {
+        "strategy_name": "category_based",
+        "description": "Detect if any rule from critical categories matches",
+        "use_case": "Flag attacks from high-risk categories immediately",
+        "pros": [
+          "Category-aware",
+          "Flexible by attack type"
+        ],
+        "cons": [
+          "May over-trigger on specific categories"
+        ],
+        "implementation": "Group rules by category, flag if critical category matches",
+        "config_params": {
+          "critical_categories": [
+            "Stacked Queries Injection",
+            "UNION-Based Injection",
+            "Time-Based Blind Injection"
+          ],
+          "immediate_flag": true
+        }
+      }
+    ],
+    "recommended_strategy": "weighted_sum",
+    "rationale": "Balances accuracy and performance, provides confidence scores for logging"
+  },
+  "config_management": {
+    "version_control": {
+      "system": "Git",
+      "repository_structure": {
+        "rules/": {
+          "description": "Rule definition files",
+          "files": [
+            "rules_machine.json - Main rule catalog",
+            "rules_active.json - Currently active rules only",
+            "rules_experimental.json - Testing new rules"
+          ]
+        },
+        "config/": {
+          "description": "Engine configuration files",
+          "files": [
+            "engine_config.json - Main engine settings",
+            "thresholds.json - Detection thresholds",
+            "whitelist.json - Known-good patterns"
+          ]
+        },
+        "versions/": {
+          "description": "Historical versions and changelog",
+          "files": [
+            "CHANGELOG.md - Human-readable change log",
+            "versions.json - Version metadata"
+          ]
+        }
+      },
+      "branching_strategy": {
+        "main": "Production rules (stable)",
+        "develop": "Development/testing rules",
+        "feature/*": "New rule development",
+        "hotfix/*": "Emergency rule fixes"
+      },
+      "commit_message_format": "[RULE] <rule_id>: <action> - <description>",
+      "example_commits": [
+        "[RULE] TAU-001: UPDATE - Improved regex pattern",
+        "[RULE] UNI-011: ADD - New UNION attack variant",
+        "[RULE] CMT-003: DISABLE - High false positive rate",
+        "[CONFIG] ENGINE: UPDATE - Changed threshold to 12.0"
+      ]
+    },
+    "change_management": {
+      "changelog_format": "Keep a Changelog (keepachangelog.com)",
+      "version_numbering": "Semantic Versioning (semver.org)",
+      "version_format": "MAJOR.MINOR.PATCH",
+      "version_rules": {
+        "MAJOR": "Incompatible API changes or rule format changes",
+        "MINOR": "New rules added, backward compatible",
+        "PATCH": "Bug fixes, regex improvements, documentation"
+      },
+      "change_categories": [
+        "Added - New rules",
+        "Changed - Modifications to existing rules",
+        "Deprecated - Rules marked for removal",
+        "Removed - Deleted rules",
+        "Fixed - Bug fixes and corrections",
+        "Security - Security-related changes"
+      ]
+    },
+    "deployment_workflow": {
+      "steps": [
+        "1. Develop rule in feature branch",
+        "2. Test against test datasets (Day 13)",
+        "3. Measure FP/FN rates",
+        "4. Code review + security review",
+        "5. Merge to develop branch",
+        "6. Integration testing",
+        "7. Canary deployment (5% traffic)",
+        "8. Monitor metrics for 24 hours",
+        "9. Full deployment to production",
+        "10. Update changelog"
+      ],
+      "rollback_procedure": [
+        "1. Detect issue (high FP rate, latency spike)",
+        "2. Disable problematic rule via config",
+        "3. Git revert to previous version",
+        "4. Hot-reload rules (no restart)",
+        "5. Verify metrics normalized",
+        "6. Incident post-mortem"
+      ]
+    },
+    "hot_reload": {
+      "enabled": true,
+      "watch_files": [
+        "rules_machine.json",
+        "engine_config.json"
+      ],
+      "reload_trigger": "file_modification",
+      "validation_before_reload": true,
+      "rollback_on_error": true
+    }
+  },
+  "engine_configuration": {
+    "engine_version": "1.0.0",
+    "configuration_sections": {
+      "performance": {
+        "max_rules_per_query": 100,
+        "timeout_ms": 10,
+        "enable_caching": true,
+        "cache_size": 1000,
+        "cache_ttl_seconds": 300,
+        "parallel_evaluation": false,
+        "compiled_patterns": true
+      },
+      "detection": {
+        "strategy": "weighted_sum",
+        "threshold": 10.0,
+        "min_confidence": 0.7,
+        "evaluate_disabled_rules": false,
+        "stop_on_critical": true,
+        "max_matches_to_return": 10
+      },
+      "logging": {
+        "level": "INFO",
+        "log_all_queries": false,
+        "log_matched_queries": true,
+        "log_blocked_queries": true,
+        "include_query_in_log": true,
+        "log_format": "json",
+        "sensitive_data_mask": true
+      },
+      "alerting": {
+        "enable_alerts": true,
+        "alert_on_critical": true,
+        "alert_threshold_per_minute": 10,
+        "alert_channels": [
+          "email",
+          "slack",
+          "pagerduty"
+        ],
+        "rate_limiting": {
+          "enabled": true,
+          "max_alerts_per_hour": 100
+        }
+      },
+      "metrics": {
+        "enable_metrics": true,
+        "metrics_export": "prometheus",
+        "track_latency": true,
+        "track_rule_hits": true,
+        "track_false_positives": true
+      }
+    }
+  },
+  "implementation_notes": {
+    "language": "Python 3.8+",
+    "regex_library": "re (standard library)",
+    "dependencies": [
+      "json",
+      "logging",
+      "datetime",
+      "re"
+    ],
+    "performance_target": "< 10ms per query",
+    "concurrency": "Thread-safe with locks",
+    "deployment": "Containerized (Docker)"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "generation_date": "2025-10-18 21:03:47",
+  "total_variants": 162,
+  "base_payloads": 9,
+  "techniques": {
+    "excessive_spaces": 27,
+    "tab_injection": 27,
+    "newline_split": 27,
+    "multiline_comment": 27,
+    "mixed_whitespace": 9,
+    "inline_comment_middle": 9,
+    "inline_comment_after_each_char": 9,
+    "inline_comment_random": 9,
+    "dash_comment": 9,
+    "hash_comment": 9
+  },
+  "intensity_distribution": {
+    "medium": 81,
+    "low": 45,
+    "high": 36
+  },
+  "obfuscation_levels": {
+    "moderate": 81,
+    "simple": 45,
+    "aggressive": 36
+  },
+  "whitespace_patterns": 4,
+  "comment_patterns": 4,
+  "keywords_targeted": 15
+}

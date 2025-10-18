@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "updated": "2025-10-18 15:34:22",
+  "performance": {
+    "max_rules_per_query": 100,
+    "timeout_ms": 10,
+    "enable_caching": true,
+    "cache_size": 1000,
+    "compiled_patterns": true
+  },
+  "detection": {
+    "strategy": "weighted_sum",
+    "threshold": 10.0,
+    "min_confidence": 0.7,
+    "stop_on_critical": true
+  },
+  "logging": {
+    "level": "INFO",
+    "log_matched_queries": true,
+    "log_format": "json"
+  }
+}

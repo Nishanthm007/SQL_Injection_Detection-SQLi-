@@ -1,0 +1,38 @@
+{
+  "goals": {
+    "primary": "Increase adversarial diversity to 40-50% of training data",
+    "secondary": "Maintain class balance",
+    "tertiary": "Prevent label leakage and oversampling bias"
+  },
+  "quotas": {
+    "per_original_sample_limit": 25,
+    "max_encoding_variants": 5,
+    "max_obfuscation_variants": 5,
+    "max_context_variants": 3,
+    "max_character_variants": 4,
+    "max_time_based_variants": 3,
+    "nosql_injection_rate": 0.04,
+    "second_order_rate": 0.02
+  },
+  "class_balance_strategy": {
+    "target_malicious_ratio": 0.6,
+    "target_benign_ratio": 0.4,
+    "benign_augmentation": "Minimal (only context variations)",
+    "malicious_augmentation": "Aggressive (all transformations)"
+  },
+  "quality_controls": {
+    "deduplication": "SHA256 hash-based",
+    "label_verification": "Automated heuristics + random 5% human review",
+    "provenance_tracking": "original_id + transformation_chain",
+    "validation_set_isolation": "Never augment validation/test sets"
+  },
+  "implementation_order": [
+    "1. Encoding transformations (deterministic)",
+    "2. Obfuscation techniques (deterministic)",
+    "3. Context-specific variants (rule-based)",
+    "4. Character substitution (controlled randomness)",
+    "5. Time-based blind (template-based)",
+    "6. NoSQL injection (rule-based generation)",
+    "7. Second-order injection (multi-stage templates)"
+  ]
+}

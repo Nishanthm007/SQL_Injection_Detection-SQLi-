@@ -1,0 +1,17 @@
+{
+  "current_version": "1.0.0",
+  "release_date": "2025-10-18",
+  "total_rules": 59,
+  "enabled_rules": 52,
+  "disabled_rules": 7,
+  "version_history": [
+    {
+      "version": "1.0.0",
+      "date": "2025-10-18",
+      "changes": "Initial release",
+      "rules_added": 59,
+      "rules_modified": 0,
+      "rules_removed": 0
+    }
+  ]
+}

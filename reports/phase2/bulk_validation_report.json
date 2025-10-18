@@ -1,0 +1,43 @@
+{
+  "report_date": "2025-10-18 16:06:15",
+  "validation_set": {
+    "samples": 31934,
+    "precision": 0.9953894685755884,
+    "recall": 0.4350408314773571,
+    "f1_score": 0.6054612546125462,
+    "accuracy": 0.6651844429135091,
+    "fpr": 0.002906087488528602,
+    "fnr": 0.5649591685226429,
+    "confusion_matrix": {
+      "tn": 13038,
+      "fp": 38,
+      "fn": 10654,
+      "tp": 8204
+    }
+  },
+  "test_set": {
+    "samples": 31935,
+    "precision": 0.9951219512195122,
+    "recall": 0.43268465984410626,
+    "f1_score": 0.6031265013489042,
+    "accuracy": 0.6637231877250666,
+    "fpr": 0.0030590394616090547,
+    "fnr": 0.5673153401558937,
+    "confusion_matrix": {
+      "tn": 13036,
+      "fp": 40,
+      "fn": 10699,
+      "tp": 8160
+    }
+  },
+  "performance": {
+    "total_queries": 63869,
+    "total_time_seconds": 30.729196310043335,
+    "throughput_qps": 2078.4468085527333,
+    "avg_latency_ms": 0.4811285022474649
+  },
+  "misclassifications": {
+    "false_positives": 40,
+    "false_negatives": 10699
+  }
+}
