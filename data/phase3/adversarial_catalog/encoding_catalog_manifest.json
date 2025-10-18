@@ -1,0 +1,66 @@
+{
+  "catalog_type": "encoding_transformations",
+  "version": "1.0",
+  "created_date": "2025-10-18 18:40:58",
+  "source_phase": "Phase 3 - Days 23-25",
+  "encoding_procedures": {
+    "URL_encoding": {
+      "description": "Percent-encode special characters",
+      "variants": [
+        "full",
+        "quotes_only",
+        "keywords_only",
+        "selective"
+      ],
+      "reversible": true
+    },
+    "Hex_encoding": {
+      "description": "Convert to hexadecimal representation",
+      "variants": [
+        "full",
+        "keywords_only",
+        "mixed_with_original"
+      ],
+      "reversible": true
+    },
+    "Unicode_escapes": {
+      "description": "Unicode escape sequences",
+      "variants": [
+        "full",
+        "quotes_only",
+        "uppercase_U"
+      ],
+      "reversible": true
+    },
+    "Base64_encoding": {
+      "description": "Base64 encode payload",
+      "variants": [
+        "full",
+        "partial",
+        "url_safe"
+      ],
+      "reversible": true
+    },
+    "Octal_encoding": {
+      "description": "Octal representation",
+      "variants": [
+        "full",
+        "quotes_only"
+      ],
+      "reversible": true
+    }
+  },
+  "generation_summary": {
+    "source_samples": 10000,
+    "total_variants_generated": 130000,
+    "variants_per_original": 13.0,
+    "encoding_types_applied": 13,
+    "failed_reversibility_count": 0,
+    "success_rate": 100.0
+  },
+  "files_created": {
+    "variants": "encoding_variants.csv",
+    "metadata": "encoding_metadata.json",
+    "failed_log": null
+  }
+}

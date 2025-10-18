@@ -1,0 +1,503 @@
+{
+  "description": "Malicious SQL injection payloads for true positive testing",
+  "total_samples": 54,
+  "test_cases": [
+    {
+      "query": "' OR '1'='1",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-001",
+        "TAU-002"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "admin' OR 1=1--",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-001",
+        "CMT-001"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "' OR 'a'='a'--",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-002",
+        "CMT-001"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "' OR TRUE--",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-003",
+        "CMT-001"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "query": "' OR user_id IS NOT NULL--",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-004",
+        "CMT-001"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "query": "') OR ('1'='1')",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-005"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "' AND 1=1--",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-006",
+        "CMT-001"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "query": "\" OR \"1\"=\"1",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-007"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "' OR name LIKE '%'--",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-008",
+        "CMT-001"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "query": "' OR 1+1=2--",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-009",
+        "CMT-001"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "query": "' OR EXISTS(SELECT 1)--",
+      "category": "Tautology",
+      "expected_rules": [
+        "TAU-010",
+        "CMT-001"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "' UNION SELECT NULL--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION ALL SELECT username, password FROM users--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION SELECT NULL, NULL, NULL--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "UNI-002",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION SELECT table_name FROM information_schema.tables--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "UNI-003",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION SELECT CONCAT(username, ':', password) FROM users--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "UNI-004",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION SELECT 1,2,3,4,5--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "UNI-005",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION SELECT @@version--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "UNI-006",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION SELECT '<?php ?>' INTO OUTFILE '/var/www/shell.php'--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "UNI-007",
+        "CMT-001",
+        "ADV-007"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION SELECT GROUP_CONCAT(username) FROM users--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "UNI-008",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' UNION SELECT LOAD_FILE('/etc/passwd')--",
+      "category": "UNION",
+      "expected_rules": [
+        "UNI-001",
+        "UNI-009",
+        "CMT-001",
+        "ADV-006"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "admin'--",
+      "category": "Comment",
+      "expected_rules": [
+        "CMT-001",
+        "CMT-004"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "' OR 1=1#",
+      "category": "Comment",
+      "expected_rules": [
+        "TAU-001",
+        "CMT-002"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "admin'/*",
+      "category": "Comment",
+      "expected_rules": [
+        "CMT-003",
+        "CMT-004"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "password'--",
+      "category": "Comment",
+      "expected_rules": [
+        "CMT-001",
+        "CMT-004"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "/*!50000 UNION SELECT */",
+      "category": "Comment",
+      "expected_rules": [
+        "CMT-005",
+        "UNI-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "-- SELECT * FROM users",
+      "category": "Comment",
+      "expected_rules": [
+        "CMT-001",
+        "CMT-006"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "query": "/* /* DROP TABLE */ */",
+      "category": "Comment",
+      "expected_rules": [
+        "CMT-003",
+        "CMT-007"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "query": "'; DROP TABLE users--",
+      "category": "Stacked",
+      "expected_rules": [
+        "STK-001",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "'; DELETE FROM users--",
+      "category": "Stacked",
+      "expected_rules": [
+        "STK-002",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "'; UPDATE users SET password='hacked'--",
+      "category": "Stacked",
+      "expected_rules": [
+        "STK-003",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "'; INSERT INTO logs VALUES ('breach')--",
+      "category": "Stacked",
+      "expected_rules": [
+        "STK-004",
+        "CMT-001"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "'; EXEC xp_cmdshell('dir')--",
+      "category": "Stacked",
+      "expected_rules": [
+        "STK-005",
+        "CMT-001",
+        "ADV-004"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "'; CREATE TABLE backdoor (id INT)--",
+      "category": "Stacked",
+      "expected_rules": [
+        "STK-006",
+        "CMT-001"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "'; GRANT ALL PRIVILEGES ON *.* TO 'attacker'@'%'--",
+      "category": "Stacked",
+      "expected_rules": [
+        "STK-007",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "'; ; DROP TABLE users--",
+      "category": "Stacked",
+      "expected_rules": [
+        "STK-001",
+        "STK-008",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' AND SLEEP(5)--",
+      "category": "Time-Blind",
+      "expected_rules": [
+        "TMB-001",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "'; WAITFOR DELAY '00:00:05'--",
+      "category": "Time-Blind",
+      "expected_rules": [
+        "TMB-002",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' AND BENCHMARK(5000000,MD5('A'))--",
+      "category": "Time-Blind",
+      "expected_rules": [
+        "TMB-003",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "'; SELECT pg_sleep(5)--",
+      "category": "Time-Blind",
+      "expected_rules": [
+        "TMB-004",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' AND IF(1=1, SLEEP(5), 0)--",
+      "category": "Time-Blind",
+      "expected_rules": [
+        "TMB-001",
+        "TMB-006",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' AND (SELECT SLEEP(5))--",
+      "category": "Time-Blind",
+      "expected_rules": [
+        "TMB-001",
+        "TMB-007",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "0x61646d696e",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-001"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "CHAR(97,100,109,105,110)",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-002"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "%27%20OR%201=1--",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-003"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "query": "'; EXEC xp_cmdshell('net user')--",
+      "category": "Advanced",
+      "expected_rules": [
+        "STK-005",
+        "ADV-004",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "'; EXEC sp_addrolemember 'db_owner', 'attacker'--",
+      "category": "Advanced",
+      "expected_rules": [
+        "STK-005",
+        "ADV-005",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "UNION SELECT LOAD_FILE('/etc/passwd')--",
+      "category": "Advanced",
+      "expected_rules": [
+        "UNI-001",
+        "ADV-006",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "SELECT '<?php ?>' INTO OUTFILE '/var/www/shell.php'--",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-007",
+        "CMT-001"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "query": "' AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT @@version)))--",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-008",
+        "CMT-001"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "' AND UPDATEXML(1, CONCAT(0x7e, (SELECT user())), 1)--",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-009",
+        "CMT-001"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "%27%200x61646d696e",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-003",
+        "ADV-010"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "query": "CONCAT(CONCAT('SE','LECT'), ' * FROM users')",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-011"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "query": "/*!50000UNION*/SELECT",
+      "category": "Advanced",
+      "expected_rules": [
+        "ADV-012",
+        "UNI-001"
+      ],
+      "severity": "HIGH"
+    }
+  ]
+}

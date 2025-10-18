@@ -1,0 +1,50 @@
+{
+  "generation_date": "2025-10-18 22:11:02",
+  "case_variations": {
+    "total_variants": 147,
+    "variation_types": {
+      "random_case": 27,
+      "alternating_case": 18,
+      "camel_case": 9,
+      "mixed_case": 9
+    },
+    "keyword_coverage": {
+      "SELECT": 21,
+      "UNION": 14,
+      "WHERE": 49,
+      "FROM": 56,
+      "INSERT": 7,
+      "UPDATE": 42,
+      "DELETE": 42,
+      "DROP": 7,
+      "ORDER": 7,
+      "AND": 7,
+      "OR": 35
+    },
+    "target_per_keyword": 5,
+    "update_date": "2025-10-18 22:29:37",
+    "fix_applied": true
+  },
+  "sql_synonyms": {
+    "total_variants": 21,
+    "synonym_categories": 15,
+    "types": {
+      "logical_operator": 6,
+      "string_concatenation": 4,
+      "string_extraction": 4,
+      "metadata_access": 4,
+      "conditional": 3
+    }
+  },
+  "nosql_synonyms": {
+    "total_variants": 12,
+    "operator_categories": 4,
+    "types": {
+      "not_equal": 3,
+      "greater_than": 3,
+      "logical_or": 3,
+      "pattern_match": 3
+    }
+  },
+  "total_variants": 180
+}

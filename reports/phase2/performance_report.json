@@ -1,0 +1,42 @@
+{
+  "report_date": "2025-10-18 16:36:29",
+  "system": "Phase 2 Rule Engine (Day 16 Baseline)",
+  "rules": {
+    "total": 53,
+    "enabled": 53,
+    "categories": 6
+  },
+  "latency": {
+    "mean_ms": 0.31273959999634826,
+    "median_ms": 0.22170000011101365,
+    "p95_ms": 0.8594000009907177,
+    "p99_ms": 1.577299999553361,
+    "max_ms": 6.7971999997098465,
+    "target_ms": 10.0,
+    "meets_target": true
+  },
+  "throughput": {
+    "queries_per_second": 3925.7150145236687,
+    "target_qps": 1000,
+    "meets_target": true
+  },
+  "memory": {
+    "peak_mb": 0.15233993530273438,
+    "per_query_kb": 0.15599609375,
+    "process_rss_mb": 61.4921875
+  },
+  "optimization": {
+    "rule_reordering": true,
+    "short_circuit": true,
+    "caching_simulated": true,
+    "speedup": 1.4150978657726956,
+    "optimized_mean_ms": 0.2210020999682456
+  },
+  "rule_performance": {
+    "avg_rule_time_us": 0.4172389947501034,
+    "slowest_rule_us": 1.8860000303296451,
+    "fastest_rule_us": 0.17050000072534507,
+    "slowest_rule_id": "CMT-001",
+    "complex_patterns": 13
+  }
+}

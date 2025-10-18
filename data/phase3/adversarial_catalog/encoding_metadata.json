@@ -1,0 +1,68 @@
+{
+  "generation_date": "2025-10-18 18:40:58",
+  "source_samples": 10000,
+  "total_variants": 130000,
+  "encoding_types": [
+    "URL_full",
+    "URL_quotes",
+    "URL_keywords",
+    "URL_selective",
+    "Hex_full",
+    "Hex_keywords",
+    "Hex_mixed",
+    "Unicode_full",
+    "Unicode_quotes",
+    "Base64_full",
+    "Base64_partial",
+    "Octal_full",
+    "Octal_quotes"
+  ],
+  "failed_reversibility": 0,
+  "statistics": {
+    "count": {
+      "Base64_full": 10000,
+      "Base64_partial": 10000,
+      "Hex_full": 10000,
+      "Hex_keywords": 10000,
+      "Hex_mixed": 10000,
+      "Octal_full": 10000,
+      "Octal_quotes": 10000,
+      "URL_full": 10000,
+      "URL_keywords": 10000,
+      "URL_quotes": 10000,
+      "URL_selective": 10000,
+      "Unicode_full": 10000,
+      "Unicode_quotes": 10000
+    },
+    "expansion_ratio": {
+      "Base64_full": 1.3427461187607634,
+      "Base64_partial": 1.0394255483628723,
+      "Hex_full": 2.0142108678941466,
+      "Hex_keywords": 1.0956115011358893,
+      "Hex_mixed": 1.6039389960224988,
+      "Octal_full": 4.0,
+      "Octal_quotes": 1.0349196935078435,
+      "URL_full": 1.559840532505559,
+      "URL_keywords": 1.0,
+      "URL_quotes": 1.0232797956718958,
+      "URL_selective": 1.0543893903130257,
+      "Unicode_full": 6.0,
+      "Unicode_quotes": 1.0581994891797393
+    },
+    "length_encoded": {
+      "Base64_full": 553.394,
+      "Base64_partial": 438.8101,
+      "Hex_full": 830.081,
+      "Hex_keywords": 436.5463,
+      "Hex_mixed": 672.7501,
+      "Octal_full": 1655.9504,
+      "Octal_quotes": 421.2731,
+      "URL_full": 606.0441,
+      "URL_keywords": 413.9876,
+      "URL_quotes": 418.8446,
+      "URL_selective": 431.3866,
+      "Unicode_full": 2483.9256,
+      "Unicode_quotes": 426.1301
+    }
+  }
+}

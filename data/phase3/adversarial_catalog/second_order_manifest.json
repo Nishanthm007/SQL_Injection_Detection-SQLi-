@@ -1,0 +1,27 @@
+{
+  "generation_date": "2025-10-18 20:24:36",
+  "total_sequences": 56,
+  "sequences_per_scenario": 10,
+  "scenarios_covered": 5,
+  "encoding_pairs": 3,
+  "scenario_breakdown": {
+    "comment_field": 10,
+    "profile_field": 10,
+    "file_upload_metadata": 10,
+    "registration_email": 10,
+    "shopping_cart": 10,
+    "comment_field_encoded": 3,
+    "profile_field_encoded": 3
+  },
+  "encoding_breakdown": {
+    "none": 30,
+    "URL/Hex/Base64": 20,
+    "URL": 2,
+    "Hex": 2,
+    "Base64": 2
+  },
+  "multi_step_structure": {
+    "step1": "STORE payload in database",
+    "step2": "RETRIEVE/EXECUTE payload in subsequent query"
+  }
+}

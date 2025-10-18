@@ -1,0 +1,162 @@
+{
+  "leet_speak_map": {
+    "A": [
+      "4",
+      "@",
+      "Λ"
+    ],
+    "E": [
+      "3",
+      "€",
+      "Σ"
+    ],
+    "I": [
+      "1",
+      "!",
+      "|"
+    ],
+    "O": [
+      "0",
+      "°",
+      "Ø"
+    ],
+    "S": [
+      "5",
+      "$",
+      "§"
+    ],
+    "T": [
+      "7",
+      "+",
+      "†"
+    ],
+    "L": [
+      "1",
+      "|_",
+      "Ł"
+    ],
+    "B": [
+      "8",
+      "ß",
+      "฿"
+    ],
+    "G": [
+      "6",
+      "9",
+      "Ģ"
+    ],
+    "U": [
+      "μ",
+      "Ü",
+      "Ʊ"
+    ]
+  },
+  "homoglyph_map": {
+    "A": [
+      "Α",
+      "А",
+      "Ａ"
+    ],
+    "B": [
+      "Β",
+      "В",
+      "Ｂ"
+    ],
+    "C": [
+      "С",
+      "Ϲ",
+      "Ｃ"
+    ],
+    "E": [
+      "Ε",
+      "Е",
+      "Ｅ"
+    ],
+    "I": [
+      "Ι",
+      "І",
+      "Ｉ"
+    ],
+    "O": [
+      "Ο",
+      "О",
+      "Ｏ"
+    ],
+    "P": [
+      "Ρ",
+      "Р",
+      "Ｐ"
+    ],
+    "R": [
+      "Ʀ",
+      "Г",
+      "Ｒ"
+    ],
+    "S": [
+      "Ѕ",
+      "Ş",
+      "Ｓ"
+    ],
+    "T": [
+      "Τ",
+      "Т",
+      "Ｔ"
+    ],
+    "U": [
+      "Ս",
+      "υ",
+      "Ｕ"
+    ],
+    "X": [
+      "Χ",
+      "Х",
+      "Ｘ"
+    ],
+    "Y": [
+      "Υ",
+      "Ү",
+      "Ｙ"
+    ],
+    "quote": [
+      "'",
+      "'",
+      "ʼ",
+      "′"
+    ]
+  },
+  "obfuscation_techniques": {
+    "comment_insertion": {
+      "description": "Insert SQL comments within keywords",
+      "patterns": [
+        "/**/",
+        "/*comment*/",
+        "--\\n",
+        "#\\n"
+      ],
+      "example": "SELECT/**/FROM => SEL/**/ECT/**/FROM"
+    },
+    "concatenation": {
+      "description": "Use CHAR() or CONCAT() to build strings",
+      "functions": [
+        "CHAR()",
+        "CONCAT()",
+        "CHR()",
+        "||",
+        "+"
+      ],
+      "example": "admin => CONCAT('ad','min') or CHAR(97,100,109,105,110)"
+    },
+    "double_encoding": {
+      "description": "Encode already encoded payloads",
+      "example": "' => %27 => %2527 (double URL encoded)"
+    },
+    "mixed_case": {
+      "description": "Random case mixing",
+      "example": "SELECT => SeLeCt or UnIoN"
+    },
+    "whitespace_manipulation": {
+      "description": "Excessive or unusual whitespace",
+      "example": "OR 1=1 => OR     1=1 or OR\\t\\t1=1"
+    }
+  }
+}

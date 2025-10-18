@@ -1,0 +1,21 @@
+{
+  "generation_date": "2025-10-18 20:26:44",
+  "total_variants": 81,
+  "base_payloads": 9,
+  "techniques": {
+    "leet_speak": 27,
+    "homoglyph": 27,
+    "comment_insertion": 9,
+    "concatenation": 9,
+    "double_encoding": 9
+  },
+  "intensity_levels": {
+    "high": 36,
+    "medium": 27,
+    "low": 18
+  },
+  "leet_speak_characters": 10,
+  "homoglyph_characters": 14,
+  "accidentally_benign_removed": 0,
+  "validation_status": "All variants validated"
+}

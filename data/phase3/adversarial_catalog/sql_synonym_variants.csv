@@ -1,0 +1,22 @@
+variant_id,original_function,synonym_payload,synonym_type,Label
+SYN_00000,CONCAT,"SELECT CONCAT('ad','min')",string_concatenation,1
+SYN_00001,CONCAT,SELECT 'ad'||'min',string_concatenation,1
+SYN_00002,CONCAT,SELECT 'ad'+'min',string_concatenation,1
+SYN_00003,CONCAT,"SELECT CONCAT_WS('','ad','min')",string_concatenation,1
+SYN_00004,SUBSTRING,"SELECT SUBSTRING(password,1,5) FROM users",string_extraction,1
+SYN_00005,SUBSTRING,"SELECT SUBSTR(password,1,5) FROM users",string_extraction,1
+SYN_00006,SUBSTRING,"SELECT MID(password,1,5) FROM users",string_extraction,1
+SYN_00007,SUBSTRING,"SELECT LEFT(password,5) FROM users",string_extraction,1
+SYN_00008,IF,"SELECT IF(1=1, 'yes', 'no')",conditional,1
+SYN_00009,IF,SELECT CASE WHEN 1=1 THEN 'yes' ELSE 'no' END,conditional,1
+SYN_00010,IF,"SELECT IIF(1=1, 'yes', 'no')",conditional,1
+SYN_00011,INFORMATION_SCHEMA,SELECT * FROM INFORMATION_SCHEMA.TABLES,metadata_access,1
+SYN_00012,INFORMATION_SCHEMA,SELECT * FROM sys.tables,metadata_access,1
+SYN_00013,INFORMATION_SCHEMA,SELECT * FROM sysobjects WHERE xtype='U',metadata_access,1
+SYN_00014,INFORMATION_SCHEMA,SELECT * FROM all_tables,metadata_access,1
+SYN_00015,logical_operators,SELECT * WHERE 1=1 AND 2=2,logical_operator,1
+SYN_00016,logical_operators,SELECT * WHERE 1=1 && 2=2,logical_operator,1
+SYN_00017,logical_operators,SELECT * WHERE id BETWEEN 1 AND 10,logical_operator,1
+SYN_00018,logical_operators,SELECT * WHERE 1=1 OR 2=2,logical_operator,1
+SYN_00019,logical_operators,SELECT * WHERE 1=1 || 2=2,logical_operator,1
+SYN_00020,logical_operators,"SELECT * WHERE id IN (1,2,3)",logical_operator,1

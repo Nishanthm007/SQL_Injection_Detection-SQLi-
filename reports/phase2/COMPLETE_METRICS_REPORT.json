@@ -1,0 +1,317 @@
+{
+  "report_metadata": {
+    "title": "Phase 2: Rule-Based Detection - Complete Metrics Report",
+    "version": "1.0",
+    "generated_date": "2025-10-18 16:57:51",
+    "phase": "Phase 2: Rule-Based Detection Engine",
+    "days_completed": "11-20 (10 days)",
+    "status": "COMPLETE"
+  },
+  "system_information": {
+    "python_version": "3.10.18",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "cpu_cores": 12,
+    "total_memory_gb": 7.68,
+    "process_cpu_percent": 0.0,
+    "process_memory_mb": 22.37
+  },
+  "dataset_information": {
+    "phase_1_data": {
+      "total_samples": 212895,
+      "train_samples": 149026,
+      "validation_samples": 31934,
+      "test_samples": 31935
+    },
+    "phase_2_testing": {
+      "curated_test_samples": 119,
+      "validation_tested": 31934,
+      "test_tested": 31935,
+      "total_tested": 63869
+    },
+    "data_distribution": {
+      "malicious_samples": 18859,
+      "benign_samples": 13076,
+      "malicious_percentage": 59.06,
+      "benign_percentage": 40.94
+    }
+  },
+  "rule_catalog": {
+    "version": "1.2.0",
+    "last_updated": "2025-10-18",
+    "total_rules": 74,
+    "enabled_rules": 68,
+    "disabled_rules": 6,
+    "rules_by_category": {
+      "Tautology-Based Injection": 12,
+      "UNION-Based Injection": 11,
+      "Comment-Based Injection": 8,
+      "Stacked Queries Injection": 9,
+      "Time-Based Blind Injection": 7,
+      "Advanced & Evasion Techniques": 14,
+      "Obfuscation Detection": 8
+    },
+    "rules_by_severity": {
+      "CRITICAL": 20,
+      "HIGH": 28,
+      "MEDIUM": 18,
+      "LOW": 8
+    },
+    "confidence_distribution": {
+      "high_confidence_rules (\u22650.90)": 38,
+      "medium_confidence_rules (0.75-0.89)": 22,
+      "low_confidence_rules (<0.75)": 14
+    }
+  },
+  "detection_metrics": {
+    "final_baseline": {
+      "precision": 0.9796,
+      "recall": 0.5239,
+      "f1_score": 0.6827,
+      "accuracy": 0.7124,
+      "false_positive_rate": 0.0158,
+      "false_negative_rate": 0.4761,
+      "true_positive_rate": 0.5239,
+      "true_negative_rate": 0.9842
+    },
+    "confusion_matrix": {
+      "true_negatives": 12870,
+      "false_positives": 206,
+      "false_negatives": 8979,
+      "true_positives": 9880,
+      "total_samples": 31935
+    },
+    "attacks_detected": {
+      "total_attacks": 18859,
+      "detected": 9880,
+      "missed": 8979,
+      "detection_rate_percent": 52.39
+    },
+    "benign_queries": {
+      "total_benign": 13076,
+      "correctly_passed": 12870,
+      "incorrectly_blocked": 206,
+      "false_positive_rate_percent": 1.58
+    },
+    "progression": {
+      "day_16_baseline": {
+        "precision": 0.9951,
+        "recall": 0.4327,
+        "f1_score": 0.6031
+      },
+      "day_18_improved": {
+        "precision": 0.9796,
+        "recall": 0.5239,
+        "f1_score": 0.6827
+      },
+      "improvement": {
+        "precision_change": -0.0155,
+        "recall_gain": 0.0912,
+        "f1_gain": 0.0796
+      }
+    }
+  },
+  "performance_metrics": {
+    "latency": {
+      "mean_ms": 0.313,
+      "median_p50_ms": 0.222,
+      "p95_ms": 0.859,
+      "p99_ms": 1.577,
+      "max_ms": 6.797,
+      "optimized_mean_ms": 0.221,
+      "target_ms": 10.0,
+      "meets_target": true,
+      "speedup_vs_target": 45.25
+    },
+    "throughput": {
+      "queries_per_second": 3926,
+      "target_qps": 1000,
+      "meets_target": true,
+      "performance_vs_target": 3.93
+    },
+    "memory_usage": {
+      "peak_mb": 0.15,
+      "current_mb": 0.14,
+      "per_query_kb": 0.16,
+      "process_rss_mb": 22.37,
+      "process_vms_mb": 947.93
+    },
+    "cpu_usage": {
+      "process_cpu_percent": 0.0,
+      "avg_cpu_per_query_ms": 0.08,
+      "cpu_efficient": true
+    },
+    "rule_performance": {
+      "avg_rule_time_microseconds": 0.417,
+      "slowest_rule_time_us": 1.886,
+      "fastest_rule_time_us": 0.171,
+      "total_sequential_time_us": 22.114,
+      "cheap_rules_count (<1\u03bcs)": 51,
+      "expensive_rules_count (>5\u03bcs)": 0
+    },
+    "optimization_results": {
+      "rule_reordering_speedup": 1.42,
+      "caching_enabled": false,
+      "parallel_evaluation": false,
+      "compiled_patterns": true
+    }
+  },
+  "test_coverage": {
+    "per_rule_testing": {
+      "rules_tested": 68,
+      "perfect_rules_f1_1.0": 44,
+      "high_performance_rules_f1_0.9+": 0,
+      "medium_performance_rules_f1_0.7+": 1,
+      "low_performance_rules_f1_<0.7": 8,
+      "problematic_rules": 9
+    },
+    "obfuscation_resistance": {
+      "obfuscated_test_samples": 18,
+      "detected": 17,
+      "missed": 1,
+      "obfuscation_recall": 0.944
+    },
+    "edge_cases": {
+      "edge_case_samples": 14,
+      "handled_correctly": 12,
+      "edge_case_accuracy": 0.857
+    }
+  },
+  "cost_analysis": {
+    "development": {
+      "days_spent": 10,
+      "rules_created": 74,
+      "test_samples_created": 119
+    },
+    "operational": {
+      "latency_ms": 0.221,
+      "memory_mb": 0.15,
+      "cpu_percent": 0.0,
+      "estimated_cost_per_1M_queries_usd": 1.0,
+      "infrastructure_requirements": "Minimal (1 CPU core, 100MB RAM)"
+    }
+  },
+  "limitations": {
+    "detection": [
+      "Recall only 52.39% (misses 47.61% of attacks)",
+      "Struggles with heavily obfuscated attacks",
+      "Limited detection of novel patterns",
+      "Cannot learn from new data",
+      "Maintenance overhead for rule updates"
+    ],
+    "false_positives": [
+      "206 false positives (1.58% FPR)",
+      "Some legitimate queries with SQL keywords blocked",
+      "Complex regex can be brittle"
+    ],
+    "performance": [
+      "Sequential rule evaluation (no parallelization)",
+      "Complex rules slow down detection",
+      "No GPU acceleration"
+    ]
+  },
+  "strengths": {
+    "detection": [
+      "97.96% precision (very low false positives)",
+      "Excellent for obvious/simple attacks",
+      "Deterministic and explainable",
+      "Fast detection path for common patterns"
+    ],
+    "performance": [
+      "0.22ms average latency (45x faster than target)",
+      "3,926 qps throughput (4x target)",
+      "Minimal memory footprint (0.15 MB)",
+      "Low CPU usage",
+      "Highly scalable"
+    ],
+    "operational": [
+      "Hot-reload support",
+      "Rule-level enable/disable",
+      "Clear versioning",
+      "Comprehensive logging",
+      "Production-ready"
+    ]
+  },
+  "comparison_targets": {
+    "phase_2_achieved": {
+      "precision": 0.9796,
+      "recall": 0.5239,
+      "f1_score": 0.6827,
+      "latency_ms": 0.221,
+      "throughput_qps": 3926
+    },
+    "phase_3_targets": {
+      "precision": 0.95,
+      "recall": 0.92,
+      "f1_score": 0.93,
+      "latency_ms": 10.0,
+      "throughput_qps": 1000
+    },
+    "gap_to_close": {
+      "precision_gap": -0.0296,
+      "recall_gap": 0.3961,
+      "f1_gap": 0.2473,
+      "latency_budget_available_ms": 9.779
+    }
+  },
+  "phase_3_requirements": {
+    "approach": "CNN (Convolutional Neural Network)",
+    "training_samples": 149026,
+    "validation_samples": 31934,
+    "test_samples": 31935,
+    "target_metrics": {
+      "precision": "\u2265 95%",
+      "recall": "\u2265 92%",
+      "f1_score": "\u2265 93%",
+      "latency": "< 10ms",
+      "throughput": "> 1000 qps"
+    },
+    "hybrid_integration": "Rule-Flag + CNN Confirm (Strategy 4)",
+    "expected_hybrid_performance": {
+      "precision": 0.97,
+      "recall": 0.9,
+      "f1_score": 0.935,
+      "latency_ms": 0.47
+    }
+  },
+  "deliverables": {
+    "rules_and_config": [
+      "rules/rules_machine.json",
+      "config/engine_config.json",
+      "rules/optimized_rule_order.json",
+      "rules/README.md"
+    ],
+    "test_data": [
+      "test_sets/positive_malicious.json",
+      "test_sets/negative_benign.json",
+      "test_sets/obfuscated_evasion.json",
+      "test_sets/edge_cases.json",
+      "test_sets/test_dataset_manifest.json"
+    ],
+    "reports": [
+      "reports/phase2/improved_baseline_results.json",
+      "reports/phase2/performance_report.json",
+      "reports/phase2/bulk_validation_report.json",
+      "reports/phase2/per_rule_test_results.json",
+      "reports/phase2/rule_test_summary.csv"
+    ],
+    "documentation": [
+      "reports/phase2/rule_engine_specification.md",
+      "reports/phase2/hybrid_integration_spec.json",
+      "reports/phase2/deployment_checklist.md",
+      "reports/phase2/operational_runbook.md",
+      "reports/phase2/FINAL_VALIDATION_REPORT.json"
+    ],
+    "total_files_created": 24
+  },
+  "sign_off": {
+    "phase_2_complete": true,
+    "all_days_completed": "11-20 (100%)",
+    "baseline_established": true,
+    "deliverables_complete": true,
+    "documentation_complete": true,
+    "ready_for_phase_3": true,
+    "approval_date": "2025-10-18",
+    "next_phase": "Phase 3: CNN Development (Days 21-30)"
+  }
+}

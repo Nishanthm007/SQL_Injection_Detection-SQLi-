@@ -1,0 +1,204 @@
+{
+  "description": "Benign queries for false positive testing",
+  "total_samples": 33,
+  "test_cases": [
+    {
+      "query": "SELECT * FROM users WHERE id = 1",
+      "category": "Legitimate SQL",
+      "should_not_match": "any",
+      "reason": "Standard SELECT query"
+    },
+    {
+      "query": "SELECT name, email FROM customers WHERE active = true",
+      "category": "Legitimate SQL",
+      "should_not_match": "any",
+      "reason": "Normal query with WHERE"
+    },
+    {
+      "query": "UPDATE products SET price = 19.99 WHERE id = 5",
+      "category": "Legitimate SQL",
+      "should_not_match": "any",
+      "reason": "Legitimate UPDATE"
+    },
+    {
+      "query": "INSERT INTO logs (timestamp, message) VALUES (NOW(), 'User logged in')",
+      "category": "Legitimate SQL",
+      "should_not_match": "any",
+      "reason": "Normal INSERT"
+    },
+    {
+      "query": "DELETE FROM temp_data WHERE created < DATE_SUB(NOW(), INTERVAL 7 DAY)",
+      "category": "Legitimate SQL",
+      "should_not_match": "any",
+      "reason": "Cleanup query"
+    },
+    {
+      "query": "iPhone 12 Pro",
+      "category": "Search Term",
+      "should_not_match": "any",
+      "reason": "Product search"
+    },
+    {
+      "query": "How to learn Python",
+      "category": "Search Term",
+      "should_not_match": "any",
+      "reason": "Educational query"
+    },
+    {
+      "query": "Best restaurants near me",
+      "category": "Search Term",
+      "should_not_match": "any",
+      "reason": "Location search"
+    },
+    {
+      "query": "john.doe@example.com",
+      "category": "User Input",
+      "should_not_match": "any",
+      "reason": "Email address"
+    },
+    {
+      "query": "My password is: P@ssw0rd123",
+      "category": "User Input",
+      "should_not_match": "any",
+      "reason": "Password text"
+    },
+    {
+      "query": "http://example.com/page--old",
+      "category": "URL",
+      "should_not_match": "CMT-001",
+      "reason": "URL with double dash"
+    },
+    {
+      "query": "https://api.service.com/v1/users?id=123",
+      "category": "URL",
+      "should_not_match": "any",
+      "reason": "API endpoint"
+    },
+    {
+      "query": "user--test@example.com",
+      "category": "Email",
+      "should_not_match": "CMT-001",
+      "reason": "Email with dashes"
+    },
+    {
+      "query": "/* This is a CSS comment */",
+      "category": "Code",
+      "should_not_match": "CMT-003",
+      "reason": "CSS comment"
+    },
+    {
+      "query": "// JavaScript comment about SELECT",
+      "category": "Code",
+      "should_not_match": "any",
+      "reason": "JS comment"
+    },
+    {
+      "query": "# Python comment with DROP keyword",
+      "category": "Code",
+      "should_not_match": "CMT-006",
+      "reason": "Python comment"
+    },
+    {
+      "query": "The union of two sets",
+      "category": "Text",
+      "should_not_match": "UNI-001",
+      "reason": "Mathematical term"
+    },
+    {
+      "query": "Please select your option",
+      "category": "Text",
+      "should_not_match": "any",
+      "reason": "Normal English"
+    },
+    {
+      "query": "Delete this file",
+      "category": "Text",
+      "should_not_match": "any",
+      "reason": "User instruction"
+    },
+    {
+      "query": "Update your profile",
+      "category": "Text",
+      "should_not_match": "any",
+      "reason": "Application prompt"
+    },
+    {
+      "query": "#FF5733",
+      "category": "Data",
+      "should_not_match": "CMT-002",
+      "reason": "Hex color code"
+    },
+    {
+      "query": "Model-X--2024",
+      "category": "Data",
+      "should_not_match": "CMT-001",
+      "reason": "Product code"
+    },
+    {
+      "query": "version 1.0.0",
+      "category": "Data",
+      "should_not_match": "any",
+      "reason": "Version string"
+    },
+    {
+      "query": "quantity = 1",
+      "category": "Data",
+      "should_not_match": "TAU-001",
+      "reason": "Simple assignment"
+    },
+    {
+      "query": "status = active OR status = pending",
+      "category": "Logic",
+      "should_not_match": "TAU-001",
+      "reason": "Legitimate OR condition"
+    },
+    {
+      "query": "price > 10 AND price < 100",
+      "category": "Logic",
+      "should_not_match": "any",
+      "reason": "Range condition"
+    },
+    {
+      "query": "## Heading 2",
+      "category": "Markdown",
+      "should_not_match": "CMT-002",
+      "reason": "Markdown header"
+    },
+    {
+      "query": "- List item with -- dashes",
+      "category": "Markdown",
+      "should_not_match": "CMT-001",
+      "reason": "Markdown list"
+    },
+    {
+      "query": "Union Bank",
+      "category": "Brand",
+      "should_not_match": "UNI-001",
+      "reason": "Bank name"
+    },
+    {
+      "query": "Select Comfort Mattress",
+      "category": "Brand",
+      "should_not_match": "any",
+      "reason": "Brand name"
+    },
+    {
+      "query": "5 -- 3 = 2",
+      "category": "Math",
+      "should_not_match": "CMT-001",
+      "reason": "Subtraction"
+    },
+    {
+      "query": "1e5",
+      "category": "Math",
+      "should_not_match": "ADV-015",
+      "reason": "Scientific notation"
+    },
+    {
+      "query": "0x10 = 16 in decimal",
+      "category": "Math",
+      "should_not_match": "ADV-001",
+      "reason": "Hex explanation"
+    }
+  ]
+}

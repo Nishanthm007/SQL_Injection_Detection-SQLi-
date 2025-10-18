@@ -1,0 +1,854 @@
+{
+  "generated_date": "2025-10-18 15:59:21",
+  "total_recommendations": 48,
+  "recommendations": [
+    {
+      "rule_id": "TAU-001",
+      "rule_name": "Classic OR 1=1 Tautology",
+      "current_metrics": {
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "' OR '1'='1"
+          ]
+        },
+        {
+          "issue": "High false positive rate - pattern too broad",
+          "action": "Add negative lookaheads or tighten pattern constraints",
+          "priority": "HIGH",
+          "false_positives": [
+            "Text containing 'OR 1=1' in documentation"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "TAU-002",
+      "rule_name": "String Equality Tautology",
+      "current_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "' OR 'a'='a'--",
+            "' OR 'x'='x",
+            "admin' OR 'abc'='abc'#"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "TAU-004",
+      "rule_name": "IS NOT NULL Tautology",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "TAU-005",
+      "rule_name": "Parenthesized Tautology",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "') OR ('1'='1')"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "TAU-006",
+      "rule_name": "AND 1=1 Probe",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "id=1 AND 1=1"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "TAU-007",
+      "rule_name": "Double Quote Tautology",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "\" OR \"1\"=\"1"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "TAU-008",
+      "rule_name": "LIKE Wildcard Tautology",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "TAU-009",
+      "rule_name": "Arithmetic Tautology",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "TAU-010",
+      "rule_name": "EXISTS Subquery Tautology",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-002",
+      "rule_name": "UNION with NULL Columns",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-003",
+      "rule_name": "UNION from information_schema",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-004",
+      "rule_name": "UNION with CONCAT",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-005",
+      "rule_name": "UNION with Numeric Sequence",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-006",
+      "rule_name": "UNION with System Functions",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-007",
+      "rule_name": "UNION INTO OUTFILE",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 1
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-008",
+      "rule_name": "UNION with GROUP_CONCAT",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-009",
+      "rule_name": "UNION with LOAD_FILE",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "UNI-010",
+      "rule_name": "UNION with CHAR Function",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "CMT-001",
+      "rule_name": "SQL Double Dash Comment",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "' OR 1=1--",
+            "'; DROP TABLE users--"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "CMT-002",
+      "rule_name": "SQL Hash Comment",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "' OR 1=1#",
+            "'; DELETE FROM users#"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "CMT-003",
+      "rule_name": "SQL Block Comment Start",
+      "current_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "admin'/*",
+            "' OR 1=1/* comment */",
+            "'; DROP TABLE users/*"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "CMT-005",
+      "rule_name": "Inline SQL Comment",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "CMT-006",
+      "rule_name": "Comment with SQL Keywords",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "CMT-007",
+      "rule_name": "Nested Comment Blocks",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "STK-002",
+      "rule_name": "Semicolon with DELETE",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "STK-003",
+      "rule_name": "Semicolon with UPDATE",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "STK-004",
+      "rule_name": "Semicolon with INSERT",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "STK-005",
+      "rule_name": "Semicolon with EXEC",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "STK-006",
+      "rule_name": "Semicolon with CREATE",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "STK-007",
+      "rule_name": "Semicolon with GRANT",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 1
+        }
+      ]
+    },
+    {
+      "rule_id": "STK-008",
+      "rule_name": "Multiple Semicolons",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "TMB-002",
+      "rule_name": "MSSQL WAITFOR DELAY",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "TMB-003",
+      "rule_name": "BENCHMARK Function",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "TMB-004",
+      "rule_name": "PostgreSQL pg_sleep",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "TMB-006",
+      "rule_name": "Conditional Sleep",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666
+      },
+      "recommendations": [
+        {
+          "issue": "Low recall - pattern may be too restrictive",
+          "action": "Broaden regex pattern or add alternative patterns",
+          "priority": "HIGH",
+          "examples_missed": [
+            "' AND CASE WHEN 1=1 THEN SLEEP(5) END--"
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "TMB-007",
+      "rule_name": "SLEEP with Subquery",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-001",
+      "rule_name": "Hexadecimal Encoding",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-002",
+      "rule_name": "CHAR Function Encoding",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-003",
+      "rule_name": "URL Encoding in Query",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-004",
+      "rule_name": "xp_cmdshell Execution",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-005",
+      "rule_name": "Stored Procedure Abuse",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-006",
+      "rule_name": "LOAD_FILE Function",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-007",
+      "rule_name": "INTO OUTFILE Write",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 1
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-008",
+      "rule_name": "EXTRACTVALUE XML Injection",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 1
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-009",
+      "rule_name": "UPDATEXML Injection",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 1
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-010",
+      "rule_name": "Multi-Encoding Attack",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-011",
+      "rule_name": "Concatenation Obfuscation",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    },
+    {
+      "rule_id": "ADV-012",
+      "rule_name": "Alternative Comment Syntax",
+      "current_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "recommendations": [
+        {
+          "issue": "Low test coverage - need more test cases",
+          "action": "Add more positive and negative examples",
+          "priority": "MEDIUM",
+          "current_coverage": 2
+        }
+      ]
+    }
+  ]
+}

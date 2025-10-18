@@ -1,0 +1,111 @@
+{
+  "description": "Edge cases and boundary conditions",
+  "total_samples": 14,
+  "test_cases": [
+    {
+      "query": "' OR 1=0--",
+      "category": "Edge",
+      "should_match": [
+        "TAU-001"
+      ],
+      "note": "False tautology"
+    },
+    {
+      "query": "' AND 1=0--",
+      "category": "Edge",
+      "should_match": [
+        "TAU-006"
+      ],
+      "note": "Always false condition"
+    },
+    {
+      "query": "UNION SELECT",
+      "category": "Edge",
+      "should_match": [
+        "UNI-001"
+      ],
+      "note": "Incomplete attack"
+    },
+    {
+      "query": "'; --",
+      "category": "Edge",
+      "should_match": [
+        "CMT-001"
+      ],
+      "note": "Empty stacked query"
+    },
+    {
+      "query": "admin",
+      "category": "Edge",
+      "should_not_match": "any",
+      "note": "Just username"
+    },
+    {
+      "query": "OR",
+      "category": "Edge",
+      "should_not_match": "any",
+      "note": "Single keyword"
+    },
+    {
+      "query": "1=1",
+      "category": "Edge",
+      "should_not_match": "any",
+      "note": "Expression without OR"
+    },
+    {
+      "query": "'",
+      "category": "Edge",
+      "should_not_match": "any",
+      "note": "Single quote"
+    },
+    {
+      "query": "--",
+      "category": "Edge",
+      "should_match": [
+        "CMT-001"
+      ],
+      "note": "Comment only"
+    },
+    {
+      "query": ";",
+      "category": "Edge",
+      "should_not_match": "any",
+      "note": "Semicolon only"
+    },
+    {
+      "query": "' OR 1=1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        --",
+      "category": "Edge",
+      "should_match": [
+        "TAU-001"
+      ],
+      "note": "Padding with spaces"
+    },
+    {
+      "query": "UNION SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL--",
+      "category": "Edge",
+      "should_match": [
+        "UNI-001",
+        "UNI-002"
+      ],
+      "note": "Many columns"
+    },
+    {
+      "query": "' OR 1=1 UNION SELECT NULL--",
+      "category": "Edge",
+      "should_match": [
+        "TAU-001",
+        "UNI-001"
+      ],
+      "note": "Combined attacks"
+    },
+    {
+      "query": "'; DROP TABLE users; EXEC xp_cmdshell('dir')--",
+      "category": "Edge",
+      "should_match": [
+        "STK-001",
+        "STK-005"
+      ],
+      "note": "Multi-stage attack"
+    }
+  ]
+}

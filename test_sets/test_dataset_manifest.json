@@ -1,0 +1,45 @@
+{
+  "document_metadata": {
+    "title": "Rule Testing Dataset Manifest",
+    "version": "1.0",
+    "created_date": "2025-10-18 15:08:45",
+    "phase": "Phase 2 - Day 13"
+  },
+  "test_datasets": {
+    "positive_malicious": {
+      "file": "positive_malicious.json",
+      "samples": 54,
+      "purpose": "Measure True Positive Rate (Recall)",
+      "categories": 6
+    },
+    "negative_benign": {
+      "file": "negative_benign.json",
+      "samples": 33,
+      "purpose": "Measure True Negative Rate (Specificity)",
+      "categories": 12
+    },
+    "obfuscated_evasion": {
+      "file": "obfuscated_evasion.json",
+      "samples": 18,
+      "purpose": "Test evasion resistance",
+      "evasion_types": 6
+    },
+    "edge_cases": {
+      "file": "edge_cases.json",
+      "samples": 14,
+      "purpose": "Test boundary conditions"
+    }
+  },
+  "unit_test_plan": {
+    "file": "unit_test_plan.json",
+    "total_rules": 59,
+    "total_unit_tests": 199
+  },
+  "statistics": {
+    "total_test_samples": 119,
+    "positive_samples": 54,
+    "negative_samples": 33,
+    "obfuscated_samples": 18,
+    "edge_case_samples": 14
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "date": "2025-10-18 16:20:02",
+  "preprocessing": {
+    "url_decoding": true,
+    "hex_decoding": true,
+    "comment_stripping": true,
+    "whitespace_normalization": true,
+    "obfuscation_detection": true
+  },
+  "whitelist_rules": 5,
+  "detection_rules": 53,
+  "threshold": 5.0,
+  "before": {
+    "precision": 0.9951,
+    "recall": 0.4327,
+    "f1_score": 0.6031,
+    "fpr": 0.0031,
+    "fnr": 0.5673
+  },
+  "after": {
+    "precision": 1.0,
+    "recall": 0.08860491012248793,
+    "f1_score": 0.16278616658548464,
+    "fpr": 0.0,
+    "fnr": 0.911395089877512
+  },
+  "improvement": {
+    "precision_change": 0.0049000000000000155,
+    "recall_change": -0.34409508987751203,
+    "f1_change": -0.44031383341451535,
+    "fnr_reduction": -0.34409508987751203,
+    "fpr_change": -0.0031
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "test_date": "2025-10-18 15:59:21",
+  "test_datasets": {
+    "positive_malicious": 54,
+    "negative_benign": 33,
+    "obfuscated": 18,
+    "edge_cases": 14
+  },
+  "overall_performance": {
+    "precision": 1.0,
+    "recall": 0.9444444444444444,
+    "f1_score": 0.9714285714285714,
+    "accuracy": 0.9655172413793104,
+    "true_positives": 51,
+    "false_positives": 0,
+    "true_negatives": 33,
+    "false_negatives": 3
+  },
+  "obfuscation_resistance": {
+    "detected": 17,
+    "total": 18,
+    "recall": 0.9444444444444444
+  },
+  "problematic_rules": 9,
+  "revision_recommendations": 48
+}

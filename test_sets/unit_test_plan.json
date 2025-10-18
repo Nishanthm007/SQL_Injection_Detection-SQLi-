@@ -1,0 +1,1091 @@
+{
+  "description": "Unit test plan for all 59 rules",
+  "total_rules": 59,
+  "total_unit_tests": 199,
+  "test_plans": [
+    {
+      "rule_id": "TAU-001",
+      "rule_name": "Classic OR 1=1 Tautology",
+      "test_cases": {
+        "should_match": [
+          "' OR 1=1--",
+          "admin' OR 1=1#",
+          "' OR '1'='1",
+          "password' OR 1=1 LIMIT 1--"
+        ],
+        "should_not_match": [
+          "Mathematical expressions: quantity OR 1=1 (legitimate comparison)",
+          "Text containing 'OR 1=1' in documentation"
+        ],
+        "total_tests": 6
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-002",
+      "rule_name": "String Equality Tautology",
+      "test_cases": {
+        "should_match": [
+          "' OR 'a'='a'--",
+          "' OR 'x'='x",
+          "admin' OR 'abc'='abc'#"
+        ],
+        "should_not_match": [
+          "Legitimate string comparisons in WHERE clauses",
+          "Application comparing user input to constants"
+        ],
+        "total_tests": 5
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-003",
+      "rule_name": "TRUE/FALSE Keyword Tautology",
+      "test_cases": {
+        "should_match": [
+          "' OR TRUE--",
+          "' OR 1",
+          "password' OR FALSE#"
+        ],
+        "should_not_match": [
+          "Legitimate boolean logic: status OR TRUE",
+          "Boolean flags in queries"
+        ],
+        "total_tests": 5
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-004",
+      "rule_name": "IS NOT NULL Tautology",
+      "test_cases": {
+        "should_match": [
+          "' OR user_id IS NOT NULL--",
+          "' OR 1 IS NOT NULL#"
+        ],
+        "should_not_match": [
+          "Legitimate NULL checks in complex queries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-005",
+      "rule_name": "Parenthesized Tautology",
+      "test_cases": {
+        "should_match": [
+          "') OR ('1'='1')",
+          "') OR (1=1)--"
+        ],
+        "should_not_match": [
+          "Complex legitimate queries with OR in subqueries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-006",
+      "rule_name": "AND 1=1 Probe",
+      "test_cases": {
+        "should_match": [
+          "' AND 1=1--",
+          "id=1 AND 1=1"
+        ],
+        "should_not_match": [
+          "Legitimate AND conditions with numeric comparison",
+          "Version checks: version AND 1=1"
+        ],
+        "total_tests": 4
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-007",
+      "rule_name": "Double Quote Tautology",
+      "test_cases": {
+        "should_match": [
+          "\" OR \"1\"=\"1",
+          "\" OR \"a\"=\"a\"--"
+        ],
+        "should_not_match": [
+          "JSON data with OR operator"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-008",
+      "rule_name": "LIKE Wildcard Tautology",
+      "test_cases": {
+        "should_match": [
+          "' OR name LIKE '%'--",
+          "' OR 1 LIKE '%'"
+        ],
+        "should_not_match": [
+          "Legitimate wildcard searches"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-009",
+      "rule_name": "Arithmetic Tautology",
+      "test_cases": {
+        "should_match": [
+          "' OR 1+1=2--",
+          "' OR 5*2=10"
+        ],
+        "should_not_match": [
+          "Legitimate arithmetic in queries",
+          "Mathematical calculations"
+        ],
+        "total_tests": 4
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TAU-010",
+      "rule_name": "EXISTS Subquery Tautology",
+      "test_cases": {
+        "should_match": [
+          "' OR EXISTS(SELECT 1)--",
+          "' OR EXISTS(SELECT * FROM users)--"
+        ],
+        "should_not_match": [
+          "Complex legitimate queries with OR EXISTS"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-001",
+      "rule_name": "UNION SELECT Pattern",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT NULL--",
+          "' UNION ALL SELECT username, password FROM users--",
+          "1' UNION SELECT @@version--"
+        ],
+        "should_not_match": [
+          "Legitimate UNION in stored procedures",
+          "Documentation containing UNION SELECT"
+        ],
+        "total_tests": 5
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-002",
+      "rule_name": "UNION with NULL Columns",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT NULL, NULL, NULL--",
+          "' UNION ALL SELECT NULL, NULL--"
+        ],
+        "should_not_match": [
+          "Legitimate queries selecting NULL values"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-003",
+      "rule_name": "UNION from information_schema",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT table_name FROM information_schema.tables--",
+          "' UNION SELECT column_name FROM information_schema.columns--"
+        ],
+        "should_not_match": [
+          "DBA maintenance scripts"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-004",
+      "rule_name": "UNION with CONCAT",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT CONCAT(username, ':', password) FROM users--",
+          "' UNION SELECT CONCAT(0x7e, version(), 0x7e)--"
+        ],
+        "should_not_match": [
+          "Legitimate string concatenation in queries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-005",
+      "rule_name": "UNION with Numeric Sequence",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT 1,2,3,4,5--",
+          "' UNION ALL SELECT 1,2,3--"
+        ],
+        "should_not_match": [
+          "Queries selecting literal numbers"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-006",
+      "rule_name": "UNION with System Functions",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT @@version--",
+          "' UNION SELECT user(), database()--"
+        ],
+        "should_not_match": [
+          "System diagnostics queries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-007",
+      "rule_name": "UNION INTO OUTFILE",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT '<?php system($_GET[\"cmd\"]); ?>' INTO OUTFILE '/var/www/shell.php'--"
+        ],
+        "should_not_match": [
+          "Legitimate export queries"
+        ],
+        "total_tests": 2
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-008",
+      "rule_name": "UNION with GROUP_CONCAT",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT GROUP_CONCAT(username) FROM users--",
+          "' UNION SELECT GROUP_CONCAT(table_name) FROM information_schema.tables--"
+        ],
+        "should_not_match": [
+          "Legitimate aggregation queries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-009",
+      "rule_name": "UNION with LOAD_FILE",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT LOAD_FILE('/etc/passwd')--",
+          "' UNION SELECT LOAD_FILE('C:\\\\boot.ini')--"
+        ],
+        "should_not_match": [
+          "Legitimate file import queries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "UNI-010",
+      "rule_name": "UNION with CHAR Function",
+      "test_cases": {
+        "should_match": [
+          "' UNION SELECT CHAR(97,100,109,105,110)--",
+          "' UNION SELECT CHAR(0x41)--"
+        ],
+        "should_not_match": [
+          "Character encoding in legitimate queries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "CMT-001",
+      "rule_name": "SQL Double Dash Comment",
+      "test_cases": {
+        "should_match": [
+          "admin'--",
+          "' OR 1=1--",
+          "'; DROP TABLE users--"
+        ],
+        "should_not_match": [
+          "URLs with --: http://example.com/page--old",
+          "Email addresses: user--test@example.com",
+          "Product codes: MODEL-X--2024"
+        ],
+        "total_tests": 6
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "CMT-002",
+      "rule_name": "SQL Hash Comment",
+      "test_cases": {
+        "should_match": [
+          "admin'#",
+          "' OR 1=1#",
+          "'; DELETE FROM users#"
+        ],
+        "should_not_match": [
+          "Hashtags in social media content",
+          "Hex color codes: #FF5733",
+          "Markdown headers"
+        ],
+        "total_tests": 6
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "CMT-003",
+      "rule_name": "SQL Block Comment Start",
+      "test_cases": {
+        "should_match": [
+          "admin'/*",
+          "' OR 1=1/* comment */",
+          "'; DROP TABLE users/*"
+        ],
+        "should_not_match": [
+          "CSS comments: /* styling */",
+          "JavaScript comments in code samples"
+        ],
+        "total_tests": 5
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "CMT-004",
+      "rule_name": "Comment After Quote",
+      "test_cases": {
+        "should_match": [
+          "admin'--",
+          "password'#",
+          "user'/*"
+        ],
+        "should_not_match": [
+          "Legitimate string literals with special chars"
+        ],
+        "total_tests": 4
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "CMT-005",
+      "rule_name": "Inline SQL Comment",
+      "test_cases": {
+        "should_match": [
+          "/*!50000 UNION SELECT */",
+          "/*!32302 AND 1=1 */"
+        ],
+        "should_not_match": [
+          "Rare in normal traffic"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "CMT-006",
+      "rule_name": "Comment with SQL Keywords",
+      "test_cases": {
+        "should_match": [
+          "-- SELECT * FROM users",
+          "# DROP TABLE admin"
+        ],
+        "should_not_match": [
+          "SQL documentation",
+          "Code comments in applications"
+        ],
+        "total_tests": 4
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "CMT-007",
+      "rule_name": "Nested Comment Blocks",
+      "test_cases": {
+        "should_match": [
+          "/* /* nested */ */",
+          "/* /* DROP TABLE */ */"
+        ],
+        "should_not_match": [
+          "Malformed code comments"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "CMT-008",
+      "rule_name": "Comment Whitespace Obfuscation",
+      "test_cases": {
+        "should_match": [
+          "'          --",
+          "'               #"
+        ],
+        "should_not_match": [
+          "Formatted code with alignment"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "STK-001",
+      "rule_name": "Semicolon with DROP",
+      "test_cases": {
+        "should_match": [
+          "'; DROP TABLE users--",
+          "1'; DROP DATABASE testdb--",
+          "'; DROP VIEW admin_view--"
+        ],
+        "should_not_match": [
+          "SQL scripts with multiple statements",
+          "Stored procedures"
+        ],
+        "total_tests": 5
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "STK-002",
+      "rule_name": "Semicolon with DELETE",
+      "test_cases": {
+        "should_match": [
+          "'; DELETE FROM users--",
+          "1'; DELETE FROM products WHERE 1=1--"
+        ],
+        "should_not_match": [
+          "Batch operations in stored procedures"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "STK-003",
+      "rule_name": "Semicolon with UPDATE",
+      "test_cases": {
+        "should_match": [
+          "'; UPDATE users SET password='hacked'--",
+          "1'; UPDATE products SET price=0--"
+        ],
+        "should_not_match": [
+          "Legitimate batch updates"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "STK-004",
+      "rule_name": "Semicolon with INSERT",
+      "test_cases": {
+        "should_match": [
+          "'; INSERT INTO logs VALUES ('breach')--",
+          "1'; INSERT INTO admin (user) VALUES ('attacker')--"
+        ],
+        "should_not_match": [
+          "Batch insert operations"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "STK-005",
+      "rule_name": "Semicolon with EXEC",
+      "test_cases": {
+        "should_match": [
+          "'; EXEC xp_cmdshell('dir')--",
+          "'; EXECUTE sp_executesql N'malicious'--"
+        ],
+        "should_not_match": [
+          "Legitimate stored procedure calls"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "STK-006",
+      "rule_name": "Semicolon with CREATE",
+      "test_cases": {
+        "should_match": [
+          "'; CREATE TABLE backdoor (id INT)--",
+          "'; CREATE USER attacker@localhost--"
+        ],
+        "should_not_match": [
+          "DDL scripts"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "STK-007",
+      "rule_name": "Semicolon with GRANT",
+      "test_cases": {
+        "should_match": [
+          "'; GRANT ALL PRIVILEGES ON *.* TO 'attacker'@'%'--"
+        ],
+        "should_not_match": [
+          "DBA scripts"
+        ],
+        "total_tests": 2
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "STK-008",
+      "rule_name": "Multiple Semicolons",
+      "test_cases": {
+        "should_match": [
+          "'; ; DROP TABLE users--",
+          "1; ; DELETE FROM logs--"
+        ],
+        "should_not_match": [
+          "Malformed queries",
+          "CSS with double semicolons"
+        ],
+        "total_tests": 4
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TMB-001",
+      "rule_name": "MySQL SLEEP Function",
+      "test_cases": {
+        "should_match": [
+          "' AND SLEEP(5)--",
+          "' OR IF(1=1, SLEEP(5), 0)--",
+          "' AND (SELECT * FROM (SELECT(SLEEP(5)))xyz)--"
+        ],
+        "should_not_match": [
+          "Performance testing queries",
+          "Documentation mentioning SLEEP"
+        ],
+        "total_tests": 5
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TMB-002",
+      "rule_name": "MSSQL WAITFOR DELAY",
+      "test_cases": {
+        "should_match": [
+          "'; WAITFOR DELAY '00:00:05'--",
+          "' AND WAITFOR DELAY '00:00:10'--"
+        ],
+        "should_not_match": [
+          "Legitimate delay in stored procedures"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TMB-003",
+      "rule_name": "BENCHMARK Function",
+      "test_cases": {
+        "should_match": [
+          "' AND BENCHMARK(5000000,MD5('A'))--",
+          "' OR BENCHMARK(1000000,SHA1('test'))--"
+        ],
+        "should_not_match": [
+          "Performance benchmarking scripts"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TMB-004",
+      "rule_name": "PostgreSQL pg_sleep",
+      "test_cases": {
+        "should_match": [
+          "'; SELECT pg_sleep(5)--",
+          "' AND (SELECT pg_sleep(10))--"
+        ],
+        "should_not_match": [
+          "Database maintenance scripts"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TMB-005",
+      "rule_name": "Heavy Query Delay",
+      "test_cases": {
+        "should_match": [
+          "' AND (SELECT COUNT(*) FROM huge_table WHERE 1=1)--"
+        ],
+        "should_not_match": [
+          "Legitimate aggregate queries"
+        ],
+        "total_tests": 2
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TMB-006",
+      "rule_name": "Conditional Sleep",
+      "test_cases": {
+        "should_match": [
+          "' AND IF(1=1, SLEEP(5), 0)--",
+          "' AND CASE WHEN 1=1 THEN SLEEP(5) END--"
+        ],
+        "should_not_match": [
+          "Complex legitimate queries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TMB-007",
+      "rule_name": "SLEEP with Subquery",
+      "test_cases": {
+        "should_match": [
+          "' AND (SELECT SLEEP(5))--",
+          "' OR (SELECT IF(1=1,SLEEP(5),0))--"
+        ],
+        "should_not_match": [
+          "Rare in legitimate queries"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "TMB-008",
+      "rule_name": "Time Function Arithmetic",
+      "test_cases": {
+        "should_match": [
+          "' AND NOW() + INTERVAL 10 SECOND--"
+        ],
+        "should_not_match": [
+          "Date arithmetic in legitimate queries"
+        ],
+        "total_tests": 2
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-001",
+      "rule_name": "Hexadecimal Encoding",
+      "test_cases": {
+        "should_match": [
+          "0x61646d696e",
+          "SELECT 0x48656c6c6f"
+        ],
+        "should_not_match": [
+          "Legitimate hex values in data",
+          "Color codes (short hex)",
+          "MAC addresses"
+        ],
+        "total_tests": 5
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-002",
+      "rule_name": "CHAR Function Encoding",
+      "test_cases": {
+        "should_match": [
+          "CHAR(97,100,109,105,110)",
+          "CHAR(115,101,108,101,99,116)"
+        ],
+        "should_not_match": [
+          "Character set conversions"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-003",
+      "rule_name": "URL Encoding in Query",
+      "test_cases": {
+        "should_match": [
+          "%27%20OR%201=1--",
+          "%27%20UNION%20SELECT%20--"
+        ],
+        "should_not_match": [
+          "Legitimate URL-encoded parameters"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-004",
+      "rule_name": "xp_cmdshell Execution",
+      "test_cases": {
+        "should_match": [
+          "'; EXEC xp_cmdshell('net user')--",
+          "'; EXEC xp_cmdshell('dir')--"
+        ],
+        "should_not_match": [
+          "DBA maintenance scripts"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-005",
+      "rule_name": "Stored Procedure Abuse",
+      "test_cases": {
+        "should_match": [
+          "'; EXEC sp_addrolemember 'db_owner', 'attacker'--",
+          "'; EXEC sp_executesql N'DROP TABLE users'--"
+        ],
+        "should_not_match": [
+          "Legitimate admin operations"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-006",
+      "rule_name": "LOAD_FILE Function",
+      "test_cases": {
+        "should_match": [
+          "UNION SELECT LOAD_FILE('/etc/passwd')--",
+          "' AND LOAD_FILE('C:\\\\boot.ini')--"
+        ],
+        "should_not_match": [
+          "Legitimate file import"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-007",
+      "rule_name": "INTO OUTFILE Write",
+      "test_cases": {
+        "should_match": [
+          "SELECT '<?php ?>' INTO OUTFILE '/var/www/shell.php'--"
+        ],
+        "should_not_match": [
+          "Data export operations"
+        ],
+        "total_tests": 2
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-008",
+      "rule_name": "EXTRACTVALUE XML Injection",
+      "test_cases": {
+        "should_match": [
+          "' AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT @@version)))--"
+        ],
+        "should_not_match": [
+          "XML processing queries"
+        ],
+        "total_tests": 2
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-009",
+      "rule_name": "UPDATEXML Injection",
+      "test_cases": {
+        "should_match": [
+          "' AND UPDATEXML(1, CONCAT(0x7e, (SELECT user())), 1)--"
+        ],
+        "should_not_match": [
+          "XML update operations"
+        ],
+        "total_tests": 2
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-010",
+      "rule_name": "Multi-Encoding Attack",
+      "test_cases": {
+        "should_match": [
+          "%27%200x61646d696e",
+          "0x41%20%20%27"
+        ],
+        "should_not_match": [
+          "Rare in legitimate traffic"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-011",
+      "rule_name": "Concatenation Obfuscation",
+      "test_cases": {
+        "should_match": [
+          "CONCAT(CONCAT('SE','LECT'), ' * FROM users')",
+          "CONCAT(CONCAT(0x41,0x42),0x43)"
+        ],
+        "should_not_match": [
+          "Complex string building"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-012",
+      "rule_name": "Alternative Comment Syntax",
+      "test_cases": {
+        "should_match": [
+          "/*!50000UNION*/",
+          "/*!32302AND*/1=1"
+        ],
+        "should_not_match": [
+          "Rare in user input"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-013",
+      "rule_name": "White Space Obfuscation",
+      "test_cases": {
+        "should_match": [
+          "SELECT     * FROM users",
+          "UNION          SELECT"
+        ],
+        "should_not_match": [
+          "Formatted SQL",
+          "Pretty-printed queries"
+        ],
+        "total_tests": 4
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-014",
+      "rule_name": "Case Alternation Evasion",
+      "test_cases": {
+        "should_match": [
+          "SeLeCt * FROM users",
+          "UnIoN SELECT"
+        ],
+        "should_not_match": [
+          "User-entered mixed case"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    },
+    {
+      "rule_id": "ADV-015",
+      "rule_name": "Scientific Notation Numbers",
+      "test_cases": {
+        "should_match": [
+          "1e0",
+          "1e1"
+        ],
+        "should_not_match": [
+          "Legitimate scientific notation in data"
+        ],
+        "total_tests": 3
+      },
+      "success_criteria": {
+        "min_true_positive_rate": 0.9,
+        "max_false_positive_rate": 0.1
+      }
+    }
+  ]
+}

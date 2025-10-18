@@ -1,0 +1,169 @@
+{
+  "description": "Obfuscated and evasion technique test cases",
+  "total_samples": 18,
+  "test_cases": [
+    {
+      "query": "0x61646d696e",
+      "category": "Hex",
+      "base_attack": "admin",
+      "expected_rules": [
+        "ADV-001"
+      ],
+      "evasion_type": "encoding"
+    },
+    {
+      "query": "0x53454c454354",
+      "category": "Hex",
+      "base_attack": "SELECT",
+      "expected_rules": [
+        "ADV-001"
+      ],
+      "evasion_type": "encoding"
+    },
+    {
+      "query": "%27%20OR%201=1--",
+      "category": "URL",
+      "base_attack": "' OR 1=1--",
+      "expected_rules": [
+        "ADV-003"
+      ],
+      "evasion_type": "encoding"
+    },
+    {
+      "query": "%27%20UNION%20SELECT%20--",
+      "category": "URL",
+      "base_attack": "' UNION SELECT --",
+      "expected_rules": [
+        "ADV-003"
+      ],
+      "evasion_type": "encoding"
+    },
+    {
+      "query": "%3B%20DROP%20TABLE%20users--",
+      "category": "URL",
+      "base_attack": "; DROP TABLE users--",
+      "expected_rules": [
+        "ADV-003"
+      ],
+      "evasion_type": "encoding"
+    },
+    {
+      "query": "CHAR(97,100,109,105,110)",
+      "category": "CHAR",
+      "base_attack": "admin",
+      "expected_rules": [
+        "ADV-002"
+      ],
+      "evasion_type": "encoding"
+    },
+    {
+      "query": "CHAR(83,69,76,69,67,84)",
+      "category": "CHAR",
+      "base_attack": "SELECT",
+      "expected_rules": [
+        "ADV-002"
+      ],
+      "evasion_type": "encoding"
+    },
+    {
+      "query": "'     OR     1=1--",
+      "category": "Whitespace",
+      "base_attack": "' OR 1=1--",
+      "expected_rules": [
+        "TAU-001"
+      ],
+      "evasion_type": "whitespace"
+    },
+    {
+      "query": "'UNION          SELECT--",
+      "category": "Whitespace",
+      "base_attack": "'UNION SELECT--",
+      "expected_rules": [
+        "UNI-001"
+      ],
+      "evasion_type": "whitespace"
+    },
+    {
+      "query": "' Or 1=1--",
+      "category": "Case",
+      "base_attack": "' OR 1=1--",
+      "expected_rules": [
+        "TAU-001"
+      ],
+      "evasion_type": "case"
+    },
+    {
+      "query": "' UnIoN SeLeCt--",
+      "category": "Case",
+      "base_attack": "' UNION SELECT--",
+      "expected_rules": [
+        "UNI-001"
+      ],
+      "evasion_type": "case"
+    },
+    {
+      "query": "' AnD SlEeP(5)--",
+      "category": "Case",
+      "base_attack": "' AND SLEEP(5)--",
+      "expected_rules": [
+        "TMB-001"
+      ],
+      "evasion_type": "case"
+    },
+    {
+      "query": "/**/UNION/**/SELECT/**/",
+      "category": "Comment",
+      "base_attack": "UNION SELECT",
+      "expected_rules": [
+        "UNI-001"
+      ],
+      "evasion_type": "comment"
+    },
+    {
+      "query": "/*!50000UNION*/SELECT",
+      "category": "Comment",
+      "base_attack": "UNION SELECT",
+      "expected_rules": [
+        "UNI-001",
+        "ADV-012"
+      ],
+      "evasion_type": "comment"
+    },
+    {
+      "query": "%27%200x61646d696e",
+      "category": "Mixed",
+      "base_attack": "' admin",
+      "expected_rules": [
+        "ADV-010"
+      ],
+      "evasion_type": "multi-encoding"
+    },
+    {
+      "query": "0x41%20%20%27",
+      "category": "Mixed",
+      "base_attack": "A  '",
+      "expected_rules": [
+        "ADV-010"
+      ],
+      "evasion_type": "multi-encoding"
+    },
+    {
+      "query": "CONCAT('SE','LECT')",
+      "category": "Concat",
+      "base_attack": "SELECT",
+      "expected_rules": [
+        "ADV-011"
+      ],
+      "evasion_type": "concatenation"
+    },
+    {
+      "query": "CONCAT(CONCAT('UN','ION'),' SELECT')",
+      "category": "Concat",
+      "base_attack": "UNION SELECT",
+      "expected_rules": [
+        "ADV-011"
+      ],
+      "evasion_type": "concatenation"
+    }
+  ]
+}
