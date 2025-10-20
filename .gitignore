@@ -1,2 +1,5 @@
-data/processed/*.csv
-data/raw/*.csv
+# Ignore all CSV files in the data directory
+data/**/*.csv
+# Ignore all CSV files in the reports directory
+reports/**/*.csv
+

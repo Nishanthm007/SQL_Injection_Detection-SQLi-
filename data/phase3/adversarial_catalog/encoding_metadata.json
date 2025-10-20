@@ -1,5 +1,5 @@
 {
-  "generation_date": "2025-10-18 18:40:58",
+  "generation_date": "2025-10-20 19:36:12",
   "source_samples": 10000,
   "total_variants": 130000,
   "encoding_types": [
@@ -35,34 +35,34 @@
       "Unicode_quotes": 10000
     },
     "expansion_ratio": {
-      "Base64_full": 1.3427461187607634,
-      "Base64_partial": 1.0394255483628723,
-      "Hex_full": 2.0142108678941466,
-      "Hex_keywords": 1.0956115011358893,
-      "Hex_mixed": 1.6039389960224988,
+      "Base64_full": 1.3434418090850933,
+      "Base64_partial": 1.0403960735116338,
+      "Hex_full": 2.0148777987682442,
+      "Hex_keywords": 1.0964074362094363,
+      "Hex_mixed": 1.6043760033730616,
       "Octal_full": 4.0,
-      "Octal_quotes": 1.0349196935078435,
-      "URL_full": 1.559840532505559,
+      "Octal_quotes": 1.0340366856487668,
+      "URL_full": 1.5605026797296635,
       "URL_keywords": 1.0,
-      "URL_quotes": 1.0232797956718958,
-      "URL_selective": 1.0543893903130257,
+      "URL_quotes": 1.0226911237658445,
+      "URL_selective": 1.0535536787084323,
       "Unicode_full": 6.0,
-      "Unicode_quotes": 1.0581994891797393
+      "Unicode_quotes": 1.0567278094146113
     },
     "length_encoded": {
-      "Base64_full": 553.394,
-      "Base64_partial": 438.8101,
-      "Hex_full": 830.081,
-      "Hex_keywords": 436.5463,
-      "Hex_mixed": 672.7501,
-      "Octal_full": 1655.9504,
-      "Octal_quotes": 421.2731,
-      "URL_full": 606.0441,
-      "URL_keywords": 413.9876,
-      "URL_quotes": 418.8446,
-      "URL_selective": 431.3866,
-      "Unicode_full": 2483.9256,
-      "Unicode_quotes": 426.1301
+      "Base64_full": 545.4588,
+      "Base64_partial": 432.826,
+      "Hex_full": 818.1984,
+      "Hex_keywords": 430.5097,
+      "Hex_mixed": 663.3877,
+      "Octal_full": 1632.1688,
+      "Octal_quotes": 415.2824,
+      "URL_full": 597.2642,
+      "URL_keywords": 408.0422,
+      "URL_quotes": 412.869,
+      "URL_selective": 425.1028,
+      "Unicode_full": 2448.2532,
+      "Unicode_quotes": 420.1092
     }
   }
 }

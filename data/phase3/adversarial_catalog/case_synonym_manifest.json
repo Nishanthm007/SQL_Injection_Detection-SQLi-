@@ -1,7 +1,7 @@
 {
-  "generation_date": "2025-10-18 22:11:02",
+  "generation_date": "2025-10-20 19:36:15",
   "case_variations": {
-    "total_variants": 147,
+    "total_variants": 105,
     "variation_types": {
       "random_case": 27,
       "alternating_case": 18,
@@ -11,18 +11,18 @@
     "keyword_coverage": {
       "SELECT": 21,
       "UNION": 14,
-      "WHERE": 49,
-      "FROM": 56,
+      "WHERE": 28,
+      "FROM": 35,
       "INSERT": 7,
-      "UPDATE": 42,
-      "DELETE": 42,
+      "UPDATE": 21,
+      "DELETE": 21,
       "DROP": 7,
       "ORDER": 7,
       "AND": 7,
-      "OR": 35
+      "OR": 28
     },
     "target_per_keyword": 5,
-    "update_date": "2025-10-18 22:29:37",
+    "update_date": "2025-10-20 19:36:15",
     "fix_applied": true
   },
   "sql_synonyms": {
@@ -46,5 +46,5 @@
       "pattern_match": 3
     }
   },
-  "total_variants": 180
+  "total_variants": 138
 }
