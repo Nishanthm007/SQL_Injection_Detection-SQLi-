@@ -1,0 +1,20 @@
+{
+  "date": "2025-10-21 20:36:05",
+  "description": "Strict isolation, perfect class balance, 30% augmentation, no split leakage, ready for ML.",
+  "counts": {
+    "train_total": 133734,
+    "train_malicious": 66867,
+    "train_benign": 66867,
+    "validation_total": 29492,
+    "test_total": 31935,
+    "augmentation_ratio": 29.999850449399553
+  },
+  "overlap_verification": {
+    "train_validation_overlap": 0,
+    "train_test_overlap": 0,
+    "validation_test_overlap": 0
+  },
+  "class_balance": {
+    "train_ratio": 0.5
+  }
+}

@@ -1,0 +1,943 @@
+{
+  "ADV_00000_f0204612": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "url_encode",
+      "tab_inject"
+    ],
+    "complexity": 2
+  },
+  "ADV_00001_cde572ef": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "case_variation",
+      "comment_insert",
+      "base64_encode"
+    ],
+    "complexity": 6
+  },
+  "ADV_00002_b957d4c4": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "case_variation",
+      "hex_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 5
+  },
+  "ADV_00003_a5950b76": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "hex_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00004_f0204612": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "url_encode",
+      "tab_inject"
+    ],
+    "complexity": 2
+  },
+  "ADV_00005_76280077": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "whitespace_inject",
+      "url_encode"
+    ],
+    "complexity": 2
+  },
+  "ADV_00006_cf44869a": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "comment_insert",
+      "case_variation"
+    ],
+    "complexity": 3
+  },
+  "ADV_00007_69dc1eb9": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "case_variation",
+      "tab_inject",
+      "char_substitute"
+    ],
+    "complexity": 4
+  },
+  "ADV_00008_36354510": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "base64_encode",
+      "tab_inject",
+      "case_variation"
+    ],
+    "complexity": 5
+  },
+  "ADV_00009_ed59ebf7": {
+    "original_id": 0,
+    "original_payload": "' OR 1=1--",
+    "transform_chain": [
+      "comment_insert",
+      "case_variation",
+      "base64_encode"
+    ],
+    "complexity": 6
+  },
+  "ADV_00010_1f75ce0b": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "whitespace_inject",
+      "base64_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00011_8f08e688": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "char_substitute",
+      "hex_encode"
+    ],
+    "complexity": 5
+  },
+  "ADV_00012_415e6173": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "url_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 2
+  },
+  "ADV_00013_71c42da8": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "whitespace_inject",
+      "comment_insert",
+      "url_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00014_a6a34b21": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "comment_insert",
+      "url_encode"
+    ],
+    "complexity": 3
+  },
+  "ADV_00015_a4859169": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "comment_insert",
+      "base64_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 6
+  },
+  "ADV_00016_6d57305f": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "char_substitute",
+      "tab_inject"
+    ],
+    "complexity": 3
+  },
+  "ADV_00017_8f08e688": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "char_substitute",
+      "hex_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 6
+  },
+  "ADV_00018_d4afcc52": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "whitespace_inject",
+      "case_variation"
+    ],
+    "complexity": 2
+  },
+  "ADV_00019_c844d401": {
+    "original_id": 1,
+    "original_payload": "' UNION SELECT NULL--",
+    "transform_chain": [
+      "tab_inject",
+      "case_variation",
+      "base64_encode"
+    ],
+    "complexity": 5
+  },
+  "ADV_00020_3b6d0ee7": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "base64_encode",
+      "case_variation"
+    ],
+    "complexity": 4
+  },
+  "ADV_00021_e49f8251": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "char_substitute",
+      "comment_insert",
+      "hex_encode"
+    ],
+    "complexity": 7
+  },
+  "ADV_00022_434c9f06": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "url_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 2
+  },
+  "ADV_00023_434c9f06": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "tab_inject",
+      "url_encode"
+    ],
+    "complexity": 2
+  },
+  "ADV_00024_e49f8251": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "hex_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00025_434c9f06": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "url_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 2
+  },
+  "ADV_00026_434c9f06": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "char_substitute",
+      "url_encode"
+    ],
+    "complexity": 3
+  },
+  "ADV_00027_d1d16b36": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "case_variation",
+      "hex_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00028_7ace92e4": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "case_variation",
+      "char_substitute",
+      "hex_encode"
+    ],
+    "complexity": 6
+  },
+  "ADV_00029_f3d1d615": {
+    "original_id": 2,
+    "original_payload": "admin'--",
+    "transform_chain": [
+      "case_variation",
+      "whitespace_inject"
+    ],
+    "complexity": 2
+  },
+  "ADV_00030_b1dfee2a": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "char_substitute",
+      "hex_encode"
+    ],
+    "complexity": 5
+  },
+  "ADV_00031_a471350b": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "comment_insert",
+      "tab_inject"
+    ],
+    "complexity": 3
+  },
+  "ADV_00032_63639968": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "whitespace_inject",
+      "char_substitute"
+    ],
+    "complexity": 3
+  },
+  "ADV_00033_71b55e98": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "tab_inject",
+      "comment_insert"
+    ],
+    "complexity": 3
+  },
+  "ADV_00034_9bd9a7ab": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "whitespace_inject",
+      "comment_insert"
+    ],
+    "complexity": 3
+  },
+  "ADV_00035_a471350b": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "comment_insert",
+      "tab_inject"
+    ],
+    "complexity": 3
+  },
+  "ADV_00036_0d449cac": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "char_substitute",
+      "case_variation",
+      "comment_insert"
+    ],
+    "complexity": 5
+  },
+  "ADV_00037_35e51d92": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "case_variation",
+      "comment_insert",
+      "url_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00038_0383e8bd": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "comment_insert",
+      "tab_inject",
+      "char_substitute"
+    ],
+    "complexity": 5
+  },
+  "ADV_00039_e8e895cc": {
+    "original_id": 3,
+    "original_payload": "SELECT * FROM users WHERE id=1",
+    "transform_chain": [
+      "base64_encode",
+      "char_substitute",
+      "case_variation"
+    ],
+    "complexity": 6
+  },
+  "ADV_00040_4af853f6": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "char_substitute",
+      "tab_inject"
+    ],
+    "complexity": 3
+  },
+  "ADV_00041_56292476": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "comment_insert",
+      "base64_encode"
+    ],
+    "complexity": 5
+  },
+  "ADV_00042_beab2a59": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "case_variation",
+      "comment_insert",
+      "tab_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00043_7226842a": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "whitespace_inject",
+      "comment_insert"
+    ],
+    "complexity": 3
+  },
+  "ADV_00044_f5234f51": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "char_substitute",
+      "comment_insert"
+    ],
+    "complexity": 4
+  },
+  "ADV_00045_56292476": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "base64_encode",
+      "tab_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00046_e2ccd4ad": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "case_variation",
+      "url_encode"
+    ],
+    "complexity": 2
+  },
+  "ADV_00047_56292476": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "base64_encode",
+      "tab_inject",
+      "comment_insert"
+    ],
+    "complexity": 6
+  },
+  "ADV_00048_250b5d8d": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "char_substitute",
+      "whitespace_inject",
+      "base64_encode"
+    ],
+    "complexity": 6
+  },
+  "ADV_00049_56292476": {
+    "original_id": 4,
+    "original_payload": "'; DROP TABLE users--",
+    "transform_chain": [
+      "base64_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00050_3dcd19f1": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "comment_insert",
+      "tab_inject"
+    ],
+    "complexity": 3
+  },
+  "ADV_00051_d126cbc5": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "char_substitute",
+      "base64_encode",
+      "case_variation"
+    ],
+    "complexity": 6
+  },
+  "ADV_00052_7156ea25": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "case_variation",
+      "url_encode"
+    ],
+    "complexity": 2
+  },
+  "ADV_00053_20c6fe06": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "tab_inject",
+      "comment_insert",
+      "case_variation"
+    ],
+    "complexity": 4
+  },
+  "ADV_00054_70d4872e": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "case_variation",
+      "char_substitute",
+      "comment_insert"
+    ],
+    "complexity": 5
+  },
+  "ADV_00055_3c15e15a": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "base64_encode",
+      "case_variation"
+    ],
+    "complexity": 4
+  },
+  "ADV_00056_9eb88b11": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "base64_encode",
+      "tab_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00057_0b36e2e7": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "hex_encode",
+      "char_substitute",
+      "comment_insert"
+    ],
+    "complexity": 7
+  },
+  "ADV_00058_edf22d17": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "char_substitute",
+      "hex_encode"
+    ],
+    "complexity": 5
+  },
+  "ADV_00059_0b36e2e7": {
+    "original_id": 5,
+    "original_payload": "UNION SELECT password FROM admins",
+    "transform_chain": [
+      "hex_encode",
+      "char_substitute",
+      "tab_inject"
+    ],
+    "complexity": 6
+  },
+  "ADV_00060_f590a094": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "whitespace_inject",
+      "char_substitute",
+      "url_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00061_82a3198a": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "hex_encode",
+      "tab_inject",
+      "case_variation"
+    ],
+    "complexity": 5
+  },
+  "ADV_00062_f5f485df": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "hex_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00063_deeb48d6": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "base64_encode",
+      "comment_insert"
+    ],
+    "complexity": 5
+  },
+  "ADV_00064_c6f81824": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "comment_insert",
+      "char_substitute"
+    ],
+    "complexity": 4
+  },
+  "ADV_00065_274f8628": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "url_encode",
+      "char_substitute",
+      "tab_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00066_f5f485df": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "hex_encode",
+      "char_substitute",
+      "comment_insert"
+    ],
+    "complexity": 7
+  },
+  "ADV_00067_deeb48d6": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "base64_encode",
+      "comment_insert"
+    ],
+    "complexity": 5
+  },
+  "ADV_00068_274f8628": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "url_encode",
+      "char_substitute",
+      "tab_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00069_605c3164": {
+    "original_id": 6,
+    "original_payload": "' AND '1'='1",
+    "transform_chain": [
+      "base64_encode",
+      "case_variation",
+      "tab_inject"
+    ],
+    "complexity": 5
+  },
+  "ADV_00070_a430f752": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "base64_encode",
+      "char_substitute",
+      "tab_inject"
+    ],
+    "complexity": 6
+  },
+  "ADV_00071_b8333749": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "whitespace_inject",
+      "comment_insert"
+    ],
+    "complexity": 3
+  },
+  "ADV_00072_e430b88a": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "hex_encode",
+      "comment_insert"
+    ],
+    "complexity": 5
+  },
+  "ADV_00073_72aa5a57": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "whitespace_inject",
+      "char_substitute"
+    ],
+    "complexity": 3
+  },
+  "ADV_00074_f7fdaf2b": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "char_substitute",
+      "comment_insert",
+      "base64_encode"
+    ],
+    "complexity": 7
+  },
+  "ADV_00075_ec11902f": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "base64_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00076_e430b88a": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "hex_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00077_8ddb5bc9": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "case_variation",
+      "hex_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00078_f33665c6": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "char_substitute",
+      "hex_encode",
+      "case_variation"
+    ],
+    "complexity": 6
+  },
+  "ADV_00079_cbcf2f5c": {
+    "original_id": 7,
+    "original_payload": "INSERT INTO users VALUES ('hacker','pass')",
+    "transform_chain": [
+      "char_substitute",
+      "url_encode"
+    ],
+    "complexity": 3
+  },
+  "ADV_00080_b44233dc": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "case_variation",
+      "whitespace_inject",
+      "char_substitute"
+    ],
+    "complexity": 4
+  },
+  "ADV_00081_30a6ebd6": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "case_variation",
+      "hex_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00082_e5badfa9": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "hex_encode",
+      "comment_insert"
+    ],
+    "complexity": 5
+  },
+  "ADV_00083_3743713e": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "tab_inject",
+      "base64_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00084_384bd353": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "comment_insert",
+      "base64_encode",
+      "char_substitute"
+    ],
+    "complexity": 7
+  },
+  "ADV_00085_24561e82": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "whitespace_inject",
+      "url_encode"
+    ],
+    "complexity": 2
+  },
+  "ADV_00086_f9d3c9d0": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "tab_inject",
+      "char_substitute",
+      "url_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00087_e8f8027f": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "char_substitute",
+      "whitespace_inject"
+    ],
+    "complexity": 3
+  },
+  "ADV_00088_b2e86caa": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "comment_insert",
+      "hex_encode",
+      "tab_inject"
+    ],
+    "complexity": 6
+  },
+  "ADV_00089_dd67e24a": {
+    "original_id": 8,
+    "original_payload": "UPDATE users SET admin=1 WHERE id=1",
+    "transform_chain": [
+      "comment_insert",
+      "tab_inject"
+    ],
+    "complexity": 3
+  },
+  "ADV_00090_da860e28": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "base64_encode",
+      "case_variation"
+    ],
+    "complexity": 4
+  },
+  "ADV_00091_0b3a0a1c": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "whitespace_inject",
+      "char_substitute",
+      "url_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00092_8d2bc2ff": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "hex_encode",
+      "tab_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00093_a2aecd3f": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "char_substitute",
+      "comment_insert",
+      "case_variation"
+    ],
+    "complexity": 5
+  },
+  "ADV_00094_191ca039": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "comment_insert",
+      "case_variation",
+      "char_substitute"
+    ],
+    "complexity": 5
+  },
+  "ADV_00095_941aec41": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "tab_inject",
+      "base64_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00096_94869e68": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "comment_insert",
+      "tab_inject",
+      "url_encode"
+    ],
+    "complexity": 4
+  },
+  "ADV_00097_36e21508": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "char_substitute",
+      "url_encode",
+      "case_variation"
+    ],
+    "complexity": 4
+  },
+  "ADV_00098_f29a8769": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "base64_encode",
+      "whitespace_inject"
+    ],
+    "complexity": 4
+  },
+  "ADV_00099_06bd2240": {
+    "original_id": 9,
+    "original_payload": "DELETE FROM logs WHERE 1=1",
+    "transform_chain": [
+      "case_variation",
+      "char_substitute"
+    ],
+    "complexity": 3
+  }
+}

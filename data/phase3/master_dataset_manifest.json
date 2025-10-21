@@ -1,0 +1,55 @@
+{
+  "generation_date": "2025-10-21 00:07:05",
+  "phase": "Phase 3 - Data Augmentation Complete",
+  "total_samples": 121602,
+  "original_loaded": 131369,
+  "duplicates_removed": 9767,
+  "deduplication_rate": "7.43%",
+  "source_datasets": {
+    "encoding": 120917,
+    "time_based": 186,
+    "whitespace_comment": 137,
+    "context_specific": 115,
+    "composite": 78,
+    "obfuscation": 74,
+    "nosql": 37,
+    "case_variation": 27,
+    "sql_synonym": 21,
+    "nosql_synonym": 10
+  },
+  "label_distribution": {
+    "malicious": 121602,
+    "benign": 0
+  },
+  "schema": [
+    "sample_id",
+    "query",
+    "label",
+    "source_dataset",
+    "original_id",
+    "derived_from",
+    "transform_type",
+    "transform_params",
+    "created_by",
+    "created_on",
+    "confidence_label",
+    "raw_query",
+    "normalized_query"
+  ],
+  "provenance_fields": [
+    "sample_id",
+    "original_id",
+    "derived_from",
+    "transform_type",
+    "transform_params",
+    "created_by",
+    "created_on",
+    "confidence_label"
+  ],
+  "near_duplicate_threshold": 0.9,
+  "files_created": {
+    "master_dataset": "master_augmented_dataset.csv",
+    "provenance": "provenance_metadata.csv",
+    "visualization": "master_dataset_distribution.png"
+  }
+}

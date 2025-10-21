@@ -1,0 +1,32 @@
+{
+  "generation_date": "2025-10-20 22:50:36",
+  "random_seed": 42,
+  "base_payloads": 10,
+  "total_composite_samples": 100,
+  "transformation_constraints": {
+    "max_transforms": 3,
+    "min_transforms": 2,
+    "incompatible_pairs": 4
+  },
+  "complexity_distribution": {
+    "low": 30,
+    "medium": 65,
+    "high": 5
+  },
+  "transformation_count_distribution": {
+    "2": 59,
+    "3": 41
+  },
+  "available_transformations": [
+    "url_encode",
+    "comment_insert",
+    "char_substitute",
+    "case_variation",
+    "whitespace_inject",
+    "tab_inject",
+    "base64_encode",
+    "hex_encode"
+  ],
+  "unrealistic_samples_removed": 0,
+  "index_mappings": 100
+}
