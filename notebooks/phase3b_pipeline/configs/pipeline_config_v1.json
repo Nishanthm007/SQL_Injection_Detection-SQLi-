@@ -1,0 +1,115 @@
+{
+  "project": {
+    "name": "SQL Injection Detection - Phase 3B",
+    "phase": "3B - Robust Text Processing Pipeline",
+    "version": "v1.0",
+    "start_date": "2025-10-22",
+    "owner": "Phase 3B Team"
+  },
+  "data_statistics": {
+    "training_samples": 133734,
+    "label_balance": {
+      "benign": 0.5,
+      "malicious": 0.5
+    },
+    "char_length_95th": 961,
+    "char_length_max": 5994,
+    "word_length_95th": 146,
+    "word_length_max": 222
+  },
+  "tokenization": {
+    "character_level": {
+      "max_length": 1024,
+      "vocabulary_size": 260,
+      "special_tokens": [
+        "<PAD>",
+        "<UNK>",
+        "<START>",
+        "<END>"
+      ],
+      "noise_injection": 0.1,
+      "truncation": "right",
+      "padding": "left"
+    },
+    "word_level": {
+      "max_length": 150,
+      "vocabulary_size": 50509,
+      "special_tokens": [
+        "<PAD>",
+        "<UNK>",
+        "<CLS>",
+        "<SEP>",
+        "<MASK>",
+        "<STR_LIT>",
+        "<NUM_LIT>",
+        "<HEX_LIT>",
+        "<COMMENT>"
+      ],
+      "modes": [
+        "masked",
+        "raw"
+      ],
+      "truncation": "right",
+      "padding": "right"
+    }
+  },
+  "parsing": {
+    "primary_parser": "sqlglot",
+    "version": "27.28.1",
+    "mode": "tolerant",
+    "timeout_seconds": 5,
+    "target_parse_success": 0.85,
+    "output_format": "jsonl"
+  },
+  "features": {
+    "total_count": 89,
+    "categories": {
+      "syntax_tree": 35,
+      "semantic_role": 24,
+      "statistical_anomaly": 30
+    },
+    "normalization": {
+      "count_features": "log1p",
+      "ratio_features": "minmax",
+      "boolean_features": "none"
+    }
+  },
+  "embeddings": {
+    "models": [
+      {
+        "name": "char_cnn",
+        "dimensions": 256,
+        "type": "lightweight",
+        "inference_speed": "5000 qps"
+      },
+      {
+        "name": "codebert",
+        "dimensions": 768,
+        "type": "contextual",
+        "inference_speed": "500 qps (GPU)"
+      }
+    ],
+    "storage_format": "hdf5",
+    "compression": "gzip"
+  },
+  "provenance": {
+    "tracking_columns": 20,
+    "version_control": true,
+    "timestamp_format": "ISO 8601"
+  },
+  "performance_targets": {
+    "tokenization_throughput": "1000 qps",
+    "parsing_throughput": "100 qps",
+    "feature_extraction_time": "50 ms per query",
+    "embedding_inference": "2 ms per query (GPU)"
+  },
+  "file_paths": {
+    "specs_dir": "phase3b_pipeline/specs",
+    "data_dir": "phase3b_pipeline/data",
+    "tokenized_dir": "phase3b_pipeline/data/tokenized",
+    "parsed_dir": "phase3b_pipeline/data/parsed",
+    "features_dir": "phase3b_pipeline/data/features",
+    "embeddings_dir": "phase3b_pipeline/data/embeddings",
+    "logs_dir": "phase3b_pipeline/logs"
+  }
+}
