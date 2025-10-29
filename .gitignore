@@ -2,4 +2,6 @@
 data/**/*.csv
 # Ignore all CSV files in the reports directory
 reports/**/*.csv
+# Ignore all CSV files in the notebooks directory
+notebooks/**/*.csv
 
