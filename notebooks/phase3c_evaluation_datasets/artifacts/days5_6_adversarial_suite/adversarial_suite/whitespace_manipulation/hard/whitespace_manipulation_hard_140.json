@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_hard_140",
+  "category": "whitespace_manipulation",
+  "difficulty": "hard",
+  "seed_payload": "1' OR (SELECT COUNT(*) FROM users)>0--",
+  "transformed_payload": "1'\r\n\tOR\r\n\t(SELECT\r\n\tCOUNT(*)\r\n\tFROM\r\n\tusers)>0--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "4c76d39695e83ede25695b7f88b00df69652050d2c13d7b137eea88d1dfb9d4b"
+}

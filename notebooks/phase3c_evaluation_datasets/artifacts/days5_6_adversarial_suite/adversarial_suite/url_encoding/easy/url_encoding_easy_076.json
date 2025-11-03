@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_076",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1'; UPDATE users SET role='admin'--",
+  "transformed_payload": "1';%20UPDATE%20users%20SET%20role='admin'--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "5135f599c629be38225e82409a681d98f9909da3a2f381c7ee6e5c6fbe8ef565"
+}

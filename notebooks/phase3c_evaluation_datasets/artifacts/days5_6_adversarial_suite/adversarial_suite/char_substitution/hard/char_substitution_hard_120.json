@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_hard_120",
+  "category": "char_substitution",
+  "difficulty": "hard",
+  "seed_payload": "1' AND EXTRACTVALUE(1,CONCAT(0x7e,version()))--",
+  "transformed_payload": "1CHAR(39)CHAR(32)ANDCHAR(32)EXTRACTVALUECHAR(40)1,CONCATCHAR(40)0x7e,versionCHAR(40)CHAR(41)CHAR(41)CHAR(41)--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "f8624909f6f714078543b2ed54999b08a9a1331c7f58f51a26e0e61f02e6c2ec"
+}

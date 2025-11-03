@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_medium_118",
+  "category": "comment_insertion",
+  "difficulty": "medium",
+  "seed_payload": "1' AND (SELECT COUNT(*) FROM information_schema.tables)>0--",
+  "transformed_payload": "1' /*!50000AND*/ (SELECT COUNT(*) FROM information_schema.tables)>0--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "6db7b6402f6437d8811dc4f62fbd5f7f8d704b813e09923303d7851f68e3d666"
+}

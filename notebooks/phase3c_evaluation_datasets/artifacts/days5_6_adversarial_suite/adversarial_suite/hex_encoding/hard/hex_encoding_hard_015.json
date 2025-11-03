@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_hard_015",
+  "category": "hex_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' UNION SELECT LOAD_FILE('/etc/passwd')--",
+  "transformed_payload": "10x270x20UNION0x20SELECT0x20LOAD_FILE0x280x27/etc/passwd0x270x29--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "f669e616f0bbb9cfbf9c6e02e89e30410bca326853f4685b5536cbce9b81bea7"
+}

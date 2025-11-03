@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_077",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' OR pg_sleep(5)--",
+  "transformed_payload": "1'%20OR%20pg_sleep(5)--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "a2c73bb0c3b7b4e2121030f3e772b67b6e1ec7c90103c69f910d973d873a267a"
+}

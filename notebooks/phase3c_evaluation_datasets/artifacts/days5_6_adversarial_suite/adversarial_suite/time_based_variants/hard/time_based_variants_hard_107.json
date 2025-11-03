@@ -1,0 +1,10 @@
+{
+  "testcase_id": "time_based_variants_hard_107",
+  "category": "time_based_variants",
+  "difficulty": "hard",
+  "seed_payload": "admin' OR '1'='1' AND SLEEP(5)--",
+  "transformed_payload": "adMIN' or '1'='1' AnD SEleCT/**/sLEeP(5)--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "279e7bc4cf748aad39d1e71c1afa6d35ad4f41da24a14b279e9e9b6b859c832e"
+}

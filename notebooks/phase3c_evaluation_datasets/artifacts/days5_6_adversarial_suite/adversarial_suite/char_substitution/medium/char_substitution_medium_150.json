@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_medium_150",
+  "category": "char_substitution",
+  "difficulty": "medium",
+  "seed_payload": "1' AND WAITFOR DELAY '00:00:05'--",
+  "transformed_payload": "1CHR(39) AND WAITFOR DELAY CHR(39)00:00:05CHR(39)--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "5c6ecfd9d1483f98c482a137b20f83c12aa6f83f053dc394b89641971bb14202"
+}

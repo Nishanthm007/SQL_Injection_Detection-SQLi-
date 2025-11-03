@@ -1,0 +1,10 @@
+{
+  "testcase_id": "base64_encoding_medium_077",
+  "category": "base64_encoding",
+  "difficulty": "medium",
+  "seed_payload": "admin' OR '1'='1",
+  "transformed_payload": "WVdSdGFXNG5JRTlTSUNjeEp6MG5NUT09",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "fa0cc11fe92e3f51a195c09e8d7cc9b4a1256aa1065f876209c5c11f935fee57"
+}

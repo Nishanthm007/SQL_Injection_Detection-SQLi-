@@ -1,0 +1,10 @@
+{
+  "testcase_id": "base64_encoding_easy_080",
+  "category": "base64_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' OR 1=1--",
+  "transformed_payload": "MScgT1IgMT0xLS0=",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "b5bc4fc3e43b0ac351b1e0925c844c5ce2e7c5c35a8be25acb7eb03661093b4c"
+}

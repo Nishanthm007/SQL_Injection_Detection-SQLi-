@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_easy_087",
+  "category": "whitespace_manipulation",
+  "difficulty": "easy",
+  "seed_payload": "1' UNION SELECT LOAD_FILE('/etc/passwd')--",
+  "transformed_payload": "1'\tUNION\tSELECT\tLOAD_FILE('/etc/passwd')--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "b2f2889ede5bef240f3ac6cfefefaf577e171c29f13cffdb880139901e454e74"
+}

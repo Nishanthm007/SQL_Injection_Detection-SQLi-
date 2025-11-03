@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_hard_142",
+  "category": "case_mutation",
+  "difficulty": "hard",
+  "seed_payload": "1'; UPDATE users SET role='admin'--",
+  "transformed_payload": "1'; UPdatE userS SeT rOle='aDMIn'--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "a39bcad775482d5d6d166c408352f5c5af0193062cafa129a282146c064ae3df"
+}

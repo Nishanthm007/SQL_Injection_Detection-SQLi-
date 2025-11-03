@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_hard_127",
+  "category": "url_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' UNION ALL SELECT user(),version()--",
+  "transformed_payload": "1%27%20UNION%20ALL%20SELECT%20user%28%29,version%28%29--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "724cda6c0ac7b25b5f896d618d5949abccc2b953d35487557253250ec32f0d7c"
+}

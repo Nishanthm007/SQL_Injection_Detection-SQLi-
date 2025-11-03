@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_028",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1'; DROP TABLE users--",
+  "transformed_payload": "1';%20DROP%20TABLE%20users--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "ab88b1a47a9349b04661ef8cc85287c537386ec9d7875f7db1ef1a7696165a60"
+}

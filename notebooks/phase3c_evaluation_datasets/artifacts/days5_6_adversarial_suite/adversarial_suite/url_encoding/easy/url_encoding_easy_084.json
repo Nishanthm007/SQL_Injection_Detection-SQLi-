@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_084",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' AND SUBSTR(password,1,1)='a'--",
+  "transformed_payload": "1'%20AND%20SUBSTR(password,1,1)='a'--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "ab8b9c7602373f73431c8d068367782754114bcf868d563c27d761245e01fe37"
+}

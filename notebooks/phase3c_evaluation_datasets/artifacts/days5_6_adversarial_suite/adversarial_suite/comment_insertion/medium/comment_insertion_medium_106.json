@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_medium_106",
+  "category": "comment_insertion",
+  "difficulty": "medium",
+  "seed_payload": "admin' OR '1'='1",
+  "transformed_payload": "admin' /*!50000OR*/ '1'='1",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "453b3c6bc571f64612ecbd7a24caa5d6670e73d16e6dd988bd3266b1ceec6d68"
+}

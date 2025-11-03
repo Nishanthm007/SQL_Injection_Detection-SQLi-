@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_medium_047",
+  "category": "whitespace_manipulation",
+  "difficulty": "medium",
+  "seed_payload": "1' OR pg_sleep(5)--",
+  "transformed_payload": "1'  OR  pg_sleep\n(5)--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "6331d202720b10d944f0654095b02c401db36ed2f67a2567f33d16ca98ad841b"
+}

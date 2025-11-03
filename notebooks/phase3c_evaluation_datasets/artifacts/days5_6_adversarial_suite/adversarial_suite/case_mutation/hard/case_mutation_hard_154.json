@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_hard_154",
+  "category": "case_mutation",
+  "difficulty": "hard",
+  "seed_payload": "admin' OR '1'='1",
+  "transformed_payload": "adMIN' oR '1'='1",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "6a423e847d78761c00f3a6abd2a19a4cb173127bda0b2a8f8fb314a5c819c0b1"
+}

@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_easy_043",
+  "category": "hex_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' UNION ALL SELECT user(),version()--",
+  "transformed_payload": "10x27 UNION ALL SELECT user(),version()--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "08ffb954b00f97b04b33685d10b76aa7105249b54d22502efbbc4f69e08018e1"
+}

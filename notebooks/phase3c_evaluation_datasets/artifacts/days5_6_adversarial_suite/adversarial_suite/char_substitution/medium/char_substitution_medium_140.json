@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_medium_140",
+  "category": "char_substitution",
+  "difficulty": "medium",
+  "seed_payload": "admin' OR '1'='1",
+  "transformed_payload": "adminCHR(39) OR CHR(39)1CHR(39)CHAR(61)CHR(39)1",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "2fa780085804dccce5ed9d147475f54f1a797ce03a866ab45cd532728dadf85b"
+}

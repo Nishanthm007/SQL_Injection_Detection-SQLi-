@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_hard_035",
+  "category": "char_substitution",
+  "difficulty": "hard",
+  "seed_payload": "1' OR 1=1--",
+  "transformed_payload": "1CHAR(39)CHAR(32)ORCHAR(32)1CHAR(61)1--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "eb3996c199d5c67108401ee4c631c601d3126f44f596daaecdd2f7b42cd00bb6"
+}

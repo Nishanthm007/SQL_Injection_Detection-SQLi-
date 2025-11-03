@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_medium_016",
+  "category": "hex_encoding",
+  "difficulty": "medium",
+  "seed_payload": "1' AND SLEEP(5)--",
+  "transformed_payload": "10x27 AND SLEEP0x2850x29--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "7a099d345c3c3288266b425ed4d1a081446ce2d6c4a003800e2abd37628fb77f"
+}

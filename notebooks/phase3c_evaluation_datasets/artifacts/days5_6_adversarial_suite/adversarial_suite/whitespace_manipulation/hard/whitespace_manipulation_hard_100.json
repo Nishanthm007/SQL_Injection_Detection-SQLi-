@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_hard_100",
+  "category": "whitespace_manipulation",
+  "difficulty": "hard",
+  "seed_payload": "1' AND SUBSTR(password,1,1)='a'--",
+  "transformed_payload": "1'\r\n\tAND\r\n\tSUBSTR(password,1,1)='a'--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "4053694e73730504addc142bc87f0c1d12a3a6ccd3b80ee2175025552dd16592"
+}

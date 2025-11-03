@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_easy_033",
+  "category": "comment_insertion",
+  "difficulty": "easy",
+  "seed_payload": "1'; UPDATE users SET role='admin'--",
+  "transformed_payload": "1'; -- UPDATE -- users -- SET -- role='admin'--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "12a64257d8a35a159b835c2b56c205327f26aab0fb8becb1beec2a390fc03ab8"
+}

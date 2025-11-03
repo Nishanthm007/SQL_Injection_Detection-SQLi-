@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_hard_186",
+  "category": "char_substitution",
+  "difficulty": "hard",
+  "seed_payload": "1'; UPDATE users SET role='admin'--",
+  "transformed_payload": "1CHAR(39);CHAR(32)UPDATECHAR(32)usersCHAR(32)SETCHAR(32)roleCHAR(61)CHAR(39)adminCHAR(39)--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "98c709187538f38a6f6d6aeaf1404effe9ab2961c362e19520e25d3550f13218"
+}

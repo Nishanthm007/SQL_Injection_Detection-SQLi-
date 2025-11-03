@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_medium_011",
+  "category": "hex_encoding",
+  "difficulty": "medium",
+  "seed_payload": "1' UNION SELECT NULL--",
+  "transformed_payload": "10x27 UNION SELECT NULL--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "d58b23818733dbfca9c1116f7e9091d106dd69bf0279094f18cae4bd39dcd9df"
+}

@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_medium_112",
+  "category": "hex_encoding",
+  "difficulty": "medium",
+  "seed_payload": "1' AND WAITFOR DELAY '00:00:05'--",
+  "transformed_payload": "10x27 AND WAITFOR DELAY 0x2700:00:050x27--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "e9f658872f2320590030eea2dfc488279663d562e2cf3e293087d153cef22f73"
+}

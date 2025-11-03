@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_hard_194",
+  "category": "comment_insertion",
+  "difficulty": "hard",
+  "seed_payload": "1' UNION SELECT NULL--",
+  "transformed_payload": "1'/**/UNION/**/SELECT/**/NULL--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "efedf4caa8a8973c15bc65efc8db80988b870d6951ae60d4b8db875f53480711"
+}
