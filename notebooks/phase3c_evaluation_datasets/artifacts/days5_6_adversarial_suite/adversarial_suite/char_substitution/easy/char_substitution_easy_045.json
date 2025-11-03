@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_easy_045",
+  "category": "char_substitution",
+  "difficulty": "easy",
+  "seed_payload": "1' AND (SELECT COUNT(*) FROM information_schema.tables)>0--",
+  "transformed_payload": "1CHAR(39) AND (SELECT COUNT(*) FROM information_schema.tables)>0--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "ac2a1d4140a7cd30fe46f316ddc7ccc82bde4bd16415f7fe3ea610f3ca583f79"
+}

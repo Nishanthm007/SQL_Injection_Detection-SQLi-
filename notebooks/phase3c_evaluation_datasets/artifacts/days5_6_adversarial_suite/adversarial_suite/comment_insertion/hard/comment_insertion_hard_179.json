@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_hard_179",
+  "category": "comment_insertion",
+  "difficulty": "hard",
+  "seed_payload": "1' AND SUBSTR(password,1,1)='a'--",
+  "transformed_payload": "1'/**/AND/**/SUBSTR(password,1,1)='a'--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "f017c034f953b96999671fd5210208f45feecc964ade83134b23e53ed2a40193"
+}

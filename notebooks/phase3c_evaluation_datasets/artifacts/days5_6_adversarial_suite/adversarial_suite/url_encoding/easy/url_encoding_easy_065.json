@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_065",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' UNION SELECT LOAD_FILE('/etc/passwd')--",
+  "transformed_payload": "1'%20UNION%20SELECT%20LOAD_FILE('/etc/passwd')--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "c95cafb0087372af050d329a062d75eb57138f751f43375db3b6ed599f20a758"
+}

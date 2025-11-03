@@ -1,0 +1,10 @@
+{
+  "testcase_id": "composite_transforms_easy_027",
+  "category": "composite_transforms",
+  "difficulty": "easy",
+  "seed_payload": "admin' OR '1'='1",
+  "transformed_payload": "admin0x27%20OR%200x2710x27=0x271",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "4cfa92538a8f073443cecdcac5fc571df7da83db7322e87fccb83f3ef8124e78"
+}

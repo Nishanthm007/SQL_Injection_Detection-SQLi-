@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_088",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' AND WAITFOR DELAY '00:00:05'--",
+  "transformed_payload": "1'%20AND%20WAITFOR%20DELAY%20'00:00:05'--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "aa1b7207e1e79201dae0dc372b96dffd4ba35d73fe5e69c3d9ed4bd0ca02bb30"
+}

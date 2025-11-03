@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_hard_178",
+  "category": "case_mutation",
+  "difficulty": "hard",
+  "seed_payload": "1'; DROP TABLE users--",
+  "transformed_payload": "1'; drOp tAble USeRs--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "a3e1c0e02efa069c525f6d265823716e72cbb5edfce5186b7a8f880e9ea637fd"
+}

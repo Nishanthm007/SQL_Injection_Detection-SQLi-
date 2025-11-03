@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_easy_035",
+  "category": "hex_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' AND (SELECT COUNT(*) FROM information_schema.tables)>0--",
+  "transformed_payload": "10x27 AND (SELECT COUNT(*) FROM information_schema.tables)>0--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "531c5bdc133e9cb12aa11b2ce33b06444a91a66842c3293d11a425e252646ee3"
+}

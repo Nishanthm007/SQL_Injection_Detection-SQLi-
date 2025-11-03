@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_medium_020",
+  "category": "char_substitution",
+  "difficulty": "medium",
+  "seed_payload": "1' UNION ALL SELECT user(),version()--",
+  "transformed_payload": "1CHR(39) UNION ALL SELECT user(),version()--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "19095a18739bb832b54cdec56760e6cdd647056d41a7258248ec70a0d2881448"
+}

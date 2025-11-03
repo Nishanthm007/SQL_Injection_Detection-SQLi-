@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_medium_112",
+  "category": "whitespace_manipulation",
+  "difficulty": "medium",
+  "seed_payload": "1' AND (SELECT COUNT(*) FROM information_schema.tables)>0--",
+  "transformed_payload": "1'  AND  \n(SELECT  COUNT\n(*)  FROM  information_schema.tables)>0--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "bfc3b6565a40a275acaaca02b7c5c46c7c5c80f3baeb3f68ba075ef8eb4dd565"
+}

@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_hard_163",
+  "category": "hex_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' UNION ALL SELECT user(),version()--",
+  "transformed_payload": "10x270x20UNION0x20ALL0x20SELECT0x20user0x280x29,version0x280x29--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "a0702cc989d7bb358a846a0cad4e47a078c1f4151a628821c6792efdedaa683a"
+}

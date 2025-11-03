@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_easy_049",
+  "category": "comment_insertion",
+  "difficulty": "easy",
+  "seed_payload": "1' AND BENCHMARK(5000000,MD5(1))--",
+  "transformed_payload": "1' -- AND -- BENCHMARK(5000000,MD5(1))--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "3cc604045e470fd81399cf818f7b6800f72137292fb68a3f3eb4266b8817d9ec"
+}

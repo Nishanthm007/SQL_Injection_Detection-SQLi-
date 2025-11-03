@@ -1,0 +1,61 @@
+{
+  "overall_system": {
+    "accuracy": 0.99,
+    "f1_score": 0.9,
+    "precision": 0.92,
+    "recall": 0.88
+  },
+  "novel_attack_test_set": {
+    "recall_malicious": 0.85,
+    "precision_malicious": 0.9,
+    "f1_score": 0.87,
+    "novelty_enforcement": 1.0,
+    "min_samples": 1500,
+    "similarity_threshold": 0.85
+  },
+  "adversarial_suite": {
+    "per_category_recall": 0.8,
+    "easy_difficulty_recall": 0.95,
+    "hard_difficulty_recall": 0.75,
+    "min_hard_cases_per_category": 200,
+    "transformation_categories": [
+      "url_encoding",
+      "hex_encoding",
+      "base64_encoding",
+      "comment_insertion",
+      "case_manipulation",
+      "string_concatenation",
+      "composite_transforms",
+      "char_function"
+    ]
+  },
+  "production_benign": {
+    "false_positive_rate": 0.05,
+    "precision_benign": 0.95,
+    "specificity": 0.95,
+    "min_samples": 5000,
+    "min_sql_dialects": 5,
+    "min_orm_frameworks": 3,
+    "manual_review_top_k": 100
+  },
+  "cross_domain": {
+    "per_domain_f1": 0.75,
+    "min_domains": 6,
+    "min_samples_per_domain": 300,
+    "label_confidence_high_pct": 0.95,
+    "domains": [
+      "nosql_mongodb",
+      "graphql",
+      "sparql",
+      "analytics_sql",
+      "api_query_strings",
+      "telemetry_logs"
+    ]
+  },
+  "labeling_policy": {
+    "inter_annotator_kappa_min": 0.7,
+    "min_annotators": 2,
+    "review_sample_size": 200,
+    "high_confidence_target_pct": 0.95
+  }
+}

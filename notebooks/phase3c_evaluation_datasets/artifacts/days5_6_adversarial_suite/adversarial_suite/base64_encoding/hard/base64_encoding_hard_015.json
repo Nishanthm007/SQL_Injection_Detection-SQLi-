@@ -1,0 +1,10 @@
+{
+  "testcase_id": "base64_encoding_hard_015",
+  "category": "base64_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' UNION ALL SELECT user(),version()--",
+  "transformed_payload": "MScgVU5JT04gQUxMIFNFTEVDVCB1c2VyKCksdmVyc2lvbigpLS0=",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "e47a71fb2b62179bcf2afca67c2396a6d1e98f0d187bfdeea8a63a0d9814b0dc"
+}

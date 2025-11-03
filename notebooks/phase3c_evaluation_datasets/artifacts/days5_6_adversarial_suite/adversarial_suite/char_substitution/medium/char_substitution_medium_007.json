@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_medium_007",
+  "category": "char_substitution",
+  "difficulty": "medium",
+  "seed_payload": "1' AND BENCHMARK(5000000,MD5(1))--",
+  "transformed_payload": "1CHR(39) AND BENCHMARK(5000000,MD5(1))--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "d2e825dd72a0588b7dd7b6f298a75f455f52d873fb9f236b70434627b6e139f8"
+}

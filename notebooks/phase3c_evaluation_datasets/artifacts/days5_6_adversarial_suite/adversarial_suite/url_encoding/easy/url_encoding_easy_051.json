@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_051",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "admin' OR '1'='1",
+  "transformed_payload": "admin'%20OR%20'1'='1",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "18c6829ab4e9e1a07eecdaaeff95941c5096bd32ca103aa99dd0c57f047197df"
+}

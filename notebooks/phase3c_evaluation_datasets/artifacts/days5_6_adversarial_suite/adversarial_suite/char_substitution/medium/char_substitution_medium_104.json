@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_medium_104",
+  "category": "char_substitution",
+  "difficulty": "medium",
+  "seed_payload": "1' UNION SELECT LOAD_FILE('/etc/passwd')--",
+  "transformed_payload": "1CHR(39) UNION SELECT LOAD_FILE(CHR(39)/etc/passwdCHR(39))--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "d3c351fa7fe917e711da4986542e7b8edf2f9705b1ee2d8fd84e274f3850bed1"
+}

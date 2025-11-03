@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_hard_004",
+  "category": "url_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' AND SUBSTR(password,1,1)='a'--",
+  "transformed_payload": "1%27%20AND%20SUBSTR%28password,1,1%29%3D%27a%27--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "936c8b3b2b748286b9710fd60174b92cf079be81443acdd6dcb76fdb184c9bd9"
+}

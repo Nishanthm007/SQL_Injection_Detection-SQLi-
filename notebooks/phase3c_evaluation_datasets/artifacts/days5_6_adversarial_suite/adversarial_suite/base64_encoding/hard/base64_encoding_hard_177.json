@@ -1,0 +1,10 @@
+{
+  "testcase_id": "base64_encoding_hard_177",
+  "category": "base64_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' AND SUBSTR(password,1,1)='a'--",
+  "transformed_payload": "MScgQU5EIFNVQlNUUihwYXNzd29yZCwxLDEpPSdhJy0t",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "b89742c62789c9a8ae068de0412b83823b2e1940479d589f4eb40df8842ae03e"
+}

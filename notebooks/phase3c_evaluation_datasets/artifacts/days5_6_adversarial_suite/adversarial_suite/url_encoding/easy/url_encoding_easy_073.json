@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_073",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' OR (SELECT COUNT(*) FROM users)>0--",
+  "transformed_payload": "1'%20OR%20(SELECT%20COUNT(*)%20FROM%20users)>0--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "91d95bcb5cd75b6cd3a7b7c087e2c7956ec092be927f7eed395472d5892cce6a"
+}

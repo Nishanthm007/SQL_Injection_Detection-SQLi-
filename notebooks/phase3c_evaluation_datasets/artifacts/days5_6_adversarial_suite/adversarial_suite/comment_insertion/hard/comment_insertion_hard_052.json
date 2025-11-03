@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_hard_052",
+  "category": "comment_insertion",
+  "difficulty": "hard",
+  "seed_payload": "1' OR 1=1--",
+  "transformed_payload": "1'/**/OR/**/1=1--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "581e06b5fa325400df80b3993ce7ae6474bd2e2612b1a650d867b8543838258e"
+}

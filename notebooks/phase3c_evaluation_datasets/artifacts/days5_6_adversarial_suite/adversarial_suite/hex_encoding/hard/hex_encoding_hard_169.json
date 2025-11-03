@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_hard_169",
+  "category": "hex_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' AND BENCHMARK(5000000,MD5(1))--",
+  "transformed_payload": "10x270x20AND0x20BENCHMARK0x285000000,MD50x2810x290x29--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "bd7623f517ae0ebe6e3f4fdd58e4f4469a966aa007b21245effe99461472e04d"
+}

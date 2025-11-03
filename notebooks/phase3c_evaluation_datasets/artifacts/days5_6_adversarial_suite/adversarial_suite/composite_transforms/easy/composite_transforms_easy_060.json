@@ -1,0 +1,10 @@
+{
+  "testcase_id": "composite_transforms_easy_060",
+  "category": "composite_transforms",
+  "difficulty": "easy",
+  "seed_payload": "1' AND SUBSTR(password,1,1)='a'--",
+  "transformed_payload": "10x27%20AND%20SUBSTR(password,1,1)=0x27a0x27--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "618249bb60d8dabae8f68d8b398e79d42b15622faef0b75d1ddc3b50a162254d"
+}
