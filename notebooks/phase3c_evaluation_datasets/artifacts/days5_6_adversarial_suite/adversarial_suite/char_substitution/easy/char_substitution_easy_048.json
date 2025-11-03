@@ -1,0 +1,10 @@
+{
+  "testcase_id": "char_substitution_easy_048",
+  "category": "char_substitution",
+  "difficulty": "easy",
+  "seed_payload": "1' UNION SELECT NULL--",
+  "transformed_payload": "1CHAR(39) UNION SELECT NULL--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "ae1956d15a60d6429e514495b9d96153b860b4cd31cc659fb4327a9585c889e4"
+}

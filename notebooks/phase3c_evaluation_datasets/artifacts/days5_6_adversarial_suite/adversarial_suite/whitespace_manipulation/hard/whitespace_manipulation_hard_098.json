@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_hard_098",
+  "category": "whitespace_manipulation",
+  "difficulty": "hard",
+  "seed_payload": "1' AND EXTRACTVALUE(1,CONCAT(0x7e,version()))--",
+  "transformed_payload": "1'\r\n\tAND\r\n\tEXTRACTVALUE(1,CONCAT(0x7e,version()))--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "1d665a6cbbaa642dce62e63c36ea04ece0af0701398d9ee4ed213d8519542ef1"
+}

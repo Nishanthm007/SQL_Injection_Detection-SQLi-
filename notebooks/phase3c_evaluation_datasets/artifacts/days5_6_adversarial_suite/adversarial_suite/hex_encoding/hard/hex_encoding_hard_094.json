@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_hard_094",
+  "category": "hex_encoding",
+  "difficulty": "hard",
+  "seed_payload": "admin' OR '1'='1",
+  "transformed_payload": "admin0x270x20OR0x200x2710x270x3d0x271",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "9fab4819f044e4df01be30a95fe23ed23ae55f9cecc9cf162fdd5d982b03c50d"
+}

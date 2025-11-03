@@ -1,0 +1,10 @@
+{
+  "testcase_id": "base64_encoding_medium_110",
+  "category": "base64_encoding",
+  "difficulty": "medium",
+  "seed_payload": "1' AND WAITFOR DELAY '00:00:05'--",
+  "transformed_payload": "TVNjZ1FVNUVJRmRCU1ZSR1QxSWdSRVZNUVZrPQ==",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "99e5e6f413809665c91442d54be77f9b5d15ef0c90057ad724f15b8c190fb070"
+}

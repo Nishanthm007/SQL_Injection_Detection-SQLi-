@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_hard_198",
+  "category": "url_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' AND BENCHMARK(5000000,MD5(1))--",
+  "transformed_payload": "1%27%20AND%20BENCHMARK%285000000,MD5%281%29%29--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "71980e0ff49f7963f8d3d6dead295fc4b24085e206359e0f4a9fb92e64320b3d"
+}

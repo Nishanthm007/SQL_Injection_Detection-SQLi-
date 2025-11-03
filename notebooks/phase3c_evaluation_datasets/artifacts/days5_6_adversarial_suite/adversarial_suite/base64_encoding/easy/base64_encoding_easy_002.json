@@ -1,0 +1,10 @@
+{
+  "testcase_id": "base64_encoding_easy_002",
+  "category": "base64_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' UNION SELECT LOAD_FILE('/etc/passwd')--",
+  "transformed_payload": "MScgVU5JT04gU0VMRUNUIExPQUQ=",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "9d4170e241b3029fdfc7f6cd0c958fc7de6e2fedb7f17e26a4a980040b0b480e"
+}

@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_hard_041",
+  "category": "case_mutation",
+  "difficulty": "hard",
+  "seed_payload": "1' UNION ALL SELECT user(),version()--",
+  "transformed_payload": "1' unIon all sELecT USEr(),VERSiOn()--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "e014c16d9a856b93908eb686c6f4bf3a9f23b08bad8afd2ad402dfafdabe8592"
+}

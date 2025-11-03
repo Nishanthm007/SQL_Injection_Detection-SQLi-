@@ -1,0 +1,10 @@
+{
+  "testcase_id": "base64_encoding_medium_106",
+  "category": "base64_encoding",
+  "difficulty": "medium",
+  "seed_payload": "1' AND (SELECT COUNT(*) FROM information_schema.tables)>0--",
+  "transformed_payload": "TVNjZ1FVNUVJQ2hUUlV4RlExUWdRMDlWVGxRPQ==",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "f4736aff116102a5f61ed1adcdc9a4e5b5441a5a88213361d5f2a80ed72109b9"
+}

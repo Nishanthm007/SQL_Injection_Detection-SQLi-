@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_medium_149",
+  "category": "case_mutation",
+  "difficulty": "medium",
+  "seed_payload": "1' AND SUBSTR(password,1,1)='a'--",
+  "transformed_payload": "1' aNd sUbStR(PaSsWoRd,1,1)='a'--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "b6ff496be4e93a5c8ad325ccb5d2eda694afb27f01f60dc9241ed4af746b84cc"
+}

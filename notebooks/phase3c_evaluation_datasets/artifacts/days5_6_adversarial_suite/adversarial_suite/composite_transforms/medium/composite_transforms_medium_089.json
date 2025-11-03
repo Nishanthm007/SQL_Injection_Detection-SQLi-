@@ -1,0 +1,10 @@
+{
+  "testcase_id": "composite_transforms_medium_089",
+  "category": "composite_transforms",
+  "difficulty": "medium",
+  "seed_payload": "1' UNION SELECT NULL--",
+  "transformed_payload": "10X27/**/UNION/**/SELECT/**/NULL--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "0784dc9e7617a885e8a3aa84f46e71637ae14c8e29a2b10357f874fd821bb515"
+}

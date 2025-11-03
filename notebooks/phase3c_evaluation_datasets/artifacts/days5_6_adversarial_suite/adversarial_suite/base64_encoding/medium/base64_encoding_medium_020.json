@@ -1,0 +1,10 @@
+{
+  "testcase_id": "base64_encoding_medium_020",
+  "category": "base64_encoding",
+  "difficulty": "medium",
+  "seed_payload": "1'; DROP TABLE users--",
+  "transformed_payload": "TVNjN0lFUlNUMUFnVkVGQ1RFVWdkWE5sY25NPQ==",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "5f44dd6fe411f63cbf22d8b59af08513da491721f95084df0f707d3a65023feb"
+}

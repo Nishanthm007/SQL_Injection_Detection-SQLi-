@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_hard_093",
+  "category": "case_mutation",
+  "difficulty": "hard",
+  "seed_payload": "1' OR pg_sleep(5)--",
+  "transformed_payload": "1' OR pg_sLEEp(5)--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "c06e486f1802077a17ab91ded32e53b3d145c56989ad8678cd495efb12a5b7a6"
+}

@@ -1,0 +1,10 @@
+{
+  "testcase_id": "composite_transforms_medium_117",
+  "category": "composite_transforms",
+  "difficulty": "medium",
+  "seed_payload": "1' AND SLEEP(5)--",
+  "transformed_payload": "10X27/**/AND/**/SLEEP(5)--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "825889658e0214a7bdeac6985e2b375a50fe241d1bb99ced8107e740912b0b6e"
+}

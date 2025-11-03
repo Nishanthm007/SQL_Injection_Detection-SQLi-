@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_hard_157",
+  "category": "case_mutation",
+  "difficulty": "hard",
+  "seed_payload": "1' UNION SELECT LOAD_FILE('/etc/passwd')--",
+  "transformed_payload": "1' uNIon sElEcT lOad_fILE('/etC/PasSWD')--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "a30cd159643318e2bb6d0d672dcf0cf65b4245e73cb78e2aaa7b4154f2331312"
+}

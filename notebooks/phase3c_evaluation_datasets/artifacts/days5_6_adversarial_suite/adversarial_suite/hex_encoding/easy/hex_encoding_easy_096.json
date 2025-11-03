@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_easy_096",
+  "category": "hex_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' AND EXTRACTVALUE(1,CONCAT(0x7e,version()))--",
+  "transformed_payload": "10x27 AND EXTRACTVALUE(1,CONCAT(0x7e,version()))--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "0d0999d554ad098b5da534ce0ae0e0e77e5f84bb3144509318b98d174344a43f"
+}

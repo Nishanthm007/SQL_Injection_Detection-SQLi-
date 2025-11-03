@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_easy_004",
+  "category": "comment_insertion",
+  "difficulty": "easy",
+  "seed_payload": "1'; DROP TABLE users--",
+  "transformed_payload": "1'; -- DROP -- TABLE -- users--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "0487d464e238dbd84c9b090f00a6e8c860353d2b74a80c3b663eb9eb632fa28d"
+}
