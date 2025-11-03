@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_hard_109",
+  "category": "case_mutation",
+  "difficulty": "hard",
+  "seed_payload": "1' AND BENCHMARK(5000000,MD5(1))--",
+  "transformed_payload": "1' ANd BEnchMaRk(5000000,md5(1))--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "b0ca9655218c21bfb8e83e49109e9798c38f0546c8dd47619d5284e46a3784a9"
+}

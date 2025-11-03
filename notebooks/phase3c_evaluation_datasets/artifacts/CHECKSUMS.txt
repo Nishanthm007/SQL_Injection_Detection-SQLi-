@@ -1,0 +1,8 @@
+PHASE 3C EVALUATION DATASET CHECKSUMS
+Generated: November 03, 2025, 10:56 PM
+======================================================================
+
+days3_4_novel                  | b118a9d6b229e4832a73c17eaa8cbef0ab0d1804058c05dce6d06f464fef7031
+day7_benign_balanced           | 5fb4ac8dc09b69e778aa829cb9c9244095916158d2b21f897f35c5104a3212da
+day7_benign_imbalanced         | f5fd54f5d28353d7f0ea1a2632aaa92c5b2ea81608d859fff7ab0b53aa387810
+day8_cross_domain              | 4b26f24b395f9a3c993a890a449658195a36a3a372b10316963e7ae3ccb6b427

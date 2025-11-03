@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_easy_001",
+  "category": "hex_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' AND SLEEP(5)--",
+  "transformed_payload": "10x27 AND SLEEP(5)--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "0fcb06de27f94c5db933c3210706116d7d0eef743d842839abc28b3199b53dd6"
+}

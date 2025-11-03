@@ -1,0 +1,10 @@
+{
+  "testcase_id": "time_based_variants_hard_015",
+  "category": "time_based_variants",
+  "difficulty": "hard",
+  "seed_payload": "1' OR (SELECT SLEEP(5))--",
+  "transformed_payload": "1' OR (seLecT sElect/**/sLeeP(5))--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "4838ee9ac080264f5caa609828c99c85278e5024be2e8f87055bef6f3e771610"
+}

@@ -1,0 +1,10 @@
+{
+  "testcase_id": "case_mutation_hard_102",
+  "category": "case_mutation",
+  "difficulty": "hard",
+  "seed_payload": "1' AND WAITFOR DELAY '00:00:05'--",
+  "transformed_payload": "1' and waITfOR delAy '00:00:05'--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "512cefbbfd7a305f052aba191b3ea2dce8a63d3d4ce31bb0248f8f2edeeff1a0"
+}

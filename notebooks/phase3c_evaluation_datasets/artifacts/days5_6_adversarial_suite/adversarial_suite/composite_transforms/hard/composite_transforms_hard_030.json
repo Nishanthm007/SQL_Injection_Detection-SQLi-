@@ -1,0 +1,10 @@
+{
+  "testcase_id": "composite_transforms_hard_030",
+  "category": "composite_transforms",
+  "difficulty": "hard",
+  "seed_payload": "1' AND WAITFOR DELAY '00:00:05'--",
+  "transformed_payload": "1%27%20AND%20WAITFOR%20DELAY%20%2700:00:05%27--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "9683d94731349d5074316c771a44d908674222c04e0866b5fe093683c070dc83"
+}

@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_medium_113",
+  "category": "hex_encoding",
+  "difficulty": "medium",
+  "seed_payload": "1' OR pg_sleep(5)--",
+  "transformed_payload": "10x27 OR pg_sleep0x2850x29--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "3bba9f9cc06b92a0f119d2b77cd84514104a02cdb1a913e3dc33d5492488e07e"
+}

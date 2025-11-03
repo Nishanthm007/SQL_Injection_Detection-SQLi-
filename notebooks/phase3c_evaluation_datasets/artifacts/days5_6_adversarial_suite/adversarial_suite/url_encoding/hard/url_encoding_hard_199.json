@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_hard_199",
+  "category": "url_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' OR (SELECT COUNT(*) FROM users)>0--",
+  "transformed_payload": "1%27%20OR%20%28SELECT%20COUNT%28*%29%20FROM%20users%29>0--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "a465afe32a9790501ddcbf2ed8ce442f1778051b2b5502b99f27a5b5feea12d1"
+}

@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_medium_132",
+  "category": "hex_encoding",
+  "difficulty": "medium",
+  "seed_payload": "1' OR (SELECT COUNT(*) FROM users)>0--",
+  "transformed_payload": "10x27 OR 0x28SELECT COUNT0x28*0x29 FROM users0x29>0--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "63b7cf23553f9745952c7e281c540a0fef3ffea67e4c1dd6496e46f3c4a2de58"
+}

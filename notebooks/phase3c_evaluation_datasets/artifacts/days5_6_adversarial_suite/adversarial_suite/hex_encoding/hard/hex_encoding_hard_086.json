@@ -1,0 +1,10 @@
+{
+  "testcase_id": "hex_encoding_hard_086",
+  "category": "hex_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1'; UPDATE users SET role='admin'--",
+  "transformed_payload": "10x27;0x20UPDATE0x20users0x20SET0x20role0x3d0x27admin0x27--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "6368ad8e864c320375f134d3b6f6fa4f81039df09d317e0e95954a1ac2e02286"
+}

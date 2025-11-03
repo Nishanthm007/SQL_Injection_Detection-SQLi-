@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_easy_015",
+  "category": "comment_insertion",
+  "difficulty": "easy",
+  "seed_payload": "1' UNION SELECT LOAD_FILE('/etc/passwd')--",
+  "transformed_payload": "1' -- UNION -- SELECT -- LOAD_FILE('/etc/passwd')--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "35eabbaaa18cfbd5de57147a440849545dcf74c94af299f7942100641853bedb"
+}

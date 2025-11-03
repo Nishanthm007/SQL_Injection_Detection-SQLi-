@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_hard_068",
+  "category": "whitespace_manipulation",
+  "difficulty": "hard",
+  "seed_payload": "1'; UPDATE users SET role='admin'--",
+  "transformed_payload": "1';\r\n\tUPDATE\r\n\tusers\r\n\tSET\r\n\trole='admin'--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "1a6fd647988553e1e43c120b8b519dbdcd0b077b5c1c6ca04afdec58fed23a07"
+}

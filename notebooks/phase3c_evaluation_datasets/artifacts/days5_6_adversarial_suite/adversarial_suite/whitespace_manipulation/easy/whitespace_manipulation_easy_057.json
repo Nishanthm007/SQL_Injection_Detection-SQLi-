@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_easy_057",
+  "category": "whitespace_manipulation",
+  "difficulty": "easy",
+  "seed_payload": "1'; DROP TABLE users--",
+  "transformed_payload": "1';\tDROP\tTABLE\tusers--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "516156accb1721b74e1ded062a1731537672cc5e7a47d535c1342a8ce8273004"
+}

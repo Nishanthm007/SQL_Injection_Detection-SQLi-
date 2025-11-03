@@ -1,0 +1,10 @@
+{
+  "testcase_id": "whitespace_manipulation_medium_080",
+  "category": "whitespace_manipulation",
+  "difficulty": "medium",
+  "seed_payload": "1' AND SUBSTR(password,1,1)='a'--",
+  "transformed_payload": "1'  AND  SUBSTR\n(password,1,1)='a'--",
+  "label": "malicious",
+  "expected_detection": 0.85,
+  "hash_fingerprint": "6b51659673ab953e09c73e106b0d1583d082e054c65d2d1a7a8b91d689df76e4"
+}

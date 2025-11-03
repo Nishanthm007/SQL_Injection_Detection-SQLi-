@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_easy_005",
+  "category": "url_encoding",
+  "difficulty": "easy",
+  "seed_payload": "1' AND EXTRACTVALUE(1,CONCAT(0x7e,version()))--",
+  "transformed_payload": "1'%20AND%20EXTRACTVALUE(1,CONCAT(0x7e,version()))--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "5cb5b61e1427ce7555162f774ab3575ac8d607e4722b4367171bda870669259f"
+}

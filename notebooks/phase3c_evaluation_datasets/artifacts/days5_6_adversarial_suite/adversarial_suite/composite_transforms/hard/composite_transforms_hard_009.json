@@ -1,0 +1,10 @@
+{
+  "testcase_id": "composite_transforms_hard_009",
+  "category": "composite_transforms",
+  "difficulty": "hard",
+  "seed_payload": "1'; DROP TABLE users--",
+  "transformed_payload": "1%27;%20DROP%20TABLE%20users--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "6254648a8bf43288dd601acde58fcdb9c49ab7bb8c0593c203d11a12679bd683"
+}

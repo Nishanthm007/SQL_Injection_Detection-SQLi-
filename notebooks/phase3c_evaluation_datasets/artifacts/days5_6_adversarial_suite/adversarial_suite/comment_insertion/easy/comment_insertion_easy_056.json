@@ -1,0 +1,10 @@
+{
+  "testcase_id": "comment_insertion_easy_056",
+  "category": "comment_insertion",
+  "difficulty": "easy",
+  "seed_payload": "1' AND WAITFOR DELAY '00:00:05'--",
+  "transformed_payload": "1' -- AND -- WAITFOR -- DELAY -- '00:00:05'--",
+  "label": "malicious",
+  "expected_detection": 0.95,
+  "hash_fingerprint": "ebc9e011fa7147f884d706dabf53ea125abf75d5a14db4545a1ce674e8177c83"
+}

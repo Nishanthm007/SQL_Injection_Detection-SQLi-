@@ -1,0 +1,10 @@
+{
+  "testcase_id": "url_encoding_hard_149",
+  "category": "url_encoding",
+  "difficulty": "hard",
+  "seed_payload": "1' UNION SELECT NULL--",
+  "transformed_payload": "1%27%20UNION%20SELECT%20NULL--",
+  "label": "malicious",
+  "expected_detection": 0.75,
+  "hash_fingerprint": "898a821b81abc7e72ddacadaf5756d2c0f07e30b3f510a9bd43bb9a7b40ad477"
+}
