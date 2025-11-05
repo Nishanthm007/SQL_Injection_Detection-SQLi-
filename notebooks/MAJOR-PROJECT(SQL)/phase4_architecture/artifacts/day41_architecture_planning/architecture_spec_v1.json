@@ -1,0 +1,467 @@
+{
+  "phase": "Phase 4: Anti-Overfitting & Uncertainty-Aware CNN",
+  "day": 41,
+  "version": "v1",
+  "created_at": "2025-11-05T22:45:13.322868",
+  "design_principles": [
+    "Balance learning contributions across 3 input branches",
+    "Reduce overfitting through regularization (dropout + L2)",
+    "Incorporate uncertainty awareness for confidence calibration",
+    "No data leakage: training data only used for design validation"
+  ],
+  "branches": {
+    "Branch_1_Character_Level": {
+      "purpose": "Fine-grained obfuscation and encoding detection",
+      "input_type": "Encoded character sequences",
+      "input_source": "train_char_tokenized.parquet",
+      "input_shape": [
+        1024
+      ],
+      "input_samples": 133734,
+      "embedding_dim": 32,
+      "embedding_vocab_size": 256,
+      "layers": [
+        {
+          "name": "char_embedding",
+          "type": "Embedding",
+          "vocab_size": 256,
+          "output_dim": 32,
+          "max_length": 1024
+        },
+        {
+          "name": "char_conv_block_1",
+          "type": "Conv1D",
+          "filters": 64,
+          "kernel_size": 3,
+          "activation": "relu",
+          "padding": "same"
+        },
+        {
+          "name": "char_batch_norm_1",
+          "type": "BatchNormalization"
+        },
+        {
+          "name": "char_conv_block_2",
+          "type": "Conv1D",
+          "filters": 64,
+          "kernel_size": 5,
+          "activation": "relu",
+          "padding": "same"
+        },
+        {
+          "name": "char_batch_norm_2",
+          "type": "BatchNormalization"
+        },
+        {
+          "name": "char_conv_block_3",
+          "type": "Conv1D",
+          "filters": 64,
+          "kernel_size": 7,
+          "activation": "relu",
+          "padding": "same"
+        },
+        {
+          "name": "char_batch_norm_3",
+          "type": "BatchNormalization"
+        },
+        {
+          "name": "char_global_maxpool",
+          "type": "GlobalMaxPooling1D"
+        },
+        {
+          "name": "char_dense_1",
+          "type": "Dense",
+          "units": 256,
+          "activation": "relu"
+        },
+        {
+          "name": "char_dropout",
+          "type": "Dropout",
+          "rate": 0.5
+        },
+        {
+          "name": "char_dense_2",
+          "type": "Dense",
+          "units": 128,
+          "activation": "relu",
+          "l2_regularization": 0.01
+        }
+      ],
+      "output_dim": 128,
+      "regularization": {
+        "dropout_rate": 0.5,
+        "l2_rate": 0.01
+      }
+    },
+    "Branch_2_Word_Level_Semantic": {
+      "purpose": "Contextual understanding through token sequences",
+      "input_type": "Token sequences with token type information",
+      "input_source": "train_word_tokenized_raw.parquet",
+      "input_shape": [
+        150
+      ],
+      "input_samples": 133734,
+      "embedding_dim": 100,
+      "embedding_vocab_size": 5000,
+      "token_type_vocab": 10,
+      "max_sequence_length": 150,
+      "layers": [
+        {
+          "name": "word_embedding",
+          "type": "Embedding",
+          "vocab_size": 5000,
+          "output_dim": 100,
+          "max_length": 150
+        },
+        {
+          "name": "word_token_type_embedding",
+          "type": "Embedding",
+          "vocab_size": 10,
+          "output_dim": 16,
+          "max_length": 150
+        },
+        {
+          "name": "word_concat_embeddings",
+          "type": "Concatenate",
+          "from": [
+            "word_embedding",
+            "word_token_type_embedding"
+          ],
+          "output_dim": 116
+        },
+        {
+          "name": "word_conv_block_1",
+          "type": "Conv1D",
+          "filters": 64,
+          "kernel_size": 3,
+          "activation": "relu",
+          "padding": "same"
+        },
+        {
+          "name": "word_batch_norm_1",
+          "type": "BatchNormalization"
+        },
+        {
+          "name": "word_conv_block_2",
+          "type": "Conv1D",
+          "filters": 64,
+          "kernel_size": 5,
+          "activation": "relu",
+          "padding": "same"
+        },
+        {
+          "name": "word_batch_norm_2",
+          "type": "BatchNormalization"
+        },
+        {
+          "name": "word_dropout_conv",
+          "type": "Dropout",
+          "rate": 0.3
+        },
+        {
+          "name": "word_global_avgpool",
+          "type": "GlobalAveragePooling1D"
+        },
+        {
+          "name": "word_dense_1",
+          "type": "Dense",
+          "units": 256,
+          "activation": "relu"
+        },
+        {
+          "name": "word_dropout_dense",
+          "type": "Dropout",
+          "rate": 0.3
+        },
+        {
+          "name": "word_dense_2",
+          "type": "Dense",
+          "units": 128,
+          "activation": "relu",
+          "l2_regularization": 0.01
+        }
+      ],
+      "output_dim": 128,
+      "regularization": {
+        "dropout_rate": 0.3,
+        "l2_rate": 0.01
+      }
+    },
+    "Branch_3_Structural_Features": {
+      "purpose": "High-level syntax and semantic feature extraction",
+      "input_type": "Engineered numeric features",
+      "input_sources": [
+        "features_statistical_v1.parquet (34 features)",
+        "features_syntax_v1.parquet (34 features)",
+        "semantic_roles_v1.parquet (36 features)"
+      ],
+      "input_shape": [
+        104
+      ],
+      "input_samples": 133734,
+      "total_features": 104,
+      "layers": [
+        {
+          "name": "struct_input",
+          "type": "Input",
+          "shape": [
+            104
+          ]
+        },
+        {
+          "name": "struct_normalization",
+          "type": "LayerNormalization"
+        },
+        {
+          "name": "struct_dense_1",
+          "type": "Dense",
+          "units": 256,
+          "activation": "relu",
+          "l2_regularization": 0.01
+        },
+        {
+          "name": "struct_batch_norm_1",
+          "type": "BatchNormalization"
+        },
+        {
+          "name": "struct_dropout_1",
+          "type": "Dropout",
+          "rate": 0.3
+        },
+        {
+          "name": "struct_dense_2",
+          "type": "Dense",
+          "units": 256,
+          "activation": "relu",
+          "l2_regularization": 0.01
+        },
+        {
+          "name": "struct_batch_norm_2",
+          "type": "BatchNormalization"
+        },
+        {
+          "name": "struct_dropout_2",
+          "type": "Dropout",
+          "rate": 0.3
+        },
+        {
+          "name": "struct_dense_3",
+          "type": "Dense",
+          "units": 128,
+          "activation": "relu",
+          "l2_regularization": 0.01
+        }
+      ],
+      "output_dim": 128,
+      "regularization": {
+        "dropout_rate": 0.3,
+        "l2_rate": 0.01
+      }
+    }
+  },
+  "fusion_module": {
+    "name": "Multi-Branch Fusion with Attention",
+    "strategy": "concatenation + attention weighting",
+    "branch_outputs": [
+      128,
+      128,
+      128
+    ],
+    "concatenated_dim": 384,
+    "attention_heads": 3,
+    "layers": [
+      {
+        "name": "branch_concatenate",
+        "type": "Concatenate",
+        "input_dims": [
+          128,
+          128,
+          128
+        ],
+        "output_dim": 384
+      },
+      {
+        "name": "attention_query_dense",
+        "type": "Dense",
+        "units": 64,
+        "activation": "relu"
+      },
+      {
+        "name": "attention_key_dense",
+        "type": "Dense",
+        "units": 64,
+        "activation": "relu"
+      },
+      {
+        "name": "attention_value_dense",
+        "type": "Dense",
+        "units": 128,
+        "activation": "relu"
+      },
+      {
+        "name": "attention_scores",
+        "type": "MultiHeadAttention",
+        "num_heads": 3,
+        "key_dim": 64
+      },
+      {
+        "name": "fused_features",
+        "type": "Dense",
+        "units": 256,
+        "activation": "relu",
+        "l2_regularization": 0.01
+      },
+      {
+        "name": "fusion_dropout",
+        "type": "Dropout",
+        "rate": 0.3
+      }
+    ],
+    "output_dim": 256
+  },
+  "uncertainty_module": {
+    "name": "Uncertainty-Aware Classification Head",
+    "strategy": "multi-head prediction + confidence calibration",
+    "multi_head_count": 3,
+    "heads": [
+      {
+        "head_id": 0,
+        "name": "classifier_head_0",
+        "layers": [
+          {
+            "type": "Dense",
+            "units": 128,
+            "activation": "relu",
+            "l2_regularization": 0.01
+          },
+          {
+            "type": "Dropout",
+            "rate": 0.2
+          }
+        ]
+      },
+      {
+        "head_id": 1,
+        "name": "classifier_head_1",
+        "layers": [
+          {
+            "type": "Dense",
+            "units": 128,
+            "activation": "relu",
+            "l2_regularization": 0.01
+          },
+          {
+            "type": "Dropout",
+            "rate": 0.2
+          }
+        ]
+      },
+      {
+        "head_id": 2,
+        "name": "classifier_head_2",
+        "layers": [
+          {
+            "type": "Dense",
+            "units": 128,
+            "activation": "relu",
+            "l2_regularization": 0.01
+          },
+          {
+            "type": "Dropout",
+            "rate": 0.2
+          }
+        ]
+      }
+    ],
+    "final_layers": [
+      {
+        "name": "logits_average",
+        "type": "Average",
+        "from_heads": 3
+      },
+      {
+        "name": "softmax_output",
+        "type": "Dense",
+        "units": 2,
+        "activation": "softmax"
+      },
+      {
+        "name": "temperature_scaling",
+        "type": "TemperatureScaling",
+        "learnable": true
+      }
+    ],
+    "uncertainty_outputs": {
+      "prediction_probability": "shape (batch_size, 2)",
+      "confidence_score": "mean probability of top class",
+      "predictive_variance": "variance across multi-head outputs",
+      "epistemic_uncertainty": "head disagreement measure"
+    }
+  },
+  "output_specification": {
+    "primary_output": {
+      "name": "classification_logits",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "activation": "softmax"
+    },
+    "auxiliary_outputs": {
+      "confidence_score": {
+        "shape": [
+          1
+        ],
+        "range": [
+          0.0,
+          1.0
+        ],
+        "interpretation": "prediction confidence"
+      },
+      "predictive_variance": {
+        "shape": [
+          1
+        ],
+        "range": [
+          0.0,
+          1.0
+        ],
+        "interpretation": "uncertainty from ensemble voting"
+      },
+      "epistemic_uncertainty": {
+        "shape": [
+          1
+        ],
+        "range": [
+          0.0,
+          1.0
+        ],
+        "interpretation": "model's uncertainty about the prediction"
+      }
+    }
+  },
+  "regularization_summary": {
+    "dropout_strategy": {
+      "character_branch": 0.5,
+      "word_branch": 0.3,
+      "structural_branch": 0.3,
+      "fusion_module": 0.3,
+      "uncertainty_heads": 0.2
+    },
+    "l2_regularization": {
+      "value": 0.01,
+      "applied_to": [
+        "Conv1D layers",
+        "Dense layers"
+      ],
+      "purpose": "Weight smoothing and generalization"
+    },
+    "batch_normalization": {
+      "applied_to": [
+        "after each major conv block",
+        "before uncertainty heads"
+      ],
+      "purpose": "Gradient stabilization and faster convergence"
+    }
+  }
+}

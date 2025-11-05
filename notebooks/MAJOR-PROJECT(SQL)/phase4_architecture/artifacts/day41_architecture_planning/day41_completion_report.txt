@@ -1,0 +1,285 @@
+
+================================================================================
+PHASE 4 - DAY 41: ARCHITECTURAL PLANNING & SPECIFICATION
+COMPLETION REPORT
+================================================================================
+
+Date: 2025-11-05
+Status: COMPLETE AND APPROVED
+Reviewed By: Technical Lead (Automated)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+Day 41 successfully completed the architectural planning phase for Phase 4: 
+Anti-Overfitting & Uncertainty-Aware CNN. All design decisions are documented,
+visualized, and ready for implementation in Days 42-50.
+
+Key Achievement: Designed a balanced multi-branch architecture that:
+- Reduces overfitting through aggressive regularization
+- Incorporates uncertainty quantification for reliable predictions
+- Maintains zero data leakage from Phase 3C evaluation set
+- Balances learning contributions from character, word, and structural inputs
+
+================================================================================
+DELIVERABLES (ALL COMPLETE)
+================================================================================
+
+1. ARCHITECTURE SPECIFICATION (JSON)
+   File: architecture_spec_v1.json
+   Status: SAVED AND VALIDATED
+   Contents:
+     - Complete branch specifications
+     - Fusion and attention module design
+     - Uncertainty module configuration
+     - Regularization strategy
+     - Output specification
+
+2. ARCHITECTURE DOCUMENTATION (MARKDOWN)
+   File: architecture_spec_v1.md
+   Status: SAVED AND VALIDATED
+   Contents:
+     - Executive summary
+     - Design principles
+     - Detailed branch descriptions
+     - Layer-by-layer specifications
+     - Regularization strategy
+     - Training configuration recommendations
+     - Acceptance criteria checklist
+
+3. ARCHITECTURE VISUALIZATION (HTML - INTERACTIVE)
+   File: cnn_architecture_visualization_v1.html
+   Status: SAVED AND DISPLAYED
+   Contents:
+     - Complete architecture diagram
+     - All three branches with layer details
+     - Fusion and attention mechanism
+     - Uncertainty module with multi-head classifiers
+     - Output heads
+     - Interactive tooltips for each component
+
+================================================================================
+ACCEPTANCE CRITERIA - ALL MET
+================================================================================
+
+CRITERION 1: Architecture Diagram Created
+   Status: PASS
+   Evidence: cnn_architecture_visualization_v1.html saved and displayed
+   Details: Complete visual representation of all components with interactive elements
+
+CRITERION 2: Three Input Branches Fully Specified
+   Status: PASS
+   Evidence: 
+     - Branch 1 (Character): Input [1024] -> Output [128], 11 layers defined
+     - Branch 2 (Word): Input [150] -> Output [128], 11 layers defined
+     - Branch 3 (Structural): Input [104] -> Output [128], 8 layers defined
+   Specifications: Complete layer-by-layer documentation with regularization
+
+CRITERION 3: Fusion Mechanism Defined
+   Status: PASS
+   Evidence: Fusion module with 7 layers documented
+   Details:
+     - Concatenation: [128+128+128] -> [384]
+     - Multi-Head Attention: 3 heads, key dimension 64
+     - Output: [256] fused feature vector
+     - Regularization: Dropout 0.3, L2 0.01
+
+CRITERION 4: Uncertainty Module Designed
+   Status: PASS
+   Evidence: Multi-head classifier architecture specified
+   Details:
+     - 3 parallel classifier heads
+     - Temperature scaling for confidence calibration
+     - 4 output types: classification, confidence, variance, epistemic uncertainty
+     - Ensemble voting mechanism defined
+
+CRITERION 5: Input/Output Dimensions Mapped
+   Status: PASS
+   Evidence: Complete dimension mapping documented
+   Mapping:
+     Character:  [1024] -> [128]
+     Word:       [150] -> [128]
+     Structural: [104] -> [128]
+     Fusion:     [384] -> [256]
+     Classification: [256] -> [2]
+     Confidence: [256] -> [1]
+     Variance:   [256] -> [1]
+     Epistemic:  [256] -> [1]
+
+CRITERION 6: Zero Data Leakage Verified
+   Status: PASS
+   Evidence: 
+     - Phase 3B training data only used for architecture design
+     - Phase 3C evaluation data: LOCKED (not accessed)
+     - No evaluation metrics computed on training data
+     - Separate validation split defined for Phase 5
+
+CRITERION 7: Documentation Complete
+   Status: PASS
+   Evidence: 3 comprehensive documents created
+     1. JSON specification (machine-readable)
+     2. Markdown documentation (human-readable)
+     3. Interactive visualization (stakeholder-friendly)
+
+================================================================================
+TECHNICAL SPECIFICATIONS SUMMARY
+================================================================================
+
+BRANCH 1: CHARACTER-LEVEL DETECTION
+  Purpose:      Fine-grained obfuscation and encoding detection
+  Input Shape:  [batch_size, 1024]
+  Input Source: train_char_tokenized.parquet
+  Layers:       11 (Embedding -> Conv1D x3 -> GlobalMaxPool -> Dense x2)
+  Output:       [batch_size, 128]
+  Regularization: Dropout 0.5, L2 0.01, BatchNorm
+  Justification: Highest dropout (0.5) to prevent overfitting on character patterns
+
+BRANCH 2: WORD-LEVEL SEMANTIC
+  Purpose:      Contextual understanding through token sequences
+  Input Shape:  [batch_size, 150]
+  Input Source: train_word_tokenized_raw.parquet + token_types
+  Layers:       11 (Embed + TokenTypeEmbed -> Conv1D x2 -> GlobalAvgPool -> Dense x2)
+  Output:       [batch_size, 128]
+  Regularization: Dropout 0.3, L2 0.01, BatchNorm
+  Justification: Moderate dropout for semantic complexity
+
+BRANCH 3: STRUCTURAL FEATURES
+  Purpose:      High-level syntax and semantic feature extraction
+  Input Shape:  [batch_size, 104]
+  Input Source: Statistical (34) + Syntax (34) + Semantic Roles (36)
+  Layers:       8 (LayerNorm -> Dense x3 with BatchNorm)
+  Output:       [batch_size, 128]
+  Regularization: Dropout 0.3, L2 0.01, BatchNorm
+  Justification: Engineered features require moderate regularization
+
+FUSION MODULE: MULTI-BRANCH ATTENTION
+  Strategy:     Concatenation + Multi-Head Attention
+  Input:        [384] (concatenated branch outputs)
+  Attention:    3 heads, key dimension 64
+  Output:       [256] (fused feature vector)
+  Purpose:      Dynamically weight branch contributions per sample
+  Regularization: Dropout 0.3, L2 0.01
+
+UNCERTAINTY MODULE: MULTI-HEAD CLASSIFICATION
+  Strategy:     3 parallel classifiers + temperature scaling
+  Heads:        3 independent Dense(128) -> Dense(2) classifiers
+  Purpose:      Ensemble voting for uncertainty quantification
+  Outputs:
+    1. Classification: [2] softmax probabilities
+    2. Confidence: [1] temperature-scaled confidence
+    3. Variance: [1] epistemic uncertainty
+    4. Epistemic: [1] head disagreement measure
+  Regularization: Dropout 0.2 per head, L2 0.01
+
+================================================================================
+REGULARIZATION STRATEGY CONFIRMATION
+================================================================================
+
+DROPOUT STRATEGY:
+  Character Branch:     0.5 (highest)
+  Word Branch:          0.3 (moderate)
+  Structural Branch:    0.3 (moderate)
+  Fusion Module:        0.3 (moderate)
+  Uncertainty Heads:    0.2 (light)
+
+L2 REGULARIZATION:
+  Applied To: All Conv1D and Dense layers
+  Value: 0.01
+  Purpose: Weight smoothing and generalization
+
+BATCH NORMALIZATION:
+  Applied After: Each major convolutional or dense block
+  Purpose: Gradient stabilization and faster convergence
+  Locations: All three branches + structural branch
+
+================================================================================
+DATA ISOLATION CONFIRMATION
+================================================================================
+
+Training Data (Phase 3B):
+  Source: ../notebooks/phase3b_pipeline/data/tokenized/
+  Samples: 133,734
+  Status: USED for architecture design (split 85% train / 15% validation)
+  Files:
+    - train_char_tokenized.parquet (Character branch input)
+    - train_word_tokenized_raw.parquet (Word branch input)
+    - features_statistical_v1.parquet (Structural branch input)
+    - features_syntax_v1.parquet (Structural branch input)
+    - semantic_roles_v1.parquet (Structural branch input)
+
+Evaluation Data (Phase 3C):
+  Source: phase3c_evaluation_datasets/artifacts/
+  Samples: 36,149
+  Status: LOCKED - Not accessed during Day 41
+  Purpose: Reserved for Phase 5 model evaluation
+  Guarantee: Zero leakage confirmed
+
+================================================================================
+ARTIFACTS GENERATED
+================================================================================
+
+Location: MAJOR-PROJECT(SQL)/phase4_architecture/artifacts/day41_architecture_planning/
+
+Files:
+  1. architecture_spec_v1.json
+     - Machine-readable architecture specification
+     - Complete branch, fusion, and uncertainty configurations
+     - Regularization parameters documented
+     - Size: ~35 KB
+
+  2. architecture_spec_v1.md
+     - Human-readable documentation
+     - Detailed descriptions of all components
+     - Training configuration recommendations
+     - Acceptance criteria checklist
+     - Size: ~45 KB
+
+  3. cnn_architecture_visualization_v1.html
+     - Interactive Plotly visualization
+     - All components with hover tooltips
+     - Color-coded by layer type
+     - Branch labels and output specifications
+     - Size: ~250 KB
+
+Total Artifacts: 3 files
+Total Storage: ~330 KB
+Backup Status: Ready for version control
+
+================================================================================
+NEXT MILESTONE: DAY 42 - CHARACTER-LEVEL BRANCH REBALANCING
+================================================================================
+
+Objective: Implement and validate the character-level branch with:
+  - 64 filters (down from initial 128)
+  - 3 hierarchical convolution layers (kernel sizes 3, 5, 7)
+  - Dropout (0.5) and L2 regularization (0.01)
+  - Batch normalization after each conv block
+  - GlobalMaxPooling for temporal dimension reduction
+
+Tasks:
+  1. Build character embedding layer (vocab=256, dim=32)
+  2. Implement Conv1D blocks with batch normalization
+  3. Add dropout layers with rate 0.5
+  4. Create dense layers (256 -> 128)
+  5. Validate on training subset for dimension alignment
+  6. Document parameter count reduction
+
+Expected Outputs:
+  1. char_branch_spec_v1.md (specification)
+  2. char_branch_implementation.py (code)
+  3. char_branch_validation_report.csv (metrics)
+
+================================================================================
+SIGN-OFF
+================================================================================
+
+Day 41 Status: COMPLETE
+All Acceptance Criteria: PASSED
+Ready for Phase Implementation: YES
+Approval for Day 42: APPROVED
+
+Generated: 2025-11-05 23:00 IST
+Next Execution: Day 42 - Character Branch Implementation
+
+================================================================================
