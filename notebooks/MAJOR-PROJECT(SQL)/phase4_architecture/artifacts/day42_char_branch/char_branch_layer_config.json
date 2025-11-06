@@ -1,0 +1,113 @@
+{
+  "model_name": "character_branch",
+  "description": "Character-level SQL injection detection branch",
+  "framework": "TensorFlow/Keras",
+  "total_layers": 12,
+  "total_parameters": 113984,
+  "trainable_parameters": 113600,
+  "input_specification": {
+    "shape": [
+      null,
+      1024
+    ],
+    "dtype": "int32",
+    "vocabulary_size": 256,
+    "sequence_type": "character tokens",
+    "padding": "post-padding with 0",
+    "max_length": 1024
+  },
+  "output_specification": {
+    "shape": [
+      null,
+      128
+    ],
+    "dtype": "float32",
+    "description": "Feature vector for fusion with other branches"
+  },
+  "layers": [
+    {
+      "index": 0,
+      "name": "char_input",
+      "type": "InputLayer",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 1,
+      "name": "char_embedding",
+      "type": "Embedding",
+      "parameters": 8192,
+      "trainable": true
+    },
+    {
+      "index": 2,
+      "name": "char_conv_block_1",
+      "type": "Conv1D",
+      "parameters": 6208,
+      "trainable": true
+    },
+    {
+      "index": 3,
+      "name": "char_batch_norm_1",
+      "type": "BatchNormalization",
+      "parameters": 256,
+      "trainable": true
+    },
+    {
+      "index": 4,
+      "name": "char_conv_block_2",
+      "type": "Conv1D",
+      "parameters": 20544,
+      "trainable": true
+    },
+    {
+      "index": 5,
+      "name": "char_batch_norm_2",
+      "type": "BatchNormalization",
+      "parameters": 256,
+      "trainable": true
+    },
+    {
+      "index": 6,
+      "name": "char_conv_block_3",
+      "type": "Conv1D",
+      "parameters": 28736,
+      "trainable": true
+    },
+    {
+      "index": 7,
+      "name": "char_batch_norm_3",
+      "type": "BatchNormalization",
+      "parameters": 256,
+      "trainable": true
+    },
+    {
+      "index": 8,
+      "name": "char_global_maxpool",
+      "type": "GlobalMaxPooling1D",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 9,
+      "name": "char_dense_1",
+      "type": "Dense",
+      "parameters": 16640,
+      "trainable": true
+    },
+    {
+      "index": 10,
+      "name": "char_dropout",
+      "type": "Dropout",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 11,
+      "name": "char_dense_2",
+      "type": "Dense",
+      "parameters": 32896,
+      "trainable": true
+    }
+  ]
+}

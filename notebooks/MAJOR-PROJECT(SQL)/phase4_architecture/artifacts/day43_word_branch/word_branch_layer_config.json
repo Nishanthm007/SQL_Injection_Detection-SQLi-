@@ -1,0 +1,107 @@
+{
+  "model_name": "word_semantic_branch",
+  "description": "Word-level semantic understanding branch with dual embeddings",
+  "framework": "TensorFlow/Keras",
+  "total_layers": 14,
+  "total_parameters": 593088,
+  "layers": [
+    {
+      "index": 0,
+      "name": "word_input",
+      "type": "InputLayer",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 1,
+      "name": "token_type_input",
+      "type": "InputLayer",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 2,
+      "name": "word_embedding",
+      "type": "Embedding",
+      "parameters": 500000,
+      "trainable": true
+    },
+    {
+      "index": 3,
+      "name": "token_type_embedding",
+      "type": "Embedding",
+      "parameters": 160,
+      "trainable": true
+    },
+    {
+      "index": 4,
+      "name": "concat_embeddings",
+      "type": "Concatenate",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 5,
+      "name": "word_conv_block_1",
+      "type": "Conv1D",
+      "parameters": 22336,
+      "trainable": true
+    },
+    {
+      "index": 6,
+      "name": "word_batch_norm_1",
+      "type": "BatchNormalization",
+      "parameters": 256,
+      "trainable": true
+    },
+    {
+      "index": 7,
+      "name": "word_conv_block_2",
+      "type": "Conv1D",
+      "parameters": 20544,
+      "trainable": true
+    },
+    {
+      "index": 8,
+      "name": "word_batch_norm_2",
+      "type": "BatchNormalization",
+      "parameters": 256,
+      "trainable": true
+    },
+    {
+      "index": 9,
+      "name": "word_dropout_conv",
+      "type": "Dropout",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 10,
+      "name": "word_global_avgpool",
+      "type": "GlobalAveragePooling1D",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 11,
+      "name": "word_dense_1",
+      "type": "Dense",
+      "parameters": 16640,
+      "trainable": true
+    },
+    {
+      "index": 12,
+      "name": "word_dropout_dense",
+      "type": "Dropout",
+      "parameters": 0,
+      "trainable": true
+    },
+    {
+      "index": 13,
+      "name": "word_dense_2",
+      "type": "Dense",
+      "parameters": 32896,
+      "trainable": true
+    }
+  ]
+}
