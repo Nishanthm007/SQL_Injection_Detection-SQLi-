@@ -2,7 +2,7 @@
   "phase": "Phase 4: Anti-Overfitting & Uncertainty-Aware CNN",
   "day": 41,
   "version": "v1",
-  "created_at": "2025-11-05T22:45:13.322868",
+  "created_at": "2025-11-06T21:40:35.495201",
   "design_principles": [
     "Balance learning contributions across 3 input branches",
     "Reduce overfitting through regularization (dropout + L2)",
