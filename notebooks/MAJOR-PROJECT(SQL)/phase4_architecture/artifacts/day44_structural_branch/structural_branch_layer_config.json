@@ -1,0 +1,61 @@
+{
+  "model_name": "structural_branch",
+  "total_layers": 9,
+  "total_parameters": 221472,
+  "layers": [
+    {
+      "index": 0,
+      "name": "structural_input",
+      "type": "InputLayer",
+      "parameters": 0
+    },
+    {
+      "index": 1,
+      "name": "input_normalization",
+      "type": "BatchNormalization",
+      "parameters": 416
+    },
+    {
+      "index": 2,
+      "name": "struct_dense_1",
+      "type": "Dense",
+      "parameters": 53760
+    },
+    {
+      "index": 3,
+      "name": "struct_batch_norm_1",
+      "type": "BatchNormalization",
+      "parameters": 2048
+    },
+    {
+      "index": 4,
+      "name": "struct_dropout_1",
+      "type": "Dropout",
+      "parameters": 0
+    },
+    {
+      "index": 5,
+      "name": "struct_dense_2",
+      "type": "Dense",
+      "parameters": 131328
+    },
+    {
+      "index": 6,
+      "name": "struct_batch_norm_2",
+      "type": "BatchNormalization",
+      "parameters": 1024
+    },
+    {
+      "index": 7,
+      "name": "struct_dropout_2",
+      "type": "Dropout",
+      "parameters": 0
+    },
+    {
+      "index": 8,
+      "name": "struct_dense_3",
+      "type": "Dense",
+      "parameters": 32896
+    }
+  ]
+}
