@@ -1,0 +1,60 @@
+# CNN Configuration Template for Phase 5
+# Phase 4 Day 49 - Auto-generated
+
+model:
+  name: "multi_branch_fusion_uncertainty"
+  version: "1.0"
+  architecture: "3-branch frozen + trainable fusion + classification head"
+
+training:
+  optimizer:
+    type: "Adam"
+    learning_rate: 0.001
+    gradient_clip_norm: 1.0
+    warmup_steps: 100
+  
+  batch_size: 32
+  epochs: 100
+  validation_split: 0.2
+  
+  loss_weights:
+    main_classification: 1.0
+    head_detection: 0.8
+    head_confidence: 0.5
+    head_uncertainty: 0.5
+    head_calibration: 0.3
+    calibration_error: 0.2
+    entropy_regularization: 0.01
+    head_diversity: 0.1
+
+regularization:
+  dropout:
+    character: 0.5
+    word: 0.3
+    structural: 0.3
+    fusion: 0.3
+  
+  l2_regularization: 0.01
+  batch_norm_momentum: 0.99
+  gradient_clipping: 1.0
+
+temperature_scaling:
+  enabled: true
+  initial_value: 1.0
+  learnable: true
+  min_value: 0.1
+  max_value: 10.0
+
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - auc_roc
+    - calibration_error
+    - brier_score
+  
+  validation_frequency: 1
+  checkpoint_frequency: 5
+  early_stopping_patience: 5
