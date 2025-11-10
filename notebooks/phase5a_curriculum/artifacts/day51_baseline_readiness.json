@@ -1,0 +1,43 @@
+{
+  "readiness_status": {
+    "models_ready": true,
+    "data_available": true,
+    "sample_size": 1000,
+    "timestamp": "2025-11-10T21:56:43.241626"
+  },
+  "available_datasets": {
+    "eval_manifest": {
+      "path": "phase3c_evaluation_datasets\\artifacts\\day10_annotation\\eval_manifest_v1.csv",
+      "size_mb": 3.386061668395996,
+      "exists": true
+    },
+    "features_statistical": {
+      "path": "phase3b_pipeline\\data\\features\\features_statistical_v1.parquet",
+      "size_mb": 10.662887573242188,
+      "exists": true
+    },
+    "features_syntax": {
+      "path": "phase3b_pipeline\\data\\features\\features_syntax_v1.parquet",
+      "size_mb": 2.0352659225463867,
+      "exists": true
+    },
+    "semantic_roles": {
+      "path": "phase3b_pipeline\\data\\features\\semantic_roles_v1.parquet",
+      "size_mb": 2.3496551513671875,
+      "exists": true
+    },
+    "embeddings": {
+      "path": "phase3b_pipeline\\data\\embeddings\\embeddings_train_v1.h5",
+      "size_mb": 2.908609390258789,
+      "exists": true
+    }
+  },
+  "model_files": {
+    "char_branch": "phase4_architecture\\char_branch_v1.h5",
+    "word_branch": "phase4_architecture\\word_branch_v1.h5",
+    "structural_branch": "phase4_architecture\\structural_branch_v1.h5",
+    "fusion_model": "phase4_architecture\\fusion_model_v1.h5"
+  },
+  "baseline_sample_size": 1000,
+  "can_proceed_to_training": true
+}
