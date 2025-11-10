@@ -1,0 +1,41 @@
+{
+  "consolidated_models": {
+    "char_branch_v1.h5": {
+      "source": "phase4_architecture\\artifacts\\day42_char_branch\\char_branch_model.h5",
+      "target": "phase4_architecture\\char_branch_v1.h5",
+      "size_mb": 0.4789886474609375,
+      "status": "consolidated"
+    },
+    "word_branch_v1.h5": {
+      "source": "phase4_architecture\\artifacts\\day43_word_branch\\word_branch_model.h5",
+      "target": "phase4_architecture\\word_branch_v1.h5",
+      "size_mb": 2.3061141967773438,
+      "status": "consolidated"
+    },
+    "structural_branch_v1.h5": {
+      "source": "phase4_architecture\\artifacts\\day44_structural_branch\\structural_branch_model.h5",
+      "target": "phase4_architecture\\structural_branch_v1.h5",
+      "size_mb": 0.878326416015625,
+      "status": "consolidated"
+    },
+    "fusion_model_v1.h5": {
+      "source": "N/A",
+      "target": "N/A",
+      "size_mb": 0,
+      "status": "to_be_created"
+    }
+  },
+  "artifact_summary": {
+    "branches": {
+      "char": "consolidated",
+      "word": "consolidated",
+      "structural": "consolidated"
+    },
+    "fusion": "to_be_created",
+    "configs_loaded": 5,
+    "datasets_found": 13,
+    "ready_for_baseline": true
+  },
+  "dataset_count": 13,
+  "timestamp": "2025-11-10T21:04:17.212901"
+}
