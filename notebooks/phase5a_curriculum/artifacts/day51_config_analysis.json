@@ -1,19 +1,18 @@
 {
-  "timestamp": "2025-11-10T20:54:29.429259",
+  "timestamp": "2025-11-13T00:14:52.850841",
   "configs_loaded": 5,
-  "models_found": 0,
-  "models_missing": 4,
+  "models_found": 4,
+  "models_missing": 0,
   "has_char_branch": true,
   "has_word_branch": true,
   "has_structural_branch": true,
-  "has_fusion_module": false,
-  "missing_models": [
-    "char_branch_v1.h5",
-    "word_branch_v1.h5",
-    "structural_branch_v1.h5",
-    "fusion_model_v1.h5"
-  ],
+  "has_fusion_module": true,
+  "missing_models": [],
   "all_h5_files": [
+    "phase4_architecture\\char_branch_v1.h5",
+    "phase4_architecture\\fusion_model_v1.h5",
+    "phase4_architecture\\structural_branch_v1.h5",
+    "phase4_architecture\\word_branch_v1.h5",
     "phase4_architecture\\artifacts\\day42_char_branch\\char_branch_model.h5",
     "phase4_architecture\\artifacts\\day42_char_branch\\char_branch_weights.h5",
     "phase4_architecture\\artifacts\\day43_word_branch\\word_branch_model.h5",
