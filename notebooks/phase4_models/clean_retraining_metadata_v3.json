@@ -1,0 +1,42 @@
+{
+  "retraining_date": "2025-11-13",
+  "validation_status": "ZERO_LEAKAGE_CONFIRMED",
+  "data_stats": {
+    "original_samples": 133734,
+    "duplicates_removed": 8089,
+    "clean_samples": 125645,
+    "train_samples": 100516,
+    "val_samples": 25129
+  },
+  "branch_performance": {
+    "character": {
+      "architecture": "CNN (Conv1D)",
+      "val_accuracy": 0.999005138874054,
+      "training_time_min": 57.335184983333335
+    },
+    "word": {
+      "architecture": "CNN (Conv1D) - LSTM failed",
+      "val_accuracy": 0.993354320526123,
+      "training_time_min": 10.158406766666667
+    },
+    "structural": {
+      "architecture": "Dense MLP",
+      "val_accuracy": 0.99996018409729,
+      "training_time_min": 0.9975083833333334,
+      "deterministic": true
+    },
+    "average_accuracy": 0.9974398811658223
+  },
+  "leakage_analysis": {
+    "char_word_duplicates": 0,
+    "structural_pattern_overlap": 8571,
+    "same_class_overlaps": 8571,
+    "different_class_conflicts": 0,
+    "verdict": "LEGITIMATE - Deterministic features"
+  },
+  "vocab_sizes": {
+    "char_vocab": 260,
+    "word_vocab": 5000,
+    "structural_features": 104
+  }
+}

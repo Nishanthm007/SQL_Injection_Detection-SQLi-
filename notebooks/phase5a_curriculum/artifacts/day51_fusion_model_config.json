@@ -1,6 +1,5 @@
 {
   "name": "fusion_multihead_model",
-  "trainable": true,
   "layers": [
     {
       "class_name": "InputLayer",
@@ -24,7 +23,7 @@
         "trainable": true,
         "dtype": "float32",
         "function": [
-          "4wEAAAAAAAAAAAAAAAEAAAAEAAAAQwAAAHMUAAAAfABkAGQAhQJkAGQBhQJmAhkAUwApAk7pgAAA\nAKkAKQHaAXhyAgAAAHICAAAA+j9DOi9Vc2Vycy9uaXNoYS9BcHBEYXRhL0xvY2FsL1RlbXAvaXB5\na2VybmVsXzIwMDU2LzEzMDYzMjM1MzQucHnaCDxsYW1iZGE+YAAAAHMCAAAAFAA=\n",
+          "4wEAAAAAAAAAAAAAAAEAAAAEAAAAQwAAAHMUAAAAfABkAGQAhQJkAGQBhQJmAhkAUwApAk7pgAAA\nAKkAKQHaAXhyAgAAAHICAAAA+kFDOi9Vc2Vycy9Lc2hpdGlqL0FwcERhdGEvTG9jYWwvVGVtcC9p\ncHlrZXJuZWxfMTY3NDgvMTMwNjMyMzUzNC5wedoIPGxhbWJkYT5gAAAA8wAAAAA=\n",
           null,
           null
         ],
@@ -54,7 +53,7 @@
         "trainable": true,
         "dtype": "float32",
         "function": [
-          "4wEAAAAAAAAAAAAAAAEAAAAEAAAAQwAAAHMUAAAAfABkAGQAhQJkAWQChQJmAhkAUwApA07pgAAA\nAOkAAQAAqQApAdoBeHIDAAAAcgMAAAD6P0M6L1VzZXJzL25pc2hhL0FwcERhdGEvTG9jYWwvVGVt\ncC9pcHlrZXJuZWxfMjAwNTYvMTMwNjMyMzUzNC5wedoIPGxhbWJkYT5hAAAAcwIAAAAUAA==\n",
+          "4wEAAAAAAAAAAAAAAAEAAAAEAAAAQwAAAHMUAAAAfABkAGQAhQJkAWQChQJmAhkAUwApA07pgAAA\nAOkAAQAAqQApAdoBeHIDAAAAcgMAAAD6QUM6L1VzZXJzL0tzaGl0aWovQXBwRGF0YS9Mb2NhbC9U\nZW1wL2lweWtlcm5lbF8xNjc0OC8xMzA2MzIzNTM0LnB52gg8bGFtYmRhPmEAAADzAAAAAA==\n",
           null,
           null
         ],
@@ -84,7 +83,7 @@
         "trainable": true,
         "dtype": "float32",
         "function": [
-          "4wEAAAAAAAAAAAAAAAEAAAAEAAAAQwAAAHMUAAAAfABkAGQAhQJkAWQAhQJmAhkAUwApAk7pAAEA\nAKkAKQHaAXhyAgAAAHICAAAA+j9DOi9Vc2Vycy9uaXNoYS9BcHBEYXRhL0xvY2FsL1RlbXAvaXB5\na2VybmVsXzIwMDU2LzEzMDYzMjM1MzQucHnaCDxsYW1iZGE+YgAAAHMCAAAAFAA=\n",
+          "4wEAAAAAAAAAAAAAAAEAAAAEAAAAQwAAAHMUAAAAfABkAGQAhQJkAWQAhQJmAhkAUwApAk7pAAEA\nAKkAKQHaAXhyAgAAAHICAAAA+kFDOi9Vc2Vycy9Lc2hpdGlqL0FwcERhdGEvTG9jYWwvVGVtcC9p\ncHlrZXJuZWxfMTY3NDgvMTMwNjMyMzUzNC5wedoIPGxhbWJkYT5iAAAA8wAAAAA=\n",
           null,
           null
         ],
@@ -249,18 +248,14 @@
         "activation": "linear",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": null,
         "bias_regularizer": null,
@@ -290,18 +285,14 @@
         "activation": "linear",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": null,
         "bias_regularizer": null,
@@ -331,18 +322,14 @@
         "activation": "linear",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": null,
         "bias_regularizer": null,
@@ -421,7 +408,7 @@
         "trainable": true,
         "dtype": "float32",
         "function": [
-          "4wEAAAAAAAAAAAAAAAEAAAAFAAAAQwAAAHMYAAAAdACgAXwAZABkAIUCZAFmAhkAZAKhAlMAKQNO\n6QAAAADp/////ykC2gJ0ZtoLZXhwYW5kX2RpbXMpAdoBeKkAcgYAAAD6P0M6L1VzZXJzL25pc2hh\nL0FwcERhdGEvTG9jYWwvVGVtcC9pcHlrZXJuZWxfMjAwNTYvMTMwNjMyMzUzNC5wedoIPGxhbWJk\nYT53AAAAcwIAAAAYAA==\n",
+          "4wEAAAAAAAAAAAAAAAEAAAAFAAAAQwAAAHMYAAAAdACgAXwAZABkAIUCZAFmAhkAZAKhAlMAKQNO\n6QAAAADp/////ykC2gJ0ZtoLZXhwYW5kX2RpbXMpAdoBeKkAcgYAAAD6QUM6L1VzZXJzL0tzaGl0\naWovQXBwRGF0YS9Mb2NhbC9UZW1wL2lweWtlcm5lbF8xNjc0OC8xMzA2MzIzNTM0LnB52gg8bGFt\nYmRhPncAAADzAAAAAA==\n",
           null,
           null
         ],
@@ -451,7 +438,7 @@
         "trainable": true,
         "dtype": "float32",
         "function": [
-          "4wEAAAAAAAAAAAAAAAEAAAAFAAAAQwAAAHMYAAAAdACgAXwAZABkAIUCZAFmAhkAZAKhAlMAKQNO\n6QEAAADp/////ykC2gJ0ZtoLZXhwYW5kX2RpbXMpAdoBeKkAcgYAAAD6P0M6L1VzZXJzL25pc2hh\nL0FwcERhdGEvTG9jYWwvVGVtcC9pcHlrZXJuZWxfMjAwNTYvMTMwNjMyMzUzNC5wedoIPGxhbWJk\nYT55AAAAcwIAAAAYAA==\n",
+          "4wEAAAAAAAAAAAAAAAEAAAAFAAAAQwAAAHMYAAAAdACgAXwAZABkAIUCZAFmAhkAZAKhAlMAKQNO\n6QEAAADp/////ykC2gJ0ZtoLZXhwYW5kX2RpbXMpAdoBeKkAcgYAAAD6QUM6L1VzZXJzL0tzaGl0\naWovQXBwRGF0YS9Mb2NhbC9UZW1wL2lweWtlcm5lbF8xNjc0OC8xMzA2MzIzNTM0LnB52gg8bGFt\nYmRhPnkAAADzAAAAAA==\n",
           null,
           null
         ],
@@ -481,7 +468,7 @@
         "trainable": true,
         "dtype": "float32",
         "function": [
-          "4wEAAAAAAAAAAAAAAAEAAAAFAAAAQwAAAHMYAAAAdACgAXwAZABkAIUCZAFmAhkAZAKhAlMAKQNO\n6QIAAADp/////ykC2gJ0ZtoLZXhwYW5kX2RpbXMpAdoBeKkAcgYAAAD6P0M6L1VzZXJzL25pc2hh\nL0FwcERhdGEvTG9jYWwvVGVtcC9pcHlrZXJuZWxfMjAwNTYvMTMwNjMyMzUzNC5wedoIPGxhbWJk\nYT57AAAAcwIAAAAYAA==\n",
+          "4wEAAAAAAAAAAAAAAAEAAAAFAAAAQwAAAHMYAAAAdACgAXwAZABkAIUCZAFmAhkAZAKhAlMAKQNO\n6QIAAADp/////ykC2gJ0ZtoLZXhwYW5kX2RpbXMpAdoBeKkAcgYAAAD6QUM6L1VzZXJzL0tzaGl0\naWovQXBwRGF0YS9Mb2NhbC9UZW1wL2lweWtlcm5lbF8xNjc0OC8xMzA2MzIzNTM0LnB52gg8bGFt\nYmRhPnsAAADzAAAAAA==\n",
           null,
           null
         ],
@@ -620,26 +607,20 @@
         "activation": "relu",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": {
-          "module": "keras.regularizers",
           "class_name": "L2",
           "config": {
             "l2": 0.009999999776482582
-          },
-          "registered_name": null
+          }
         },
         "bias_regularizer": null,
         "activity_regularizer": null,
@@ -672,28 +653,20 @@
         "center": true,
         "scale": true,
         "beta_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "gamma_initializer": {
-          "module": "keras.initializers",
           "class_name": "Ones",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "moving_mean_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "moving_variance_initializer": {
-          "module": "keras.initializers",
           "class_name": "Ones",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "beta_regularizer": null,
         "gamma_regularizer": null,
@@ -744,26 +717,20 @@
         "activation": "relu",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": {
-          "module": "keras.regularizers",
           "class_name": "L2",
           "config": {
             "l2": 0.009999999776482582
-          },
-          "registered_name": null
+          }
         },
         "bias_regularizer": null,
         "activity_regularizer": null,
@@ -796,28 +763,20 @@
         "center": true,
         "scale": true,
         "beta_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "gamma_initializer": {
-          "module": "keras.initializers",
           "class_name": "Ones",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "moving_mean_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "moving_variance_initializer": {
-          "module": "keras.initializers",
           "class_name": "Ones",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "beta_regularizer": null,
         "gamma_regularizer": null,
@@ -868,26 +827,20 @@
         "activation": "relu",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": {
-          "module": "keras.regularizers",
           "class_name": "L2",
           "config": {
             "l2": 0.009999999776482582
-          },
-          "registered_name": null
+          }
         },
         "bias_regularizer": null,
         "activity_regularizer": null,
@@ -916,26 +869,20 @@
         "activation": "relu",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": {
-          "module": "keras.regularizers",
           "class_name": "L2",
           "config": {
             "l2": 0.009999999776482582
-          },
-          "registered_name": null
+          }
         },
         "bias_regularizer": null,
         "activity_regularizer": null,
@@ -964,26 +911,20 @@
         "activation": "relu",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": {
-          "module": "keras.regularizers",
           "class_name": "L2",
           "config": {
             "l2": 0.009999999776482582
-          },
-          "registered_name": null
+          }
         },
         "bias_regularizer": null,
         "activity_regularizer": null,
@@ -1012,26 +953,20 @@
         "activation": "relu",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": {
-          "module": "keras.regularizers",
           "class_name": "L2",
           "config": {
             "l2": 0.009999999776482582
-          },
-          "registered_name": null
+          }
         },
         "bias_regularizer": null,
         "activity_regularizer": null,
@@ -1148,18 +1083,14 @@
         "activation": "softmax",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": null,
         "bias_regularizer": null,
@@ -1189,18 +1120,14 @@
         "activation": "softmax",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": null,
         "bias_regularizer": null,
@@ -1230,18 +1157,14 @@
         "activation": "softmax",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": null,
         "bias_regularizer": null,
@@ -1271,18 +1194,14 @@
         "activation": "softmax",
         "use_bias": true,
         "kernel_initializer": {
-          "module": "keras.initializers",
           "class_name": "GlorotUniform",
           "config": {
             "seed": null
-          },
-          "registered_name": null
+          }
         },
         "bias_initializer": {
-          "module": "keras.initializers",
           "class_name": "Zeros",
-          "config": {},
-          "registered_name": null
+          "config": {}
         },
         "kernel_regularizer": null,
         "bias_regularizer": null,
