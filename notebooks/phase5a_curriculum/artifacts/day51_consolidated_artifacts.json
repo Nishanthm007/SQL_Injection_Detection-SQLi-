@@ -21,7 +21,7 @@
     "fusion_model_v1.h5": {
       "source": "phase4_architecture\\fusion_model_v1.h5",
       "target": "phase4_architecture\\fusion_model_v1.h5",
-      "size_mb": 0.6037139892578125,
+      "size_mb": 0.6015243530273438,
       "status": "ready"
     }
   },
@@ -37,5 +37,5 @@
     "ready_for_baseline": true
   },
   "dataset_count": 13,
-  "timestamp": "2025-11-11T20:08:59.942422"
+  "timestamp": "2025-11-13T00:14:53.075935"
 }
