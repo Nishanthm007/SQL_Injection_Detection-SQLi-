@@ -1,0 +1,15 @@
+{
+  "notebook_name": "Phase5A_Rigorous_Evaluation_Framework.ipynb",
+  "execution_date": "2025-11-15",
+  "execution_time": "09:07:18",
+  "tensorflow_version": "2.10.0",
+  "gpu_available": "[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]",
+  "cells_completed": [
+    "Cell 1: Load tokenized parquet files",
+    "Cell 2: Deduplicate dataset (sample_id based)",
+    "Cell 3: Query-based deduplication (token sequence)",
+    "Cell 4: 70/15/15 stratified split",
+    "Cell 5: Save split artifacts"
+  ],
+  "status": "Split artifacts saved successfully"
+}

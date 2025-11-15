@@ -1,0 +1,9 @@
+{
+  "char_only": 0.999098002910614,
+  "word_only": 0.9928,
+  "structural_only": 0.9882209300994873,
+  "char_word": 1.0,
+  "char_structural": 0.999469518661499,
+  "word_structural": 0.9989389777183533,
+  "full_ensemble": 1.0
+}

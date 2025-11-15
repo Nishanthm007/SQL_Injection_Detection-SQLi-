@@ -1,0 +1,51 @@
+
+================================================================================
+PHASE 5A: RIGOROUS EVALUATION FRAMEWORK - FINAL REPORT
+================================================================================
+Generated: 2025-11-15 09:49:44
+
+DATASET STATISTICS
+------------------
+Total Samples: 125,645 (after removing 8,089 duplicates)
+  - Train: 87,951 (70%)
+  - Validation: 18,847 (15%)
+  - Test: 18,847 (15%)
+  - Class Balance: 91.1% (benign/malicious ratio)
+
+BRANCH MODEL PERFORMANCE
+------------------------
+1. Character Branch: 99.91% (4.4 min, 214,209 params)
+2. Word Branch: 99.28% (1.4 min, 712,417 params)
+3. Structural Branch: 98.82% (0.9 min, 74,625 params)
+
+ABLATION STUDY
+--------------
+Individual: Char 99.91% | Word 99.28% | Struct 98.82%
+Pairs: C+W 100.00% | C+S 99.95% | W+S 99.89%
+Full Ensemble: 100.00%
+
+FINAL TEST SET RESULTS (18,847 unseen samples)
+-----------------------------------------------
+Accuracy:  99.90%
+Precision: 99.96%
+Recall:    99.86%
+F1 Score:  99.91%
+
+Confusion Matrix:
+  TN: 8,983  |  FP: 4
+  FN: 14  |  TP: 9,846
+
+Total Errors: 18 / 18,847 (0.096%)
+
+COMPARISON TO STATE-OF-THE-ART
+-------------------------------
+Naive Bayes: 98.33% | DeepSQLi: 99.30% | This Work: 99.90% (+0.60% improvement)
+
+CONCLUSION
+----------
+Three-branch ensemble achieves 99.90% test accuracy with proper experimental
+design, zero data leakage, and production-ready performance. Results are
+reproducible and publication-ready.
+
+Artifacts saved to: C:\Users\Kshitij\Desktop\Major-Project(SQLi)_Latest\Major-Project(SQLi)\notebooks\MAJOR-PROJECT(SQLi)\phase5a_results
+================================================================================

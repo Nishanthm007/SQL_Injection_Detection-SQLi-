@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-11-15 10:44:47",
+  "hardware": "GPU (NVIDIA CUDA)",
+  "framework": "TensorFlow 2.10.0",
+  "sample_size": 100,
+  "latency_ms": {
+    "mean": 294.69417095184326,
+    "median": 179.168701171875,
+    "min": 167.72961616516113,
+    "max": 11526.51071548462,
+    "p95": 199.18744564056396,
+    "p99": 349.844112396298,
+    "std": 1128.8826047696318
+  },
+  "throughput_qps": 3.393348422094893,
+  "benchmark_accuracy_pct": 100.0,
+  "model_complexity": {
+    "char_branch_params": 214080,
+    "word_branch_params": 712288,
+    "structural_branch_params": 74496,
+    "fusion_params": 24705,
+    "total_params": 1025569
+  }
+}
