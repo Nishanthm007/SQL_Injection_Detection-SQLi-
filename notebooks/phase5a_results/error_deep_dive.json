@@ -1,0 +1,139 @@
+{
+  "timestamp": "2025-11-15 10:35:59",
+  "false_positives": [
+    {
+      "fp_number": 1,
+      "sample_id": "train_085457",
+      "confidence": 0.9713284373283386,
+      "source": "orig_ben",
+      "query": "Not available"
+    },
+    {
+      "fp_number": 2,
+      "sample_id": "train_002251",
+      "confidence": 0.5340003967285156,
+      "source": "orig_ben",
+      "query": "Not available"
+    },
+    {
+      "fp_number": 3,
+      "sample_id": "train_119747",
+      "confidence": 0.6086797118186951,
+      "source": "orig_ben",
+      "query": "Not available"
+    },
+    {
+      "fp_number": 4,
+      "sample_id": "train_096203",
+      "confidence": 0.5254774689674377,
+      "source": "orig_ben",
+      "query": "Not available"
+    }
+  ],
+  "false_negatives": [
+    {
+      "fn_number": 1,
+      "sample_id": "train_052262",
+      "confidence": 0.2528853118419647,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 2,
+      "sample_id": "train_095581",
+      "confidence": 7.615540380356833e-05,
+      "source": "aug_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 3,
+      "sample_id": "train_031310",
+      "confidence": 0.035994771867990494,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 4,
+      "sample_id": "train_107883",
+      "confidence": 0.11898025870323181,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 5,
+      "sample_id": "train_082894",
+      "confidence": 2.1977681896601098e-09,
+      "source": "aug_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 6,
+      "sample_id": "train_098307",
+      "confidence": 0.006441651377826929,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 7,
+      "sample_id": "train_099542",
+      "confidence": 0.2678135633468628,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 8,
+      "sample_id": "train_057552",
+      "confidence": 0.0005550686619244516,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 9,
+      "sample_id": "train_115315",
+      "confidence": 0.04547561705112457,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 10,
+      "sample_id": "train_131764",
+      "confidence": 0.0049970634281635284,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 11,
+      "sample_id": "train_078130",
+      "confidence": 0.15988034009933472,
+      "source": "aug_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 12,
+      "sample_id": "train_107972",
+      "confidence": 0.22527112066745758,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 13,
+      "sample_id": "train_112943",
+      "confidence": 0.09167096018791199,
+      "source": "orig_mal",
+      "query": "Not available"
+    },
+    {
+      "fn_number": 14,
+      "sample_id": "train_036855",
+      "confidence": 0.00013080696226097643,
+      "source": "aug_mal",
+      "query": "Not available"
+    }
+  ],
+  "summary": {
+    "total_errors": 18,
+    "fp_count": 4,
+    "fn_count": 14,
+    "fn_very_low_confidence": 9
+  }
+}

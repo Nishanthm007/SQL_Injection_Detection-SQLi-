@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-11-15 09:49:44",
+  "total_test_samples": 18847,
+  "total_errors": 18,
+  "error_rate_percent": 0.09550591606091155,
+  "false_positives": {
+    "count": 4
+  },
+  "false_negatives": {
+    "count": 14
+  }
+}
