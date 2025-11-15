@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-11-15 09:35:53",
+  "branches": {
+    "character": {
+      "val_accuracy": 0.999098002910614,
+      "training_time_minutes": 4.394003848234813
+    },
+    "word": {
+      "val_accuracy": 0.9928,
+      "training_time_minutes": 1.4
+    },
+    "structural": {
+      "val_accuracy": 0.9882209300994873,
+      "training_time_minutes": 0.9024377187093099,
+      "input_features": 66
+    }
+  },
+  "average_val_accuracy": 0.9933729776700337,
+  "total_training_time_minutes": 6.696441566944122,
+  "verdict": "ALERT: Structural alone >98% - features may encode label"
+}

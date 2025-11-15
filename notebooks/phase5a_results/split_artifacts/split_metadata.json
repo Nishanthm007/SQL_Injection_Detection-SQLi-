@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-11-15 09:07:18",
+  "total_samples": 125645,
+  "random_seed": 42,
+  "split_ratio": "70/15/15",
+  "train": {
+    "count": 87951,
+    "percentage": 69.99960205340443,
+    "benign": 41938,
+    "malicious": 46013,
+    "balance_ratio": 0.91143807184926
+  },
+  "validation": {
+    "count": 18847,
+    "percentage": 15.000198973297785,
+    "benign": 8987,
+    "malicious": 9860,
+    "balance_ratio": 0.9114604462474645
+  },
+  "test": {
+    "count": 18847,
+    "percentage": 15.000198973297785,
+    "benign": 8987,
+    "malicious": 9860,
+    "balance_ratio": 0.9114604462474645
+  },
+  "deduplication": {
+    "original_samples": 133734,
+    "duplicates_removed": 8089,
+    "final_samples": 125645
+  }
+}
