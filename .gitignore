@@ -5,3 +5,16 @@ reports/**/*.csv
 # Ignore all CSV files in the notebooks directory
 notebooks/**/*.csv
 
+# Large ML data files
+*.npy
+*.npz
+*.npy
+*.pkl
+*.h5
+*.hdf5
+*.pt
+*.ckpt
+*.pb
+*.parquet
+*.csv
+*.tsv
