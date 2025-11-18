@@ -1,0 +1,30 @@
+{
+  "model_files": {
+    "primary": "fusion_model_best.h5",
+    "format": "Keras HDF5",
+    "size_mb": 4.35,
+    "quantized_available": false
+  },
+  "inference_configuration": {
+    "mode": "BATCH_ONLY",
+    "recommended_batch_size": 32,
+    "min_batch_size": 8,
+    "max_queue_latency_ms": 50,
+    "total_latency_sla_ms": 100,
+    "gpu_required": true,
+    "cpu_fallback": "Not recommended (10x slower)"
+  },
+  "hybrid_fusion": {
+    "cnn_weight": 0.7,
+    "rule_weight": 0.3,
+    "fusion_threshold": 0.5,
+    "rule_engine_path": "../rules/rules_machine.json",
+    "rule_engine_latency_ms": 0.22
+  },
+  "monitoring_requirements": {
+    "log_all_predictions": true,
+    "alert_on_latency_p99_threshold_ms": 95,
+    "alert_on_batch_timeout": true,
+    "track_fallback_rate": true
+  }
+}
