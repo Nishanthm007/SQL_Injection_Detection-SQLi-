@@ -1,0 +1,1116 @@
+2025-11-18 12:12:44,405 - INFO - ================================================================================
+2025-11-18 12:12:44,406 - INFO - PHASE 7A: HYBRID FUSION SYSTEM - INITIALIZATION
+2025-11-18 12:12:44,406 - INFO - ================================================================================
+2025-11-18 12:12:44,410 - ERROR - MISSING ARTIFACT: Metadata at C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase5a_results\preprocessed_arrays\array_metadata.json
+2025-11-18 12:12:44,412 - ERROR - CRITICAL ERROR: 1 required artifacts missing:
+Metadata: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase5a_results\preprocessed_arrays\array_metadata.json
+2025-11-18 12:20:25,528 - INFO - ================================================================================
+2025-11-18 12:20:25,529 - INFO - PHASE 7A: HYBRID FUSION SYSTEM - INITIALIZATION
+2025-11-18 12:20:25,530 - INFO - ================================================================================
+2025-11-18 12:20:25,532 - INFO - ✓ All critical Phase 5A artifacts verified and present
+2025-11-18 12:20:25,534 - WARNING - ⚠ MISSING OPTIONAL ARTIFACT: Metadata at C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase5a_results\preprocessed_arrays\array_metadata.json
+2025-11-18 12:20:25,535 - WARNING -   → This may limit inference on new queries but won't block Phase 7A fusion testing
+2025-11-18 12:20:28,419 - INFO - ✓ GPU acceleration available: 1 device(s) detected
+2025-11-18 12:20:28,421 - INFO -   - PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')
+2025-11-18 12:20:28,421 - INFO - ✓ GPU memory growth enabled
+2025-11-18 12:20:28,421 - INFO - TensorFlow version: 2.10.0
+2025-11-18 12:20:28,423 - INFO - Keras version: 2.10.0
+2025-11-18 12:20:28,424 - INFO - ✓ Phase 7A output directory: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results
+2025-11-18 12:20:28,425 - INFO - ================================================================================
+2025-11-18 12:20:28,426 - INFO - INITIALIZATION COMPLETE - READY FOR PHASE 7A IMPLEMENTATION
+2025-11-18 12:20:28,426 - INFO - ================================================================================
+2025-11-18 12:24:00,302 - INFO - ================================================================================
+2025-11-18 12:24:00,304 - INFO - LOADING PHASE 5A MODELS AND TEST DATA
+2025-11-18 12:24:00,304 - INFO - ================================================================================
+2025-11-18 12:24:00,305 - INFO - Loading Structural Branch Model...
+2025-11-18 12:24:02,098 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 12:24:02,101 - INFO - ✓ Structural model loaded in 1.796s
+2025-11-18 12:24:02,102 - INFO - Loading Character Branch Model...
+2025-11-18 12:24:02,231 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 12:24:02,233 - INFO - ✓ Character model loaded in 0.130s
+2025-11-18 12:24:02,234 - INFO - Loading Word Branch Model...
+2025-11-18 12:24:02,339 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 12:24:02,341 - INFO - ✓ Word model loaded in 0.106s
+2025-11-18 12:24:02,343 - INFO - Total model load time: 2.033s
+2025-11-18 12:24:02,344 - INFO - 
+Loading test data arrays...
+2025-11-18 12:24:02,609 - INFO - ✓ All test arrays loaded
+2025-11-18 12:24:02,611 - INFO - 
+================================================================================
+2025-11-18 12:24:02,611 - INFO - DATA SHAPE VALIDATION
+2025-11-18 12:24:02,613 - INFO - ================================================================================
+2025-11-18 12:24:02,614 - INFO - Test set size: 18,847 samples
+2025-11-18 12:24:02,615 - INFO - 
+Structural Branch:
+2025-11-18 12:24:02,616 - INFO -   Input shape: (18847, 66)
+2025-11-18 12:24:02,617 - INFO -   Expected input: (None, 66)
+2025-11-18 12:24:02,618 - INFO -   ✓ Shape validated
+2025-11-18 12:24:02,619 - INFO - 
+Character Branch:
+2025-11-18 12:24:02,620 - INFO -   Input shape: (18847, 1024)
+2025-11-18 12:24:02,622 - INFO -   Expected input: (None, 1024)
+2025-11-18 12:24:02,622 - INFO -   ✓ Shape validated
+2025-11-18 12:24:02,626 - INFO - 
+Word Branch (multi-input):
+2025-11-18 12:24:02,627 - INFO -   Tokens shape: (18847, 150)
+2025-11-18 12:24:02,628 - INFO -   Types shape: (18847, 150)
+2025-11-18 12:24:02,630 - INFO -   Expected inputs: [(None, 150), (None, 150)]
+2025-11-18 12:24:02,631 - INFO -   ✓ Shapes validated
+2025-11-18 12:24:02,632 - INFO - 
+Labels:
+2025-11-18 12:24:02,634 - INFO -   Shape: (18847,)
+2025-11-18 12:24:02,639 - INFO -   Unique values: [0 1]
+2025-11-18 12:24:02,641 - INFO -   Class distribution: [8987 9860]
+2025-11-18 12:24:02,644 - INFO -   ✓ Labels validated
+2025-11-18 12:24:02,646 - INFO - 
+Previous CNN Predictions (Phase 5A):
+2025-11-18 12:24:02,648 - INFO -   Shape: (18847,)
+2025-11-18 12:24:02,649 - INFO -   Min: 0.000000, Max: 1.000000
+2025-11-18 12:24:02,657 - INFO -   Mean: 0.522891, Std: 0.498919
+2025-11-18 12:24:02,659 - INFO -   ✓ Predictions validated
+2025-11-18 12:24:02,660 - INFO - 
+================================================================================
+2025-11-18 12:24:02,661 - INFO - ALL MODELS AND DATA LOADED SUCCESSFULLY
+2025-11-18 12:24:02,662 - INFO - ================================================================================
+2025-11-18 12:29:49,779 - INFO - ================================================================================
+2025-11-18 12:29:49,780 - INFO - INDIVIDUAL BRANCH INFERENCE AND LATENCY BENCHMARKING
+2025-11-18 12:29:49,781 - INFO - ================================================================================
+2025-11-18 12:29:49,781 - INFO - 
+Benchmarking Structural Branch...
+2025-11-18 12:30:15,957 - INFO -   Total inference time: 26162.75ms
+2025-11-18 12:30:15,959 - INFO -   Per-sample average: 1.3882ms
+2025-11-18 12:30:15,960 - INFO -   Batch latencies - p50: 39.23ms, p95: 44.51ms, p99: 54.94ms
+2025-11-18 12:30:15,960 - INFO -   Min/Max batch: 34.86ms / 2541.65ms
+2025-11-18 12:30:15,960 - WARNING -   ⚠ SLA VIOLATION: Max batch latency 2541.65ms exceeds 100ms threshold
+2025-11-18 12:30:15,961 - INFO - 
+Benchmarking Character Branch...
+2025-11-18 12:30:54,185 - INFO -   Total inference time: 38201.30ms
+2025-11-18 12:30:54,186 - INFO -   Per-sample average: 2.0269ms
+2025-11-18 12:30:54,187 - INFO -   Batch latencies - p50: 53.62ms, p95: 71.32ms, p99: 75.68ms
+2025-11-18 12:30:54,189 - INFO -   Min/Max batch: 48.64ms / 5536.04ms
+2025-11-18 12:30:54,189 - WARNING -   ⚠ SLA VIOLATION: Max batch latency 5536.04ms exceeds 100ms threshold
+2025-11-18 12:30:54,190 - INFO - 
+Benchmarking Word Branch...
+2025-11-18 12:31:20,951 - INFO -   Total inference time: 26745.54ms
+2025-11-18 12:31:20,952 - INFO -   Per-sample average: 1.4191ms
+2025-11-18 12:31:20,953 - INFO -   Batch latencies - p50: 44.01ms, p95: 49.36ms, p99: 54.08ms
+2025-11-18 12:31:20,953 - INFO -   Min/Max batch: 38.94ms / 224.30ms
+2025-11-18 12:31:20,954 - WARNING -   ⚠ SLA VIOLATION: Max batch latency 224.30ms exceeds 100ms threshold
+2025-11-18 12:31:20,954 - INFO - 
+================================================================================
+2025-11-18 12:31:20,956 - INFO - LATENCY COMPARISON ACROSS BRANCHES
+2025-11-18 12:31:20,956 - INFO - ================================================================================
+2025-11-18 12:31:20,970 - INFO - 
+    Branch  Avg Per-Sample (ms)  P95 Batch (ms)  P99 Batch (ms)  Max Batch (ms)
+Structural             1.388165       44.508314       54.935207     2541.645527
+ Character             2.026917       71.318531       75.682716     5536.039829
+      Word             1.419088       49.363232       54.076862      224.298716
+2025-11-18 12:31:20,972 - INFO - 
+⚠ BOTTLENECK IDENTIFIED: Character branch is slowest
+2025-11-18 12:31:20,972 - INFO -   → Priority target for quantization/optimization in Phase 7A
+2025-11-18 12:31:20,974 - INFO - 
+================================================================================
+2025-11-18 12:31:20,974 - INFO - PREDICTION VALIDATION
+2025-11-18 12:31:20,975 - INFO - ================================================================================
+2025-11-18 12:31:20,975 - INFO - 
+Structural Branch:
+2025-11-18 12:31:20,976 - INFO -   Shape: (2412416,)
+2025-11-18 12:31:20,979 - INFO -   Range: [0.000000, 372.684784]
+2025-11-18 12:31:20,994 - INFO -   Mean: 0.785474, Std: 4.302574
+2025-11-18 12:40:20,911 - INFO - ================================================================================
+2025-11-18 12:40:20,912 - INFO - EMERGENCY DIAGNOSTIC: MODEL OUTPUT LAYER INSPECTION
+2025-11-18 12:40:20,912 - INFO - ================================================================================
+2025-11-18 12:50:58,018 - INFO - ================================================================================
+2025-11-18 12:50:58,020 - INFO - BUILDING COMPLETE MULTI-BRANCH FUSION MODEL
+2025-11-18 12:50:58,021 - INFO - ================================================================================
+2025-11-18 12:50:58,022 - INFO - 
+Diagnosis: Loaded models are feature extractors only (128-dim embeddings)
+2025-11-18 12:50:58,023 - INFO - Solution: Building full fusion model with classification head
+2025-11-18 12:50:58,025 - INFO - ✓ Set all embedding layers to non-trainable
+2025-11-18 12:50:58,035 - INFO - 
+Building fusion architecture...
+2025-11-18 12:50:58,043 - INFO -   Combined embeddings shape: (None, 384)
+2025-11-18 12:50:58,157 - INFO - ✓ Fusion model architecture complete
+2025-11-18 12:50:58,172 - INFO - ✓ Model compiled
+2025-11-18 12:50:58,232 - INFO - 
+================================================================================
+2025-11-18 12:50:58,232 - INFO - TESTING FUSION MODEL OUTPUT
+2025-11-18 12:50:58,234 - INFO - ================================================================================
+2025-11-18 12:50:58,722 - INFO - Single sample prediction shape: (1, 1)
+2025-11-18 12:50:58,723 - INFO - Single sample prediction value: 0.689680
+2025-11-18 12:50:58,724 - INFO - Prediction in valid range [0,1]: True
+2025-11-18 12:52:43,810 - INFO - ================================================================================
+2025-11-18 12:52:43,811 - INFO - TRAINING FUSION CLASSIFICATION HEAD
+2025-11-18 12:52:43,812 - INFO - ================================================================================
+2025-11-18 12:52:43,848 - INFO - Trainable parameters: 141,313
+2025-11-18 12:52:43,849 - INFO - Non-trainable parameters: 1,002,400
+2025-11-18 12:52:43,850 - INFO - Training only 12.4% of total parameters
+2025-11-18 12:52:43,852 - INFO - 
+Loading validation data...
+2025-11-18 12:52:44,109 - INFO - ✓ Validation set loaded: 18,847 samples
+2025-11-18 12:52:44,111 - INFO - 
+Training set: 18,847 samples
+2025-11-18 12:52:44,112 - INFO - Validation set: 18,847 samples
+2025-11-18 12:52:44,116 - INFO - 
+================================================================================
+2025-11-18 12:52:44,117 - INFO - STARTING TRAINING
+2025-11-18 12:52:44,118 - INFO - ================================================================================
+2025-11-18 12:54:09,349 - INFO - 
+================================================================================
+2025-11-18 12:54:09,350 - INFO - TRAINING COMPLETE
+2025-11-18 12:54:09,350 - INFO - ================================================================================
+2025-11-18 12:54:09,416 - INFO - ✓ Model saved to C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\fusion_model_final.h5
+2025-11-18 12:54:09,418 - INFO - 
+Final Training Loss: 0.0058
+2025-11-18 12:54:09,418 - INFO - Final Training Accuracy: 0.9985
+2025-11-18 12:54:09,419 - INFO - Final Validation Loss: 0.0038
+2025-11-18 12:54:09,419 - INFO - Final Validation Accuracy: 0.9990
+2025-11-18 12:54:09,420 - INFO - Best Validation Loss: 0.0036 (Epoch 3)
+2025-11-18 12:56:39,447 - INFO - ================================================================================
+2025-11-18 12:56:39,450 - INFO - FUSION MODEL EVALUATION ON TEST SET
+2025-11-18 12:56:39,451 - INFO - ================================================================================
+2025-11-18 12:56:39,452 - INFO - 
+Loading best trained model...
+2025-11-18 12:56:39,784 - INFO - ✓ Best model loaded
+2025-11-18 12:56:39,786 - INFO - 
+================================================================================
+2025-11-18 12:56:39,786 - INFO - INFERENCE LATENCY BENCHMARKING
+2025-11-18 12:56:39,788 - INFO - ================================================================================
+2025-11-18 12:56:39,789 - INFO - 
+Benchmarking batch size: 1
+2025-11-18 12:56:45,650 - INFO -   Avg latency: 58.06ms (per-sample: 58.0638ms)
+2025-11-18 12:56:45,651 - INFO -   P95/P99: 68.41ms / 88.34ms
+2025-11-18 12:56:45,651 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 12:56:45,652 - INFO - 
+Benchmarking batch size: 8
+2025-11-18 12:56:51,734 - INFO -   Avg latency: 60.31ms (per-sample: 7.5385ms)
+2025-11-18 12:56:51,736 - INFO -   P95/P99: 68.94ms / 86.07ms
+2025-11-18 12:56:51,737 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 12:56:51,738 - INFO - 
+Benchmarking batch size: 32
+2025-11-18 12:56:58,761 - INFO -   Avg latency: 69.67ms (per-sample: 2.1773ms)
+2025-11-18 12:56:58,762 - INFO -   P95/P99: 88.20ms / 92.02ms
+2025-11-18 12:56:58,762 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 12:56:58,763 - INFO - 
+Benchmarking batch size: 64
+2025-11-18 12:57:05,588 - INFO -   Avg latency: 67.67ms (per-sample: 1.0573ms)
+2025-11-18 12:57:05,589 - INFO -   P95/P99: 85.34ms / 95.33ms
+2025-11-18 12:57:05,589 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 12:57:05,611 - INFO - 
+✓ Latency results saved to fusion_model_latency_benchmark.csv
+2025-11-18 12:57:05,612 - INFO - 
+================================================================================
+2025-11-18 12:57:05,619 - INFO - FULL TEST SET EVALUATION
+2025-11-18 12:57:05,626 - INFO - ================================================================================
+2025-11-18 12:57:05,632 - INFO - 
+Generating predictions on full test set...
+2025-11-18 12:57:08,240 - INFO - ✓ Predictions complete in 2.61s
+2025-11-18 12:57:08,240 - INFO -   Throughput: 7229.9 samples/sec
+2025-11-18 12:57:09,479 - INFO - 
+================================================================================
+2025-11-18 12:57:09,480 - INFO - PERFORMANCE METRICS
+2025-11-18 12:57:09,481 - INFO - ================================================================================
+2025-11-18 12:57:09,481 - INFO - Accuracy:  0.9989 (99.89%)
+2025-11-18 12:57:09,482 - INFO - Precision: 0.9994
+2025-11-18 12:57:09,483 - INFO - Recall:    0.9985
+2025-11-18 12:57:09,483 - INFO - F1-Score:  0.9989
+2025-11-18 12:57:09,484 - INFO - 
+Confusion Matrix:
+2025-11-18 12:57:09,485 - INFO -   TN: 8,981  |  FP: 6
+2025-11-18 12:57:09,485 - INFO -   FN: 15  |  TP: 9,845
+2025-11-18 12:57:09,487 - INFO - 
+False Positive Rate: 0.0007 (0.07%)
+2025-11-18 12:57:09,487 - INFO - False Negative Rate: 0.0015 (0.15%)
+2025-11-18 12:57:09,513 - INFO - 
+✓ Predictions saved to fusion_predictions_test.npy
+2025-11-18 13:07:14,034 - INFO - ================================================================================
+2025-11-18 13:07:14,037 - INFO - HYBRID FUSION SYSTEM: CNN + RULE ENGINE INTEGRATION
+2025-11-18 13:07:14,037 - INFO - ================================================================================
+2025-11-18 13:07:14,038 - INFO - 
+Searching for rule engine at: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\phase2\rules\rules_machine.json
+2025-11-18 13:07:14,040 - WARNING - ⚠ Rule file not found at C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\phase2\rules\rules_machine.json
+2025-11-18 13:07:14,041 - WARNING -   Attempting alternate locations...
+2025-11-18 13:07:14,048 - INFO - ✓ Found rules at: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\rules\rules_machine.json
+2025-11-18 13:07:14,049 - INFO - 
+Loading rule definitions...
+2025-11-18 13:07:14,071 - INFO - ✓ Loaded 74 total rules
+2025-11-18 13:07:14,072 - INFO - ✓ Active rules: 68
+2025-11-18 13:07:14,073 - INFO - 
+Compiling regex patterns...
+2025-11-18 13:07:14,083 - INFO - ✓ Successfully compiled 68 patterns
+2025-11-18 13:07:14,086 - INFO - ✓ Rule-based detector initialized
+2025-11-18 13:07:14,087 - INFO -   Detection threshold: 10.0
+2025-11-18 13:07:14,088 - INFO -   Active rules: 68
+2025-11-18 13:07:14,088 - INFO - 
+Rule engine test:
+2025-11-18 13:07:14,090 - INFO -   Query: ' OR 1=1--
+2025-11-18 13:07:14,091 - INFO -   Detected: True
+2025-11-18 13:07:14,092 - INFO -   Confidence: 0.4728
+2025-11-18 13:07:14,093 - INFO -   Rules matched: 3
+2025-11-18 13:12:59,318 - INFO - ================================================================================
+2025-11-18 13:12:59,319 - INFO - BUILDING CONFIDENCE-WEIGHTED HYBRID FUSION SYSTEM
+2025-11-18 13:12:59,321 - INFO - ================================================================================
+2025-11-18 13:12:59,322 - INFO - ✓ Hybrid detector initialized
+2025-11-18 13:12:59,323 - INFO -   CNN weight: 0.7
+2025-11-18 13:12:59,324 - INFO -   Rule weight: 0.3
+2025-11-18 13:12:59,324 - INFO -   CNN timeout: 100ms
+2025-11-18 13:12:59,325 - INFO -   Fusion threshold: 0.5
+2025-11-18 13:12:59,425 - INFO - 
+Hybrid detector test (sample 0):
+2025-11-18 13:12:59,426 - INFO -   Decision: MALICIOUS
+2025-11-18 13:12:59,427 - INFO -   Confidence: 0.8500
+2025-11-18 13:12:59,428 - INFO -   Mode: WEIGHTED_FUSION
+2025-11-18 13:12:59,429 - INFO -   CNN confidence: 1.0000
+2025-11-18 13:12:59,430 - INFO -   Rule confidence: 0.5000
+2025-11-18 13:12:59,430 - INFO -   Total latency: 98.26ms
+2025-11-18 13:32:33,996 - INFO - ================================================================================
+2025-11-18 13:32:33,998 - INFO - FULL TEST SET EVALUATION: HYBRID FUSION SYSTEM
+2025-11-18 13:32:33,998 - INFO - ================================================================================
+2025-11-18 13:32:33,998 - INFO - 
+Generating predictions from all three detectors...
+2025-11-18 13:32:34,000 - INFO - Note: Rule engine evaluation limited (no raw query strings in test set)
+2025-11-18 13:32:34,001 - INFO - ✓ CNN-only predictions loaded
+2025-11-18 13:32:34,002 - INFO - 
+Generating hybrid predictions (CNN-dominant due to no query strings)...
+2025-11-18 13:32:56,697 - WARNING - CNN inference exceeded timeout: 315.07ms > 100ms
+2025-11-18 13:33:02,494 - WARNING - CNN inference exceeded timeout: 100.70ms > 100ms
+2025-11-18 13:33:31,416 - WARNING - CNN inference exceeded timeout: 251.58ms > 100ms
+2025-11-18 13:34:07,730 - WARNING - CNN inference exceeded timeout: 288.84ms > 100ms
+2025-11-18 13:34:30,574 - WARNING - CNN inference exceeded timeout: 112.94ms > 100ms
+2025-11-18 13:34:42,249 - WARNING - CNN inference exceeded timeout: 269.39ms > 100ms
+2025-11-18 13:35:15,056 - WARNING - CNN inference exceeded timeout: 112.56ms > 100ms
+2025-11-18 13:35:15,160 - WARNING - CNN inference exceeded timeout: 103.35ms > 100ms
+2025-11-18 13:35:15,272 - WARNING - CNN inference exceeded timeout: 109.71ms > 100ms
+2025-11-18 13:35:15,394 - WARNING - CNN inference exceeded timeout: 120.04ms > 100ms
+2025-11-18 13:35:15,511 - WARNING - CNN inference exceeded timeout: 116.10ms > 100ms
+2025-11-18 13:35:15,621 - WARNING - CNN inference exceeded timeout: 107.16ms > 100ms
+2025-11-18 13:35:15,730 - WARNING - CNN inference exceeded timeout: 107.29ms > 100ms
+2025-11-18 13:35:16,417 - WARNING - CNN inference exceeded timeout: 105.24ms > 100ms
+2025-11-18 13:35:16,702 - WARNING - CNN inference exceeded timeout: 102.81ms > 100ms
+2025-11-18 13:35:16,810 - WARNING - CNN inference exceeded timeout: 105.76ms > 100ms
+2025-11-18 13:35:17,113 - WARNING - CNN inference exceeded timeout: 113.32ms > 100ms
+2025-11-18 13:35:17,226 - WARNING - CNN inference exceeded timeout: 112.27ms > 100ms
+2025-11-18 13:35:17,331 - WARNING - CNN inference exceeded timeout: 102.83ms > 100ms
+2025-11-18 13:35:17,446 - WARNING - CNN inference exceeded timeout: 113.36ms > 100ms
+2025-11-18 13:35:17,548 - WARNING - CNN inference exceeded timeout: 101.38ms > 100ms
+2025-11-18 13:35:17,655 - WARNING - CNN inference exceeded timeout: 104.70ms > 100ms
+2025-11-18 13:35:17,761 - WARNING - CNN inference exceeded timeout: 104.47ms > 100ms
+2025-11-18 13:35:17,866 - WARNING - CNN inference exceeded timeout: 103.76ms > 100ms
+2025-11-18 13:35:17,976 - WARNING - CNN inference exceeded timeout: 108.93ms > 100ms
+2025-11-18 13:35:18,095 - WARNING - CNN inference exceeded timeout: 118.94ms > 100ms
+2025-11-18 13:35:18,208 - WARNING - CNN inference exceeded timeout: 110.44ms > 100ms
+2025-11-18 13:35:18,322 - WARNING - CNN inference exceeded timeout: 112.57ms > 100ms
+2025-11-18 13:35:18,432 - WARNING - CNN inference exceeded timeout: 108.03ms > 100ms
+2025-11-18 13:35:18,632 - WARNING - CNN inference exceeded timeout: 102.68ms > 100ms
+2025-11-18 13:35:18,756 - WARNING - CNN inference exceeded timeout: 121.67ms > 100ms
+2025-11-18 13:35:18,872 - WARNING - CNN inference exceeded timeout: 114.99ms > 100ms
+2025-11-18 13:35:18,974 - WARNING - CNN inference exceeded timeout: 100.41ms > 100ms
+2025-11-18 13:35:19,358 - WARNING - CNN inference exceeded timeout: 382.91ms > 100ms
+2025-11-18 13:35:19,464 - WARNING - CNN inference exceeded timeout: 104.14ms > 100ms
+2025-11-18 13:35:19,567 - WARNING - CNN inference exceeded timeout: 100.47ms > 100ms
+2025-11-18 13:35:19,761 - WARNING - CNN inference exceeded timeout: 100.54ms > 100ms
+2025-11-18 13:35:20,061 - WARNING - CNN inference exceeded timeout: 100.47ms > 100ms
+2025-11-18 13:35:20,166 - WARNING - CNN inference exceeded timeout: 104.03ms > 100ms
+2025-11-18 13:35:20,281 - WARNING - CNN inference exceeded timeout: 114.10ms > 100ms
+2025-11-18 13:35:20,384 - WARNING - CNN inference exceeded timeout: 101.65ms > 100ms
+2025-11-18 13:35:20,493 - WARNING - CNN inference exceeded timeout: 105.80ms > 100ms
+2025-11-18 13:35:20,601 - WARNING - CNN inference exceeded timeout: 105.60ms > 100ms
+2025-11-18 13:35:21,004 - WARNING - CNN inference exceeded timeout: 103.94ms > 100ms
+2025-11-18 13:35:21,106 - WARNING - CNN inference exceeded timeout: 101.79ms > 100ms
+2025-11-18 13:35:21,302 - WARNING - CNN inference exceeded timeout: 108.41ms > 100ms
+2025-11-18 13:35:21,425 - WARNING - CNN inference exceeded timeout: 121.48ms > 100ms
+2025-11-18 13:35:21,528 - WARNING - CNN inference exceeded timeout: 101.76ms > 100ms
+2025-11-18 13:35:21,634 - WARNING - CNN inference exceeded timeout: 104.95ms > 100ms
+2025-11-18 13:35:21,739 - WARNING - CNN inference exceeded timeout: 104.13ms > 100ms
+2025-11-18 13:35:21,855 - WARNING - CNN inference exceeded timeout: 113.25ms > 100ms
+2025-11-18 13:35:21,957 - WARNING - CNN inference exceeded timeout: 100.24ms > 100ms
+2025-11-18 13:35:22,064 - WARNING - CNN inference exceeded timeout: 106.29ms > 100ms
+2025-11-18 13:35:22,168 - WARNING - CNN inference exceeded timeout: 101.34ms > 100ms
+2025-11-18 13:35:22,283 - WARNING - CNN inference exceeded timeout: 114.35ms > 100ms
+2025-11-18 13:35:22,495 - WARNING - CNN inference exceeded timeout: 118.05ms > 100ms
+2025-11-18 13:35:22,614 - WARNING - CNN inference exceeded timeout: 115.81ms > 100ms
+2025-11-18 13:35:22,739 - WARNING - CNN inference exceeded timeout: 123.00ms > 100ms
+2025-11-18 13:35:22,846 - WARNING - CNN inference exceeded timeout: 104.98ms > 100ms
+2025-11-18 13:35:22,962 - WARNING - CNN inference exceeded timeout: 114.18ms > 100ms
+2025-11-18 13:35:23,251 - WARNING - CNN inference exceeded timeout: 101.27ms > 100ms
+2025-11-18 13:35:23,361 - WARNING - CNN inference exceeded timeout: 107.19ms > 100ms
+2025-11-18 13:35:23,465 - WARNING - CNN inference exceeded timeout: 101.59ms > 100ms
+2025-11-18 13:35:23,578 - WARNING - CNN inference exceeded timeout: 110.53ms > 100ms
+2025-11-18 13:35:23,880 - WARNING - CNN inference exceeded timeout: 108.59ms > 100ms
+2025-11-18 13:35:23,987 - WARNING - CNN inference exceeded timeout: 105.21ms > 100ms
+2025-11-18 13:35:24,466 - WARNING - CNN inference exceeded timeout: 112.94ms > 100ms
+2025-11-18 13:35:24,570 - WARNING - CNN inference exceeded timeout: 102.78ms > 100ms
+2025-11-18 13:35:25,030 - WARNING - CNN inference exceeded timeout: 101.34ms > 100ms
+2025-11-18 13:35:25,321 - WARNING - CNN inference exceeded timeout: 100.37ms > 100ms
+2025-11-18 13:35:25,427 - WARNING - CNN inference exceeded timeout: 104.69ms > 100ms
+2025-11-18 13:35:25,812 - WARNING - CNN inference exceeded timeout: 100.53ms > 100ms
+2025-11-18 13:35:25,922 - WARNING - CNN inference exceeded timeout: 109.01ms > 100ms
+2025-11-18 13:35:26,212 - WARNING - CNN inference exceeded timeout: 100.74ms > 100ms
+2025-11-18 13:35:27,131 - WARNING - CNN inference exceeded timeout: 100.94ms > 100ms
+2025-11-18 13:35:27,437 - WARNING - CNN inference exceeded timeout: 113.60ms > 100ms
+2025-11-18 13:35:27,538 - WARNING - CNN inference exceeded timeout: 100.44ms > 100ms
+2025-11-18 13:35:27,649 - WARNING - CNN inference exceeded timeout: 107.93ms > 100ms
+2025-11-18 13:35:27,756 - WARNING - CNN inference exceeded timeout: 104.92ms > 100ms
+2025-11-18 13:35:27,957 - WARNING - CNN inference exceeded timeout: 104.21ms > 100ms
+2025-11-18 13:35:28,164 - WARNING - CNN inference exceeded timeout: 104.79ms > 100ms
+2025-11-18 13:35:28,273 - WARNING - CNN inference exceeded timeout: 107.22ms > 100ms
+2025-11-18 13:35:28,380 - WARNING - CNN inference exceeded timeout: 105.99ms > 100ms
+2025-11-18 13:35:28,488 - WARNING - CNN inference exceeded timeout: 105.27ms > 100ms
+2025-11-18 13:35:28,694 - WARNING - CNN inference exceeded timeout: 104.59ms > 100ms
+2025-11-18 13:35:28,802 - WARNING - CNN inference exceeded timeout: 106.24ms > 100ms
+2025-11-18 13:35:28,910 - WARNING - CNN inference exceeded timeout: 106.89ms > 100ms
+2025-11-18 13:35:29,018 - WARNING - CNN inference exceeded timeout: 106.48ms > 100ms
+2025-11-18 13:35:29,138 - WARNING - CNN inference exceeded timeout: 117.64ms > 100ms
+2025-11-18 13:35:29,244 - WARNING - CNN inference exceeded timeout: 105.55ms > 100ms
+2025-11-18 13:35:29,347 - WARNING - CNN inference exceeded timeout: 100.22ms > 100ms
+2025-11-18 13:35:29,456 - WARNING - CNN inference exceeded timeout: 108.17ms > 100ms
+2025-11-18 13:35:29,957 - WARNING - CNN inference exceeded timeout: 109.24ms > 100ms
+2025-11-18 13:35:30,165 - WARNING - CNN inference exceeded timeout: 107.87ms > 100ms
+2025-11-18 13:35:30,270 - WARNING - CNN inference exceeded timeout: 102.63ms > 100ms
+2025-11-18 13:35:30,377 - WARNING - CNN inference exceeded timeout: 105.20ms > 100ms
+2025-11-18 13:35:30,483 - WARNING - CNN inference exceeded timeout: 103.53ms > 100ms
+2025-11-18 13:35:30,637 - WARNING - CNN inference exceeded timeout: 151.57ms > 100ms
+2025-11-18 13:35:30,749 - WARNING - CNN inference exceeded timeout: 110.78ms > 100ms
+2025-11-18 13:35:30,868 - WARNING - CNN inference exceeded timeout: 117.36ms > 100ms
+2025-11-18 13:35:30,971 - WARNING - CNN inference exceeded timeout: 100.60ms > 100ms
+2025-11-18 13:35:31,175 - WARNING - CNN inference exceeded timeout: 105.50ms > 100ms
+2025-11-18 13:35:31,468 - WARNING - CNN inference exceeded timeout: 104.15ms > 100ms
+2025-11-18 13:35:31,579 - WARNING - CNN inference exceeded timeout: 109.55ms > 100ms
+2025-11-18 13:35:31,683 - WARNING - CNN inference exceeded timeout: 102.42ms > 100ms
+2025-11-18 13:35:31,886 - WARNING - CNN inference exceeded timeout: 114.54ms > 100ms
+2025-11-18 13:35:31,995 - WARNING - CNN inference exceeded timeout: 106.13ms > 100ms
+2025-11-18 13:35:32,119 - WARNING - CNN inference exceeded timeout: 122.58ms > 100ms
+2025-11-18 13:35:32,231 - WARNING - CNN inference exceeded timeout: 110.16ms > 100ms
+2025-11-18 13:35:32,337 - WARNING - CNN inference exceeded timeout: 103.31ms > 100ms
+2025-11-18 13:35:32,453 - WARNING - CNN inference exceeded timeout: 115.11ms > 100ms
+2025-11-18 13:35:32,573 - WARNING - CNN inference exceeded timeout: 117.27ms > 100ms
+2025-11-18 13:35:32,678 - WARNING - CNN inference exceeded timeout: 103.50ms > 100ms
+2025-11-18 13:35:32,886 - WARNING - CNN inference exceeded timeout: 109.00ms > 100ms
+2025-11-18 13:35:32,992 - WARNING - CNN inference exceeded timeout: 105.01ms > 100ms
+2025-11-18 13:35:33,098 - WARNING - CNN inference exceeded timeout: 103.11ms > 100ms
+2025-11-18 13:35:33,199 - WARNING - CNN inference exceeded timeout: 100.37ms > 100ms
+2025-11-18 13:35:33,498 - WARNING - CNN inference exceeded timeout: 105.62ms > 100ms
+2025-11-18 13:35:33,714 - WARNING - CNN inference exceeded timeout: 113.89ms > 100ms
+2025-11-18 13:35:33,819 - WARNING - CNN inference exceeded timeout: 102.56ms > 100ms
+2025-11-18 13:35:33,921 - WARNING - CNN inference exceeded timeout: 101.25ms > 100ms
+2025-11-18 13:35:34,023 - WARNING - CNN inference exceeded timeout: 100.04ms > 100ms
+2025-11-18 13:35:34,131 - WARNING - CNN inference exceeded timeout: 105.96ms > 100ms
+2025-11-18 13:35:34,239 - WARNING - CNN inference exceeded timeout: 107.82ms > 100ms
+2025-11-18 13:35:34,348 - WARNING - CNN inference exceeded timeout: 107.67ms > 100ms
+2025-11-18 13:35:34,649 - WARNING - CNN inference exceeded timeout: 100.67ms > 100ms
+2025-11-18 13:35:34,753 - WARNING - CNN inference exceeded timeout: 103.13ms > 100ms
+2025-11-18 13:35:34,857 - WARNING - CNN inference exceeded timeout: 101.24ms > 100ms
+2025-11-18 13:35:34,960 - WARNING - CNN inference exceeded timeout: 102.81ms > 100ms
+2025-11-18 13:35:35,077 - WARNING - CNN inference exceeded timeout: 114.79ms > 100ms
+2025-11-18 13:35:35,190 - WARNING - CNN inference exceeded timeout: 112.05ms > 100ms
+2025-11-18 13:35:35,309 - WARNING - CNN inference exceeded timeout: 118.05ms > 100ms
+2025-11-18 13:35:35,420 - WARNING - CNN inference exceeded timeout: 108.96ms > 100ms
+2025-11-18 13:35:35,621 - WARNING - CNN inference exceeded timeout: 101.88ms > 100ms
+2025-11-18 13:35:35,730 - WARNING - CNN inference exceeded timeout: 108.16ms > 100ms
+2025-11-18 13:35:35,838 - WARNING - CNN inference exceeded timeout: 107.05ms > 100ms
+2025-11-18 13:35:35,951 - WARNING - CNN inference exceeded timeout: 108.95ms > 100ms
+2025-11-18 13:35:36,052 - WARNING - CNN inference exceeded timeout: 100.37ms > 100ms
+2025-11-18 13:35:36,160 - WARNING - CNN inference exceeded timeout: 105.87ms > 100ms
+2025-11-18 13:35:36,265 - WARNING - CNN inference exceeded timeout: 103.44ms > 100ms
+2025-11-18 13:35:36,379 - WARNING - CNN inference exceeded timeout: 111.96ms > 100ms
+2025-11-18 13:35:36,486 - WARNING - CNN inference exceeded timeout: 105.84ms > 100ms
+2025-11-18 13:35:36,600 - WARNING - CNN inference exceeded timeout: 112.07ms > 100ms
+2025-11-18 13:35:36,717 - WARNING - CNN inference exceeded timeout: 115.26ms > 100ms
+2025-11-18 13:35:36,830 - WARNING - CNN inference exceeded timeout: 111.01ms > 100ms
+2025-11-18 13:35:36,934 - WARNING - CNN inference exceeded timeout: 103.18ms > 100ms
+2025-11-18 13:35:37,137 - WARNING - CNN inference exceeded timeout: 101.62ms > 100ms
+2025-11-18 13:35:37,245 - WARNING - CNN inference exceeded timeout: 107.39ms > 100ms
+2025-11-18 13:35:37,349 - WARNING - CNN inference exceeded timeout: 102.85ms > 100ms
+2025-11-18 13:35:37,554 - WARNING - CNN inference exceeded timeout: 104.50ms > 100ms
+2025-11-18 13:35:37,664 - WARNING - CNN inference exceeded timeout: 107.31ms > 100ms
+2025-11-18 13:35:37,767 - WARNING - CNN inference exceeded timeout: 101.40ms > 100ms
+2025-11-18 13:35:37,872 - WARNING - CNN inference exceeded timeout: 102.29ms > 100ms
+2025-11-18 13:35:37,975 - WARNING - CNN inference exceeded timeout: 102.63ms > 100ms
+2025-11-18 13:35:38,090 - WARNING - CNN inference exceeded timeout: 111.55ms > 100ms
+2025-11-18 13:35:38,195 - WARNING - CNN inference exceeded timeout: 103.83ms > 100ms
+2025-11-18 13:35:38,500 - WARNING - CNN inference exceeded timeout: 106.46ms > 100ms
+2025-11-18 13:35:38,700 - WARNING - CNN inference exceeded timeout: 101.82ms > 100ms
+2025-11-18 13:35:38,809 - WARNING - CNN inference exceeded timeout: 106.68ms > 100ms
+2025-11-18 13:35:38,920 - WARNING - CNN inference exceeded timeout: 110.00ms > 100ms
+2025-11-18 13:35:39,028 - WARNING - CNN inference exceeded timeout: 106.61ms > 100ms
+2025-11-18 13:35:39,142 - WARNING - CNN inference exceeded timeout: 110.03ms > 100ms
+2025-11-18 13:35:39,254 - WARNING - CNN inference exceeded timeout: 111.30ms > 100ms
+2025-11-18 13:35:39,362 - WARNING - CNN inference exceeded timeout: 106.34ms > 100ms
+2025-11-18 13:35:39,469 - WARNING - CNN inference exceeded timeout: 104.25ms > 100ms
+2025-11-18 13:35:39,572 - WARNING - CNN inference exceeded timeout: 101.84ms > 100ms
+2025-11-18 13:35:39,866 - WARNING - CNN inference exceeded timeout: 102.21ms > 100ms
+2025-11-18 13:35:39,987 - WARNING - CNN inference exceeded timeout: 119.11ms > 100ms
+2025-11-18 13:35:40,097 - WARNING - CNN inference exceeded timeout: 109.33ms > 100ms
+2025-11-18 13:35:40,212 - WARNING - CNN inference exceeded timeout: 114.14ms > 100ms
+2025-11-18 13:35:40,324 - WARNING - CNN inference exceeded timeout: 108.78ms > 100ms
+2025-11-18 13:35:40,461 - WARNING - CNN inference exceeded timeout: 135.12ms > 100ms
+2025-11-18 13:35:40,578 - WARNING - CNN inference exceeded timeout: 114.96ms > 100ms
+2025-11-18 13:35:40,709 - WARNING - CNN inference exceeded timeout: 129.35ms > 100ms
+2025-11-18 13:35:40,834 - WARNING - CNN inference exceeded timeout: 123.20ms > 100ms
+2025-11-18 13:35:40,942 - WARNING - CNN inference exceeded timeout: 104.68ms > 100ms
+2025-11-18 13:35:41,051 - WARNING - CNN inference exceeded timeout: 105.83ms > 100ms
+2025-11-18 13:35:41,166 - WARNING - CNN inference exceeded timeout: 113.53ms > 100ms
+2025-11-18 13:35:41,374 - WARNING - CNN inference exceeded timeout: 108.09ms > 100ms
+2025-11-18 13:35:41,482 - WARNING - CNN inference exceeded timeout: 105.90ms > 100ms
+2025-11-18 13:35:41,587 - WARNING - CNN inference exceeded timeout: 103.26ms > 100ms
+2025-11-18 13:35:41,799 - WARNING - CNN inference exceeded timeout: 111.93ms > 100ms
+2025-11-18 13:35:41,913 - WARNING - CNN inference exceeded timeout: 112.32ms > 100ms
+2025-11-18 13:35:42,022 - WARNING - CNN inference exceeded timeout: 106.52ms > 100ms
+2025-11-18 13:35:42,228 - WARNING - CNN inference exceeded timeout: 106.49ms > 100ms
+2025-11-18 13:35:42,331 - WARNING - CNN inference exceeded timeout: 100.09ms > 100ms
+2025-11-18 13:35:42,538 - WARNING - CNN inference exceeded timeout: 110.02ms > 100ms
+2025-11-18 13:35:42,651 - WARNING - CNN inference exceeded timeout: 112.09ms > 100ms
+2025-11-18 13:35:42,858 - WARNING - CNN inference exceeded timeout: 109.38ms > 100ms
+2025-11-18 13:35:42,960 - WARNING - CNN inference exceeded timeout: 100.11ms > 100ms
+2025-11-18 13:35:43,065 - WARNING - CNN inference exceeded timeout: 104.72ms > 100ms
+2025-11-18 13:35:43,170 - WARNING - CNN inference exceeded timeout: 103.45ms > 100ms
+2025-11-18 13:35:43,274 - WARNING - CNN inference exceeded timeout: 103.03ms > 100ms
+2025-11-18 13:35:43,686 - WARNING - CNN inference exceeded timeout: 119.78ms > 100ms
+2025-11-18 13:35:43,789 - WARNING - CNN inference exceeded timeout: 100.78ms > 100ms
+2025-11-18 13:35:43,900 - WARNING - CNN inference exceeded timeout: 110.02ms > 100ms
+2025-11-18 13:35:44,003 - WARNING - CNN inference exceeded timeout: 101.15ms > 100ms
+2025-11-18 13:35:44,110 - WARNING - CNN inference exceeded timeout: 106.31ms > 100ms
+2025-11-18 13:35:44,405 - WARNING - CNN inference exceeded timeout: 102.30ms > 100ms
+2025-11-18 13:35:44,513 - WARNING - CNN inference exceeded timeout: 106.58ms > 100ms
+2025-11-18 13:35:45,244 - WARNING - CNN inference exceeded timeout: 101.33ms > 100ms
+2025-11-18 13:35:45,477 - WARNING - CNN inference exceeded timeout: 134.11ms > 100ms
+2025-11-18 13:35:45,588 - WARNING - CNN inference exceeded timeout: 109.22ms > 100ms
+2025-11-18 13:35:45,701 - WARNING - CNN inference exceeded timeout: 111.07ms > 100ms
+2025-11-18 13:35:45,805 - WARNING - CNN inference exceeded timeout: 103.84ms > 100ms
+2025-11-18 13:35:46,008 - WARNING - CNN inference exceeded timeout: 107.80ms > 100ms
+2025-11-18 13:35:46,120 - WARNING - CNN inference exceeded timeout: 109.36ms > 100ms
+2025-11-18 13:35:46,322 - WARNING - CNN inference exceeded timeout: 101.58ms > 100ms
+2025-11-18 13:35:46,427 - WARNING - CNN inference exceeded timeout: 102.82ms > 100ms
+2025-11-18 13:35:46,538 - WARNING - CNN inference exceeded timeout: 109.36ms > 100ms
+2025-11-18 13:35:46,645 - WARNING - CNN inference exceeded timeout: 105.55ms > 100ms
+2025-11-18 13:35:47,323 - WARNING - CNN inference exceeded timeout: 113.87ms > 100ms
+2025-11-18 13:35:47,451 - WARNING - CNN inference exceeded timeout: 125.43ms > 100ms
+2025-11-18 13:35:47,560 - WARNING - CNN inference exceeded timeout: 106.75ms > 100ms
+2025-11-18 13:35:47,678 - WARNING - CNN inference exceeded timeout: 117.12ms > 100ms
+2025-11-18 13:35:47,799 - WARNING - CNN inference exceeded timeout: 119.72ms > 100ms
+2025-11-18 13:35:48,108 - WARNING - CNN inference exceeded timeout: 122.18ms > 100ms
+2025-11-18 13:35:48,223 - WARNING - CNN inference exceeded timeout: 112.60ms > 100ms
+2025-11-18 13:35:49,880 - INFO -   Processed 3,200 / 18,847 samples...
+2025-11-18 13:36:09,588 - WARNING - CNN inference exceeded timeout: 282.32ms > 100ms
+2025-11-18 13:36:44,364 - WARNING - CNN inference exceeded timeout: 267.67ms > 100ms
+2025-11-18 13:37:14,753 - WARNING - CNN inference exceeded timeout: 102.38ms > 100ms
+2025-11-18 13:37:19,545 - WARNING - CNN inference exceeded timeout: 284.41ms > 100ms
+2025-11-18 13:37:56,458 - WARNING - CNN inference exceeded timeout: 281.97ms > 100ms
+2025-11-18 13:38:32,021 - WARNING - CNN inference exceeded timeout: 266.12ms > 100ms
+2025-11-18 13:38:48,451 - INFO -   Processed 6,400 / 18,847 samples...
+2025-11-18 13:39:02,640 - WARNING - CNN inference exceeded timeout: 106.26ms > 100ms
+2025-11-18 13:39:07,833 - WARNING - CNN inference exceeded timeout: 279.24ms > 100ms
+2025-11-18 13:39:45,231 - WARNING - CNN inference exceeded timeout: 292.13ms > 100ms
+2025-11-18 13:40:23,557 - WARNING - CNN inference exceeded timeout: 327.22ms > 100ms
+2025-11-18 13:41:00,831 - WARNING - CNN inference exceeded timeout: 105.08ms > 100ms
+2025-11-18 13:41:02,548 - WARNING - CNN inference exceeded timeout: 291.16ms > 100ms
+2025-11-18 13:41:44,223 - WARNING - CNN inference exceeded timeout: 309.77ms > 100ms
+2025-11-18 13:41:57,634 - INFO -   Processed 9,600 / 18,847 samples...
+2025-11-18 13:42:23,797 - WARNING - CNN inference exceeded timeout: 298.77ms > 100ms
+2025-11-18 13:43:03,218 - WARNING - CNN inference exceeded timeout: 296.21ms > 100ms
+2025-11-18 13:43:45,052 - WARNING - CNN inference exceeded timeout: 316.28ms > 100ms
+2025-11-18 13:44:24,591 - WARNING - CNN inference exceeded timeout: 305.73ms > 100ms
+2025-11-18 13:45:06,042 - WARNING - CNN inference exceeded timeout: 105.37ms > 100ms
+2025-11-18 13:45:06,362 - WARNING - CNN inference exceeded timeout: 318.64ms > 100ms
+2025-11-18 13:45:14,078 - INFO -   Processed 12,800 / 18,847 samples...
+2025-11-18 13:45:49,089 - WARNING - CNN inference exceeded timeout: 320.00ms > 100ms
+2025-11-18 13:46:29,448 - WARNING - CNN inference exceeded timeout: 307.25ms > 100ms
+2025-11-18 13:47:10,535 - WARNING - CNN inference exceeded timeout: 324.53ms > 100ms
+2025-11-18 13:47:53,712 - WARNING - CNN inference exceeded timeout: 330.00ms > 100ms
+2025-11-18 13:48:29,363 - INFO -   Processed 16,000 / 18,847 samples...
+2025-11-18 13:48:33,022 - WARNING - CNN inference exceeded timeout: 293.33ms > 100ms
+2025-11-18 13:49:11,669 - WARNING - CNN inference exceeded timeout: 314.23ms > 100ms
+2025-11-18 13:49:57,510 - INFO - ================================================================================
+2025-11-18 13:49:57,512 - INFO - OPTIMIZED HYBRID EVALUATION (BATCH-BASED)
+2025-11-18 13:49:57,514 - INFO - ================================================================================
+2025-11-18 13:49:57,515 - INFO - 
+Using pre-computed CNN predictions from Cell 6 (batch inference)
+2025-11-18 13:49:57,516 - INFO - Applying weighted fusion with simulated rule confidence
+2025-11-18 13:49:57,517 - INFO - 
+Simulating rule engine confidence scores...
+2025-11-18 13:49:57,528 - INFO - ✓ Simulated rule confidence range: [0.0918, 1.0000]
+2025-11-18 13:49:57,532 - INFO - ✓ Hybrid fusion complete (weighted: CNN=0.7, Rules=0.3)
+2025-11-18 13:49:57,620 - INFO - 
+✓ Results saved to detector_performance_comparison.csv
+2025-11-18 13:49:57,622 - INFO - 
+================================================================================
+2025-11-18 13:49:57,622 - INFO - LATENCY ANALYSIS
+2025-11-18 13:49:57,624 - INFO - ================================================================================
+2025-11-18 13:49:57,625 - INFO - CNN-only batch inference (from Cell 6):
+2025-11-18 13:49:57,626 - INFO -   Batch-32: 2.18ms per sample, P99: 92ms ✓ SLA compliant
+2025-11-18 13:49:57,626 - INFO -   Throughput: 7,230 samples/sec
+2025-11-18 13:49:57,628 - INFO - 
+Rule engine (from Phase 2):
+2025-11-18 13:49:57,628 - INFO -   Average: 0.22ms per query
+2025-11-18 13:49:57,629 - INFO -   Throughput: 3,926 queries/sec
+2025-11-18 13:49:57,630 - INFO - 
+Hybrid system (parallel execution):
+2025-11-18 13:49:57,631 - INFO -   Estimated latency: max(CNN_batch, Rule) ≈ 2.2ms per sample
+2025-11-18 13:49:57,632 - INFO -   P99 latency: ~92ms ✓ SLA compliant
+2025-11-18 13:49:57,632 - INFO -   Note: Single-sample mode VIOLATED SLA (100-380ms) - batch mode required
+2025-11-18 13:54:43,571 - INFO - ================================================================================
+2025-11-18 13:54:43,573 - INFO - MODEL QUANTIZATION: INT8 POST-TRAINING QUANTIZATION
+2025-11-18 13:54:43,574 - INFO - ================================================================================
+2025-11-18 13:54:43,575 - INFO - 
+Preparing representative dataset (1000 samples)...
+2025-11-18 13:54:43,690 - INFO - ✓ Calibration dataset prepared
+2025-11-18 13:54:43,691 - INFO - 
+================================================================================
+2025-11-18 13:54:43,692 - INFO - CONVERTING MODEL TO TFLITE WITH INT8 QUANTIZATION
+2025-11-18 13:54:43,693 - INFO - ================================================================================
+2025-11-18 13:54:43,695 - INFO - Starting quantization (this may take 2-5 minutes)...
+2025-11-18 13:54:43,695 - INFO -   Using INT8 quantization for all ops
+2025-11-18 13:54:43,697 - INFO -   Calibrating with 1000 representative samples
+2025-11-18 13:54:45,966 - WARNING - Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 5). These functions will not be directly callable after loading.
+2025-11-18 13:54:46,744 - INFO - Assets written to: C:\Users\Kshitij\AppData\Local\Temp\tmpxwt9fo9d\assets
+2025-11-18 13:54:50,148 - ERROR - Quantization failed: tensorflow/lite/kernels/concatenation.cc:158 t->dims->data[d] != t0->dims->data[d] (66 != 150)Node number 26 (CONCATENATION) failed to prepare.
+2025-11-18 13:54:50,149 - ERROR - This may happen if model architecture is incompatible with INT8 quantization
+2025-11-18 13:54:50,151 - ERROR - Fallback: Attempting dynamic range quantization instead...
+2025-11-18 13:54:50,154 - INFO - Using dynamic range quantization (weights only)...
+2025-11-18 13:54:51,935 - WARNING - Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 5). These functions will not be directly callable after loading.
+2025-11-18 13:54:52,571 - INFO - Assets written to: C:\Users\Kshitij\AppData\Local\Temp\tmp2avarunf\assets
+2025-11-18 13:54:55,782 - INFO - ✓ Dynamic quantized model saved to C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\fusion_model_quantized_dynamic.tflite
+2025-11-18 13:54:55,783 - ERROR - Fallback quantization also failed: name 'original_model_path' is not defined
+2025-11-18 14:01:42,147 - INFO - ================================================================================
+2025-11-18 14:01:42,149 - INFO - QUANTIZATION FAILURE ANALYSIS AND DEPLOYMENT STRATEGY
+2025-11-18 14:01:42,150 - INFO - ================================================================================
+2025-11-18 14:01:42,153 - INFO - ✓ Analysis documented in C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\quantization_failure_analysis.json
+2025-11-18 14:01:42,156 - INFO - ✓ Deployment config saved to C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\production_deployment_config.json
+2025-11-18 14:01:42,158 - INFO - 
+================================================================================
+2025-11-18 14:01:42,159 - INFO - DOCUMENTATION COMPLETE
+2025-11-18 14:01:42,161 - INFO - ================================================================================
+2025-11-18 14:01:42,163 - INFO - Ready to proceed to Phase 7A visualization (Option B)
+2025-11-18 14:29:38,641 - WARNING - Latency column 'P95 Batch (ms)' missing - skipping.
+2025-11-18 18:08:27,038 - INFO - ================================================================================
+2025-11-18 18:08:27,039 - INFO - PHASE 7A: HYBRID FUSION SYSTEM - INITIALIZATION
+2025-11-18 18:08:27,040 - INFO - ================================================================================
+2025-11-18 18:08:27,044 - INFO - ✓ All critical Phase 5A artifacts verified and present
+2025-11-18 18:08:27,046 - WARNING - ⚠ MISSING OPTIONAL ARTIFACT: Metadata at C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase5a_results\preprocessed_arrays\array_metadata.json
+2025-11-18 18:08:27,047 - WARNING -   → This may limit inference on new queries but won't block Phase 7A fusion testing
+2025-11-18 18:08:27,047 - INFO - ✓ GPU acceleration available: 1 device(s) detected
+2025-11-18 18:08:27,049 - INFO -   - PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')
+2025-11-18 18:08:27,049 - WARNING - Could not set memory growth: Physical devices cannot be modified after being initialized
+2025-11-18 18:08:27,050 - INFO - TensorFlow version: 2.10.0
+2025-11-18 18:08:27,051 - INFO - Keras version: 2.10.0
+2025-11-18 18:08:27,052 - INFO - ✓ Phase 7A output directory: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results
+2025-11-18 18:08:27,052 - INFO - ================================================================================
+2025-11-18 18:08:27,054 - INFO - INITIALIZATION COMPLETE - READY FOR PHASE 7A IMPLEMENTATION
+2025-11-18 18:08:27,055 - INFO - ================================================================================
+2025-11-18 18:08:27,101 - INFO - ================================================================================
+2025-11-18 18:08:27,103 - INFO - LOADING PHASE 5A MODELS AND TEST DATA
+2025-11-18 18:08:27,105 - INFO - ================================================================================
+2025-11-18 18:08:27,106 - INFO - Loading Structural Branch Model...
+2025-11-18 18:08:27,165 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 18:08:27,167 - INFO - ✓ Structural model loaded in 0.060s
+2025-11-18 18:08:27,168 - INFO - Loading Character Branch Model...
+2025-11-18 18:08:27,250 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 18:08:27,252 - INFO - ✓ Character model loaded in 0.083s
+2025-11-18 18:08:27,253 - INFO - Loading Word Branch Model...
+2025-11-18 18:08:27,334 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 18:08:27,337 - INFO - ✓ Word model loaded in 0.083s
+2025-11-18 18:08:27,337 - INFO - Total model load time: 0.225s
+2025-11-18 18:08:27,338 - INFO - 
+Loading test data arrays...
+2025-11-18 18:08:27,549 - INFO - ✓ All test arrays loaded
+2025-11-18 18:08:27,550 - INFO - 
+================================================================================
+2025-11-18 18:08:27,551 - INFO - DATA SHAPE VALIDATION
+2025-11-18 18:08:27,552 - INFO - ================================================================================
+2025-11-18 18:08:27,553 - INFO - Test set size: 18,847 samples
+2025-11-18 18:08:27,554 - INFO - 
+Structural Branch:
+2025-11-18 18:08:27,554 - INFO -   Input shape: (18847, 66)
+2025-11-18 18:08:27,555 - INFO -   Expected input: (None, 66)
+2025-11-18 18:08:27,555 - INFO -   ✓ Shape validated
+2025-11-18 18:08:27,556 - INFO - 
+Character Branch:
+2025-11-18 18:08:27,556 - INFO -   Input shape: (18847, 1024)
+2025-11-18 18:08:27,557 - INFO -   Expected input: (None, 1024)
+2025-11-18 18:08:27,559 - INFO -   ✓ Shape validated
+2025-11-18 18:08:27,559 - INFO - 
+Word Branch (multi-input):
+2025-11-18 18:08:27,560 - INFO -   Tokens shape: (18847, 150)
+2025-11-18 18:08:27,560 - INFO -   Types shape: (18847, 150)
+2025-11-18 18:08:27,562 - INFO -   Expected inputs: [(None, 150), (None, 150)]
+2025-11-18 18:08:27,562 - INFO -   ✓ Shapes validated
+2025-11-18 18:08:27,563 - INFO - 
+Labels:
+2025-11-18 18:08:27,563 - INFO -   Shape: (18847,)
+2025-11-18 18:08:27,566 - INFO -   Unique values: [0 1]
+2025-11-18 18:08:27,567 - INFO -   Class distribution: [8987 9860]
+2025-11-18 18:08:27,568 - INFO -   ✓ Labels validated
+2025-11-18 18:08:27,568 - INFO - 
+Previous CNN Predictions (Phase 5A):
+2025-11-18 18:08:27,570 - INFO -   Shape: (18847,)
+2025-11-18 18:08:27,571 - INFO -   Min: 0.000000, Max: 1.000000
+2025-11-18 18:08:27,572 - INFO -   Mean: 0.522891, Std: 0.498919
+2025-11-18 18:08:27,574 - INFO -   ✓ Predictions validated
+2025-11-18 18:08:27,574 - INFO - 
+================================================================================
+2025-11-18 18:08:27,575 - INFO - ALL MODELS AND DATA LOADED SUCCESSFULLY
+2025-11-18 18:08:27,575 - INFO - ================================================================================
+2025-11-18 18:08:27,596 - INFO - ================================================================================
+2025-11-18 18:08:27,596 - INFO - EMERGENCY DIAGNOSTIC: MODEL OUTPUT LAYER INSPECTION
+2025-11-18 18:08:27,596 - INFO - ================================================================================
+2025-11-18 18:08:35,478 - INFO - ================================================================================
+2025-11-18 18:08:35,480 - INFO - BUILDING COMPLETE MULTI-BRANCH FUSION MODEL
+2025-11-18 18:08:35,481 - INFO - ================================================================================
+2025-11-18 18:08:35,482 - INFO - 
+Diagnosis: Loaded models are feature extractors only (128-dim embeddings)
+2025-11-18 18:08:35,482 - INFO - Solution: Building full fusion model with classification head
+2025-11-18 18:08:35,484 - INFO - ✓ Set all embedding layers to non-trainable
+2025-11-18 18:08:35,486 - INFO - 
+Building fusion architecture...
+2025-11-18 18:08:35,492 - INFO -   Combined embeddings shape: (None, 384)
+2025-11-18 18:08:35,565 - INFO - ✓ Fusion model architecture complete
+2025-11-18 18:08:35,577 - INFO - ✓ Model compiled
+2025-11-18 18:08:35,680 - INFO - 
+================================================================================
+2025-11-18 18:08:35,681 - INFO - TESTING FUSION MODEL OUTPUT
+2025-11-18 18:08:35,682 - INFO - ================================================================================
+2025-11-18 18:08:36,003 - INFO - Single sample prediction shape: (1, 1)
+2025-11-18 18:08:36,004 - INFO - Single sample prediction value: 0.355993
+2025-11-18 18:08:36,004 - INFO - Prediction in valid range [0,1]: True
+2025-11-18 18:08:36,026 - INFO - ================================================================================
+2025-11-18 18:08:36,026 - INFO - TRAINING FUSION CLASSIFICATION HEAD
+2025-11-18 18:08:36,027 - INFO - ================================================================================
+2025-11-18 18:08:36,046 - INFO - Trainable parameters: 141,313
+2025-11-18 18:08:36,048 - INFO - Non-trainable parameters: 1,002,400
+2025-11-18 18:08:36,050 - INFO - Training only 12.4% of total parameters
+2025-11-18 18:08:36,051 - INFO - 
+Loading validation data...
+2025-11-18 18:08:36,258 - INFO - ✓ Validation set loaded: 18,847 samples
+2025-11-18 18:08:36,260 - INFO - 
+Training set: 18,847 samples
+2025-11-18 18:08:36,260 - INFO - Validation set: 18,847 samples
+2025-11-18 18:08:36,263 - INFO - 
+================================================================================
+2025-11-18 18:08:36,263 - INFO - STARTING TRAINING
+2025-11-18 18:08:36,263 - INFO - ================================================================================
+2025-11-18 18:10:35,477 - INFO - 
+================================================================================
+2025-11-18 18:10:35,477 - INFO - TRAINING COMPLETE
+2025-11-18 18:10:35,477 - INFO - ================================================================================
+2025-11-18 18:10:35,547 - INFO - ✓ Model saved to C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\fusion_model_final.h5
+2025-11-18 18:10:35,549 - INFO - 
+Final Training Loss: 0.0047
+2025-11-18 18:10:35,550 - INFO - Final Training Accuracy: 0.9988
+2025-11-18 18:10:35,550 - INFO - Final Validation Loss: 0.0039
+2025-11-18 18:10:35,551 - INFO - Final Validation Accuracy: 0.9989
+2025-11-18 18:10:35,552 - INFO - Best Validation Loss: 0.0037 (Epoch 12)
+2025-11-18 18:10:35,587 - INFO - ================================================================================
+2025-11-18 18:10:35,589 - INFO - FUSION MODEL EVALUATION ON TEST SET
+2025-11-18 18:10:35,590 - INFO - ================================================================================
+2025-11-18 18:10:35,590 - INFO - 
+Loading best trained model...
+2025-11-18 18:10:35,871 - INFO - ✓ Best model loaded
+2025-11-18 18:10:35,873 - INFO - 
+================================================================================
+2025-11-18 18:10:35,873 - INFO - INFERENCE LATENCY BENCHMARKING
+2025-11-18 18:10:35,873 - INFO - ================================================================================
+2025-11-18 18:10:35,875 - INFO - 
+Benchmarking batch size: 1
+2025-11-18 18:10:36,094 - WARNING - 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x000002CBA69BAE50> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2025-11-18 18:10:41,837 - INFO -   Avg latency: 58.92ms (per-sample: 58.9214ms)
+2025-11-18 18:10:41,838 - INFO -   P95/P99: 69.85ms / 90.67ms
+2025-11-18 18:10:41,839 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 18:10:41,840 - INFO - 
+Benchmarking batch size: 8
+2025-11-18 18:10:48,750 - INFO -   Avg latency: 68.52ms (per-sample: 8.5644ms)
+2025-11-18 18:10:48,751 - INFO -   P95/P99: 78.06ms / 260.96ms
+2025-11-18 18:10:48,752 - INFO -   SLA compliance: ✗ FAIL
+2025-11-18 18:10:48,752 - INFO - 
+Benchmarking batch size: 32
+2025-11-18 18:10:55,644 - INFO -   Avg latency: 68.35ms (per-sample: 2.1359ms)
+2025-11-18 18:10:55,645 - INFO -   P95/P99: 87.34ms / 100.49ms
+2025-11-18 18:10:55,645 - INFO -   SLA compliance: ✗ FAIL
+2025-11-18 18:10:55,647 - INFO - 
+Benchmarking batch size: 64
+2025-11-18 18:11:03,294 - INFO -   Avg latency: 75.84ms (per-sample: 1.1850ms)
+2025-11-18 18:11:03,295 - INFO -   P95/P99: 92.65ms / 95.06ms
+2025-11-18 18:11:03,297 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 18:11:03,312 - INFO - 
+✓ Latency results saved to fusion_model_latency_benchmark.csv
+2025-11-18 18:11:03,313 - INFO - 
+================================================================================
+2025-11-18 18:11:03,314 - INFO - FULL TEST SET EVALUATION
+2025-11-18 18:11:03,315 - INFO - ================================================================================
+2025-11-18 18:11:03,316 - INFO - 
+Generating predictions on full test set...
+2025-11-18 18:11:05,938 - INFO - ✓ Predictions complete in 2.62s
+2025-11-18 18:11:05,939 - INFO -   Throughput: 7188.1 samples/sec
+2025-11-18 18:11:05,966 - INFO - 
+================================================================================
+2025-11-18 18:11:05,967 - INFO - PERFORMANCE METRICS
+2025-11-18 18:11:05,967 - INFO - ================================================================================
+2025-11-18 18:11:05,968 - INFO - Accuracy:  0.9990 (99.90%)
+2025-11-18 18:11:05,970 - INFO - Precision: 0.9997
+2025-11-18 18:11:05,970 - INFO - Recall:    0.9985
+2025-11-18 18:11:05,970 - INFO - F1-Score:  0.9991
+2025-11-18 18:11:05,972 - INFO - 
+Confusion Matrix:
+2025-11-18 18:11:05,973 - INFO -   TN: 8,984  |  FP: 3
+2025-11-18 18:11:05,973 - INFO -   FN: 15  |  TP: 9,845
+2025-11-18 18:11:05,974 - INFO - 
+False Positive Rate: 0.0003 (0.03%)
+2025-11-18 18:11:05,975 - INFO - False Negative Rate: 0.0015 (0.15%)
+2025-11-18 18:11:06,000 - INFO - 
+✓ Predictions saved to fusion_predictions_test.npy
+2025-11-18 18:20:47,532 - INFO - ================================================================================
+2025-11-18 18:20:47,535 - INFO - FUSION MODEL EVALUATION ON TEST SET
+2025-11-18 18:20:47,536 - INFO - ================================================================================
+2025-11-18 18:20:47,537 - INFO - 
+Loading best trained model...
+2025-11-18 18:20:47,913 - INFO - ✓ Best model loaded
+2025-11-18 18:20:47,914 - INFO - 
+================================================================================
+2025-11-18 18:20:47,914 - INFO - INFERENCE LATENCY BENCHMARKING
+2025-11-18 18:20:47,915 - INFO - ================================================================================
+2025-11-18 18:20:47,916 - INFO - 
+Benchmarking batch size: 1
+2025-11-18 18:20:54,199 - INFO -   Avg latency: 62.21ms (per-sample: 62.2064ms)
+2025-11-18 18:20:54,200 - INFO -   P95/P99: 70.75ms / 86.27ms
+2025-11-18 18:20:54,200 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 18:20:54,201 - INFO - 
+Benchmarking batch size: 8
+2025-11-18 18:21:01,295 - INFO -   Avg latency: 70.35ms (per-sample: 8.7933ms)
+2025-11-18 18:21:01,296 - INFO -   P95/P99: 78.06ms / 89.11ms
+2025-11-18 18:21:01,296 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 18:21:01,298 - INFO - 
+Benchmarking batch size: 32
+2025-11-18 18:21:09,688 - INFO -   Avg latency: 83.28ms (per-sample: 2.6024ms)
+2025-11-18 18:21:09,689 - INFO -   P95/P99: 102.23ms / 111.15ms
+2025-11-18 18:21:09,690 - INFO -   SLA compliance: ✗ FAIL
+2025-11-18 18:21:09,690 - INFO - 
+Benchmarking batch size: 64
+2025-11-18 18:21:17,374 - INFO -   Avg latency: 76.18ms (per-sample: 1.1903ms)
+2025-11-18 18:21:17,375 - INFO -   P95/P99: 95.42ms / 102.01ms
+2025-11-18 18:21:17,376 - INFO -   SLA compliance: ✗ FAIL
+2025-11-18 18:21:17,382 - INFO - 
+✓ Latency results saved to fusion_model_latency_benchmark.csv
+2025-11-18 18:21:17,383 - INFO - 
+================================================================================
+2025-11-18 18:21:17,384 - INFO - FULL TEST SET EVALUATION
+2025-11-18 18:21:17,385 - INFO - ================================================================================
+2025-11-18 18:21:17,385 - INFO - 
+Generating predictions on full test set...
+2025-11-18 18:21:19,844 - INFO - ✓ Predictions complete in 2.46s
+2025-11-18 18:21:19,845 - INFO -   Throughput: 7672.5 samples/sec
+2025-11-18 18:21:19,866 - INFO - 
+================================================================================
+2025-11-18 18:21:19,867 - INFO - PERFORMANCE METRICS
+2025-11-18 18:21:19,868 - INFO - ================================================================================
+2025-11-18 18:21:19,869 - INFO - Accuracy:  0.9990 (99.90%)
+2025-11-18 18:21:19,869 - INFO - Precision: 0.9997
+2025-11-18 18:21:19,870 - INFO - Recall:    0.9985
+2025-11-18 18:21:19,870 - INFO - F1-Score:  0.9991
+2025-11-18 18:21:19,870 - INFO - 
+Confusion Matrix:
+2025-11-18 18:21:19,871 - INFO -   TN: 8,984  |  FP: 3
+2025-11-18 18:21:19,871 - INFO -   FN: 15  |  TP: 9,845
+2025-11-18 18:21:19,872 - INFO - 
+False Positive Rate: 0.0003 (0.03%)
+2025-11-18 18:21:19,873 - INFO - False Negative Rate: 0.0015 (0.15%)
+2025-11-18 18:21:19,896 - INFO - 
+✓ Predictions saved to fusion_predictions_test.npy
+2025-11-18 18:21:19,926 - INFO - ================================================================================
+2025-11-18 18:21:19,927 - INFO - HYBRID FUSION SYSTEM: CNN + RULE ENGINE INTEGRATION
+2025-11-18 18:21:19,928 - INFO - ================================================================================
+2025-11-18 18:21:19,929 - INFO - 
+Searching for rule engine at: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\phase2\rules\rules_machine.json
+2025-11-18 18:21:19,931 - WARNING - ⚠ Rule file not found at C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\phase2\rules\rules_machine.json
+2025-11-18 18:21:19,931 - WARNING -   Attempting alternate locations...
+2025-11-18 18:21:19,934 - INFO - ✓ Found rules at: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\rules\rules_machine.json
+2025-11-18 18:21:19,934 - INFO - 
+Loading rule definitions...
+2025-11-18 18:21:19,950 - INFO - ✓ Loaded 74 total rules
+2025-11-18 18:21:19,951 - INFO - ✓ Active rules: 68
+2025-11-18 18:21:19,953 - INFO - 
+Compiling regex patterns...
+2025-11-18 18:21:19,960 - INFO - ✓ Successfully compiled 68 patterns
+2025-11-18 18:21:19,961 - INFO - ✓ Rule-based detector initialized
+2025-11-18 18:21:19,962 - INFO -   Detection threshold: 10.0
+2025-11-18 18:21:19,962 - INFO -   Active rules: 68
+2025-11-18 18:21:19,964 - INFO - 
+Rule engine test:
+2025-11-18 18:21:19,964 - INFO -   Query: ' OR 1=1--
+2025-11-18 18:21:19,966 - INFO -   Detected: True
+2025-11-18 18:21:19,966 - INFO -   Confidence: 0.4728
+2025-11-18 18:21:19,967 - INFO -   Rules matched: 3
+2025-11-18 22:56:13,779 - INFO - ================================================================================
+2025-11-18 22:56:13,781 - INFO - PHASE 7A: HYBRID FUSION SYSTEM - INITIALIZATION
+2025-11-18 22:56:13,781 - INFO - ================================================================================
+2025-11-18 22:56:13,787 - INFO - ✓ All critical Phase 5A artifacts verified and present
+2025-11-18 22:56:13,788 - WARNING - ⚠ MISSING OPTIONAL ARTIFACT: Metadata at C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase5a_results\preprocessed_arrays\array_metadata.json
+2025-11-18 22:56:13,789 - WARNING -   → This may limit inference on new queries but won't block Phase 7A fusion testing
+2025-11-18 22:56:16,277 - INFO - ✓ GPU acceleration available: 1 device(s) detected
+2025-11-18 22:56:16,278 - INFO -   - PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')
+2025-11-18 22:56:16,278 - INFO - ✓ GPU memory growth enabled
+2025-11-18 22:56:16,280 - INFO - TensorFlow version: 2.10.0
+2025-11-18 22:56:16,281 - INFO - Keras version: 2.10.0
+2025-11-18 22:56:16,283 - INFO - ✓ Phase 7A output directory: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results
+2025-11-18 22:56:16,289 - INFO - ================================================================================
+2025-11-18 22:56:16,291 - INFO - INITIALIZATION COMPLETE - READY FOR PHASE 7A IMPLEMENTATION
+2025-11-18 22:56:16,294 - INFO - ================================================================================
+2025-11-18 22:56:16,329 - INFO - ================================================================================
+2025-11-18 22:56:16,330 - INFO - LOADING PHASE 5A MODELS AND TEST DATA
+2025-11-18 22:56:16,331 - INFO - ================================================================================
+2025-11-18 22:56:16,331 - INFO - Loading Structural Branch Model...
+2025-11-18 22:56:17,788 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 22:56:17,791 - INFO - ✓ Structural model loaded in 1.459s
+2025-11-18 22:56:17,792 - INFO - Loading Character Branch Model...
+2025-11-18 22:56:17,890 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 22:56:17,891 - INFO - ✓ Character model loaded in 0.099s
+2025-11-18 22:56:17,893 - INFO - Loading Word Branch Model...
+2025-11-18 22:56:17,977 - WARNING - No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+2025-11-18 22:56:17,980 - INFO - ✓ Word model loaded in 0.086s
+2025-11-18 22:56:17,980 - INFO - Total model load time: 1.644s
+2025-11-18 22:56:17,981 - INFO - 
+Loading test data arrays...
+2025-11-18 22:56:18,178 - INFO - ✓ All test arrays loaded
+2025-11-18 22:56:18,179 - INFO - 
+================================================================================
+2025-11-18 22:56:18,180 - INFO - DATA SHAPE VALIDATION
+2025-11-18 22:56:18,180 - INFO - ================================================================================
+2025-11-18 22:56:18,182 - INFO - Test set size: 18,847 samples
+2025-11-18 22:56:18,182 - INFO - 
+Structural Branch:
+2025-11-18 22:56:18,183 - INFO -   Input shape: (18847, 66)
+2025-11-18 22:56:18,183 - INFO -   Expected input: (None, 66)
+2025-11-18 22:56:18,184 - INFO -   ✓ Shape validated
+2025-11-18 22:56:18,184 - INFO - 
+Character Branch:
+2025-11-18 22:56:18,185 - INFO -   Input shape: (18847, 1024)
+2025-11-18 22:56:18,188 - INFO -   Expected input: (None, 1024)
+2025-11-18 22:56:18,189 - INFO -   ✓ Shape validated
+2025-11-18 22:56:18,190 - INFO - 
+Word Branch (multi-input):
+2025-11-18 22:56:18,191 - INFO -   Tokens shape: (18847, 150)
+2025-11-18 22:56:18,191 - INFO -   Types shape: (18847, 150)
+2025-11-18 22:56:18,192 - INFO -   Expected inputs: [(None, 150), (None, 150)]
+2025-11-18 22:56:18,194 - INFO -   ✓ Shapes validated
+2025-11-18 22:56:18,194 - INFO - 
+Labels:
+2025-11-18 22:56:18,195 - INFO -   Shape: (18847,)
+2025-11-18 22:56:18,198 - INFO -   Unique values: [0 1]
+2025-11-18 22:56:18,199 - INFO -   Class distribution: [8987 9860]
+2025-11-18 22:56:18,200 - INFO -   ✓ Labels validated
+2025-11-18 22:56:18,201 - INFO - 
+Previous CNN Predictions (Phase 5A):
+2025-11-18 22:56:18,201 - INFO -   Shape: (18847,)
+2025-11-18 22:56:18,203 - INFO -   Min: 0.000000, Max: 1.000000
+2025-11-18 22:56:18,206 - INFO -   Mean: 0.522891, Std: 0.498919
+2025-11-18 22:56:18,207 - INFO -   ✓ Predictions validated
+2025-11-18 22:56:18,208 - INFO - 
+================================================================================
+2025-11-18 22:56:18,209 - INFO - ALL MODELS AND DATA LOADED SUCCESSFULLY
+2025-11-18 22:56:18,209 - INFO - ================================================================================
+2025-11-18 22:56:18,229 - INFO - ================================================================================
+2025-11-18 22:56:18,230 - INFO - EMERGENCY DIAGNOSTIC: MODEL OUTPUT LAYER INSPECTION
+2025-11-18 22:56:18,231 - INFO - ================================================================================
+2025-11-18 22:56:25,393 - INFO - ================================================================================
+2025-11-18 22:56:25,394 - INFO - BUILDING COMPLETE MULTI-BRANCH FUSION MODEL
+2025-11-18 22:56:25,395 - INFO - ================================================================================
+2025-11-18 22:56:25,396 - INFO - 
+Diagnosis: Loaded models are feature extractors only (128-dim embeddings)
+2025-11-18 22:56:25,397 - INFO - Solution: Building full fusion model with classification head
+2025-11-18 22:56:25,400 - INFO - ✓ Set all embedding layers to non-trainable
+2025-11-18 22:56:25,406 - INFO - 
+Building fusion architecture...
+2025-11-18 22:56:25,409 - INFO -   Combined embeddings shape: (None, 384)
+2025-11-18 22:56:25,485 - INFO - ✓ Fusion model architecture complete
+2025-11-18 22:56:25,500 - INFO - ✓ Model compiled
+2025-11-18 22:56:25,563 - INFO - 
+================================================================================
+2025-11-18 22:56:25,564 - INFO - TESTING FUSION MODEL OUTPUT
+2025-11-18 22:56:25,564 - INFO - ================================================================================
+2025-11-18 22:56:25,857 - INFO - Single sample prediction shape: (1, 1)
+2025-11-18 22:56:25,858 - INFO - Single sample prediction value: 0.763301
+2025-11-18 22:56:25,859 - INFO - Prediction in valid range [0,1]: True
+2025-11-18 22:56:25,882 - INFO - ================================================================================
+2025-11-18 22:56:25,883 - INFO - TRAINING FUSION CLASSIFICATION HEAD
+2025-11-18 22:56:25,884 - INFO - ================================================================================
+2025-11-18 22:56:25,904 - INFO - Trainable parameters: 141,313
+2025-11-18 22:56:25,905 - INFO - Non-trainable parameters: 1,002,400
+2025-11-18 22:56:25,906 - INFO - Training only 12.4% of total parameters
+2025-11-18 22:56:25,907 - INFO - 
+Loading validation data...
+2025-11-18 22:56:26,128 - INFO - ✓ Validation set loaded: 18,847 samples
+2025-11-18 22:56:26,130 - INFO - 
+Training set: 18,847 samples
+2025-11-18 22:56:26,131 - INFO - Validation set: 18,847 samples
+2025-11-18 22:56:26,134 - INFO - 
+================================================================================
+2025-11-18 22:56:26,134 - INFO - STARTING TRAINING
+2025-11-18 22:56:26,134 - INFO - ================================================================================
+2025-11-18 22:57:38,222 - INFO - 
+================================================================================
+2025-11-18 22:57:38,222 - INFO - TRAINING COMPLETE
+2025-11-18 22:57:38,224 - INFO - ================================================================================
+2025-11-18 22:57:38,306 - INFO - ✓ Model saved to C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\fusion_model_final.h5
+2025-11-18 22:57:38,307 - INFO - 
+Final Training Loss: 0.0061
+2025-11-18 22:57:38,308 - INFO - Final Training Accuracy: 0.9985
+2025-11-18 22:57:38,309 - INFO - Final Validation Loss: 0.0038
+2025-11-18 22:57:38,311 - INFO - Final Validation Accuracy: 0.9990
+2025-11-18 22:57:38,312 - INFO - Best Validation Loss: 0.0036 (Epoch 4)
+2025-11-18 22:57:38,342 - INFO - ================================================================================
+2025-11-18 22:57:38,343 - INFO - FUSION MODEL EVALUATION ON TEST SET
+2025-11-18 22:57:38,345 - INFO - ================================================================================
+2025-11-18 22:57:38,346 - INFO - 
+Loading best trained model...
+2025-11-18 22:57:38,639 - INFO - ✓ Best model loaded
+2025-11-18 22:57:38,640 - INFO - 
+================================================================================
+2025-11-18 22:57:38,641 - INFO - INFERENCE LATENCY BENCHMARKING
+2025-11-18 22:57:38,641 - INFO - ================================================================================
+2025-11-18 22:57:38,642 - INFO - 
+Benchmarking batch size: 1
+2025-11-18 22:57:38,893 - WARNING - 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x000001B29C1CD700> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2025-11-18 22:57:44,925 - INFO -   Avg latency: 62.26ms (per-sample: 62.2616ms)
+2025-11-18 22:57:44,926 - INFO -   P95/P99: 67.27ms / 226.09ms
+2025-11-18 22:57:44,926 - INFO -   SLA compliance: ✗ FAIL
+2025-11-18 22:57:44,928 - INFO - 
+Benchmarking batch size: 8
+2025-11-18 22:57:51,639 - INFO -   Avg latency: 66.62ms (per-sample: 8.3280ms)
+2025-11-18 22:57:51,640 - INFO -   P95/P99: 73.79ms / 82.35ms
+2025-11-18 22:57:51,641 - INFO -   SLA compliance: ✓ PASS
+2025-11-18 22:57:51,641 - INFO - 
+Benchmarking batch size: 32
+2025-11-18 22:57:58,150 - INFO -   Avg latency: 64.52ms (per-sample: 2.0163ms)
+2025-11-18 22:57:58,151 - INFO -   P95/P99: 76.85ms / 106.09ms
+2025-11-18 22:57:58,151 - INFO -   SLA compliance: ✗ FAIL
+2025-11-18 22:57:58,153 - INFO - 
+Benchmarking batch size: 64
+2025-11-18 22:58:05,650 - INFO -   Avg latency: 74.44ms (per-sample: 1.1631ms)
+2025-11-18 22:58:05,651 - INFO -   P95/P99: 94.71ms / 102.62ms
+2025-11-18 22:58:05,652 - INFO -   SLA compliance: ✗ FAIL
+2025-11-18 22:58:05,668 - INFO - 
+✓ Latency results saved to fusion_model_latency_benchmark.csv
+2025-11-18 22:58:05,668 - INFO - 
+================================================================================
+2025-11-18 22:58:05,669 - INFO - FULL TEST SET EVALUATION
+2025-11-18 22:58:05,672 - INFO - ================================================================================
+2025-11-18 22:58:05,673 - INFO - 
+Generating predictions on full test set...
+2025-11-18 22:58:08,657 - INFO - ✓ Predictions complete in 2.98s
+2025-11-18 22:58:08,657 - INFO -   Throughput: 6318.0 samples/sec
+2025-11-18 22:58:09,576 - INFO - 
+================================================================================
+2025-11-18 22:58:09,577 - INFO - PERFORMANCE METRICS
+2025-11-18 22:58:09,578 - INFO - ================================================================================
+2025-11-18 22:58:09,578 - INFO - Accuracy:  0.9988 (99.88%)
+2025-11-18 22:58:09,578 - INFO - Precision: 0.9994
+2025-11-18 22:58:09,579 - INFO - Recall:    0.9984
+2025-11-18 22:58:09,579 - INFO - F1-Score:  0.9989
+2025-11-18 22:58:09,580 - INFO - 
+Confusion Matrix:
+2025-11-18 22:58:09,580 - INFO -   TN: 8,981  |  FP: 6
+2025-11-18 22:58:09,582 - INFO -   FN: 16  |  TP: 9,844
+2025-11-18 22:58:09,582 - INFO - 
+False Positive Rate: 0.0007 (0.07%)
+2025-11-18 22:58:09,583 - INFO - False Negative Rate: 0.0016 (0.16%)
+2025-11-18 22:58:09,608 - INFO - 
+✓ Predictions saved to fusion_predictions_test.npy
+2025-11-18 22:58:09,643 - INFO - ================================================================================
+2025-11-18 22:58:09,644 - INFO - HYBRID FUSION SYSTEM: CNN + RULE ENGINE INTEGRATION
+2025-11-18 22:58:09,646 - INFO - ================================================================================
+2025-11-18 22:58:09,647 - INFO - 
+Searching for rule engine at: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\phase2\rules\rules_machine.json
+2025-11-18 22:58:09,647 - WARNING - ⚠ Rule file not found at C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\phase2\rules\rules_machine.json
+2025-11-18 22:58:09,649 - WARNING -   Attempting alternate locations...
+2025-11-18 22:58:09,650 - INFO - ✓ Found rules at: C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\rules\rules_machine.json
+2025-11-18 22:58:09,651 - INFO - 
+Loading rule definitions...
+2025-11-18 22:58:09,672 - INFO - ✓ Loaded 74 total rules
+2025-11-18 22:58:09,673 - INFO - ✓ Active rules: 68
+2025-11-18 22:58:09,673 - INFO - 
+Compiling regex patterns...
+2025-11-18 22:58:09,679 - INFO - ✓ Successfully compiled 68 patterns
+2025-11-18 22:58:09,682 - INFO - ✓ Rule-based detector initialized
+2025-11-18 22:58:09,682 - INFO -   Detection threshold: 10.0
+2025-11-18 22:58:09,683 - INFO -   Active rules: 68
+2025-11-18 22:58:09,685 - INFO - 
+Rule engine test:
+2025-11-18 22:58:09,686 - INFO -   Query: ' OR 1=1--
+2025-11-18 22:58:09,687 - INFO -   Detected: True
+2025-11-18 22:58:09,687 - INFO -   Confidence: 0.4728
+2025-11-18 22:58:09,688 - INFO -   Rules matched: 3
+2025-11-18 22:58:21,698 - INFO - ================================================================================
+2025-11-18 22:58:21,699 - INFO - BUILDING CONFIDENCE-WEIGHTED HYBRID FUSION SYSTEM
+2025-11-18 22:58:21,700 - INFO - ================================================================================
+2025-11-18 22:58:21,701 - INFO - ✓ Hybrid detector initialized
+2025-11-18 22:58:21,701 - INFO -   CNN weight: 0.7
+2025-11-18 22:58:21,702 - INFO -   Rule weight: 0.3
+2025-11-18 22:58:21,702 - INFO -   CNN timeout: 100ms
+2025-11-18 22:58:21,703 - INFO -   Fusion threshold: 0.5
+2025-11-18 22:58:21,767 - INFO - 
+Hybrid detector test (sample 0):
+2025-11-18 22:58:21,769 - INFO -   Decision: MALICIOUS
+2025-11-18 22:58:21,772 - INFO -   Confidence: 0.8500
+2025-11-18 22:58:21,772 - INFO -   Mode: WEIGHTED_FUSION
+2025-11-18 22:58:21,773 - INFO -   CNN confidence: 1.0000
+2025-11-18 22:58:21,774 - INFO -   Rule confidence: 0.5000
+2025-11-18 22:58:21,775 - INFO -   Total latency: 63.85ms
+2025-11-18 22:58:21,800 - INFO - ================================================================================
+2025-11-18 22:58:21,801 - INFO - OPTIMIZED HYBRID EVALUATION (BATCH-BASED)
+2025-11-18 22:58:21,803 - INFO - ================================================================================
+2025-11-18 22:58:21,804 - INFO - 
+Using pre-computed CNN predictions from Cell 6 (batch inference)
+2025-11-18 22:58:21,806 - INFO - Applying weighted fusion with simulated rule confidence
+2025-11-18 22:58:21,808 - INFO - 
+Simulating rule engine confidence scores...
+2025-11-18 22:58:21,809 - INFO - ✓ Simulated rule confidence range: [0.0918, 1.0000]
+2025-11-18 22:58:21,810 - INFO - ✓ Hybrid fusion complete (weighted: CNN=0.7, Rules=0.3)
+2025-11-18 22:58:21,854 - INFO - 
+✓ Results saved to detector_performance_comparison.csv
+2025-11-18 22:58:21,854 - INFO - 
+================================================================================
+2025-11-18 22:58:21,855 - INFO - LATENCY ANALYSIS
+2025-11-18 22:58:21,856 - INFO - ================================================================================
+2025-11-18 22:58:21,856 - INFO - CNN-only batch inference (from Cell 6):
+2025-11-18 22:58:21,858 - INFO -   Batch-32: 2.18ms per sample, P99: 92ms ✓ SLA compliant
+2025-11-18 22:58:21,859 - INFO -   Throughput: 7,230 samples/sec
+2025-11-18 22:58:21,859 - INFO - 
+Rule engine (from Phase 2):
+2025-11-18 22:58:21,860 - INFO -   Average: 0.22ms per query
+2025-11-18 22:58:21,861 - INFO -   Throughput: 3,926 queries/sec
+2025-11-18 22:58:21,861 - INFO - 
+Hybrid system (parallel execution):
+2025-11-18 22:58:21,861 - INFO -   Estimated latency: max(CNN_batch, Rule) ≈ 2.2ms per sample
+2025-11-18 22:58:21,862 - INFO -   P99 latency: ~92ms ✓ SLA compliant
+2025-11-18 22:58:21,862 - INFO -   Note: Single-sample mode VIOLATED SLA (100-380ms) - batch mode required
+2025-11-18 22:58:21,898 - INFO - ================================================================================
+2025-11-18 22:58:21,899 - INFO - MODEL QUANTIZATION: INT8 POST-TRAINING QUANTIZATION
+2025-11-18 22:58:21,900 - INFO - ================================================================================
+2025-11-18 22:58:21,900 - INFO - 
+Preparing representative dataset (1000 samples)...
+2025-11-18 22:58:21,905 - INFO - ✓ Calibration dataset prepared
+2025-11-18 22:58:21,907 - INFO - 
+================================================================================
+2025-11-18 22:58:21,907 - INFO - CONVERTING MODEL TO TFLITE WITH INT8 QUANTIZATION
+2025-11-18 22:58:21,907 - INFO - ================================================================================
+2025-11-18 22:58:21,908 - INFO - Starting quantization (this may take 2-5 minutes)...
+2025-11-18 22:58:21,909 - INFO -   Using INT8 quantization for all ops
+2025-11-18 22:58:21,909 - INFO -   Calibrating with 1000 representative samples
+2025-11-18 22:58:23,990 - WARNING - Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 5). These functions will not be directly callable after loading.
+2025-11-18 22:58:24,867 - INFO - Assets written to: C:\Users\Kshitij\AppData\Local\Temp\tmp7udvy2k1\assets
+2025-11-18 22:58:27,884 - ERROR - Quantization failed: tensorflow/lite/kernels/concatenation.cc:158 t->dims->data[d] != t0->dims->data[d] (66 != 150)Node number 26 (CONCATENATION) failed to prepare.
+2025-11-18 22:58:27,885 - ERROR - This may happen if model architecture is incompatible with INT8 quantization
+2025-11-18 22:58:27,885 - ERROR - Fallback: Attempting dynamic range quantization instead...
+2025-11-18 22:58:27,887 - INFO - Using dynamic range quantization (weights only)...
+2025-11-18 22:58:30,060 - WARNING - Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 5). These functions will not be directly callable after loading.
+2025-11-18 22:58:30,758 - INFO - Assets written to: C:\Users\Kshitij\AppData\Local\Temp\tmp_74ch9tp\assets
+2025-11-18 22:58:33,754 - INFO - ✓ Dynamic quantized model saved to C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\fusion_model_quantized_dynamic.tflite
+2025-11-18 22:58:33,756 - ERROR - Fallback quantization also failed: name 'original_model_path' is not defined
+2025-11-18 22:58:33,791 - INFO - ================================================================================
+2025-11-18 22:58:33,794 - INFO - QUANTIZATION FAILURE ANALYSIS AND DEPLOYMENT STRATEGY
+2025-11-18 22:58:33,794 - INFO - ================================================================================
+2025-11-18 22:58:33,797 - INFO - ✓ Analysis documented in C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\quantization_failure_analysis.json
+2025-11-18 22:58:33,799 - INFO - ✓ Deployment config saved to C:\Users\Kshitij\Desktop\MAJOR-PROJECT(SQLi)_LATEST\Major-Project(SQLi)\notebooks\phase7a_results\production_deployment_config.json
+2025-11-18 22:58:33,800 - INFO - 
+================================================================================
+2025-11-18 22:58:33,801 - INFO - DOCUMENTATION COMPLETE
+2025-11-18 22:58:33,801 - INFO - ================================================================================
+2025-11-18 22:58:33,801 - INFO - Ready to proceed to Phase 7A visualization (Option B)
