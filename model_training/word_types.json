@@ -1,0 +1,10 @@
+{
+  "<PAD>": 0,
+  "<UNK>": 1,
+  "identifier": 2,
+  "keyword": 3,
+  "numeric_literal": 4,
+  "operator": 5,
+  "punctuation": 6,
+  "string_literal": 7
+}

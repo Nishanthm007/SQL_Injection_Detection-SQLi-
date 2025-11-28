@@ -1,6 +1,6 @@
 """
 FastAPI main application.
-SQL Injection Detection API - Phase 8 Production Server.
+SQL Injection Detection API - Phase 8 (New CNN + Rules System)
 """
 
 import time
@@ -11,83 +11,111 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 
-from app.core.config import settings, validate_phase7_artifacts
+from app.core.config import settings
 from app.api.v1.endpoints import detection
 from app.models.schemas import HealthResponse, ErrorResponse
 
-
-# Configure logging
+# -----------------------------------------------------------
+# LOGGING
+# -----------------------------------------------------------
 logging.basicConfig(
     level=getattr(logging, settings.LOG_LEVEL),
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("app.main")
 
 
 # ============================================================
-# LIFESPAN CONTEXT MANAGER (Startup/Shutdown)
+# LIFESPAN STARTUP/SHUTDOWN
 # ============================================================
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """
-    Application lifespan manager.
-    Handles startup and shutdown events.
-    """
-    # Startup
-    logger.info("="*60)
-    logger.info("SQL INJECTION DETECTION API - STARTING")
-    logger.info("="*60)
-    
-    # Validate Phase 7 artifacts
-    logger.info("Validating Phase 7 artifacts...")
-    validation = validate_phase7_artifacts()
-    
-    if validation["valid"]:
-        logger.info("✓ All Phase 7 artifacts validated")
-        for name, info in validation["artifacts"].items():
-            logger.info(f"  - {name}: {info['size_mb']} MB")
-    else:
-        logger.error("✗ Artifact validation failed:")
-        for error in validation["errors"]:
-            logger.error(f"  - {error}")
-        raise RuntimeError("Cannot start API without required artifacts")
-    
-    # Initialize database
-    logger.info("Initializing database...")
-    from app.db.database import init_db
-    init_db()
-    
-    # Store startup time
+    """Startup & Shutdown for Phase-8 API."""
+    logger.info("=" * 60)
+    logger.info("SQL INJECTION DETECTION API (PHASE 8) - STARTING")
+    logger.info("=" * 60)
+
+    # ============================================================
+    # 1. VALIDATE ALL REQUIRED FILES
+    # ============================================================
+    logger.info("Checking Phase-8 model + vocabulary...")
+
+    if not settings.CNN_MODEL_PATH.exists():
+        raise RuntimeError(f"Missing CNN model: {settings.CNN_MODEL_PATH}")
+
+    if not settings.VOCAB_PATH.exists():
+        raise RuntimeError(f"Missing vocab.json: {settings.VOCAB_PATH}")
+
+    if not settings.WORD_TYPES_PATH.exists():
+        raise RuntimeError(f"Missing word_types.json: {settings.WORD_TYPES_PATH}")
+
+    logger.info("✓ Model + vocabulary verified")
+
+    # ============================================================
+    # 2. ⭐ PRELOAD MODEL + PREPROCESSOR + DETECTOR
+    # ============================================================
+    try:
+        logger.info("[STARTUP] Preloading Preprocessor + CNN Model + Detector...")
+
+        # IMPORTANT: import here only
+        from app.utils.model_loader import get_model_loader
+        from app.services.detector import get_detector
+
+        # Load SINGLETON instances NOW (not during requests)
+        _ = get_model_loader()   # loads best_model.h5 only once
+        _ = get_detector()       # loads HybridDetector only once
+
+        logger.info("✓ Detector and CNN model initialized successfully")
+
+    except Exception as e:
+        logger.error(f"FATAL: Detector initialization failed → {e}")
+        raise
+
+    # ============================================================
+    # 3. OPTIONAL: DATABASE INITIALIZATION
+    # ============================================================
+    try:
+        from app.db.database import init_db
+        logger.info("Initializing database...")
+        init_db()
+        logger.info("✓ Database initialized")
+    except Exception as e:
+        logger.warning(f"[WARNING] Database init skipped/failed → {e}")
+
+    # ============================================================
+    # 4. MARK API AS READY
+    # ============================================================
     app.state.startup_time = time.time()
-    
     logger.info(f"API Version: {settings.API_VERSION}")
-    logger.info(f"Host: {settings.HOST}:{settings.PORT}")
     logger.info(f"Debug Mode: {settings.DEBUG}")
-    logger.info("="*60)
+    logger.info("=" * 60)
     logger.info("✓ API READY")
-    logger.info("="*60)
-    
+    logger.info("=" * 60)
+
+    # ============================================================
+    # YIELD TO SERVER
+    # ============================================================
     yield
-    
-    # Shutdown
-    logger.info("="*60)
-    logger.info("SQL INJECTION DETECTION API - SHUTTING DOWN")
-    logger.info("="*60)
+
+    # ============================================================
+    # SHUTDOWN
+    # ============================================================
+    logger.info("=" * 60)
+    logger.info("SQLI DETECTOR API - SHUTDOWN")
+    logger.info("=" * 60)
+
 
 
 # ============================================================
-# CREATE FASTAPI APP
+# CREATE APP
 # ============================================================
 
 app = FastAPI(
     title=settings.API_TITLE,
-    description=settings.API_DESCRIPTION,
     version=settings.API_VERSION,
+    description=settings.API_DESCRIPTION,
     lifespan=lifespan,
-    docs_url="/docs",
-    redoc_url="/redoc",
-    openapi_url="/openapi.json"
 )
 
 
@@ -95,151 +123,102 @@ app = FastAPI(
 # MIDDLEWARE
 # ============================================================
 
-# CORS Middleware
+# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*"]
 )
 
 
-# Request Logging Middleware
+# Logging middleware
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    """Log all incoming requests with timing"""
-    start_time = time.time()
-    
-    # Log request
+    start = time.time()
     logger.info(f"→ {request.method} {request.url.path}")
-    
-    # Process request
+
     response = await call_next(request)
-    
-    # Log response
-    duration = (time.time() - start_time) * 1000
-    logger.info(
-        f"← {request.method} {request.url.path} "
-        f"[{response.status_code}] {duration:.2f}ms"
-    )
-    
+
+    duration = (time.time() - start) * 1000
+    logger.info(f"← {request.method} {request.url.path} [{response.status_code}] {duration:.2f}ms")
     return response
 
 
 # ============================================================
-# EXCEPTION HANDLERS
+# ERROR HANDLERS
 # ============================================================
 
 @app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    """Handle Pydantic validation errors"""
-    errors = exc.errors()
-    
-    logger.warning(f"Validation error on {request.url.path}: {errors}")
-    
+async def validation_error(request: Request, exc: RequestValidationError):
     return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        status_code=422,
         content=ErrorResponse(
             error="ValidationError",
-            message="Request validation failed",
-            detail={"errors": errors}
+            message="Invalid request",
+            detail=exc.errors()
         ).model_dump()
     )
 
 
 @app.exception_handler(Exception)
-async def global_exception_handler(request: Request, exc: Exception):
-    """Handle all uncaught exceptions"""
-    logger.error(f"Unhandled exception on {request.url.path}: {exc}", exc_info=True)
-    
+async def global_error(request: Request, exc: Exception):
+    logger.error(f"Unhandled error: {exc}", exc_info=True)
+
     return JSONResponse(
-        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        status_code=500,
         content=ErrorResponse(
             error="InternalServerError",
             message="An unexpected error occurred",
-            detail=str(exc) if settings.DEBUG else None
+            detail={"error": str(exc)} if settings.DEBUG else None
         ).model_dump()
     )
 
 
+
+
 # ============================================================
-# ROOT ENDPOINTS
+# ROUTES
 # ============================================================
 
-@app.get(
-    "/",
-    summary="API Root",
-    description="Returns API information and available endpoints"
-)
+@app.get("/", summary="API Root")
 async def root():
-    """API root endpoint"""
     return {
-        "name": settings.API_TITLE,
+        "status": "operational",
         "version": settings.API_VERSION,
-        "description": settings.API_DESCRIPTION,
         "endpoints": {
-            "docs": "/docs",
-            "health": "/health",
             "detect": "/api/v1/detect",
-            "detector_info": "/api/v1/detect/info"
-        },
-        "status": "operational"
+            "health": "/health",
+            "docs": "/docs"
+        }
     }
 
 
-@app.get(
-    "/health",
-    response_model=HealthResponse,
-    summary="Health Check",
-    description="Returns service health status and uptime"
-)
-async def health_check():
-    """Health check endpoint for monitoring"""
-    uptime = time.time() - app.state.startup_time if hasattr(app.state, "startup_time") else None
-    
+@app.get("/health", response_model=HealthResponse)
+async def health():
+    uptime = time.time() - app.state.startup_time
     return HealthResponse(
         status="healthy",
         version=settings.API_VERSION,
         uptime_seconds=uptime,
-        components={
-            "model_loader": "operational",
-            "detector": "operational",
-            "database": "not_configured"
-        }
+        components={"model": "operational", "rules": "operational"}
     )
 
 
-# ============================================================
-# REGISTER ROUTERS
-# ============================================================
-
-app.include_router(
-    detection.router,
-    prefix="/api/v1",
-    tags=["Detection"]
-)
+# Register the SQLi detection router
+app.include_router(detection.router, prefix="/api/v1", tags=["Detection"])
 
 
 # ============================================================
-# DEV SERVER (for testing only)
+# DEV SERVER RUN
 # ============================================================
 
 if __name__ == "__main__":
     import uvicorn
-    
-    print("\n" + "="*60)
-    print("STARTING DEVELOPMENT SERVER")
-    print("="*60)
-    print(f"API: {settings.API_TITLE} v{settings.API_VERSION}")
-    print(f"Host: http://{settings.HOST}:{settings.PORT}")
-    print(f"Docs: http://{settings.HOST}:{settings.PORT}/docs")
-    print("="*60 + "\n")
-    
     uvicorn.run(
         "app.main:app",
         host=settings.HOST,
         port=settings.PORT,
-        reload=settings.DEBUG,
-        log_level=settings.LOG_LEVEL.lower()
+        reload=True,
     )
