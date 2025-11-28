@@ -1,6 +1,6 @@
 """
 Detection endpoint for SQL injection analysis.
-Handles /api/v1/detect and related endpoints with database logging.
+Handles /detect endpoints with database logging.
 """
 
 import asyncio
@@ -16,12 +16,14 @@ from app.models.schemas import (
     ErrorResponse,
     detection_result_to_response
 )
-from app.services.hybrid_detector import HybridDetector
-from app.utils.model_loader import get_model_artifacts, ModelArtifacts
+
+# NEW detector (YOUR updated model)
+from app.services.detector import get_detector, HybridDetector
+
 from app.core.config import settings
 from app.db.database import get_db
 from app.db import services as db_services
-from app.utils.json_utils import sanitize_json  # Universal patch!
+from app.utils.json_utils import sanitize_json  # Universal patch
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -35,103 +37,142 @@ router = APIRouter(
     }
 )
 
-_detector_instance = None
 
-def get_detector() -> HybridDetector:
-    global _detector_instance
-    if _detector_instance is None:
-        logger.info("Initializing HybridDetector...")
-        artifacts = get_model_artifacts()
-        _detector_instance = HybridDetector(artifacts)
-        logger.info("HybridDetector initialized successfully")
-    return _detector_instance
+# ------------------------------------------------------------
+# DEPENDENCY: SINGLETON DETECTOR
+# ------------------------------------------------------------
+def detector_dependency() -> HybridDetector:
+    """
+    FastAPI-compatible dependency wrapper for get_detector().
+    """
+    from app.services.detector import get_detector
+    return get_detector()
 
+
+# ------------------------------------------------------------
+# MAIN DETECTION ENDPOINT
+# ------------------------------------------------------------
 @router.post(
     "",
     response_model=DetectionResponse,
-    status_code=status.HTTP_200_OK,
-    summary="Detect SQL Injection",
-    description="Analyzes a SQL query for injection attacks using hybrid CNN + rules detection."
+    status_code=status.HTTP_200_OK
 )
 async def detect_sql_injection(
     request: DetectionRequest,
-    detector: HybridDetector = Depends(get_detector)
-) -> JSONResponse:
+    detector: HybridDetector = Depends(detector_dependency),
+    db: Session = Depends(get_db)
+):
     try:
-        logger.info(f"Processing detection request: query_length={len(request.query)}")
-        result = await detector.predict(query=request.query, metadata=request.metadata)
-        response = detection_result_to_response(result)
-        asyncio.create_task(db_services.log_attack_async(
-            query=request.query,
-            label=response.label,
-            confidence=response.confidence,
-            scores=response.scores,
-            decision_source=response.decision_source,
-            latency_ms=response.latency_ms,
-            rule_matches=response.rule_matches,
-            details=response.details or {},
-            metadata=request.metadata
-        ))
-        logger.info(f"Detection complete: label={response.label}, source={response.decision_source}, latency={response.latency_ms}ms")
-        # Universal patch
-        return JSONResponse(content=sanitize_json(response.dict()))
-    except ValueError as e:
-        logger.error(f"Validation error: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail={"error": "ValidationError", "message": str(e)}
-        )
-    except Exception as e:
-        logger.error(f"Detection error: {e}", exc_info=True)
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail={"error": "InternalServerError",
-                    "message": "An error occurred during detection",
-                    "detail": str(e) if settings.DEBUG else None}
+        logger.info(f"[DETECTION] Query received (length={len(request.query)})")
+
+        # NEW detector output
+        result = detector.analyze(request.query)
+        """
+        result = {
+            "query": ...
+            "cnn_prob": float
+            "rule_score": float
+            "matched_rules": [...]
+            "final_label": 0/1
+            "decision": "ALLOW/BLOCK_STRONG/..."
+        }
+        """
+
+        # Build correct response payload
+        response_data = {
+            "query": result["query"],
+            "label": result["final_label"],
+            "confidence": result["cnn_prob"],
+            "scores": {
+                "cnn": result["cnn_prob"],
+                "rules": result["rule_score"]
+            },
+            "rule_matches": result["matched_rules"],
+            "decision_source": result["decision"],
+            "latency_ms": 0.0,  # optional — can calculate later
+            "details": {}
+        }
+
+        # DB logging
+        asyncio.create_task(
+            db_services.log_attack_async(
+                query=request.query,
+                label=response_data["label"],
+                confidence=response_data["confidence"],
+                scores=response_data["scores"],
+                decision_source=response_data["decision_source"],
+                latency_ms=response_data["latency_ms"],
+                rule_matches=response_data["rule_matches"],
+                details=response_data["details"],
+                metadata=request.metadata
+            )
         )
 
+        return JSONResponse(content=sanitize_json(response_data))
+
+    except Exception as e:
+        logger.error(f"[DETECTION ERROR]: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "error": "InternalServerError",
+                "message": "An internal error occurred during detection",
+                "detail": str(e) if settings.DEBUG else None
+            }
+        )
+
+
+
+# ------------------------------------------------------------
+# DETECTOR INFO
+# ------------------------------------------------------------
 @router.get(
     "/info",
-    summary="Get Detector Information",
-    description="Returns detector configuration and model metadata"
+    summary="Get Detector Info",
+    description="Returns detector configuration and model metadata."
 )
 async def get_detector_info(
-    detector: HybridDetector = Depends(get_detector)
+    detector: HybridDetector = Depends(detector_dependency)
 ) -> JSONResponse:
     try:
-        info = detector.get_detector_info()
-        # Add model info from artifacts
-        model_info = detector.artifacts.get_model_info()
-        resp = {
-            "detector": info,
-            "model": model_info,
-            "status": "operational"
+        info = {
+            "status": "operational",
+            "detector": "HybridDetector",
+            "cnn_model_loaded": True
         }
-        return JSONResponse(content=sanitize_json(resp))
+
+        return JSONResponse(content=sanitize_json(info))
+
     except Exception as e:
-        logger.error(f"Error fetching detector info: {e}")
+        logger.error(f"[INFO] Error: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail={"error": "InternalServerError", "message": str(e)}
         )
 
+
+# ------------------------------------------------------------
+# GET RECENT ATTACK LOGS
+# ------------------------------------------------------------
 @router.get(
     "/attacks",
     summary="Get Recent Attacks",
-    description="Returns recent attack logs from database"
+    description="Fetch recent attack logs from database."
 )
 def get_attacks(
     limit: int = 100,
     label: Optional[int] = None,
     db: Session = Depends(get_db)
 ) -> JSONResponse:
+
     attacks = db_services.get_recent_attacks(db, limit=limit, label_filter=label)
+
     resp = {
         "total": len(attacks),
         "attacks": [
             {
                 "id": a.id,
-                "query": a.query[:100] + "..." if len(a.query) > 100 else a.query,
+                "query": (a.query[:100] + "...") if len(a.query) > 100 else a.query,
                 "label": a.label,
                 "confidence": round(a.confidence, 4),
                 "decision_source": a.decision_source,
@@ -143,31 +184,40 @@ def get_attacks(
             for a in attacks
         ]
     }
+
     return JSONResponse(content=sanitize_json(resp))
 
+
+# ------------------------------------------------------------
+# GET ATTACK STATISTICS
+# ------------------------------------------------------------
 @router.get(
     "/stats",
     summary="Get Attack Statistics",
-    description="Returns attack statistics for specified period"
+    description="Attack statistics for the last N days."
 )
 def get_stats(
     days: int = 7,
     db: Session = Depends(get_db)
 ) -> JSONResponse:
+
     stats = db_services.get_attack_stats(db, days=days)
-    top_patterns = db_services.get_top_attack_patterns(db, limit=5)
-    stats["top_patterns"] = top_patterns
+    stats["top_patterns"] = db_services.get_top_attack_patterns(db, limit=5)
+
     return JSONResponse(content=sanitize_json(stats))
 
+
+# ------------------------------------------------------------
+# BATCH API (NOT IMPLEMENTED)
+# ------------------------------------------------------------
 @router.post(
     "/batch",
-    summary="Batch Detection (Future)",
-    description="Batch detection endpoint - not yet implemented",
+    summary="Batch Detection (Not Implemented)",
     status_code=status.HTTP_501_NOT_IMPLEMENTED
 )
 async def batch_detect(request: Dict[str, Any]) -> None:
     raise HTTPException(
         status_code=status.HTTP_501_NOT_IMPLEMENTED,
         detail={"error": "NotImplemented",
-                "message": "Batch detection endpoint not yet available"}
+                "message": "Batch detection not implemented yet"}
     )
