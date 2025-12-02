@@ -57,20 +57,40 @@ class CNNPreprocessor:
 # -------------------------------------------------------------
 _preprocessor = None
 
-def get_preprocessor():
+def get_preprocessor(vocab_path: str = None, wordtype_path: str = None):
+    """
+    Singleton loader for CNNPreprocessor.
+    By default loads paths from config.settings (VOCAB_PATH, WORD_TYPES_PATH).
+    Optional arguments allow overrides for testing.
+    """
     global _preprocessor
     if _preprocessor is None:
+        # Lazily import settings to avoid import cycles in different run contexts.
+        try:
+            # When running scripts directly (python preprocessor.py)
+            from config import settings
+        except Exception:
+            # When running as a package (uvicorn app.main:app)
+            from app.core.config import settings
 
-        vocab_path = Path(r"D:\Major-Project(SQLi)_Latest - Copy\Major-Project(SQLi)_Latest\Major-Project(SQLi)\model_training\vocab.json")
-        wordtype_path = Path(r"D:\Major-Project(SQLi)_Latest - Copy\Major-Project(SQLi)_Latest\Major-Project(SQLi)\model_training\word_types.json")
+        # Allow override for tests; otherwise use settings defaults.
+        vocab_path = Path(vocab_path) if vocab_path else Path(settings.VOCAB_PATH)
+        wordtype_path = Path(wordtype_path) if wordtype_path else Path(settings.WORD_TYPES_PATH)
 
         print("[PREPROCESSOR] Loading vocab & type vocab:")
         print("  - Vocab:", vocab_path)
         print("  - Types:", wordtype_path)
 
-        # ✔ Load JSON files properly
-        vocab = json.load(open(vocab_path, "r"))
-        word_types = json.load(open(wordtype_path, "r"))
+        # Fail early with a readable error if files are missing
+        if not vocab_path.exists():
+            raise FileNotFoundError(f"Vocab file not found at: {vocab_path}")
+        if not wordtype_path.exists():
+            raise FileNotFoundError(f"Word types file not found at: {wordtype_path}")
+
+        with open(vocab_path, "r", encoding="utf-8") as vf:
+            vocab = json.load(vf)
+        with open(wordtype_path, "r", encoding="utf-8") as wt:
+            word_types = json.load(wt)
 
         _preprocessor = CNNPreprocessor(vocab, word_types)
 

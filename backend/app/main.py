@@ -10,10 +10,14 @@ from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
-
 from app.core.config import settings
 from app.api.v1.endpoints import detection
 from app.models.schemas import HealthResponse, ErrorResponse
+
+app = FastAPI(
+    title="SQLi Detector API",
+    version="1.0.0",
+)
 
 # -----------------------------------------------------------
 # LOGGING

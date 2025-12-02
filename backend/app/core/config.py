@@ -63,13 +63,26 @@ class Settings(BaseSettings):
     ]
 
     # ============================================================
-    # FUSION WEIGHTS
+    # FUSION WEIGHTS (tuned)
     # ============================================================
-    CNN_WEIGHT: float = 0.7
-    RULE_WEIGHT: float = 0.3
+    # Reduce model influence so borderline benign queries don't become suspicious.
+    CNN_WEIGHT: float = 0.50      # lowered to make benign borderline queries pass as benign
+    RULE_WEIGHT: float = 0.50     # give rules equal say for now
     DEFAULT_THRESHOLD: float = 0.5
 
-    # CNN timeout for fallback
+    # Additional thresholds used by detector code (kept for compatibility/tuning)
+    FUSION_HIGH: float = 0.80
+    FUSION_MED: float = 0.55
+
+    # Safety overrides & decision parameters (used by detector)
+    HIGH_CNN_BLOCK: float = 0.95
+    HIGH_RULE_BLOCK: float = 0.75
+
+    # Risky-rule and suspicious floors (used by detector tuning)
+    RISKY_RULE_THRESHOLD: float = 0.35
+    SUSPICIOUS_LOWER: float = 0.35
+
+    # CNN timeout for fallback (ms)
     CNN_TIMEOUT_MS: int = 2000
 
     # ============================================================

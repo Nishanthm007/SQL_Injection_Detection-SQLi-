@@ -1,71 +1,117 @@
+# app/utils/model_loader.py
+"""
+Model loader wrapper that loads the Keras CNN model and the calibrator (if present).
+Provides:
+ - get_model_loader() -> singleton ModelWrapper
+ - ModelWrapper.predict(features) -> raw model probability (float)
+ - ModelWrapper.predict_calibrated(features) -> calibrated probability (float)
+"""
+
+from pathlib import Path
+import pickle
 import numpy as np
-import tensorflow as tf
-from app.core.config import settings
+import time
+from typing import Any
+
+# Keras import (may be tensorflow.keras)
+try:
+    from tensorflow.keras.models import load_model
+except Exception:
+    # fallback to keras if installed differently
+    from keras.models import load_model
+
+# settings
+try:
+    from app.core.config import settings
+except Exception:
+    # defensive fallback if run standalone
+    from config import settings
+
+_calibrator = None
+_model_wrapper_singleton = None
 
 
-class CNNModelLoader:
-    """
-    Loads the Phase-8 CNN model (best_model.h5) using the path from settings.
-    """
+def _load_calibrator():
+    global _calibrator
+    try:
+        p = Path(settings.MODEL_TRAINING_DIR) / "calibrator.pkl"
+        if p.exists():
+            with p.open("rb") as fh:
+                _calibrator = pickle.load(fh)
+            print("[MODEL LOADER] Calibrator loaded:", p)
+        else:
+            _calibrator = None
+            print("[MODEL LOADER] No calibrator found at:", p)
+    except Exception as e:
+        _calibrator = None
+        print("[MODEL LOADER] Error loading calibrator:", e)
 
-    def __init__(self):
-        self.model_path = settings.CNN_MODEL_PATH
 
-        print(f"[MODEL LOADER] Looking for model at: {self.model_path}")
+class ModelWrapper:
+    def __init__(self, keras_model):
+        self.model = keras_model
+        # load calibrator lazily once model wrapper created
+        _load_calibrator()
 
-        if not self.model_path.exists():
-            raise FileNotFoundError(f"[ERROR] best_model.h5 missing at:\n{self.model_path}")
-
-        print(f"[MODEL LOADER] Loading Keras model: {self.model_path}")
-        # best_model.h5 from your train.py
-        self.model = tf.keras.models.load_model(self.model_path, compile=False)
-        print("[MODEL LOADER] ✓ Model loaded successfully")
-
-    def predict(self, inputs: dict) -> float:
+    def predict_raw(self, features: dict) -> float:
         """
-        Run CNN forward-pass.
-        Expected dict keys from preprocessor:
-            - word_tokens
-            - word_types
-            - char_features
-            - struct_features
+        Predict raw model output (probability/logit depending on model).
+        Returns scalar float.
         """
-        wt = np.asarray(inputs["word_tokens"], dtype=np.int32)
-        tp = np.asarray(inputs["word_types"], dtype=np.int32)
-        cf = np.asarray(inputs["char_features"], dtype=np.float32)
-        sf = np.asarray(inputs["struct_features"], dtype=np.float32)
+        start = time.time()
+        # model.predict returns array-like, probably shape (1,1)
+        out = self.model.predict(features)
+        # try safe extraction
+        try:
+            # if numpy array
+            val = float(out[0]) if hasattr(out, "__len__") else float(out)
+        except Exception:
+            try:
+                val = float(np.asarray(out).ravel()[0])
+            except Exception:
+                # fallback
+                val = float(out)
+        return val
 
-        print(
-            f"[PREDICT] Shapes → "
-            f"word_tokens={wt.shape}, "
-            f"word_types={tp.shape}, "
-            f"char_features={cf.shape}, "
-            f"struct_features={sf.shape}"
-        )
+    def predict_calibrated(self, features: dict) -> float:
+        """
+        Return calibrated probability using sklearn calibrator if available.
+        If calibrator not present, return raw probability.
+        """
+        raw = self.predict_raw(features)
+        if _calibrator is not None:
+            try:
+                # sklearn wants 2D array input
+                calibrated = float(_calibrator.predict_proba([[raw]])[0, 1])
+                return calibrated
+            except Exception as e:
+                # on any failure, fallback to raw
+                print("[MODEL LOADER] Calibrator predict_proba failed:", e)
+                return raw
+        return raw
 
-        pred = self.model([wt, tp, cf, sf])
-        prob = float(pred.numpy()[0][0])
-        return prob
+    # convenience: keep old API name 'predict' for backward compatibility (returns raw)
+    def predict(self, features: dict) -> float:
+        return self.predict_raw(features)
 
 
-# Singleton
-_model_loader = None
+def _load_keras_model():
+    model_path = Path(settings.CNN_MODEL_PATH)
+    print("[MODEL LOADER] Looking for model at:", model_path)
+    if not model_path.exists():
+        raise FileNotFoundError(f"Keras model not found at {model_path}")
+    print("[MODEL LOADER] Loading Keras model:", model_path)
+    model = load_model(str(model_path))
+    print("[MODEL LOADER] ✓ Model loaded successfully")
+    return model
 
-def get_model_loader():
-    global _model_loader
-    if _model_loader is None:
-        _model_loader = CNNModelLoader()
-    return _model_loader
 
-
-if __name__ == "__main__":
-    # Quick sanity test (only if you run this file directly)
-    dummy = {
-        "word_tokens": np.zeros((1, 150)),
-        "word_types": np.zeros((1, 150)),
-        "char_features": np.zeros((1, 128)),
-        "struct_features": np.zeros((1, 32)),
-    }
-    loader = CNNModelLoader()
-    out = loader.predict(dummy)
-    print("Output:", out)
+def get_model_loader() -> ModelWrapper:
+    """
+    Singleton accessor for the model wrapper.
+    """
+    global _model_wrapper_singleton
+    if _model_wrapper_singleton is None:
+        keras_model = _load_keras_model()
+        _model_wrapper_singleton = ModelWrapper(keras_model)
+    return _model_wrapper_singleton
