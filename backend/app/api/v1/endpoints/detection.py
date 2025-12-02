@@ -62,56 +62,148 @@ async def detect_sql_injection(
     detector: HybridDetector = Depends(detector_dependency),
     db: Session = Depends(get_db)
 ):
+    """
+    Detection endpoint that uses the HybridDetector.
+    Detector.analyze() can return slightly different shapes; this endpoint
+    normalizes the output into a stable API payload and logs to DB asynchronously.
+    """
+
     try:
         logger.info(f"[DETECTION] Query received (length={len(request.query)})")
 
-        # NEW detector output
+        # call detector (synchronous analyze)
         result = detector.analyze(request.query)
-        """
-        result = {
-            "query": ...
-            "cnn_prob": float
-            "rule_score": float
-            "matched_rules": [...]
-            "final_label": 0/1
-            "decision": "ALLOW/BLOCK_STRONG/..."
-        }
-        """
 
-        # Build correct response payload
+        # ------------------------
+        # Normalization / mapping
+        # ------------------------
+        # Accept multiple possible keys from detector.analyze()
+        p_cnn = result.get("cnn_prob", result.get("p_cnn", result.get("scores", {}).get("p_cnn", 0.0)))
+        p_rule = result.get("rule_score", result.get("p_rule", result.get("scores", {}).get("p_rule", 0.0)))
+        fused = result.get("fused_score", result.get("fused", result.get("scores", {}).get("fused", 0.0)))
+
+        # detector may return final_label as int or as string; normalize
+        raw_final_label = result.get("final_label", result.get("label", None))
+        raw_final_label_str = result.get("label_str", None)
+        decision_source = result.get("decision", result.get("decision_source", "unknown"))
+        matched_rules = result.get("matched_rules", result.get("rule_matches", []))
+        latency_ms = result.get("latency_ms", None)
+        details = result.get("details", {}) or {}
+
+        # Normalize label_str to always be a readable string
+        if isinstance(raw_final_label_str, str) and raw_final_label_str.strip():
+            label_str = raw_final_label_str
+        else:
+            # derive from numeric label if present
+            try:
+                if int(raw_final_label) == 1:
+                    label_str = "malicious"
+                else:
+                    # fallback to decision hint
+                    dec = str(decision_source or "").lower()
+                    label_str = "suspicious" if "susp" in dec else "benign"
+            except Exception:
+                dec = str(decision_source or "").lower()
+                label_str = "suspicious" if "susp" in dec else "benign"
+
+        # Normalize numeric values with fallbacks
+        try:
+            p_cnn_f = float(p_cnn or 0.0)
+        except Exception:
+            p_cnn_f = 0.0
+        try:
+            p_rule_f = float(p_rule or 0.0)
+        except Exception:
+            p_rule_f = 0.0
+        try:
+            fused_f = float(fused or 0.0)
+        except Exception:
+            fused_f = 0.0
+
+        # Compute latency if missing using details
+        if latency_ms is None:
+            try:
+                latency_ms = float(details.get("cnn_latency_ms", 0.0) or 0.0) + float(details.get("rule_latency_ms", 0.0) or 0.0)
+            except Exception:
+                latency_ms = 0.0
+
+        # Final integer label (DB-friendly)
+        try:
+            label_int = 1 if int(raw_final_label) == 1 else 0
+        except Exception:
+            label_int = 1 if "mal" in str(label_str).lower() else 0
+
+        # Ensure details latencies are numeric (DB writer expects floats, not None)
+        cnn_latency_val = float(details.get("cnn_latency_ms", result.get("cnn_latency_ms", 0.0) or 0.0))
+        rule_latency_val = float(details.get("rule_latency_ms", result.get("rule_latency_ms", 0.0) or 0.0))
+        raw_model_out_val = float(details.get("raw_model_output", result.get("raw_model_output", 0.0) or 0.0))
+        timeout_occurred = bool(details.get("timeout_occurred", result.get("timeout_occurred", False)))
+
+        # Build API response — keep stable keys expected by clients
         response_data = {
-            "query": result["query"],
-            "label": result["final_label"],
-            "confidence": result["cnn_prob"],
+            "query": result.get("query", request.query),
+            "label": int(label_int),
+            "label_str": str(label_str),
+            # keep modern keys (p_cnn/p_rule) for clients
             "scores": {
-                "cnn": result["cnn_prob"],
-                "rules": result["rule_score"]
+                "p_cnn": round(p_cnn_f, 4),
+                "p_rule": round(p_rule_f, 4),
+                "fused": round(fused_f, 4),
+                # legacy-friendly aliases for DB writer / older consumers
+                "cnn": round(p_cnn_f, 4),
+                "rules": round(p_rule_f, 4)
             },
-            "rule_matches": result["matched_rules"],
-            "decision_source": result["decision"],
-            "latency_ms": 0.0,  # optional — can calculate later
-            "details": {}
+            # keep top-level convenience fields too (legacy)
+            "p_cnn": round(p_cnn_f, 4),
+            "p_rule": round(p_rule_f, 4),
+            "fused": round(fused_f, 4),
+            "decision": str(decision_source),
+            "rule_matches": matched_rules or [],
+            "latency_ms": round(float(latency_ms or 0.0), 3),
+            "details": {
+                "cnn_latency_ms": round(cnn_latency_val, 3),
+                "rule_latency_ms": round(rule_latency_val, 3),
+                "raw_model_output": raw_model_out_val,
+                "timeout_occurred": timeout_occurred
+            }
         }
 
-        # DB logging
-        asyncio.create_task(
-            db_services.log_attack_async(
-                query=request.query,
-                label=response_data["label"],
-                confidence=response_data["confidence"],
-                scores=response_data["scores"],
-                decision_source=response_data["decision_source"],
-                latency_ms=response_data["latency_ms"],
-                rule_matches=response_data["rule_matches"],
-                details=response_data["details"],
-                metadata=request.metadata
-            )
-        )
+        # Fire-and-forget DB logging. log_attack_async signature:
+        # async def log_attack_async(query, label, confidence, scores, decision_source, latency_ms, rule_matches, details, metadata=None)
+        try:
+            log_payload = {
+                "query": request.query,
+                "label": response_data["label"],
+                "confidence": response_data["scores"]["p_cnn"],
+                "scores": {
+                    # pass legacy keys expected by DB layer
+                    "cnn": response_data["scores"]["cnn"],
+                    "rules": response_data["scores"]["rules"],
+                    "fused": response_data["scores"]["fused"]
+                },
+                "decision_source": response_data["decision"],
+                "latency_ms": response_data["latency_ms"],
+                "rule_matches": response_data["rule_matches"],
+                # details as DB expects
+                "details": {
+                    "cnn_latency_ms": response_data["details"]["cnn_latency_ms"],
+                    "rule_latency_ms": response_data["details"]["rule_latency_ms"],
+                    "raw_model_output": response_data["details"]["raw_model_output"],
+                    "timeout_occurred": response_data["details"]["timeout_occurred"]
+                },
+                "metadata": getattr(request, "metadata", None)
+            }
+            # do not await — non-blocking
+            asyncio.create_task(db_services.log_attack_async(**log_payload))
+        except Exception as log_err:
+            # Logging should not block the response — print for ops
+            logger.exception("[DETECTION] Failed to enqueue DB log: %s", log_err)
 
+        # Return sanitized JSON response
         return JSONResponse(content=sanitize_json(response_data))
 
     except Exception as e:
-        logger.error(f"[DETECTION ERROR]: {e}")
+        logger.exception(f"[DETECTION ERROR]: {e}")
         raise HTTPException(
             status_code=500,
             detail={
@@ -120,6 +212,8 @@ async def detect_sql_injection(
                 "detail": str(e) if settings.DEBUG else None
             }
         )
+
+
 
 
 
