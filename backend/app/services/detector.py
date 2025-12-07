@@ -46,6 +46,12 @@ class HybridDetector:
     # Robust model-output extractor
     # -------------------------
     def _safe_extract_attack_prob(self, model_output: Any) -> float:
+        """
+        Extract attack probability from model output.
+        NOTE: If model outputs benign probability, invert it to get attack probability.
+        Model output interpretation: value close to 1.0 = BENIGN, value close to 0.0 = ATTACK
+        So we return (1.0 - model_output) to get attack probability.
+        """
         try:
             if model_output is None:
                 return 0.0
@@ -54,9 +60,14 @@ class HybridDetector:
                 if arr.size == 0:
                     return 0.0
                 if arr.ndim >= 2 and arr.shape[-1] >= 2:
-                    return float(arr[0, -1])
+                    # Model outputs [p_attack, p_benign], take last column for benign
+                    benign_prob = float(arr[0, -1])
+                    # Invert to get attack probability
+                    return 1.0 - benign_prob
                 flat = arr.flatten()
-                return float(flat[0])
+                benign_prob = float(flat[0])
+                # Invert to get attack probability  
+                return 1.0 - benign_prob
             if isinstance(model_output, dict):
                 for k in ("attack_prob", "p_attack", "prob_attack", "p_malicious", "prob"):
                     if k in model_output:
@@ -64,10 +75,12 @@ class HybridDetector:
                 for k in ("raw", "output"):
                     if k in model_output:
                         try:
-                            return float(model_output[k])
+                            benign_prob = float(model_output[k])
+                            return 1.0 - benign_prob
                         except Exception:
                             pass
-            return float(model_output)
+            benign_prob = float(model_output)
+            return 1.0 - benign_prob
         except Exception:
             return 0.0
 

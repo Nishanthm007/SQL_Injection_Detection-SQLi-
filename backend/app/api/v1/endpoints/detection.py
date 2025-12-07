@@ -251,18 +251,20 @@ async def get_detector_info(
 @router.get(
     "/attacks",
     summary="Get Recent Attacks",
-    description="Fetch recent attack logs from database."
+    description="Fetch recent attack logs from database with pagination support."
 )
 def get_attacks(
-    limit: int = 100,
+    limit: int = 50,
+    offset: int = 0,
     label: Optional[int] = None,
     db: Session = Depends(get_db)
 ) -> JSONResponse:
 
-    attacks = db_services.get_recent_attacks(db, limit=limit, label_filter=label)
+    attacks = db_services.get_recent_attacks(db, limit=limit, offset=offset, label_filter=label)
+    total = db_services.get_total_attack_count(db, label_filter=label)
 
     resp = {
-        "total": len(attacks),
+        "total": total,
         "attacks": [
             {
                 "id": a.id,

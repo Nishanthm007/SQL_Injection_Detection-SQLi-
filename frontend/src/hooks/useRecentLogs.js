@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { getRecentAttacks } from "../services/logsApi";
 
-export default function useRecentLogs({ limit = 50, label = null, pollIntervalMs = 5000 } = {}) {
+export default function useRecentLogs({ limit = 50, offset = 0, label = null, pollIntervalMs = 5000 } = {}) {
   const [logs, setLogs] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ export default function useRecentLogs({ limit = 50, label = null, pollIntervalMs
     setLoading(true);
     setError(null);
     try {
-      const data = await getRecentAttacks({ limit, label });
+      const data = await getRecentAttacks({ limit, offset, label });
       if (!mountedRef.current) return;
       setLogs(data.attacks || []);
       setTotal(data.total || 0);
@@ -24,7 +24,7 @@ export default function useRecentLogs({ limit = 50, label = null, pollIntervalMs
     } finally {
       if (mountedRef.current) setLoading(false);
     }
-  }, [limit, label]);
+  }, [limit, offset, label]);
 
   useEffect(() => {
     mountedRef.current = true;
