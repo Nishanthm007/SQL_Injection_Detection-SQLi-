@@ -204,6 +204,7 @@ def _log_attack_sync(
 def get_recent_attacks(
     db: Session,
     limit: int = 100,
+    offset: int = 0,
     label_filter: Optional[int] = None
 ) -> List[AttackLog]:
     """
@@ -212,6 +213,7 @@ def get_recent_attacks(
     Args:
         db: Database session
         limit: Maximum number of records
+        offset: Number of records to skip
         label_filter: Filter by label (0 or 1), None for all
 
     Returns:
@@ -222,7 +224,29 @@ def get_recent_attacks(
     if label_filter is not None:
         query = query.filter(AttackLog.label == label_filter)
 
-    return query.order_by(desc(AttackLog.detected_at)).limit(limit).all()
+    return query.order_by(desc(AttackLog.detected_at)).offset(offset).limit(limit).all()
+
+
+def get_total_attack_count(
+    db: Session,
+    label_filter: Optional[int] = None
+) -> int:
+    """
+    Get total count of attack logs.
+
+    Args:
+        db: Database session
+        label_filter: Filter by label (0 or 1), None for all
+
+    Returns:
+        Total count of records
+    """
+    query = db.query(AttackLog)
+
+    if label_filter is not None:
+        query = query.filter(AttackLog.label == label_filter)
+
+    return query.count()
 
 
 def get_attack_stats(db: Session, days: int = 7) -> Dict[str, Any]:
