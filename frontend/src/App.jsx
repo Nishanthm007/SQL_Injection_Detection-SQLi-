@@ -5,6 +5,7 @@ import ExplainabilityPage from "./pages/ExplainabilityPage";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("detect");
+  const [showNavbarGrid, setShowNavbarGrid] = useState(true);
   const [darkMode, setDarkMode] = useState(() => {
     // Check localStorage or default to dark mode
     const saved = localStorage.getItem("darkMode");
@@ -22,6 +23,30 @@ export default function App() {
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    // Only track scroll when on detect tab
+    if (activeTab !== "detect") {
+      setShowNavbarGrid(false);
+      return;
+    }
+
+    const handleScroll = () => {
+      // Hero section height is approximately 500px (400px minHeight + padding)
+      // Show grid if we're within the hero section area (first 500px of scroll)
+      const heroSectionEnd = 500;
+      setShowNavbarGrid(window.scrollY < heroSectionEnd);
+    };
+
+    // Set initial state
+    handleScroll();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Cleanup
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeTab]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -47,22 +72,17 @@ export default function App() {
         ? "bg-black text-gray-100" 
         : "bg-white text-gray-900"
     }`}>
-      {/* Grid Background Pattern */}
-      <div className="fixed inset-0 z-0 pointer-events-none" style={{
-        backgroundImage: darkMode 
-          ? 'linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)'
-          : 'linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px)',
-        backgroundSize: '30px 30px'
-      }}></div>
       
       <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 backdrop-blur-md ${
         darkMode ? "bg-black/70 text-white" : "bg-white/90 text-gray-900 border-b border-gray-200"
-      }`} style={{
+      }`} style={showNavbarGrid && activeTab === "detect" ? {
         backgroundImage: darkMode 
           ? 'linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)'
           : 'linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px)',
-        backgroundSize: '30px 30px'
-      }}>
+        backgroundSize: '30px 30px',
+        backgroundPosition: '0 0',
+        transition: 'background-image 0.3s ease'
+      } : {}}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => setActiveTab("detect")}>
             <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg transition-all relative ${
@@ -91,37 +111,81 @@ export default function App() {
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="ml-2 p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
+              className={`ml-2 relative w-14 h-7 rounded-full transition-all duration-500 ${
+                darkMode 
+                  ? "bg-gradient-to-r from-blue-900 to-indigo-900 border-2 border-blue-500/50" 
+                  : "bg-gradient-to-r from-sky-200 to-blue-300 border-2 border-blue-400"
+              }`}
               title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
-              {darkMode ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                </svg>
-              )}
+              {/* Sliding Circle */}
+              <div className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full transition-all duration-500 flex items-center justify-center ${
+                darkMode 
+                  ? "translate-x-7 bg-gradient-to-br from-gray-700 to-gray-900 shadow-[0_0_10px_rgba(59,130,246,0.5)]" 
+                  : "translate-x-0 bg-gradient-to-br from-yellow-300 to-yellow-500 shadow-[0_0_12px_rgba(234,179,8,0.8)]"
+              }`}>
+                {darkMode ? (
+                  <svg className="w-3 h-3 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M21.64 13a1 1 0 00-1.05-.14 8.05 8.05 0 01-3.37.73 8.15 8.15 0 01-8.14-8.1 8.59 8.59 0 01.25-2A1 1 0 008 2.36a10.14 10.14 0 1014 11.69 1 1 0 00-.36-1.05z"/>
+                  </svg>
+                ) : (
+                  <svg className="w-3.5 h-3.5 drop-shadow-lg" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="4" fill="#1f2937"/>
+                    <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#1f2937" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                )}
+              </div>
+              
+              {/* Background Stars/Sun rays */}
+              <div className="absolute inset-0 rounded-full overflow-hidden">
+                {darkMode ? (
+                  <div className="opacity-40">
+                    <div className="absolute top-1 left-2 w-0.5 h-0.5 bg-blue-300 rounded-full animate-pulse"></div>
+                    <div className="absolute top-3 left-4 w-0.5 h-0.5 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.3s'}}></div>
+                    <div className="absolute top-2 right-2 w-0.5 h-0.5 bg-indigo-300 rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
+                  </div>
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center opacity-50">
+                    <div className="w-6 h-6 rounded-full bg-yellow-400/40 animate-ping"></div>
+                  </div>
+                )}
+              </div>
             </button>
           </nav>
         </div>
       </header>
 
+      {/* Continuous Grid Background - From navbar through hero section */}
+      {activeTab === "detect" && (
+        <div className="fixed top-0 left-0 right-0 pointer-events-none" style={{
+          height: 'calc(80px + 32px + 400px + 64px)', // navbar + padding-top + hero min-height + padding-bottom
+          zIndex: 5,
+          backgroundImage: darkMode 
+            ? 'linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)'
+            : 'linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
+          backgroundPosition: '0 0',
+          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
+          opacity: showNavbarGrid ? 1 : 0,
+          transition: 'opacity 0.3s ease'
+        }}></div>
+      )}
+
       {/* Spacer to prevent content from going under fixed navbar */}
       <div className="h-20"></div>
 
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="px-6 py-8">
         {activeTab === "detect" && (
           <>
             {/* Hero Section */}
-            <div className="mb-8">
+            <div className="mb-8 -mx-6">
               <div className={`relative overflow-hidden shadow-2xl transition-colors duration-300 ${
                 darkMode 
                   ? "bg-gradient-to-br from-black via-gray-900 to-black" 
                   : "bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100"
               }`} style={{minHeight: '400px'}}>
-                <div className={`absolute inset-0 ${darkMode ? "bg-black/20" : "bg-white/30"}`}></div>
+                {/* Grid is handled by the fixed overlay above */}
                 <div className="relative z-10 flex flex-col items-center justify-center text-center py-16 px-8">
                   {/* Main Title */}
                   <h1 className={`font-bold mb-4 ${
@@ -137,10 +201,8 @@ export default function App() {
                     darkMode 
                       ? "text-blue-400" 
                       : "text-blue-600"
-                  }`} style={{fontFamily: 'Inter, sans-serif'}}>
-                    Advanced SQL injection detection powered by Hybrid CNN + Rule Engine.
-                    <br />
-                    Real-time analysis, always up-to-date.
+                  }`} style={{fontFamily: 'Share Tech Mono, monospace'}}>
+                    Advanced SQL injection detection powered by Hybrid CNN + Rule Engine. Real-time analysis, always up-to-date.
                   </p>
 
                   {/* System Status Badge */}
@@ -188,16 +250,17 @@ export default function App() {
             </div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Query Form - Takes 2 columns */}
-              <div className="lg:col-span-2">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Query Form - Takes 2 columns */}
+                <div className="lg:col-span-2">
                 <QueryForm darkMode={darkMode} />
               </div>
 
               {/* Sidebar - Takes 1 column */}
-              <div className="space-y-6 w-full">
+              <div className="space-y-6">
                 {/* Quick Tips Card */}
-                <div className={`w-full p-6 rounded-xl shadow-lg border-2 hover:shadow-xl transition-all ${
+                <div className={`p-6 rounded-xl shadow-lg border-2 hover:shadow-xl transition-all ${
                   darkMode 
                     ? "bg-gradient-to-br from-gray-800 to-gray-850 border-gray-700" 
                     : "bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200"
@@ -240,7 +303,7 @@ export default function App() {
                 </div>
 
                 {/* Detection Features Card */}
-                <div className={`w-full p-6 rounded-xl shadow-lg border-2 hover:shadow-xl transition-all ${
+                <div className={`p-6 rounded-xl shadow-lg border-2 hover:shadow-xl transition-all ${
                   darkMode 
                     ? "bg-gradient-to-br from-gray-800 to-gray-850 border-gray-700" 
                     : "bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200"
@@ -281,7 +344,7 @@ export default function App() {
                 </div>
 
                 {/* System Info Card */}
-                <div className={`w-full p-6 rounded-xl shadow-lg border-2 hover:shadow-xl transition-all ${
+                <div className={`p-6 rounded-xl shadow-lg border-2 hover:shadow-xl transition-all ${
                   darkMode 
                     ? "bg-gradient-to-br from-gray-800 to-gray-850 border-gray-700" 
                     : "bg-gradient-to-br from-green-50 to-emerald-50 border-green-200"
@@ -319,17 +382,21 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
           </>
         )}
 
         {activeTab === "logs" && (
-          <>
+          <div className="max-w-7xl mx-auto">
             <LogsPage darkMode={darkMode} />
-          </>
+          </div>
         )}
 
-        {activeTab === "explain" && <ExplainabilityPage darkMode={darkMode} />}
-
+        {activeTab === "explain" && (
+          <div className="max-w-7xl mx-auto">
+            <ExplainabilityPage darkMode={darkMode} />
+          </div>
+        )}
       </main>
     </div>
   );

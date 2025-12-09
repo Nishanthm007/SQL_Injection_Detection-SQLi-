@@ -450,7 +450,7 @@ export default function PredictionFlow({ queryData, darkMode = false }) {
           </div>
           
           <div className={`p-4 rounded-lg border-2 mt-4 ${darkMode ? "bg-black/50 border-gray-900" : "bg-gradient-to-r from-blue-100 to-purple-100 border-blue-300"}`}>
-            <p className={`text-xs font-semibold ${darkMode ? "text-gray-200" : "text-gray-800"}`}>
+            <p className={`text-xs ${darkMode ? "text-gray-200" : "text-gray-800"}`}>
               🎯 <strong>Result:</strong> A robust, multi-layered defense that catches both known attacks and emerging threats, with scores from 0% (safe) to 100% (malicious). Queries typically above 50-60% are flagged as attacks.
             </p>
           </div>
