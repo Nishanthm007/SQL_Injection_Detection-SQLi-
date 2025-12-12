@@ -310,13 +310,13 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 👥 Authors
 
 - **Nishanth M** - [@Nishanthm007](https://github.com/Nishanthm007)
+- **Harsha Kumar M R** -[@Harsha-MR](https://github.com/Harsha-MR)
+- **Kshitij K** -[@KshitijK89](https://github.com/KshitijK89)
 
 ## 🙏 Acknowledgments
 
@@ -329,7 +329,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For issues, questions, or contributions:
 - Open an issue on GitHub
-- Contact: [Your email or contact information]
+- Contact: [nishanthm0701@gmail.com]
 
 ## 🔗 Related Resources
 
