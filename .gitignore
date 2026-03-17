@@ -35,3 +35,6 @@ __pycache__/
 # Logs
 logs/*.log
 *.log
+
+# Generated notebook artifacts (very deep paths can exceed Windows filename limits)
+notebooks/phase3c_evaluation_datasets/artifacts/days5_6_adversarial_suite/adversarial_suite/

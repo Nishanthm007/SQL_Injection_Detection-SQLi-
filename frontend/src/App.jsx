@@ -234,7 +234,7 @@ export default function App() {
                         : "bg-white/60 border-gray-300"
                     }`}>
                       <div className={`text-xs font-medium uppercase tracking-wider ${darkMode ? "text-white/80" : "text-gray-600"}`}>Response Time</div>
-                      <div className={`text-xl font-bold mt-2 ${darkMode ? "text-white" : "text-gray-900"}`}>⚡ &lt;100ms</div>
+                      <div className={`text-xl font-bold mt-2 ${darkMode ? "text-white" : "text-gray-900"}`}>⚡ ~250ms</div>
                     </div>
                     <div className={`backdrop-blur-sm rounded-lg p-4 border transition-colors ${
                       darkMode 

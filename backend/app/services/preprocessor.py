@@ -31,11 +31,102 @@ class CNNPreprocessor:
 
     # ---------------------------------------------------------
     def _extract_char_features(self, query):
-        return np.zeros(128, dtype=np.float32)
+        """Extract character-level statistical features"""
+        features = np.zeros(128, dtype=np.float32)
+        
+        if not query:
+            return features
+            
+        # Basic stats
+        features[0] = len(query)
+        features[1] = query.count(' ')
+        features[2] = query.count(';')
+        features[3] = query.count(',')
+        features[4] = query.count('(')
+        features[5] = query.count(')')
+        features[6] = query.count('\'')
+        features[7] = query.count('"')
+        features[8] = query.count('-')
+        features[9] = query.count('=')
+        
+        # SQL keywords count
+        query_upper = query.upper()
+        features[10] = query_upper.count('SELECT')
+        features[11] = query_upper.count('FROM')
+        features[12] = query_upper.count('WHERE')
+        features[13] = query_upper.count('UNION')
+        features[14] = query_upper.count('OR')
+        features[15] = query_upper.count('AND')
+        features[16] = query_upper.count('DROP')
+        features[17] = query_upper.count('DELETE')
+        features[18] = query_upper.count('INSERT')
+        features[19] = query_upper.count('UPDATE')
+        
+        # Special patterns
+        features[20] = 1 if '--' in query else 0
+        features[21] = 1 if '/*' in query else 0
+        features[22] = 1 if '*/' in query else 0
+        features[23] = 1 if '||' in query else 0
+        features[24] = query.count('1=1')
+        features[25] = query.count('OR 1')
+        
+        # Character type ratios
+        total_chars = len(query)
+        if total_chars > 0:
+            features[30] = sum(c.isdigit() for c in query) / total_chars
+            features[31] = sum(c.isalpha() for c in query) / total_chars
+            features[32] = sum(c in '!@#$%^&*()' for c in query) / total_chars
+            
+        return features
 
     # ---------------------------------------------------------
     def _extract_struct_features(self, query):
-        return np.zeros(32, dtype=np.float32)
+        """Extract structural and syntactic features"""
+        features = np.zeros(32, dtype=np.float32)
+        
+        if not query:
+            return features
+            
+        query_upper = query.upper()
+        
+        # Clause presence
+        features[0] = 1 if 'SELECT' in query_upper else 0
+        features[1] = 1 if 'FROM' in query_upper else 0
+        features[2] = 1 if 'WHERE' in query_upper else 0
+        features[3] = 1 if 'GROUP BY' in query_upper else 0
+        features[4] = 1 if 'ORDER BY' in query_upper else 0
+        features[5] = 1 if 'HAVING' in query_upper else 0
+        features[6] = 1 if 'LIMIT' in query_upper else 0
+        features[7] = 1 if 'UNION' in query_upper else 0
+        
+        # Suspicious patterns
+        features[10] = 1 if 'SLEEP(' in query_upper else 0
+        features[11] = 1 if 'BENCHMARK(' in query_upper else 0
+        features[12] = 1 if 'WAITFOR' in query_upper else 0
+        features[13] = 1 if 'EXEC(' in query_upper or 'EXECUTE(' in query_upper else 0
+        features[14] = 1 if 'CONCAT(' in query_upper else 0
+        
+        # Comment patterns
+        features[15] = 1 if '--' in query else 0
+        features[16] = 1 if '/*' in query else 0
+        features[17] = 1 if '#' in query else 0
+        
+        # Quote balance (suspicious if imbalanced)
+        single_quotes = query.count("'")
+        double_quotes = query.count('"')
+        features[20] = single_quotes
+        features[21] = double_quotes
+        features[22] = 1 if single_quotes % 2 != 0 else 0  # Imbalanced single quotes
+        features[23] = 1 if double_quotes % 2 != 0 else 0  # Imbalanced double quotes
+        
+        # Parentheses balance
+        open_paren = query.count('(')
+        close_paren = query.count(')')
+        features[24] = open_paren
+        features[25] = close_paren
+        features[26] = 1 if open_paren != close_paren else 0  # Imbalanced
+        
+        return features
 
     # ---------------------------------------------------------
     def preprocess(self, query):

@@ -151,7 +151,8 @@ async def detect_sql_injection(
                 "fused": round(fused_f, 4),
                 # legacy-friendly aliases for DB writer / older consumers
                 "cnn": round(p_cnn_f, 4),
-                "rules": round(p_rule_f, 4)
+                "rules": round(p_rule_f, 4),
+                "p_fused": round(fused_f, 4)
             },
             # keep top-level convenience fields too (legacy)
             "p_cnn": round(p_cnn_f, 4),
@@ -193,6 +194,8 @@ async def detect_sql_injection(
                 },
                 "metadata": getattr(request, "metadata", None)
             }
+            # Debug log
+            logger.info(f"[DETECTION] DB log_payload scores: cnn={log_payload['scores']['cnn']}, rules={log_payload['scores']['rules']}, fused={log_payload['scores']['fused']}")
             # do not await — non-blocking
             asyncio.create_task(db_services.log_attack_async(**log_payload))
         except Exception as log_err:
@@ -271,9 +274,14 @@ def get_attacks(
                 "query": (a.query[:100] + "...") if len(a.query) > 100 else a.query,
                 "label": a.label,
                 "confidence": round(a.confidence, 4),
+                "cnn_score": round(a.cnn_score, 4) if a.cnn_score is not None else 0.0,
+                "rule_score": round(a.rule_score, 4) if a.rule_score is not None else 0.0,
+                "fused_score": round(a.fused_score, 4) if a.fused_score is not None else 0.0,
                 "decision_source": a.decision_source,
                 "rule_matches": a.rule_matches,
                 "latency_ms": round(a.latency_ms, 2),
+                "cnn_latency_ms": round(a.cnn_latency_ms, 2) if a.cnn_latency_ms is not None else None,
+                "rule_latency_ms": round(a.rule_latency_ms, 2) if a.rule_latency_ms is not None else None,
                 "source_ip": a.source_ip,
                 "detected_at": a.detected_at.isoformat() if a.detected_at else None
             }

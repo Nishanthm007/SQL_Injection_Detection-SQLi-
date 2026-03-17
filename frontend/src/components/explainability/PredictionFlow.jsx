@@ -19,6 +19,10 @@ export default function PredictionFlow({ queryData, darkMode = false }) {
   const scores = extractScores(queryData);
   const query = queryData.query || queryData.sql || "";
   
+  // Debug: Log the scores extraction
+  console.log("PredictionFlow - queryData:", queryData);
+  console.log("PredictionFlow - extracted scores:", scores);
+  
   // Determine decision from multiple sources
   let decision = "Unknown";
   let isMalicious = false;

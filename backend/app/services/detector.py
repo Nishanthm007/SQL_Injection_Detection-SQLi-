@@ -48,9 +48,10 @@ class HybridDetector:
     def _safe_extract_attack_prob(self, model_output: Any) -> float:
         """
         Extract attack probability from model output.
-        NOTE: If model outputs benign probability, invert it to get attack probability.
-        Model output interpretation: value close to 1.0 = BENIGN, value close to 0.0 = ATTACK
-        So we return (1.0 - model_output) to get attack probability.
+        Model trained with standard convention: label=1 for MALICIOUS, label=0 for BENIGN
+        With sigmoid activation, model outputs probability of malicious (label=1)
+        So value close to 1.0 = MALICIOUS, value close to 0.0 = BENIGN
+        We return the raw probability as the attack probability.
         """
         try:
             if model_output is None:
@@ -60,14 +61,12 @@ class HybridDetector:
                 if arr.size == 0:
                     return 0.0
                 if arr.ndim >= 2 and arr.shape[-1] >= 2:
-                    # Model outputs [p_attack, p_benign], take last column for benign
-                    benign_prob = float(arr[0, -1])
-                    # Invert to get attack probability
-                    return 1.0 - benign_prob
+                    # Model outputs [p_benign, p_malicious], take last column for malicious
+                    attack_prob = float(arr[0, -1])
+                    return attack_prob
                 flat = arr.flatten()
-                benign_prob = float(flat[0])
-                # Invert to get attack probability  
-                return 1.0 - benign_prob
+                attack_prob = float(flat[0])
+                return attack_prob
             if isinstance(model_output, dict):
                 for k in ("attack_prob", "p_attack", "prob_attack", "p_malicious", "prob"):
                     if k in model_output:
@@ -75,12 +74,12 @@ class HybridDetector:
                 for k in ("raw", "output"):
                     if k in model_output:
                         try:
-                            benign_prob = float(model_output[k])
-                            return 1.0 - benign_prob
+                            attack_prob = float(model_output[k])
+                            return attack_prob
                         except Exception:
                             pass
-            benign_prob = float(model_output)
-            return 1.0 - benign_prob
+            attack_prob = float(model_output)
+            return attack_prob
         except Exception:
             return 0.0
 
@@ -160,7 +159,7 @@ class HybridDetector:
             "union_select": 0.25,   # increased to ensure UNION variants block even with quiet CNN
             "time_delay": 0.20,     # keep time delay high
             "stacked": 0.12,        # slightly higher
-            "tautology": 0.06,
+            "tautology": 0.15,      # increased - tautology attacks are critical
             "comment_tail": 0.02,
             "logical_ops": 0.0
         }

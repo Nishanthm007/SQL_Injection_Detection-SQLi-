@@ -2,8 +2,10 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
+from sklearn.utils.class_weight import compute_class_weight
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 import json
+from pathlib import Path
 
 from cnn_model import build_cnn_model
 from preprocessor import CNNPreprocessor   # Adjust path if different
@@ -48,10 +50,15 @@ def load_csv_dataset(path):
 
 def train_model():
 
-    CSV_PATH = r"D:\Major-Project(SQLi)_Latest - Copy\Major-Project(SQLi)_Latest\Major-Project(SQLi)\data\raw\SQL_Injection_Detection_Dataset[IEEE].csv"
+    # Use relative paths from the script location
+    script_dir = Path(__file__).parent
+    project_root = script_dir.parent
+    
+    CSV_PATH = project_root / "data" / "raw" / "SQL_Injection_Detection_Dataset[IEEE].csv"
 
     print("Loading CSV dataset...")
-    queries, labels = load_csv_dataset(CSV_PATH)
+    print(f"Looking for dataset at: {CSV_PATH}")
+    queries, labels = load_csv_dataset(str(CSV_PATH))
 
     print("Dataset size:", len(queries))
 
@@ -63,9 +70,12 @@ def train_model():
     vocab = {}
     word_types = {}
 
-    # Load vocab.json
-    vocab_path = r"D:\Major-Project(SQLi)_Latest - Copy\Major-Project(SQLi)_Latest\Major-Project(SQLi)\model_training\vocab.json"
-    wordtype_path = r"D:\Major-Project(SQLi)_Latest - Copy\Major-Project(SQLi)_Latest\Major-Project(SQLi)\model_training\word_types.json"
+    # Load vocab.json using relative paths
+    vocab_path = script_dir / "vocab.json"
+    wordtype_path = script_dir / "word_types.json"
+    
+    print(f"Vocab path: {vocab_path}")
+    print(f"Word types path: {wordtype_path}")
 
     vocab = json.load(open(vocab_path))
     word_types = json.load(open(wordtype_path))
@@ -144,6 +154,21 @@ def train_model():
     )
 
     # -----------------------------------------------------
+    # COMPUTE CLASS WEIGHTS (for imbalanced datasets)
+    # -----------------------------------------------------
+    print("\nComputing class weights...")
+    print(f"Benign (0): {np.sum(y_train == 0)} samples")
+    print(f"Malicious (1): {np.sum(y_train == 1)} samples")
+    
+    class_weights = compute_class_weight(
+        class_weight='balanced',
+        classes=np.array([0, 1]),
+        y=y_train
+    )
+    class_weight_dict = {0: class_weights[0], 1: class_weights[1]}
+    print(f"Class weights: {class_weight_dict}")
+    
+    # -----------------------------------------------------
     # CALLBACKS
     # -----------------------------------------------------
     callbacks = [
@@ -184,7 +209,8 @@ def train_model():
         ),
         epochs=20,
         batch_size=32,
-        callbacks=callbacks
+        callbacks=callbacks,
+        class_weight=class_weight_dict  # Balance classes during training
     )
 
     # -----------------------------------------------------
