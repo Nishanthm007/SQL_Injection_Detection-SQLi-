@@ -65,9 +65,9 @@ class Settings(BaseSettings):
     # ============================================================
     # FUSION WEIGHTS (tuned)
     # ============================================================
-    # Reduce model influence so borderline benign queries don't become suspicious.
-    CNN_WEIGHT: float = 0.50      # lowered to make benign borderline queries pass as benign
-    RULE_WEIGHT: float = 0.50     # give rules equal say for now
+    # Balanced weights between CNN and rules for hybrid detection
+    CNN_WEIGHT: float = 0.55      # CNN provides learned pattern detection
+    RULE_WEIGHT: float = 0.45     # Rules provide explicit attack signatures
     DEFAULT_THRESHOLD: float = 0.5
 
     # Additional thresholds used by detector code (kept for compatibility/tuning)
@@ -75,11 +75,11 @@ class Settings(BaseSettings):
     FUSION_MED: float = 0.55
 
     # Safety overrides & decision parameters (used by detector)
-    HIGH_CNN_BLOCK: float = 0.95
+    HIGH_CNN_BLOCK: float = 0.98  # Very high confidence threshold to avoid false positives
     HIGH_RULE_BLOCK: float = 0.75
 
     # Risky-rule and suspicious floors (used by detector tuning)
-    RISKY_RULE_THRESHOLD: float = 0.35
+    RISKY_RULE_THRESHOLD: float = 0.30
     SUSPICIOUS_LOWER: float = 0.35
 
     # CNN timeout for fallback (ms)

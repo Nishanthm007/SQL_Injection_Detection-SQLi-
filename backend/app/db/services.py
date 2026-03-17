@@ -135,33 +135,23 @@ def _log_attack_sync(
 ):
     """Synchronous database write (called from executor)"""
     try:
-        # Defensive normalization of scores:
-        # Support legacy and new key names that may be present depending on endpoint version
-        def pick_score(*keys, default=0.0):
-            for k in keys:
-                if scores is None:
-                    continue
-                v = scores.get(k)
-                if v is None:
-                    continue
-                try:
-                    return float(v)
-                except Exception:
-                    continue
-            return float(default)
-
-        # Extract cnn / rule / fused with fallbacks
-        cnn_val = pick_score("cnn", "p_cnn", "p_attack", "confidence", default=confidence or 0.0)
-        rule_val = pick_score("rules", "p_rule", "rule_score", default=0.0)
-        fused_val = pick_score("fused", "fused_score", default=(cnn_val * 0.0 + rule_val * 0.0))
+        # Scores are already normalized by _log_attack_sync_normalized
+        # Extract with defaults
+        cnn_val = float(scores.get("cnn") or 0.0)
+        rule_val = float(scores.get("rules") or 0.0)
+        fused_val = float(scores.get("fused") or 0.0)
+        
+        # Debug logging
+        logger.info(f"[DB WRITER] Saving to DB: cnn={cnn_val}, rule={rule_val}, fused={fused_val}")
+        logger.info(f"[DB WRITER] Scores dict received: {scores}")
 
         # Ensure details latencies are numeric and not None
         cnn_latency = 0.0
         rule_latency = 0.0
         try:
             if details:
-                cnn_latency = float(details.get("cnn_latency_ms", details.get("cnn_latency", 0.0) or 0.0))
-                rule_latency = float(details.get("rule_latency_ms", details.get("rule_latency", 0.0) or 0.0))
+                cnn_latency = float(details.get("cnn_latency_ms") or 0.0)
+                rule_latency = float(details.get("rule_latency_ms") or 0.0)
         except Exception:
             cnn_latency = 0.0
             rule_latency = 0.0
@@ -188,6 +178,10 @@ def _log_attack_sync(
                 request_metadata=metadata
             )
             db.add(attack_log)
+            db.flush()  # Force write to get ID
+            logger.info(
+                f"[DB WRITER] AttackLog created with ID={attack_log.id}, cnn_score={attack_log.cnn_score}, rule_score={attack_log.rule_score}, fused_score={attack_log.fused_score}"
+            )
             logger.debug(
                 "Logged attack: label=%s, confidence=%.4f, cnn=%.4f, rules=%.4f, fused=%.4f, cnn_lat=%.3f, rule_lat=%.3f",
                 label, confidence or 0.0, cnn_val, rule_val, fused_val, cnn_latency, rule_latency
