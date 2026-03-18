@@ -4,7 +4,8 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
 
 const client = axios.create({
   baseURL: API_BASE,
-  timeout: 10000,
+  // Render free tier can sleep; first request may take up to ~60s.
+  timeout: 70000,
   headers: {
     "Content-Type": "application/json"
   }
@@ -14,6 +15,11 @@ const client = axios.create({
 client.interceptors.response.use(
   (res) => res,
   (err) => {
+    if (err.code === "ECONNABORTED") {
+      err.message = "Backend is waking up on free tier. Please retry in a few seconds.";
+      return Promise.reject(err);
+    }
+
     // normalize message
     if (err.response && err.response.data) {
       const data = err.response.data;
