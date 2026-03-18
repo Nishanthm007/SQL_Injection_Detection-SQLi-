@@ -291,6 +291,81 @@ Rules are defined in `rules/rules_machine_v1.1.json`. Each rule includes:
 - Description
 - Tags
 
+## 🌐 Free Hosting Deployment (Vercel + Render)
+
+This project is ready to deploy on a fully free stack:
+
+- Frontend: **Vercel**
+- Backend API: **Render (Free Web Service)**
+- Region preference: **Singapore/Asia** (when available)
+
+### 1. Pre-deployment checklist (important)
+
+Before pushing to GitHub, ensure these runtime artifacts are committed:
+
+- `model_training/best_model.h5`
+- `model_training/vocab.json`
+- `model_training/word_types.json`
+
+If needed, run:
+
+```bash
+git add model_training/best_model.h5 model_training/vocab.json model_training/word_types.json
+git commit -m "Add model artifacts for deployment"
+git push
+```
+
+### 2. Deploy backend on Render
+
+1. Push repository to GitHub.
+2. In Render dashboard: **New +** -> **Blueprint**.
+3. Select your GitHub repository.
+4. Render detects `render.yaml` in project root and creates service:
+  - Name: `sqli-detector-api`
+  - Runtime: Python
+  - Plan: Free
+  - Region: Singapore (configured)
+  - Health endpoint: `/health`
+5. Deploy and wait until status is Live.
+6. Open backend URL and verify:
+  - `https://<your-backend>.onrender.com/health`
+
+### 3. Deploy frontend on Vercel
+
+1. In Vercel dashboard: **Add New** -> **Project**.
+2. Import same GitHub repository.
+3. Set **Root Directory** to `frontend`.
+4. Build settings are auto-detected from `frontend/vercel.json`:
+  - Framework: Vite
+  - Build command: `npm run build`
+  - Output directory: `dist`
+5. Add environment variable in Vercel project settings:
+  - `VITE_API_BASE_URL=https://<your-backend>.onrender.com`
+6. Deploy and open your Vercel URL.
+
+### 4. Post-deploy verification
+
+Use this sequence:
+
+1. Open frontend URL and submit a benign query.
+2. Confirm network call goes to `https://<your-backend>.onrender.com/api/v1/detect`.
+3. Confirm backend returns HTTP 200.
+4. Open backend `/health` endpoint directly.
+5. Validate logs endpoint from UI (`/api/v1/detect/attacks`) loads.
+
+### 5. Known free-tier behavior
+
+- Render free backend sleeps when idle.
+- First request after sleep may take ~20-60 seconds.
+- Disk is ephemeral on free tier; runtime-generated logs/files can reset after restart.
+
+### 6. Rollback flow (one-click style)
+
+- GitHub-driven rollback:
+  1. Revert to previous commit on GitHub.
+  2. Push.
+  3. Vercel and Render auto-redeploy previous stable version.
+
 ## 📊 Dataset Information
 
 - **Training Data**: Balanced dataset of benign and malicious SQL queries

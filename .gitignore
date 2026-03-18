@@ -18,6 +18,9 @@ notebooks/**/*.csv
 *.parquet
 *.csv
 *.tsv
+!model_training/best_model.h5
+!model_training/vocab.json
+!model_training/word_types.json
 
 # Python cache files
 __pycache__/
