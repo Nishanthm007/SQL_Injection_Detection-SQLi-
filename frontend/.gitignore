@@ -25,3 +25,7 @@ dist-ssr
 
 # Executables
 *.exe
+
+# Keep source components named "logs" tracked
+!src/components/logs/
+!src/components/logs/*.jsx
