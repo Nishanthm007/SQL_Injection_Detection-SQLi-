@@ -83,7 +83,7 @@ export default function App() {
         backgroundPosition: '0 0',
         transition: 'background-image 0.3s ease'
       } : {}}>
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="w-[min(96vw,110rem)] mx-auto px-4 sm:px-5 lg:px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => setActiveTab("detect")}>
             <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg transition-all relative ${
               darkMode 
@@ -158,15 +158,15 @@ export default function App() {
       {/* Continuous Grid Background - From navbar through hero section */}
       {activeTab === "detect" && (
         <div className="fixed top-0 left-0 right-0 pointer-events-none" style={{
-          height: 'calc(80px + 32px + 400px + 64px)', // navbar + padding-top + hero min-height + padding-bottom
+          height: 'calc(80px + 32px + 400px + 140px)', // extra tail for a softer transition under hero
           zIndex: 5,
           backgroundImage: darkMode 
             ? 'linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)'
             : 'linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px)',
           backgroundSize: '30px 30px',
           backgroundPosition: '0 0',
-          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
+          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.7) 88%, rgba(0,0,0,0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.7) 88%, rgba(0,0,0,0) 100%)',
           opacity: showNavbarGrid ? 1 : 0,
           transition: 'opacity 0.3s ease'
         }}></div>
@@ -175,11 +175,11 @@ export default function App() {
       {/* Spacer to prevent content from going under fixed navbar */}
       <div className="h-20"></div>
 
-      <main className="px-6 py-8">
+      <main className="px-3 sm:px-4 lg:px-6 py-8">
         {activeTab === "detect" && (
           <>
             {/* Hero Section */}
-            <div className="mb-8 -mx-6">
+            <div className="mb-8 -mx-3 sm:-mx-4 lg:-mx-6">
               <div className={`relative overflow-hidden shadow-2xl transition-colors duration-300 ${
                 darkMode 
                   ? "bg-gradient-to-br from-black via-gray-900 to-black" 
@@ -246,11 +246,21 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+
+                {/* Soft bottom fade so hero blends into the section below */}
+                <div
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+                  style={{
+                    background: darkMode
+                      ? 'linear-gradient(to bottom, rgba(9, 24, 60, 0) 0%, rgba(6, 16, 40, 0.55) 55%, rgba(0, 0, 0, 0.9) 100%)'
+                      : 'linear-gradient(to bottom, rgba(147, 197, 253, 0) 0%, rgba(191, 219, 254, 0.7) 55%, rgba(243, 244, 246, 1) 100%)'
+                  }}
+                ></div>
               </div>
             </div>
 
             {/* Main Content Grid */}
-            <div className="max-w-7xl mx-auto">
+            <div className="w-[min(96vw,112rem)] mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Query Form - Takes 2 columns */}
                 <div className="lg:col-span-2">
@@ -387,13 +397,13 @@ export default function App() {
         )}
 
         {activeTab === "logs" && (
-          <div className="max-w-7xl mx-auto">
+          <div className="w-[min(96vw,112rem)] mx-auto">
             <LogsPage darkMode={darkMode} />
           </div>
         )}
 
         {activeTab === "explain" && (
-          <div className="max-w-7xl mx-auto">
+          <div className="w-[min(96vw,112rem)] mx-auto">
             <ExplainabilityPage darkMode={darkMode} />
           </div>
         )}
